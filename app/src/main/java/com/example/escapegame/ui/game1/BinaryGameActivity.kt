@@ -1,10 +1,12 @@
 package com.example.escapegame.ui.game1
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.escapegame.R
 import com.example.escapegame.logic.BinaryPuzzle
+import com.example.escapegame.ui.game2.ScratchGameActivity
 
 class BinaryGameActivity : AppCompatActivity() {
 
@@ -28,7 +30,7 @@ class BinaryGameActivity : AppCompatActivity() {
             val userAnswer = etAnswer.text.toString()
 
             if (puzzle.checkAnswer(userAnswer)) {
-                tvResult.text = "Correct!"
+                startActivity(Intent(this, ScratchGameActivity::class.java))
             } else {
                 tvResult.text = "Wrong! Try again."
             }

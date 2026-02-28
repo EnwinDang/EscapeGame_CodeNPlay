@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EscapeGame">
         <activity
+            android:name=".ui.game3.RobotGameActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.game2.ScratchGameActivity"
             android:exported="false" />
         <activity
