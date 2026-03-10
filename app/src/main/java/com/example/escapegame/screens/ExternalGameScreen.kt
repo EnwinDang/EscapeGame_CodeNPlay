@@ -72,7 +72,7 @@ fun ExternalGameScreen(
         OutlinedTextField(
             value = enteredCode,
             onValueChange = {
-                enteredCode = it.uppercase()
+                enteredCode = it
                 showError = false
             },
             label = { Text(stringResource(R.string.external_enter_code_label)) },
@@ -84,7 +84,7 @@ fun ExternalGameScreen(
 
         Button(
             onClick = {
-                if (enteredCode.trim() == correctCode) {
+                if (enteredCode.trim().uppercase() == correctCode) {
                     onCodeCorrect()
                 } else {
                     showError = true

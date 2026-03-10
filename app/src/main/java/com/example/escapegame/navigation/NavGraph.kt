@@ -3,9 +3,12 @@ package com.example.escapegame.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.escapegame.R
+import com.example.escapegame.logic.wordQuizMap
 import com.example.escapegame.screens.BinaryGameScreen
 import com.example.escapegame.screens.CongratulationsScreen
 import com.example.escapegame.screens.DifficultyScreen
@@ -21,7 +24,7 @@ object Routes {
     const val VIDEO = "video"
     const val DIFFICULTY = "difficulty"
     const val BINARY_GAME = "binary_game"
-    const val BINARY_QUIZ = "binary_quiz"
+    const val BINARY_QUIZ = "binary_quiz/{word}"
     const val SCRATCH_GAME = "scratch_game"
     const val SCRATCH_QUIZ = "scratch_quiz"
     const val AI_GAME = "ai_game"
@@ -59,20 +62,25 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
         composable(Routes.BINARY_GAME) {
             BinaryGameScreen(
                 difficulty = viewModel.difficulty,
-                onSolved = { navController.navigate(Routes.BINARY_QUIZ) }
+                onSolved = { word -> navController.navigate("binary_quiz/$word") }
             )
         }
 
-        composable(Routes.BINARY_QUIZ) {
+        composable(
+            route = Routes.BINARY_QUIZ,
+            arguments = listOf(navArgument("word") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val word = backStackEntry.arguments?.getString("word") ?: "DATA"
+            val quiz = wordQuizMap[word] ?: wordQuizMap["DATA"]!!
             QuizScreen(
-                question = stringResource(R.string.binary_quiz_question),
+                question = stringResource(quiz.questionRes),
                 options = listOf(
-                    stringResource(R.string.binary_quiz_option_a),
-                    stringResource(R.string.binary_quiz_option_b),
-                    stringResource(R.string.binary_quiz_option_c)
+                    stringResource(quiz.optionARes),
+                    stringResource(quiz.optionBRes),
+                    stringResource(quiz.optionCRes)
                 ),
-                correctIndex = 0,
-                explanation = stringResource(R.string.binary_quiz_explanation),
+                correctIndex = quiz.correctIndex,
+                explanation = stringResource(quiz.explanationRes),
                 onContinue = { navController.navigate(Routes.SCRATCH_GAME) }
             )
         }

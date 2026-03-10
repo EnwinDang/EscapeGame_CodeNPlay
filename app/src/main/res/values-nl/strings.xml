@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EscapeGame</string>
+    <string name="app_name">CodeNPlay</string>
 
     <!-- Home -->
     <string name="home_subtitle">Escape Game</string>
@@ -58,12 +58,36 @@
     <string name="difficulty_kids">Kids</string>
     <string name="difficulty_teens">Tieners</string>
 
-    <!-- Binary Quiz -->
-    <string name="binary_quiz_question">Wat betekent binair?</string>
-    <string name="binary_quiz_option_a">Getallen met alleen 0 en 1</string>
-    <string name="binary_quiz_option_b">Decimale getallen</string>
-    <string name="binary_quiz_option_c">Letters van het alfabet</string>
-    <string name="binary_quiz_explanation">Binair is een getallensysteem dat alleen 0 en 1 gebruikt. Computers gebruiken het omdat hun circuits twee toestanden hebben: aan (1) en uit (0).</string>
+    <!-- Binary Word Quizzes -->
+    <string name="word_data_question">Wat is data in de informatica?</string>
+    <string name="word_data_option_a">Informatie die computers kunnen opslaan en verwerken</string>
+    <string name="word_data_option_b">Een soort programmeersoftware</string>
+    <string name="word_data_option_c">De fysieke onderdelen van een computer</string>
+    <string name="word_data_explanation">Data is elk soort informatie — getallen, tekst, afbeeldingen, geluiden — die een computer kan opslaan, verwerken of versturen.</string>
+
+    <string name="word_code_question">Wat is broncode?</string>
+    <string name="word_code_option_a">Instructies geschreven door programmeurs om een computer te vertellen wat hij moet doen</string>
+    <string name="word_code_option_b">Een geheim wachtwoord voor toegang tot bestanden</string>
+    <string name="word_code_option_c">Het beeldscherm van een computer</string>
+    <string name="word_code_explanation">Broncode is tekst geschreven in een programmeertaal die een computer stap voor stap precies vertelt wat hij moet doen.</string>
+
+    <string name="word_server_question">Wat is een server?</string>
+    <string name="word_server_option_a">Een krachtige computer die gegevens opslaat en deelt met andere apparaten</string>
+    <string name="word_server_option_b">Een programma dat automatisch e-mails verstuurt</string>
+    <string name="word_server_option_c">Een soort computerspel</string>
+    <string name="word_server_explanation">Een server is een krachtige computer die websites, apps en gegevens opslaat en ze op verzoek naar andere apparaten stuurt.</string>
+
+    <string name="word_robot_question">Waardoor werkt een robot?</string>
+    <string name="word_robot_option_a">Het volgt geprogrammeerde instructies geschreven door een mens</string>
+    <string name="word_robot_option_b">Het denkt en neemt beslissingen zoals een menselijk brein</string>
+    <string name="word_robot_option_c">Het werkt op willekeurige acties totdat de juiste werkt</string>
+    <string name="word_robot_explanation">Een robot volgt geprogrammeerde instructies — het doet precies wat de code zegt, stap voor stap, zonder zelf na te denken.</string>
+
+    <string name="word_cloud_question">Wat betekent \"de cloud\" in de informatica?</string>
+    <string name="word_cloud_option_a">Gegevens opslaan en benaderen via het internet op externe servers</string>
+    <string name="word_cloud_option_b">Een weersvoorspellingsprogramma op je telefoon</string>
+    <string name="word_cloud_option_c">Een draadloze toetsenbordverbinding</string>
+    <string name="word_cloud_explanation">De cloud betekent dat je gegevens worden opgeslagen op krachtige computers die verbonden zijn met het internet, zodat je ze overal en op elk apparaat kunt openen.</string>
 
     <!-- Scratch Game -->
     <string name="scratch_instructions">Ga naar de laptop en voltooi de Scratch-uitdaging.\nAls je klaar bent, voer de code in die je hebt ontvangen:</string>

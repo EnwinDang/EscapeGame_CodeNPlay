@@ -33,7 +33,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun BinaryGameScreen(
     difficulty: Difficulty?,
-    onSolved: () -> Unit
+    onSolved: (String) -> Unit
 ) {
     BackHandler(enabled = true) { /* back disabled during game */ }
 
@@ -98,7 +98,7 @@ fun BinaryGameScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             Button(
-                onClick = onSolved,
+                onClick = { onSolved(puzzle.currentWord) },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(stringResource(R.string.binary_continue_quiz))
@@ -127,7 +127,7 @@ fun BinaryGameScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             Button(
-                onClick = onSolved,
+                onClick = { onSolved(puzzle.currentWord) },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(stringResource(R.string.binary_continue_anyway))
