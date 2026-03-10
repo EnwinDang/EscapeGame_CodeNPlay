@@ -11,21 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EscapeGame">
         <activity
-            android:name=".ui.game3.RobotGameActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.game2.ScratchGameActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.game1.BinaryGameActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.menu.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.EscapeGame">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

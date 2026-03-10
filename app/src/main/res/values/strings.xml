@@ -1,6 +1,92 @@
 <resources>
-    <string name="app_name">EscapeGame</string>
-    <string name="binary_game_button">Binary Game</string>
-    <string name="scratch_game_button">Scratch Game</string>
-    <string name="robot_game_button">Robot Game</string>
+    <string name="app_name">CodeNPlay</string>
+
+    <!-- Home -->
+    <string name="home_subtitle">Escape Game</string>
+    <string name="home_tap_to_start">Tap anywhere to start</string>
+
+    <!-- Video -->
+    <string name="video_title">The Story</string>
+    <string name="video_placeholder">▶  Intro Video</string>
+    <string name="video_story">The datacenter is under attack!\nYou must solve all the coding challenges to save it.</string>
+
+    <!-- Difficulty -->
+    <string name="difficulty_title">Choose Difficulty</string>
+    <string name="difficulty_subtitle">This will determine your puzzles and which robot you use.</string>
+    <string name="btn_kids">Kids</string>
+    <string name="btn_teens">Teens</string>
+
+    <!-- Binary Game -->
+    <string name="binary_step_label">Step 1 — Binary Puzzle</string>
+    <string name="binary_decode_prompt">Decode the binary:</string>
+    <string name="binary_answer_label">Your answer</string>
+    <string name="binary_solved_title">Puzzle solved!</string>
+    <string name="binary_code_word_label">Your code word:</string>
+    <string name="binary_code_word">BINARY</string>
+    <string name="binary_continue_quiz">Continue to quiz</string>
+    <string name="binary_times_up">Time\'s up!</string>
+    <string name="binary_ask_master">Ask the game master for help.</string>
+    <string name="binary_continue_anyway">Continue anyway</string>
+    <string name="binary_wrong">Wrong! Try again.</string>
+    <string name="btn_new_puzzle">New Puzzle</string>
+
+    <!-- Shared buttons -->
+    <string name="btn_submit">Submit</string>
+    <string name="btn_continue">Continue</string>
+    <string name="btn_play_again">Play Again</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Quick Quiz</string>
+    <string name="quiz_correct">Correct!</string>
+    <string name="quiz_wrong_title">Not quite — but that\'s okay!</string>
+
+    <!-- External Game -->
+    <string name="external_step_label">Step %1$d — %2$s</string>
+    <string name="external_enter_code_label">Enter the code</string>
+    <string name="external_wrong_code">Wrong code. Try again!</string>
+
+    <!-- Game titles -->
+    <string name="title_scratch_game">Scratch Game</string>
+    <string name="title_ai_game">AI Challenge</string>
+    <string name="title_robot_game">Robot Game</string>
+
+    <!-- Congratulations -->
+    <string name="congrats_title">Congratulations!</string>
+    <string name="congrats_subtitle">You saved the datacenter!</string>
+    <string name="congrats_time">Total time: %1$d minutes %2$d seconds</string>
+    <string name="congrats_difficulty">Difficulty: %1$s</string>
+    <string name="difficulty_kids">Kids</string>
+    <string name="difficulty_teens">Teens</string>
+
+    <!-- Binary Quiz -->
+    <string name="binary_quiz_question">What does binary mean?</string>
+    <string name="binary_quiz_option_a">Numbers using only 0 and 1</string>
+    <string name="binary_quiz_option_b">Decimal numbers</string>
+    <string name="binary_quiz_option_c">Letters of the alphabet</string>
+    <string name="binary_quiz_explanation">Binary is a number system that uses only 0 and 1. Computers use it because their circuits have two states: on (1) and off (0).</string>
+
+    <!-- Scratch Game -->
+    <string name="scratch_instructions">Go to the laptop and complete the Scratch challenge.\nWhen you are done, enter the code you received:</string>
+    <string name="scratch_quiz_question">What is Scratch used for?</string>
+    <string name="scratch_quiz_option_a">Visual block-based programming</string>
+    <string name="scratch_quiz_option_b">Hacking into computers</string>
+    <string name="scratch_quiz_option_c">Drawing pictures</string>
+    <string name="scratch_quiz_explanation">Scratch is a visual programming language where you drag and connect blocks to create programs, games, and animations.</string>
+
+    <!-- AI Game -->
+    <string name="ai_instructions">Complete the AI challenge on the device provided.\nWhen you are done, enter the code you received:</string>
+    <string name="ai_quiz_question">What does AI stand for?</string>
+    <string name="ai_quiz_option_a">Artificial Intelligence</string>
+    <string name="ai_quiz_option_b">Automatic Internet</string>
+    <string name="ai_quiz_option_c">Android Interface</string>
+    <string name="ai_quiz_explanation">AI stands for Artificial Intelligence — systems that can learn from data and solve problems in ways that resemble human thinking.</string>
+
+    <!-- Robot Game -->
+    <string name="robot_instructions_kids">Go to the Ozobot and complete the robot challenge.\nWhen you are done, enter the code you received:</string>
+    <string name="robot_instructions_teens">Go to the LEGO Spike and complete the robot challenge.\nWhen you are done, enter the code you received:</string>
+    <string name="robot_quiz_question">How does a robot know what to do?</string>
+    <string name="robot_quiz_option_a">It follows programmed instructions</string>
+    <string name="robot_quiz_option_b">It thinks for itself like a human</string>
+    <string name="robot_quiz_option_c">It guesses randomly</string>
+    <string name="robot_quiz_explanation">Robots follow code — step-by-step instructions written by a programmer that tell the robot exactly what to do and when.</string>
 </resources>

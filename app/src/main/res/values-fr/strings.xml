@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">EscapeGame</string>
+
+    <!-- Home -->
+    <string name="home_subtitle">Jeu d\'Évasion</string>
+    <string name="home_tap_to_start">Appuyez n\'importe où pour commencer</string>
+
+    <!-- Video -->
+    <string name="video_title">L\'Histoire</string>
+    <string name="video_placeholder">▶  Vidéo d\'introduction</string>
+    <string name="video_story">Le datacenter est attaqué !\nVous devez résoudre tous les défis de codage pour le sauver.</string>
+
+    <!-- Difficulty -->
+    <string name="difficulty_title">Choisir la difficulté</string>
+    <string name="difficulty_subtitle">Cela déterminera vos puzzles et le robot que vous utiliserez.</string>
+    <string name="btn_kids">Enfants</string>
+    <string name="btn_teens">Adolescents</string>
+
+    <!-- Binary Game -->
+    <string name="binary_step_label">Étape 1 — Puzzle Binaire</string>
+    <string name="binary_decode_prompt">Décodez le binaire :</string>
+    <string name="binary_answer_label">Votre réponse</string>
+    <string name="binary_solved_title">Puzzle résolu !</string>
+    <string name="binary_code_word_label">Votre mot de code :</string>
+    <string name="binary_code_word">BINARY</string>
+    <string name="binary_continue_quiz">Continuer vers le quiz</string>
+    <string name="binary_times_up">Temps écoulé !</string>
+    <string name="binary_ask_master">Demandez l\'aide du maître du jeu.</string>
+    <string name="binary_continue_anyway">Continuer quand même</string>
+    <string name="binary_wrong">Faux ! Réessayez.</string>
+    <string name="btn_new_puzzle">Nouveau Puzzle</string>
+
+    <!-- Shared buttons -->
+    <string name="btn_submit">Valider</string>
+    <string name="btn_continue">Continuer</string>
+    <string name="btn_play_again">Rejouer</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Quiz Rapide</string>
+    <string name="quiz_correct">Correct !</string>
+    <string name="quiz_wrong_title">Pas tout à fait — mais c\'est normal !</string>
+
+    <!-- External Game -->
+    <string name="external_step_label">Étape %1$d — %2$s</string>
+    <string name="external_enter_code_label">Entrez le code</string>
+    <string name="external_wrong_code">Mauvais code. Réessayez !</string>
+
+    <!-- Game titles -->
+    <string name="title_scratch_game">Jeu Scratch</string>
+    <string name="title_ai_game">Défi IA</string>
+    <string name="title_robot_game">Jeu Robot</string>
+
+    <!-- Congratulations -->
+    <string name="congrats_title">Félicitations !</string>
+    <string name="congrats_subtitle">Vous avez sauvé le datacenter !</string>
+    <string name="congrats_time">Temps total : %1$d minutes %2$d secondes</string>
+    <string name="congrats_difficulty">Difficulté : %1$s</string>
+    <string name="difficulty_kids">Enfants</string>
+    <string name="difficulty_teens">Adolescents</string>
+
+    <!-- Binary Quiz -->
+    <string name="binary_quiz_question">Que signifie binaire ?</string>
+    <string name="binary_quiz_option_a">Nombres utilisant seulement 0 et 1</string>
+    <string name="binary_quiz_option_b">Nombres décimaux</string>
+    <string name="binary_quiz_option_c">Lettres de l\'alphabet</string>
+    <string name="binary_quiz_explanation">Le binaire est un système numérique qui utilise seulement 0 et 1. Les ordinateurs l\'utilisent car leurs circuits ont deux états : allumé (1) et éteint (0).</string>
+
+    <!-- Scratch Game -->
+    <string name="scratch_instructions">Allez sur l\'ordinateur portable et complétez le défi Scratch.\nQuand vous avez terminé, entrez le code que vous avez reçu :</string>
+    <string name="scratch_quiz_question">À quoi sert Scratch ?</string>
+    <string name="scratch_quiz_option_a">Programmation visuelle par blocs</string>
+    <string name="scratch_quiz_option_b">Pirater des ordinateurs</string>
+    <string name="scratch_quiz_option_c">Dessiner des images</string>
+    <string name="scratch_quiz_explanation">Scratch est un langage de programmation visuel où vous faites glisser et connectez des blocs pour créer des programmes, des jeux et des animations.</string>
+
+    <!-- AI Game -->
+    <string name="ai_instructions">Complétez le défi IA sur l\'appareil fourni.\nQuand vous avez terminé, entrez le code que vous avez reçu :</string>
+    <string name="ai_quiz_question">Que signifie IA ?</string>
+    <string name="ai_quiz_option_a">Intelligence Artificielle</string>
+    <string name="ai_quiz_option_b">Internet Automatique</string>
+    <string name="ai_quiz_option_c">Interface Android</string>
+    <string name="ai_quiz_explanation">IA signifie Intelligence Artificielle — des systèmes capables d\'apprendre à partir de données et de résoudre des problèmes d\'une manière similaire à la pensée humaine.</string>
+
+    <!-- Robot Game -->
+    <string name="robot_instructions_kids">Allez chez l\'Ozobot et complétez le défi robot.\nQuand vous avez terminé, entrez le code que vous avez reçu :</string>
+    <string name="robot_instructions_teens">Allez chez le LEGO Spike et complétez le défi robot.\nQuand vous avez terminé, entrez le code que vous avez reçu :</string>
+    <string name="robot_quiz_question">Comment un robot sait-il quoi faire ?</string>
+    <string name="robot_quiz_option_a">Il suit des instructions programmées</string>
+    <string name="robot_quiz_option_b">Il pense par lui-même comme un humain</string>
+    <string name="robot_quiz_option_c">Il devine au hasard</string>
+    <string name="robot_quiz_explanation">Les robots suivent du code — des instructions étape par étape écrites par un programmeur qui disent au robot exactement quoi faire et quand.</string>
+</resources>

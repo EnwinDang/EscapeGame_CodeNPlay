@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">EscapeGame</string>
+
+    <!-- Home -->
+    <string name="home_subtitle">Escape Game</string>
+    <string name="home_tap_to_start">Tik ergens om te beginnen</string>
+
+    <!-- Video -->
+    <string name="video_title">Het Verhaal</string>
+    <string name="video_placeholder">▶  Intro Video</string>
+    <string name="video_story">Het datacenter wordt aangevallen!\nJe moet alle code-uitdagingen oplossen om het te redden.</string>
+
+    <!-- Difficulty -->
+    <string name="difficulty_title">Kies moeilijkheidsgraad</string>
+    <string name="difficulty_subtitle">Dit bepaalt je puzzels en welke robot je gebruikt.</string>
+    <string name="btn_kids">Kids</string>
+    <string name="btn_teens">Tieners</string>
+
+    <!-- Binary Game -->
+    <string name="binary_step_label">Stap 1 — Binaire Puzzel</string>
+    <string name="binary_decode_prompt">Decodeer het binaire getal:</string>
+    <string name="binary_answer_label">Jouw antwoord</string>
+    <string name="binary_solved_title">Puzzel opgelost!</string>
+    <string name="binary_code_word_label">Jouw codewoord:</string>
+    <string name="binary_code_word">BINARY</string>
+    <string name="binary_continue_quiz">Doorgaan naar quiz</string>
+    <string name="binary_times_up">Tijd op!</string>
+    <string name="binary_ask_master">Vraag de spelleider om hulp.</string>
+    <string name="binary_continue_anyway">Toch doorgaan</string>
+    <string name="binary_wrong">Fout! Probeer opnieuw.</string>
+    <string name="btn_new_puzzle">Nieuwe Puzzel</string>
+
+    <!-- Shared buttons -->
+    <string name="btn_submit">Bevestigen</string>
+    <string name="btn_continue">Doorgaan</string>
+    <string name="btn_play_again">Opnieuw spelen</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Snelle Quiz</string>
+    <string name="quiz_correct">Correct!</string>
+    <string name="quiz_wrong_title">Niet helemaal — maar dat is oké!</string>
+
+    <!-- External Game -->
+    <string name="external_step_label">Stap %1$d — %2$s</string>
+    <string name="external_enter_code_label">Voer de code in</string>
+    <string name="external_wrong_code">Verkeerde code. Probeer opnieuw!</string>
+
+    <!-- Game titles -->
+    <string name="title_scratch_game">Scratch Spel</string>
+    <string name="title_ai_game">AI Uitdaging</string>
+    <string name="title_robot_game">Robot Spel</string>
+
+    <!-- Congratulations -->
+    <string name="congrats_title">Gefeliciteerd!</string>
+    <string name="congrats_subtitle">Je hebt het datacenter gered!</string>
+    <string name="congrats_time">Totale tijd: %1$d minuten %2$d seconden</string>
+    <string name="congrats_difficulty">Moeilijkheidsgraad: %1$s</string>
+    <string name="difficulty_kids">Kids</string>
+    <string name="difficulty_teens">Tieners</string>
+
+    <!-- Binary Quiz -->
+    <string name="binary_quiz_question">Wat betekent binair?</string>
+    <string name="binary_quiz_option_a">Getallen met alleen 0 en 1</string>
+    <string name="binary_quiz_option_b">Decimale getallen</string>
+    <string name="binary_quiz_option_c">Letters van het alfabet</string>
+    <string name="binary_quiz_explanation">Binair is een getallensysteem dat alleen 0 en 1 gebruikt. Computers gebruiken het omdat hun circuits twee toestanden hebben: aan (1) en uit (0).</string>
+
+    <!-- Scratch Game -->
+    <string name="scratch_instructions">Ga naar de laptop en voltooi de Scratch-uitdaging.\nAls je klaar bent, voer de code in die je hebt ontvangen:</string>
+    <string name="scratch_quiz_question">Waarvoor wordt Scratch gebruikt?</string>
+    <string name="scratch_quiz_option_a">Visueel blokgebaseerd programmeren</string>
+    <string name="scratch_quiz_option_b">Computers hacken</string>
+    <string name="scratch_quiz_option_c">Tekeningen maken</string>
+    <string name="scratch_quiz_explanation">Scratch is een visuele programmeertaal waarbij je blokken sleept en verbindt om programma\'s, spelletjes en animaties te maken.</string>
+
+    <!-- AI Game -->
+    <string name="ai_instructions">Voltooi de AI-uitdaging op het opgegeven apparaat.\nAls je klaar bent, voer de code in die je hebt ontvangen:</string>
+    <string name="ai_quiz_question">Waar staat AI voor?</string>
+    <string name="ai_quiz_option_a">Kunstmatige Intelligentie</string>
+    <string name="ai_quiz_option_b">Automatisch Internet</string>
+    <string name="ai_quiz_option_c">Android Interface</string>
+    <string name="ai_quiz_explanation">AI staat voor Kunstmatige Intelligentie — systemen die kunnen leren van gegevens en problemen oplossen op een manier die lijkt op menselijk denken.</string>
+
+    <!-- Robot Game -->
+    <string name="robot_instructions_kids">Ga naar de Ozobot en voltooi de robot-uitdaging.\nAls je klaar bent, voer de code in die je hebt ontvangen:</string>
+    <string name="robot_instructions_teens">Ga naar de LEGO Spike en voltooi de robot-uitdaging.\nAls je klaar bent, voer de code in die je hebt ontvangen:</string>
+    <string name="robot_quiz_question">Hoe weet een robot wat hij moet doen?</string>
+    <string name="robot_quiz_option_a">Het volgt geprogrammeerde instructies</string>
+    <string name="robot_quiz_option_b">Het denkt zelf na zoals een mens</string>
+    <string name="robot_quiz_option_c">Het raadt willekeurig</string>
+    <string name="robot_quiz_explanation">Robots volgen code — stap-voor-stap instructies geschreven door een programmeur die de robot precies vertellen wat hij moet doen en wanneer.</string>
+</resources>
