@@ -49,11 +49,14 @@ fun HomeScreen(onTap: () -> Unit) {
     var activeLanguage by remember { mutableStateOf(initialTag) }
 
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-        Box(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize().clickable { onTap() }) {
 
             // Language picker — top-right corner, does NOT trigger onTap
             Row(
-                modifier = Modifier.align(Alignment.TopEnd).padding(16.dp),
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(16.dp)
+                    .clickable(enabled = false) {},
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 listOf("en" to "EN", "nl" to "NL", "fr" to "FR").forEach { (tag, label) ->
@@ -74,7 +77,7 @@ fun HomeScreen(onTap: () -> Unit) {
 
             // Main content — tap anywhere to proceed
             Column(
-                modifier = Modifier.fillMaxSize().clickable { onTap() }.padding(32.dp),
+                modifier = Modifier.fillMaxSize().padding(32.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
