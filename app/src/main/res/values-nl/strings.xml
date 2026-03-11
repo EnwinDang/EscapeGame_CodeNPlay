@@ -1,0 +1,234 @@
+<resources>
+    <string name="app_name">CodeNPlay</string>
+
+    <!-- Home -->
+    <string name="home_subtitle">Datacenter Missie</string>
+    <string name="home_tap_to_start">Tik ergens om je missie te beginnen</string>
+
+    <!-- Video -->
+    <string name="video_title">Missionbriefing</string>
+    <string name="video_placeholder">▶  Briefingvideo</string>
+    <string name="video_story">⚠ SYSTEEMINBRAAK GEDETECTEERD\nHet datacenter is gecompromitteerd. Voltooi alle code-uitdagingen om de systemen te herstellen.</string>
+
+    <!-- Difficulty -->
+    <string name="difficulty_title">Selecteer Agentniveau</string>
+    <string name="difficulty_subtitle">Jouw niveau bepaalt je uitdagingen en welke uitrusting je ontvangt.</string>
+    <string name="btn_kids">Junior Agent</string>
+    <string name="btn_teens">Senior Agent</string>
+
+    <!-- Binary Game -->
+    <string name="binary_step_label">Missie 1 — Binaire Decoder</string>
+    <string name="binary_decode_prompt">Ontcijfer het signaal:</string>
+    <string name="binary_answer_label">Ontcijferde tekst</string>
+    <string name="binary_solved_title">Signaal ontcijferd!</string>
+    <string name="binary_code_word_label">Toegangscode:</string>
+    <string name="binary_code_word">BINARY</string>
+    <string name="binary_continue_quiz">Doorgaan naar debriefing</string>
+    <string name="binary_times_up">Tijd verlopen!</string>
+    <string name="binary_ask_master">Contacteer je Missieleider voor hulp.</string>
+    <string name="binary_continue_anyway">Override — toch doorgaan</string>
+    <string name="binary_wrong">Onjuist — probeer opnieuw.</string>
+    <string name="btn_new_puzzle">Nieuw Signaal</string>
+
+    <!-- Shared buttons -->
+    <string name="btn_submit">Bevestigen</string>
+    <string name="btn_continue">Verdergaan</string>
+    <string name="btn_play_again">Nieuwe Missie</string>
+
+    <!-- Home button dialog -->
+    <string name="home_dialog_title">Missie verlaten?</string>
+    <string name="home_dialog_message">Je voortgang gaat verloren.</string>
+    <string name="home_dialog_confirm">Verlaten</string>
+    <string name="home_dialog_cancel">Blijven</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Missie Debriefing</string>
+    <string name="quiz_correct">Bevestigd — intel geverifieerd!</string>
+    <string name="quiz_wrong_title">Onjuist — maar genoteerd, Agent.</string>
+
+    <!-- External Game -->
+    <string name="external_step_label">Missie %1$d — %2$s</string>
+    <string name="external_enter_code_label">Voer toegangscode in</string>
+    <string name="external_wrong_code">Toegang geweigerd. Probeer opnieuw.</string>
+
+    <!-- Game titles -->
+    <string name="title_scratch_game">Scratch Protocol</string>
+    <string name="title_ai_game">AI Protocol</string>
+    <string name="title_robot_game">Robot Protocol</string>
+
+    <!-- Congratulations -->
+    <string name="congrats_title">Missie Voltooid</string>
+    <string name="congrats_subtitle">Datacenter systemen hersteld.</string>
+    <string name="congrats_time">Missietijd: %1$d min %2$d sec</string>
+    <string name="congrats_difficulty">Agentniveau: %1$s</string>
+    <string name="difficulty_kids">Junior Agent</string>
+    <string name="difficulty_teens">Senior Agent</string>
+
+    <!-- Binary Word Quizzes -->
+    <string name="word_data_question">Wat is data in de informatica?</string>
+    <string name="word_data_option_a">Informatie die computers kunnen opslaan en verwerken</string>
+    <string name="word_data_option_b">Een soort programmeersoftware</string>
+    <string name="word_data_option_c">De fysieke onderdelen van een computer</string>
+    <string name="word_data_explanation">Data is elk soort informatie — getallen, tekst, afbeeldingen, geluiden — die een computer kan opslaan, verwerken of versturen.</string>
+
+    <string name="word_code_question">Wat is broncode?</string>
+    <string name="word_code_option_a">Instructies geschreven door programmeurs om een computer te vertellen wat hij moet doen</string>
+    <string name="word_code_option_b">Een geheim wachtwoord voor toegang tot bestanden</string>
+    <string name="word_code_option_c">Het beeldscherm van een computer</string>
+    <string name="word_code_explanation">Broncode is tekst geschreven in een programmeertaal die een computer stap voor stap precies vertelt wat hij moet doen.</string>
+
+    <string name="word_server_question">Wat is een server?</string>
+    <string name="word_server_option_a">Een krachtige computer die gegevens opslaat en deelt met andere apparaten</string>
+    <string name="word_server_option_b">Een programma dat automatisch e-mails verstuurt</string>
+    <string name="word_server_option_c">Een soort computerspel</string>
+    <string name="word_server_explanation">Een server is een krachtige computer die websites, apps en gegevens opslaat en ze op verzoek naar andere apparaten stuurt.</string>
+
+    <string name="word_robot_question">Waardoor werkt een robot?</string>
+    <string name="word_robot_option_a">Het volgt geprogrammeerde instructies geschreven door een mens</string>
+    <string name="word_robot_option_b">Het denkt en neemt beslissingen zoals een menselijk brein</string>
+    <string name="word_robot_option_c">Het werkt op willekeurige acties totdat de juiste werkt</string>
+    <string name="word_robot_explanation">Een robot volgt geprogrammeerde instructies — het doet precies wat de code zegt, stap voor stap, zonder zelf na te denken.</string>
+
+    <string name="word_cloud_question">Wat betekent \"de cloud\" in de informatica?</string>
+    <string name="word_cloud_option_a">Gegevens opslaan en benaderen via het internet op externe servers</string>
+    <string name="word_cloud_option_b">Een weersvoorspellingsprogramma op je telefoon</string>
+    <string name="word_cloud_option_c">Een draadloze toetsenbordverbinding</string>
+    <string name="word_cloud_explanation">De cloud betekent dat je gegevens worden opgeslagen op krachtige computers die verbonden zijn met het internet, zodat je ze overal en op elk apparaat kunt openen.</string>
+
+    <!-- Scratch Game -->
+    <string name="scratch_instructions">Ga naar de laptop en voltooi het Scratch Protocol.\nVoer je toegangscode in als je klaar bent:</string>
+    <string name="scratch_quiz_question">Waarvoor wordt Scratch gebruikt?</string>
+    <string name="scratch_quiz_option_a">Visueel blokgebaseerd programmeren</string>
+    <string name="scratch_quiz_option_b">Computers hacken</string>
+    <string name="scratch_quiz_option_c">Tekeningen maken</string>
+    <string name="scratch_quiz_explanation">Scratch is een visuele programmeertaal waarbij je blokken sleept en verbindt om programma\'s, spelletjes en animaties te maken.</string>
+
+    <!-- AI Game -->
+    <string name="ai_instructions">Gebruik het opgegeven apparaat en voltooi het AI Protocol.\nVoer je toegangscode in als je klaar bent:</string>
+    <string name="ai_quiz_question">Waar staat AI voor?</string>
+    <string name="ai_quiz_option_a">Kunstmatige Intelligentie</string>
+    <string name="ai_quiz_option_b">Automatisch Internet</string>
+    <string name="ai_quiz_option_c">Android Interface</string>
+    <string name="ai_quiz_explanation">AI staat voor Kunstmatige Intelligentie — systemen die kunnen leren van gegevens en problemen oplossen op een manier die lijkt op menselijk denken.</string>
+
+    <!-- Robot Game -->
+    <string name="robot_instructions_kids">Ga naar de Ozobot en voltooi het Robot Protocol.\nVoer je toegangscode in als je klaar bent:</string>
+    <string name="robot_instructions_teens">Ga naar het LEGO Spike station en voltooi het Robot Protocol.\nVoer je toegangscode in als je klaar bent:</string>
+    <string name="robot_quiz_question">Hoe weet een robot wat hij moet doen?</string>
+    <string name="robot_quiz_option_a">Het volgt geprogrammeerde instructies</string>
+    <string name="robot_quiz_option_b">Het denkt zelf na zoals een mens</string>
+    <string name="robot_quiz_option_c">Het raadt willekeurig</string>
+    <string name="robot_quiz_explanation">Robots volgen code — stap-voor-stap instructies geschreven door een programmeur die de robot precies vertellen wat hij moet doen en wanneer.</string>
+
+    <!-- ============================================================ -->
+    <!--  JUNIOR AGENT (Kids) quizvragen — hier aanpassen voor kids   -->
+    <!-- ============================================================ -->
+
+    <!-- Binaire woordquizzen — Kids -->
+    <string name="word_data_question_kids">Wat is data?</string>
+    <string name="word_data_option_a_kids">Informatie die een computer kan opslaan en gebruiken</string>
+    <string name="word_data_option_b_kids">Een soort programmeersoftware</string>
+    <string name="word_data_option_c_kids">De fysieke onderdelen van een computer</string>
+    <string name="word_data_explanation_kids">Data is informatie — zoals getallen, woorden en afbeeldingen — die een computer kan opslaan en gebruiken.</string>
+
+    <string name="word_code_question_kids">Wat is code bij het programmeren?</string>
+    <string name="word_code_option_a_kids">Instructies die een computer vertellen wat hij moet doen</string>
+    <string name="word_code_option_b_kids">Een geheim wachtwoord voor bestanden</string>
+    <string name="word_code_option_c_kids">Het scherm van een computer</string>
+    <string name="word_code_explanation_kids">Code zijn instructies in een speciale taal die een computer stap voor stap precies vertellen wat hij moet doen.</string>
+
+    <string name="word_server_question_kids">Wat is een server?</string>
+    <string name="word_server_option_a_kids">Een krachtige computer die informatie opslaat en deelt</string>
+    <string name="word_server_option_b_kids">Een programma dat e-mails verstuurt</string>
+    <string name="word_server_option_c_kids">Een soort computerspel</string>
+    <string name="word_server_explanation_kids">Een server is een krachtige computer die websites en apps draaiende houdt en informatie naar andere apparaten stuurt.</string>
+
+    <string name="word_robot_question_kids">Hoe weet een robot wat hij moet doen?</string>
+    <string name="word_robot_option_a_kids">Hij volgt instructies die door een persoon zijn geprogrammeerd</string>
+    <string name="word_robot_option_b_kids">Hij denkt zoals een menselijk brein</string>
+    <string name="word_robot_option_c_kids">Hij raadt willekeurig</string>
+    <string name="word_robot_explanation_kids">Een robot doet precies wat zijn code zegt. Hij volgt instructies geschreven door een programmeur, stap voor stap.</string>
+
+    <string name="word_cloud_question_kids">Wat is \"de cloud\" bij computers?</string>
+    <string name="word_cloud_option_a_kids">Bestanden opslaan en gebruiken via het internet</string>
+    <string name="word_cloud_option_b_kids">Een weerapplicatie op je telefoon</string>
+    <string name="word_cloud_option_c_kids">Een draadloze toetsenbordverbinding</string>
+    <string name="word_cloud_explanation_kids">De cloud betekent dat je bestanden zijn opgeslagen op computers verbonden met het internet, zodat je ze overal kunt gebruiken.</string>
+
+    <!-- Scratch Quiz — Kids -->
+    <string name="scratch_quiz_question_kids">Waarvoor gebruik je Scratch?</string>
+    <string name="scratch_quiz_option_a_kids">Programma\'s maken door gekleurde blokken te verbinden</string>
+    <string name="scratch_quiz_option_b_kids">Computers hacken</string>
+    <string name="scratch_quiz_option_c_kids">Tekeningen maken</string>
+    <string name="scratch_quiz_explanation_kids">Met Scratch maak je programma\'s, spelletjes en animaties door gekleurde blokken te slepen en aan elkaar te klikken — zonder typen!</string>
+
+    <!-- AI Quiz — Kids -->
+    <string name="ai_quiz_question_kids">Waar staat AI voor?</string>
+    <string name="ai_quiz_option_a_kids">Kunstmatige Intelligentie</string>
+    <string name="ai_quiz_option_b_kids">Automatisch Internet</string>
+    <string name="ai_quiz_option_c_kids">Android Interface</string>
+    <string name="ai_quiz_explanation_kids">AI staat voor Kunstmatige Intelligentie — computers die kunnen leren en problemen oplossen, een beetje zoals mensen denken.</string>
+
+    <!-- Robot Quiz — Kids -->
+    <string name="robot_quiz_question_kids">Hoe weet een robot wat hij moet doen?</string>
+    <string name="robot_quiz_option_a_kids">Hij volgt geprogrammeerde instructies</string>
+    <string name="robot_quiz_option_b_kids">Hij denkt zelf na zoals een mens</string>
+    <string name="robot_quiz_option_c_kids">Hij raadt willekeurig</string>
+    <string name="robot_quiz_explanation_kids">Robots volgen code — instructies geschreven door een programmeur die de robot precies vertellen wat hij moet doen en wanneer.</string>
+
+    <!-- ============================================================ -->
+    <!--  SENIOR AGENT (Teens) quizvragen — hier aanpassen voor teens -->
+    <!-- ============================================================ -->
+
+    <!-- Binaire woordquizzen — Teens -->
+    <string name="word_data_question_teens">Wat is het verschil tussen data en informatie?</string>
+    <string name="word_data_option_a_teens">Data zijn ruwe, onverwerkte feiten; informatie is data waaraan betekenis is gegeven</string>
+    <string name="word_data_option_b_teens">Data wordt opgeslagen op een harde schijf; informatie in de cloud</string>
+    <string name="word_data_option_c_teens">Ze betekenen hetzelfde</string>
+    <string name="word_data_explanation_teens">Data verwijst naar ruwe feiten en cijfers. Informatie is data die verwerkt en in context geplaatst is, waardoor het nuttig en begrijpelijk wordt.</string>
+
+    <string name="word_code_question_teens">Wat is het doel van een functie in programmeren?</string>
+    <string name="word_code_option_a_teens">Herbruikbare instructies groeperen die meerdere keren kunnen worden aangeroepen</string>
+    <string name="word_code_option_b_teens">Data permanent op de computer opslaan</string>
+    <string name="word_code_option_c_teens">Verbinding maken met het internet</string>
+    <string name="word_code_explanation_teens">Een functie is een benoemd blok code dat een specifieke taak uitvoert. Door het één keer te definiëren, kun je het meerdere keren aanroepen zonder dezelfde code te herhalen.</string>
+
+    <string name="word_server_question_teens">Wat doet de client in een client-server model?</string>
+    <string name="word_server_option_a_teens">Het stuurt verzoeken naar de server en toont de antwoorden</string>
+    <string name="word_server_option_b_teens">Het slaat alle websites en data op</string>
+    <string name="word_server_option_c_teens">Het beheert het besturingssysteem voor alle verbonden apparaten</string>
+    <string name="word_server_explanation_teens">In een client-server model stuurt de client (bijv. je browser) verzoeken om data, en de server reageert met de gevraagde informatie. De server beheert de opslag en verwerking.</string>
+
+    <string name="word_robot_question_teens">Wat betekent \'autonoom\' bij een robot?</string>
+    <string name="word_robot_option_a_teens">De robot kan werken en beslissingen nemen zonder constante menselijke besturing</string>
+    <string name="word_robot_option_b_teens">De robot heeft een mens nodig om elke beweging te sturen</string>
+    <string name="word_robot_option_c_teens">De robot kan slechts één vooraf geprogrammeerde taak uitvoeren</string>
+    <string name="word_robot_explanation_teens">Een autonome robot kan zijn omgeving waarnemen, informatie verwerken en zelfstandig beslissingen nemen — zonder dat een mens elke actie hoeft aan te sturen.</string>
+
+    <string name="word_cloud_question_teens">Wat is een belangrijk voordeel van cloud computing voor een datacenter?</string>
+    <string name="word_cloud_option_a_teens">Resources kunnen direct omhoog of omlaag worden geschaald op basis van de vraag</string>
+    <string name="word_cloud_option_b_teens">Data wordt fysiek dichter bij de gebruiker opgeslagen</string>
+    <string name="word_cloud_option_c_teens">Cloudservers hebben nooit onderhoud nodig</string>
+    <string name="word_cloud_explanation_teens">Cloud computing stelt datacenters in staat om dynamisch resources toe te wijzen. Bij een piek in de vraag kan direct meer rekenkracht worden toegevoegd — en verminderd wanneer niet nodig — wat het zeer flexibel en efficiënt maakt.</string>
+
+    <!-- Scratch Quiz — Teens -->
+    <string name="scratch_quiz_question_teens">Welk programmeerprincipe vertegenwoordigt een \'herhaal\' blok in Scratch?</string>
+    <string name="scratch_quiz_option_a_teens">Een lus — een reeks instructies die meerdere keren wordt uitgevoerd</string>
+    <string name="scratch_quiz_option_b_teens">Een variabele — een container die een waarde opslaat</string>
+    <string name="scratch_quiz_option_c_teens">Een event — iets wat een reactie triggert</string>
+    <string name="scratch_quiz_explanation_teens">Een \'herhaal\' blok is een voorbeeld van een lus. Lussen laten een set instructies een bepaald aantal keren lopen, zonder dat je dezelfde code steeds opnieuw hoeft te schrijven.</string>
+
+    <!-- AI Quiz — Teens -->
+    <string name="ai_quiz_question_teens">Hoe verbetert een machine learning model zijn prestaties in de loop van de tijd?</string>
+    <string name="ai_quiz_option_a_teens">Door grote hoeveelheden trainingsdata te analyseren en interne parameters aan te passen</string>
+    <string name="ai_quiz_option_b_teens">Door na elke fout handmatig opnieuw geprogrammeerd te worden</string>
+    <string name="ai_quiz_option_c_teens">Door willekeurig verschillende aanpakken te proberen totdat één werkt</string>
+    <string name="ai_quiz_explanation_teens">Machine learning modellen leren door grote datasets te verwerken. Ze passen hun interne parameters aan op basis van gevonden patronen, waardoor ze geleidelijk nauwkeuriger worden zonder opnieuw geprogrammeerd te worden.</string>
+
+    <!-- Robot Quiz — Teens -->
+    <string name="robot_quiz_question_teens">Wat is het verschil tussen een sensor en een actuator in een robot?</string>
+    <string name="robot_quiz_option_a_teens">Een sensor verzamelt data uit de omgeving; een actuator produceert beweging of output</string>
+    <string name="robot_quiz_option_b_teens">Een sensor stuurt de motoren aan; een actuator leest de code</string>
+    <string name="robot_quiz_option_c_teens">Ze voeren dezelfde functie uit in verschillende programmeertalen</string>
+    <string name="robot_quiz_explanation_teens">Sensoren zijn invoerapparaten die informatie verzamelen (bijv. afstand, licht, kleur). Actuatoren zijn uitvoerapparaten die de robot iets laten doen (bijv. motoren, luidsprekers, LED-lampjes).</string>
+</resources>
