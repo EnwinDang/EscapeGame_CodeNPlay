@@ -1,41 +1,46 @@
 package com.example.escapegame.theme
 
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
-private val MissionControlScheme = darkColorScheme(
-    primary              = CyanPrimary,
-    onPrimary            = DarkBackground,
-    primaryContainer     = CyanDark,
-    onPrimaryContainer   = CyanLight,
+private val CodeNPlayScheme = lightColorScheme(
+    primary              = BrandBlue,
+    onPrimary            = LightBackground,
+    primaryContainer     = BlueContainer,
+    onPrimaryContainer   = OnBlueContainer,
 
-    secondary            = NeonGreen,
-    onSecondary          = DarkBackground,
-    secondaryContainer   = NeonGreenDark,
-    onSecondaryContainer = NeonGreenLight,
+    secondary            = BrandGreen,
+    onSecondary          = LightBackground,
+    secondaryContainer   = GreenContainer,
+    onSecondaryContainer = OnGreenContainer,
 
-    background           = DarkBackground,
-    onBackground         = OnDark,
+    tertiary             = BrandPink,
+    onTertiary           = LightBackground,
+    tertiaryContainer    = PinkContainer,
+    onTertiaryContainer  = OnPinkContainer,
 
-    surface              = DarkSurface,
-    onSurface            = OnDark,
-    surfaceVariant       = DarkSurfaceVariant,
-    onSurfaceVariant     = OnDarkMuted,
+    background           = LightBackground,
+    onBackground         = OnLight,
 
-    error                = AlertRed,
-    onError              = DarkBackground,
-    errorContainer       = AlertRedDark,
-    onErrorContainer     = AlertRedLight,
+    surface              = LightSurface,
+    onSurface            = OnLight,
+    surfaceVariant       = LightSurfaceVar,
+    onSurfaceVariant     = OnLightMuted,
 
-    outline              = PanelBorder,
-    outlineVariant       = DarkSurfaceVariant,
+    error                = ErrorRed,
+    onError              = LightBackground,
+    errorContainer       = ErrorContainer,
+    onErrorContainer     = OnErrorContainer,
+
+    outline              = OutlineColor,
+    outlineVariant       = OutlineVariant,
 )
 
 @Composable
 fun EscapeGameTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colorScheme = MissionControlScheme,
+        colorScheme = CodeNPlayScheme,
         typography  = Typography,
         content     = content
     )

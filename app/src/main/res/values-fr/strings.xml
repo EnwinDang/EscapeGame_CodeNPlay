@@ -2,61 +2,67 @@
     <string name="app_name">CodeNPlay</string>
 
     <!-- Home -->
-    <string name="home_subtitle">Jeu d\'Évasion</string>
-    <string name="home_tap_to_start">Appuyez n\'importe où pour commencer</string>
+    <string name="home_subtitle">Mission Datacenter</string>
+    <string name="home_tap_to_start">Appuyez n\'importe où pour lancer votre mission</string>
 
     <!-- Video -->
-    <string name="video_title">L\'Histoire</string>
-    <string name="video_placeholder">▶  Vidéo d\'introduction</string>
-    <string name="video_story">Le datacenter est attaqué !\nVous devez résoudre tous les défis de codage pour le sauver.</string>
+    <string name="video_title">Briefing de Mission</string>
+    <string name="video_placeholder">▶  Vidéo de Briefing</string>
+    <string name="video_story">⚠ VIOLATION SYSTÈME DÉTECTÉE\nLe datacenter a été compromis. Complétez tous les défis de codage pour restaurer les systèmes.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Choisir la difficulté</string>
-    <string name="difficulty_subtitle">Cela déterminera vos puzzles et le robot que vous utiliserez.</string>
-    <string name="btn_kids">Enfants</string>
-    <string name="btn_teens">Adolescents</string>
+    <string name="difficulty_title">Sélectionner le Niveau d\'Agent</string>
+    <string name="difficulty_subtitle">Votre niveau détermine vos défis et l\'équipement que vous recevrez.</string>
+    <string name="btn_kids">Agent Junior</string>
+    <string name="btn_teens">Agent Senior</string>
 
     <!-- Binary Game -->
-    <string name="binary_step_label">Étape 1 — Puzzle Binaire</string>
-    <string name="binary_decode_prompt">Décodez le binaire :</string>
-    <string name="binary_answer_label">Votre réponse</string>
-    <string name="binary_solved_title">Puzzle résolu !</string>
-    <string name="binary_code_word_label">Votre mot de code :</string>
+    <string name="binary_step_label">Mission 1 — Décodeur Binaire</string>
+    <string name="binary_decode_prompt">Décryptez le signal :</string>
+    <string name="binary_answer_label">Texte décrypté</string>
+    <string name="binary_solved_title">Signal décrypté !</string>
+    <string name="binary_code_word_label">Code d\'accès :</string>
     <string name="binary_code_word">BINARY</string>
-    <string name="binary_continue_quiz">Continuer vers le quiz</string>
-    <string name="binary_times_up">Temps écoulé !</string>
-    <string name="binary_ask_master">Demandez l\'aide du maître du jeu.</string>
-    <string name="binary_continue_anyway">Continuer quand même</string>
-    <string name="binary_wrong">Faux ! Réessayez.</string>
-    <string name="btn_new_puzzle">Nouveau Puzzle</string>
+    <string name="binary_continue_quiz">Procéder au débriefing</string>
+    <string name="binary_times_up">Temps expiré !</string>
+    <string name="binary_ask_master">Contactez votre Commandant de Mission pour assistance.</string>
+    <string name="binary_continue_anyway">Contournement — continuer quand même</string>
+    <string name="binary_wrong">Incorrect — réessayez.</string>
+    <string name="btn_new_puzzle">Nouveau Signal</string>
 
     <!-- Shared buttons -->
-    <string name="btn_submit">Valider</string>
-    <string name="btn_continue">Continuer</string>
-    <string name="btn_play_again">Rejouer</string>
+    <string name="btn_submit">Confirmer</string>
+    <string name="btn_continue">Procéder</string>
+    <string name="btn_play_again">Nouvelle Mission</string>
+
+    <!-- Home button dialog -->
+    <string name="home_dialog_title">Quitter la mission ?</string>
+    <string name="home_dialog_message">Votre progression sera perdue.</string>
+    <string name="home_dialog_confirm">Quitter</string>
+    <string name="home_dialog_cancel">Rester</string>
 
     <!-- Quiz -->
-    <string name="quiz_title">Quiz Rapide</string>
-    <string name="quiz_correct">Correct !</string>
-    <string name="quiz_wrong_title">Pas tout à fait — mais c\'est normal !</string>
+    <string name="quiz_title">Débriefing Mission</string>
+    <string name="quiz_correct">Confirmé — intel vérifié !</string>
+    <string name="quiz_wrong_title">Incorrect — mais noté, Agent.</string>
 
     <!-- External Game -->
-    <string name="external_step_label">Étape %1$d — %2$s</string>
-    <string name="external_enter_code_label">Entrez le code</string>
-    <string name="external_wrong_code">Mauvais code. Réessayez !</string>
+    <string name="external_step_label">Mission %1$d — %2$s</string>
+    <string name="external_enter_code_label">Entrez le code d\'accès</string>
+    <string name="external_wrong_code">Accès refusé. Réessayez.</string>
 
     <!-- Game titles -->
-    <string name="title_scratch_game">Jeu Scratch</string>
-    <string name="title_ai_game">Défi IA</string>
-    <string name="title_robot_game">Jeu Robot</string>
+    <string name="title_scratch_game">Protocole Scratch</string>
+    <string name="title_ai_game">Protocole IA</string>
+    <string name="title_robot_game">Protocole Robot</string>
 
     <!-- Congratulations -->
-    <string name="congrats_title">Félicitations !</string>
-    <string name="congrats_subtitle">Vous avez sauvé le datacenter !</string>
-    <string name="congrats_time">Temps total : %1$d minutes %2$d secondes</string>
-    <string name="congrats_difficulty">Difficulté : %1$s</string>
-    <string name="difficulty_kids">Enfants</string>
-    <string name="difficulty_teens">Adolescents</string>
+    <string name="congrats_title">Mission Accomplie</string>
+    <string name="congrats_subtitle">Systèmes du datacenter restaurés.</string>
+    <string name="congrats_time">Temps de mission : %1$d min %2$d sec</string>
+    <string name="congrats_difficulty">Niveau d\'agent : %1$s</string>
+    <string name="difficulty_kids">Agent Junior</string>
+    <string name="difficulty_teens">Agent Senior</string>
 
     <!-- Binary Word Quizzes -->
     <string name="word_data_question">Qu\'est-ce que la donnée en informatique ?</string>
@@ -90,7 +96,7 @@
     <string name="word_cloud_explanation">Le cloud signifie stocker vos données sur des ordinateurs puissants connectés à internet, pour y accéder depuis n\'importe quel appareil, n\'importe où.</string>
 
     <!-- Scratch Game -->
-    <string name="scratch_instructions">Allez sur l\'ordinateur portable et complétez le défi Scratch.\nQuand vous avez terminé, entrez le code que vous avez reçu :</string>
+    <string name="scratch_instructions">Rendez-vous sur l\'ordinateur et complétez le Protocole Scratch.\nEntrez votre code d\'accès une fois terminé :</string>
     <string name="scratch_quiz_question">À quoi sert Scratch ?</string>
     <string name="scratch_quiz_option_a">Programmation visuelle par blocs</string>
     <string name="scratch_quiz_option_b">Pirater des ordinateurs</string>
@@ -98,7 +104,7 @@
     <string name="scratch_quiz_explanation">Scratch est un langage de programmation visuel où vous faites glisser et connectez des blocs pour créer des programmes, des jeux et des animations.</string>
 
     <!-- AI Game -->
-    <string name="ai_instructions">Complétez le défi IA sur l\'appareil fourni.\nQuand vous avez terminé, entrez le code que vous avez reçu :</string>
+    <string name="ai_instructions">Utilisez l\'appareil fourni et complétez le Protocole IA.\nEntrez votre code d\'accès une fois terminé :</string>
     <string name="ai_quiz_question">Que signifie IA ?</string>
     <string name="ai_quiz_option_a">Intelligence Artificielle</string>
     <string name="ai_quiz_option_b">Internet Automatique</string>
@@ -106,11 +112,123 @@
     <string name="ai_quiz_explanation">IA signifie Intelligence Artificielle — des systèmes capables d\'apprendre à partir de données et de résoudre des problèmes d\'une manière similaire à la pensée humaine.</string>
 
     <!-- Robot Game -->
-    <string name="robot_instructions_kids">Allez chez l\'Ozobot et complétez le défi robot.\nQuand vous avez terminé, entrez le code que vous avez reçu :</string>
-    <string name="robot_instructions_teens">Allez chez le LEGO Spike et complétez le défi robot.\nQuand vous avez terminé, entrez le code que vous avez reçu :</string>
+    <string name="robot_instructions_kids">Rendez-vous chez l\'Ozobot et complétez le Protocole Robot.\nEntrez votre code d\'accès une fois terminé :</string>
+    <string name="robot_instructions_teens">Rendez-vous à la station LEGO Spike et complétez le Protocole Robot.\nEntrez votre code d\'accès une fois terminé :</string>
     <string name="robot_quiz_question">Comment un robot sait-il quoi faire ?</string>
     <string name="robot_quiz_option_a">Il suit des instructions programmées</string>
     <string name="robot_quiz_option_b">Il pense par lui-même comme un humain</string>
     <string name="robot_quiz_option_c">Il devine au hasard</string>
     <string name="robot_quiz_explanation">Les robots suivent du code — des instructions étape par étape écrites par un programmeur qui disent au robot exactement quoi faire et quand.</string>
+
+    <!-- ============================================================ -->
+    <!--  JUNIOR AGENT (Kids) questions quiz — modifier ici pour kids -->
+    <!-- ============================================================ -->
+
+    <!-- Quiz de mots binaires — Kids -->
+    <string name="word_data_question_kids">Qu\'est-ce que la donnée ?</string>
+    <string name="word_data_option_a_kids">Des informations qu\'un ordinateur peut enregistrer et utiliser</string>
+    <string name="word_data_option_b_kids">Un type de logiciel de programmation</string>
+    <string name="word_data_option_c_kids">Les pièces physiques d\'un ordinateur</string>
+    <string name="word_data_explanation_kids">Les données sont des informations — comme des chiffres, des mots et des images — qu\'un ordinateur peut enregistrer et utiliser.</string>
+
+    <string name="word_code_question_kids">Qu\'est-ce que le code en programmation ?</string>
+    <string name="word_code_option_a_kids">Des instructions qui disent à l\'ordinateur quoi faire</string>
+    <string name="word_code_option_b_kids">Un mot de passe secret pour les fichiers</string>
+    <string name="word_code_option_c_kids">L\'écran d\'un ordinateur</string>
+    <string name="word_code_explanation_kids">Le code, ce sont des instructions dans un langage spécial qui disent à l\'ordinateur exactement quoi faire, étape par étape.</string>
+
+    <string name="word_server_question_kids">Qu\'est-ce qu\'un serveur ?</string>
+    <string name="word_server_option_a_kids">Un ordinateur puissant qui stocke et partage des informations</string>
+    <string name="word_server_option_b_kids">Un programme qui envoie des e-mails</string>
+    <string name="word_server_option_c_kids">Un type de jeu vidéo</string>
+    <string name="word_server_explanation_kids">Un serveur est un ordinateur puissant qui fait fonctionner les sites web et les applications et envoie des informations aux autres appareils.</string>
+
+    <string name="word_robot_question_kids">Comment un robot sait-il quoi faire ?</string>
+    <string name="word_robot_option_a_kids">Il suit des instructions programmées par une personne</string>
+    <string name="word_robot_option_b_kids">Il pense comme un cerveau humain</string>
+    <string name="word_robot_option_c_kids">Il devine au hasard</string>
+    <string name="word_robot_explanation_kids">Un robot fait exactement ce que son code lui dit de faire. Il suit des instructions écrites par un programmeur, étape par étape.</string>
+
+    <string name="word_cloud_question_kids">C\'est quoi \"le cloud\" ?</string>
+    <string name="word_cloud_option_a_kids">Enregistrer et utiliser des fichiers sur internet</string>
+    <string name="word_cloud_option_b_kids">Une appli météo sur ton téléphone</string>
+    <string name="word_cloud_option_c_kids">Une connexion clavier sans fil</string>
+    <string name="word_cloud_explanation_kids">Le cloud, c\'est quand tes fichiers sont enregistrés sur des ordinateurs connectés à internet, pour y accéder de n\'importe où.</string>
+
+    <!-- Quiz Scratch — Kids -->
+    <string name="scratch_quiz_question_kids">À quoi sert Scratch ?</string>
+    <string name="scratch_quiz_option_a_kids">Créer des programmes en assemblant des blocs colorés</string>
+    <string name="scratch_quiz_option_b_kids">Pirater des ordinateurs</string>
+    <string name="scratch_quiz_option_c_kids">Dessiner des images</string>
+    <string name="scratch_quiz_explanation_kids">Avec Scratch, tu crées des programmes, des jeux et des animations en glissant et assemblant des blocs colorés — sans taper de code !</string>
+
+    <!-- Quiz IA — Kids -->
+    <string name="ai_quiz_question_kids">Que signifie IA ?</string>
+    <string name="ai_quiz_option_a_kids">Intelligence Artificielle</string>
+    <string name="ai_quiz_option_b_kids">Internet Automatique</string>
+    <string name="ai_quiz_option_c_kids">Interface Android</string>
+    <string name="ai_quiz_explanation_kids">IA signifie Intelligence Artificielle — des ordinateurs qui peuvent apprendre et résoudre des problèmes, un peu comme les humains pensent.</string>
+
+    <!-- Quiz Robot — Kids -->
+    <string name="robot_quiz_question_kids">Comment un robot sait-il quoi faire ?</string>
+    <string name="robot_quiz_option_a_kids">Il suit des instructions programmées</string>
+    <string name="robot_quiz_option_b_kids">Il pense par lui-même comme un humain</string>
+    <string name="robot_quiz_option_c_kids">Il devine au hasard</string>
+    <string name="robot_quiz_explanation_kids">Les robots suivent du code — des instructions écrites par un programmeur qui disent au robot exactement quoi faire et quand.</string>
+
+    <!-- ============================================================ -->
+    <!--  SENIOR AGENT (Teens) questions quiz — modifier ici pour teens -->
+    <!-- ============================================================ -->
+
+    <!-- Quiz de mots binaires — Teens -->
+    <string name="word_data_question_teens">Quelle est la différence entre données et information ?</string>
+    <string name="word_data_option_a_teens">Les données sont des faits bruts non traités ; l\'information est des données auxquelles on a donné un sens</string>
+    <string name="word_data_option_b_teens">Les données sont sur un disque dur ; l\'information est dans le cloud</string>
+    <string name="word_data_option_c_teens">Ils signifient la même chose</string>
+    <string name="word_data_explanation_teens">Les données désignent des faits et chiffres bruts. L\'information est constituée de données traitées et mises en contexte, ce qui les rend utiles et compréhensibles.</string>
+
+    <string name="word_code_question_teens">Quel est le rôle d\'une fonction en programmation ?</string>
+    <string name="word_code_option_a_teens">Regrouper des instructions réutilisables qui peuvent être appelées plusieurs fois</string>
+    <string name="word_code_option_b_teens">Stocker des données de façon permanente sur l\'ordinateur</string>
+    <string name="word_code_option_c_teens">Se connecter à internet</string>
+    <string name="word_code_explanation_teens">Une fonction est un bloc de code nommé qui effectue une tâche spécifique. En la définissant une seule fois, on peut l\'appeler plusieurs fois dans le programme sans répéter le même code.</string>
+
+    <string name="word_server_question_teens">Dans un modèle client-serveur, que fait le client ?</string>
+    <string name="word_server_option_a_teens">Il envoie des requêtes au serveur et affiche les réponses</string>
+    <string name="word_server_option_b_teens">Il stocke tous les sites web et les données</string>
+    <string name="word_server_option_c_teens">Il gère le système d\'exploitation de tous les appareils connectés</string>
+    <string name="word_server_explanation_teens">Dans un modèle client-serveur, le client (par ex. votre navigateur) envoie des requêtes de données, et le serveur répond avec les informations demandées. Le serveur gère le stockage et le traitement.</string>
+
+    <string name="word_robot_question_teens">Que signifie \'autonome\' pour un robot ?</string>
+    <string name="word_robot_option_a_teens">Le robot peut fonctionner et prendre des décisions sans contrôle humain constant</string>
+    <string name="word_robot_option_b_teens">Le robot a besoin d\'un humain pour contrôler chaque mouvement</string>
+    <string name="word_robot_option_c_teens">Le robot ne peut effectuer qu\'une seule tâche préprogrammée</string>
+    <string name="word_robot_explanation_teens">Un robot autonome peut percevoir son environnement, traiter des informations et prendre des décisions seul — sans qu\'un humain dirige chaque action.</string>
+
+    <string name="word_cloud_question_teens">Quel est l\'avantage principal du cloud computing pour un datacenter ?</string>
+    <string name="word_cloud_option_a_teens">Les ressources peuvent être augmentées ou réduites instantanément selon la demande</string>
+    <string name="word_cloud_option_b_teens">Les données sont stockées physiquement plus près de l\'utilisateur</string>
+    <string name="word_cloud_option_c_teens">Les serveurs cloud ne nécessitent jamais de maintenance</string>
+    <string name="word_cloud_explanation_teens">Le cloud computing permet aux datacenters d\'allouer dynamiquement des ressources. En cas de pic de demande, plus de puissance de calcul peut être ajoutée instantanément — et réduite quand ce n\'est pas nécessaire.</string>
+
+    <!-- Quiz Scratch — Teens -->
+    <string name="scratch_quiz_question_teens">Quel concept de programmation un bloc \'répéter\' représente-t-il dans Scratch ?</string>
+    <string name="scratch_quiz_option_a_teens">Une boucle — une séquence d\'instructions qui s\'exécute plusieurs fois</string>
+    <string name="scratch_quiz_option_b_teens">Une variable — un conteneur qui stocke une valeur</string>
+    <string name="scratch_quiz_option_c_teens">Un événement — quelque chose qui déclenche une réaction</string>
+    <string name="scratch_quiz_explanation_teens">Un bloc \'répéter\' est un exemple de boucle. Les boucles permettent à un ensemble d\'instructions de s\'exécuter un nombre déterminé de fois, évitant de réécrire le même code plusieurs fois.</string>
+
+    <!-- Quiz IA — Teens -->
+    <string name="ai_quiz_question_teens">Comment un modèle d\'apprentissage automatique améliore-t-il ses performances ?</string>
+    <string name="ai_quiz_option_a_teens">En analysant de grandes quantités de données d\'entraînement et en ajustant ses paramètres internes</string>
+    <string name="ai_quiz_option_b_teens">En étant manuellement reprogrammé après chaque erreur</string>
+    <string name="ai_quiz_option_c_teens">En essayant aléatoirement différentes approches jusqu\'à ce qu\'une fonctionne</string>
+    <string name="ai_quiz_explanation_teens">Les modèles d\'apprentissage automatique apprennent en traitant de grands ensembles de données. Ils ajustent leurs paramètres internes en fonction des schémas trouvés, améliorant progressivement leur précision.</string>
+
+    <!-- Quiz Robot — Teens -->
+    <string name="robot_quiz_question_teens">Quelle est la différence entre un capteur et un actionneur dans un robot ?</string>
+    <string name="robot_quiz_option_a_teens">Un capteur collecte des données de l\'environnement ; un actionneur produit un mouvement ou une sortie</string>
+    <string name="robot_quiz_option_b_teens">Un capteur contrôle les moteurs ; un actionneur lit le code</string>
+    <string name="robot_quiz_option_c_teens">Ils remplissent la même fonction dans des langages de programmation différents</string>
+    <string name="robot_quiz_explanation_teens">Les capteurs sont des dispositifs d\'entrée qui recueillent des informations (par ex. distance, lumière, couleur). Les actionneurs sont des dispositifs de sortie qui font agir le robot (par ex. moteurs, haut-parleurs, LEDs).</string>
 </resources>

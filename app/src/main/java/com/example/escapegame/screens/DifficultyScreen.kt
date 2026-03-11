@@ -18,58 +18,58 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.escapegame.R
+import com.example.escapegame.theme.MissionControlBackground
 import com.example.escapegame.viewmodel.Difficulty
 
 @Composable
 fun DifficultyScreen(onDifficultySelected: (Difficulty) -> Unit) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = stringResource(R.string.difficulty_title),
-            style = MaterialTheme.typography.headlineLarge,
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = stringResource(R.string.difficulty_subtitle),
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
-        )
-
-        Spacer(modifier = Modifier.height(48.dp))
-
-        Button(
-            onClick = { onDifficultySelected(Difficulty.KIDS) },
+    MissionControlBackground {
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(64.dp)
+                .fillMaxSize()
+                .padding(40.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(R.string.btn_kids),
-                style = MaterialTheme.typography.titleLarge
+                text = stringResource(R.string.difficulty_title),
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.primary,
+                textAlign = TextAlign.Center
             )
-        }
 
-        Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        OutlinedButton(
-            onClick = { onDifficultySelected(Difficulty.TEENS) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(64.dp)
-        ) {
             Text(
-                text = stringResource(R.string.btn_teens),
-                style = MaterialTheme.typography.titleLarge
+                text = stringResource(R.string.difficulty_subtitle),
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+
+            Spacer(modifier = Modifier.height(56.dp))
+
+            Button(
+                onClick = { onDifficultySelected(Difficulty.KIDS) },
+                modifier = Modifier.fillMaxWidth().height(72.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.btn_kids),
+                    style = MaterialTheme.typography.titleLarge
+                )
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            OutlinedButton(
+                onClick = { onDifficultySelected(Difficulty.TEENS) },
+                modifier = Modifier.fillMaxWidth().height(72.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.btn_teens),
+                    style = MaterialTheme.typography.titleLarge
+                )
+            }
         }
     }
 }

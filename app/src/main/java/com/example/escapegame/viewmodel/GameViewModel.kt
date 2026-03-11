@@ -4,6 +4,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.escapegame.logic.JUNIOR_AGENT
+import com.example.escapegame.logic.MissionConfig
+import com.example.escapegame.logic.SENIOR_AGENT
 
 enum class Difficulty { KIDS, TEENS }
 
@@ -23,6 +26,9 @@ class GameViewModel : ViewModel() {
     fun getTotalTime(): Long {
         return System.currentTimeMillis() - startTime
     }
+
+    val missionConfig: MissionConfig
+        get() = if (difficulty == Difficulty.KIDS) JUNIOR_AGENT else SENIOR_AGENT
 
     fun reset() {
         difficulty = null

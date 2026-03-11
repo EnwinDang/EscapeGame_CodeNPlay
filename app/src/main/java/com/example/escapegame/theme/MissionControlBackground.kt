@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MissionControlBackground(content: @Composable BoxScope.() -> Unit) {
     val bg = MaterialTheme.colorScheme.background
-    val gridColor = Color(0xFF00D4FF).copy(alpha = 0.05f)
+    val gridColor = Color(0xFF3AAFE8).copy(alpha = 0.07f)
 
     Box(
         modifier = Modifier

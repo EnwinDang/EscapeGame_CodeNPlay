@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.escapegame.R
+import com.example.escapegame.theme.MissionControlBackground
 import com.example.escapegame.viewmodel.Difficulty
 
 @Composable
@@ -33,58 +34,62 @@ fun CongratulationsScreen(
     val seconds = totalSeconds % 60
 
     val difficultyLabel = when (difficulty) {
-        Difficulty.KIDS -> stringResource(R.string.difficulty_kids)
+        Difficulty.KIDS  -> stringResource(R.string.difficulty_kids)
         Difficulty.TEENS -> stringResource(R.string.difficulty_teens)
-        null -> ""
+        null             -> ""
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = stringResource(R.string.congrats_title),
-            style = MaterialTheme.typography.displaySmall,
-            color = MaterialTheme.colorScheme.primary,
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = stringResource(R.string.congrats_subtitle),
-            style = MaterialTheme.typography.headlineMedium,
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(modifier = Modifier.height(40.dp))
-
-        Text(
-            text = stringResource(R.string.congrats_time, minutes, seconds),
-            style = MaterialTheme.typography.titleLarge,
-            textAlign = TextAlign.Center
-        )
-
-        if (difficultyLabel.isNotEmpty()) {
-            Spacer(modifier = Modifier.height(8.dp))
+    MissionControlBackground {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(40.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
-                text = stringResource(R.string.congrats_difficulty, difficultyLabel),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
+                text = stringResource(R.string.congrats_title),
+                style = MaterialTheme.typography.displaySmall,
+                color = MaterialTheme.colorScheme.secondary,
                 textAlign = TextAlign.Center
             )
-        }
 
-        Spacer(modifier = Modifier.height(48.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = onPlayAgain,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(stringResource(R.string.btn_play_again))
+            Text(
+                text = stringResource(R.string.congrats_subtitle),
+                style = MaterialTheme.typography.headlineMedium,
+                color = MaterialTheme.colorScheme.onBackground,
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.height(48.dp))
+
+            Text(
+                text = stringResource(R.string.congrats_time, minutes, seconds),
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary,
+                textAlign = TextAlign.Center
+            )
+
+            if (difficultyLabel.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = stringResource(R.string.congrats_difficulty, difficultyLabel),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center
+                )
+            }
+
+            Spacer(modifier = Modifier.height(56.dp))
+
+            Button(
+                onClick = onPlayAgain,
+                modifier = Modifier.fillMaxWidth().height(64.dp)
+            ) {
+                Text(stringResource(R.string.btn_play_again), style = MaterialTheme.typography.titleMedium)
+            }
         }
     }
 }

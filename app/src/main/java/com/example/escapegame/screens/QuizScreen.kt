@@ -2,6 +2,7 @@ package com.example.escapegame.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,6 +26,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.escapegame.R
+import com.example.escapegame.logic.AgentUiStyle
+import com.example.escapegame.theme.MissionControlBackground
 
 @Composable
 fun QuizScreen(
@@ -32,106 +35,127 @@ fun QuizScreen(
     options: List<String>,
     correctIndex: Int,
     explanation: String,
-    onContinue: () -> Unit
+    uiStyle: AgentUiStyle,
+    onContinue: () -> Unit,
+    onHome: () -> Unit,
 ) {
     BackHandler(enabled = true) { /* back disabled during game */ }
 
+    // Shuffle options once on first composition, track where the correct answer ends up
+    val (shuffledOptions, shuffledCorrectIndex) = remember {
+        val indexed = options.mapIndexed { i, opt -> i to opt }.shuffled()
+        val newCorrectIndex = indexed.indexOfFirst { it.first == correctIndex }
+        indexed.map { it.second } to newCorrectIndex
+    }
+
     var selectedIndex by remember { mutableStateOf<Int?>(null) }
     val answered = selectedIndex != null
+    val buttonHeight = if (uiStyle == AgentUiStyle.JUNIOR) 72.dp else 64.dp
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = stringResource(R.string.quiz_title),
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = question,
-            style = MaterialTheme.typography.headlineSmall,
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        options.forEachIndexed { index, option ->
-            val isSelected = selectedIndex == index
-            val isCorrect = index == correctIndex
-
-            if (answered && !isSelected && !isCorrect) {
-                OutlinedButton(
-                    onClick = {},
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 4.dp),
-                    enabled = false
-                ) {
-                    Text(option)
-                }
-            } else {
-                Button(
-                    onClick = { if (!answered) selectedIndex = index },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 4.dp),
-                    enabled = !answered
-                ) {
-                    Text(option)
-                }
-            }
-        }
-
-        if (answered) {
-            Spacer(modifier = Modifier.height(24.dp))
-
-            val isCorrect = selectedIndex == correctIndex
-
-            if (isCorrect) {
+    MissionControlBackground {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(40.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Text(
-                    text = stringResource(R.string.quiz_correct),
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.primary,
+                    text = stringResource(R.string.quiz_title),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = question,
+                    style = MaterialTheme.typography.headlineSmall,
                     textAlign = TextAlign.Center
                 )
-            } else {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.errorContainer
-                    )
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                shuffledOptions.forEachIndexed { index, option ->
+                    val isSelected = selectedIndex == index
+                    val isCorrect = index == shuffledCorrectIndex
+
+                    if (answered && !isSelected && !isCorrect) {
+                        OutlinedButton(
+                            onClick = {},
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp)
+                                .height(buttonHeight),
+                            enabled = false
+                        ) {
+                            Text(option, style = MaterialTheme.typography.titleSmall)
+                        }
+                    } else {
+                        Button(
+                            onClick = { if (!answered) selectedIndex = index },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp)
+                                .height(buttonHeight),
+                            enabled = !answered
+                        ) {
+                            Text(option, style = MaterialTheme.typography.titleSmall)
+                        }
+                    }
+                }
+
+                if (answered) {
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    val isCorrect = selectedIndex == shuffledCorrectIndex
+
+                    if (isCorrect) {
                         Text(
-                            text = stringResource(R.string.quiz_wrong_title),
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onErrorContainer
+                            text = stringResource(R.string.quiz_correct),
+                            style = MaterialTheme.typography.titleLarge,
+                            color = MaterialTheme.colorScheme.secondary,
+                            textAlign = TextAlign.Center
                         )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = explanation,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onErrorContainer
-                        )
+                    } else {
+                        Card(
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = CardDefaults.cardColors(
+                                containerColor = MaterialTheme.colorScheme.errorContainer
+                            )
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                Text(
+                                    text = stringResource(R.string.quiz_wrong_title),
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = MaterialTheme.colorScheme.onErrorContainer
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Text(
+                                    text = explanation,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onErrorContainer
+                                )
+                            }
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    Button(
+                        onClick = onContinue,
+                        modifier = Modifier.fillMaxWidth().height(60.dp)
+                    ) {
+                        Text(stringResource(R.string.btn_continue), style = MaterialTheme.typography.titleMedium)
                     }
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            Button(
-                onClick = onContinue,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(stringResource(R.string.btn_continue))
-            }
+            HomeButton(
+                onHome = onHome,
+                modifier = Modifier.align(Alignment.TopStart).padding(16.dp)
+            )
         }
     }
 }

@@ -2,61 +2,67 @@
     <string name="app_name">CodeNPlay</string>
 
     <!-- Home -->
-    <string name="home_subtitle">Escape Game</string>
-    <string name="home_tap_to_start">Tap anywhere to start</string>
+    <string name="home_subtitle">Datacenter Mission</string>
+    <string name="home_tap_to_start">Tap anywhere to begin your mission</string>
 
     <!-- Video -->
-    <string name="video_title">The Story</string>
-    <string name="video_placeholder">▶  Intro Video</string>
-    <string name="video_story">The datacenter is under attack!\nYou must solve all the coding challenges to save it.</string>
+    <string name="video_title">Mission Briefing</string>
+    <string name="video_placeholder">▶  Briefing Video</string>
+    <string name="video_story">⚠ SYSTEM BREACH DETECTED\nThe datacenter has been compromised. Complete all coding challenges to restore the systems.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Choose Difficulty</string>
-    <string name="difficulty_subtitle">This will determine your puzzles and which robot you use.</string>
-    <string name="btn_kids">Kids</string>
-    <string name="btn_teens">Teens</string>
+    <string name="difficulty_title">Select Agent Level</string>
+    <string name="difficulty_subtitle">Your level determines your challenges and which equipment you will receive.</string>
+    <string name="btn_kids">Junior Agent</string>
+    <string name="btn_teens">Senior Agent</string>
 
     <!-- Binary Game -->
-    <string name="binary_step_label">Step 1 — Binary Puzzle</string>
-    <string name="binary_decode_prompt">Decode the binary:</string>
-    <string name="binary_answer_label">Your answer</string>
-    <string name="binary_solved_title">Puzzle solved!</string>
-    <string name="binary_code_word_label">Your code word:</string>
+    <string name="binary_step_label">Mission 1 — Binary Decoder</string>
+    <string name="binary_decode_prompt">Decrypt the signal:</string>
+    <string name="binary_answer_label">Decrypted text</string>
+    <string name="binary_solved_title">Signal decrypted!</string>
+    <string name="binary_code_word_label">Access code:</string>
     <string name="binary_code_word">BINARY</string>
-    <string name="binary_continue_quiz">Continue to quiz</string>
-    <string name="binary_times_up">Time\'s up!</string>
-    <string name="binary_ask_master">Ask the game master for help.</string>
-    <string name="binary_continue_anyway">Continue anyway</string>
-    <string name="binary_wrong">Wrong! Try again.</string>
-    <string name="btn_new_puzzle">New Puzzle</string>
+    <string name="binary_continue_quiz">Proceed to debrief</string>
+    <string name="binary_times_up">Time expired!</string>
+    <string name="binary_ask_master">Contact your Mission Commander for assistance.</string>
+    <string name="binary_continue_anyway">Override — proceed anyway</string>
+    <string name="binary_wrong">Incorrect — try again.</string>
+    <string name="btn_new_puzzle">New Signal</string>
 
     <!-- Shared buttons -->
-    <string name="btn_submit">Submit</string>
-    <string name="btn_continue">Continue</string>
-    <string name="btn_play_again">Play Again</string>
+    <string name="btn_submit">Confirm</string>
+    <string name="btn_continue">Proceed</string>
+    <string name="btn_play_again">New Mission</string>
+
+    <!-- Home button dialog -->
+    <string name="home_dialog_title">Leave mission?</string>
+    <string name="home_dialog_message">Your progress will be lost.</string>
+    <string name="home_dialog_confirm">Leave</string>
+    <string name="home_dialog_cancel">Stay</string>
 
     <!-- Quiz -->
-    <string name="quiz_title">Quick Quiz</string>
-    <string name="quiz_correct">Correct!</string>
-    <string name="quiz_wrong_title">Not quite — but that\'s okay!</string>
+    <string name="quiz_title">Mission Debrief</string>
+    <string name="quiz_correct">Confirmed — intel verified!</string>
+    <string name="quiz_wrong_title">Incorrect — but noted, Agent.</string>
 
     <!-- External Game -->
-    <string name="external_step_label">Step %1$d — %2$s</string>
-    <string name="external_enter_code_label">Enter the code</string>
-    <string name="external_wrong_code">Wrong code. Try again!</string>
+    <string name="external_step_label">Mission %1$d — %2$s</string>
+    <string name="external_enter_code_label">Enter access code</string>
+    <string name="external_wrong_code">Access denied. Try again.</string>
 
     <!-- Game titles -->
-    <string name="title_scratch_game">Scratch Game</string>
-    <string name="title_ai_game">AI Challenge</string>
-    <string name="title_robot_game">Robot Game</string>
+    <string name="title_scratch_game">Scratch Protocol</string>
+    <string name="title_ai_game">AI Protocol</string>
+    <string name="title_robot_game">Robot Protocol</string>
 
     <!-- Congratulations -->
-    <string name="congrats_title">Congratulations!</string>
-    <string name="congrats_subtitle">You saved the datacenter!</string>
-    <string name="congrats_time">Total time: %1$d minutes %2$d seconds</string>
-    <string name="congrats_difficulty">Difficulty: %1$s</string>
-    <string name="difficulty_kids">Kids</string>
-    <string name="difficulty_teens">Teens</string>
+    <string name="congrats_title">Mission Complete</string>
+    <string name="congrats_subtitle">Datacenter systems restored.</string>
+    <string name="congrats_time">Mission time: %1$d min %2$d sec</string>
+    <string name="congrats_difficulty">Agent level: %1$s</string>
+    <string name="difficulty_kids">Junior Agent</string>
+    <string name="difficulty_teens">Senior Agent</string>
 
     <!-- Binary Word Quizzes -->
     <string name="word_data_question">What is data in computing?</string>
@@ -90,7 +96,7 @@
     <string name="word_cloud_explanation">The cloud means storing your data on powerful computers connected to the internet, so you can access it from any device, anywhere.</string>
 
     <!-- Scratch Game -->
-    <string name="scratch_instructions">Go to the laptop and complete the Scratch challenge.\nWhen you are done, enter the code you received:</string>
+    <string name="scratch_instructions">Proceed to the laptop and complete the Scratch Protocol.\nEnter your access code when finished:</string>
     <string name="scratch_quiz_question">What is Scratch used for?</string>
     <string name="scratch_quiz_option_a">Visual block-based programming</string>
     <string name="scratch_quiz_option_b">Hacking into computers</string>
@@ -98,7 +104,7 @@
     <string name="scratch_quiz_explanation">Scratch is a visual programming language where you drag and connect blocks to create programs, games, and animations.</string>
 
     <!-- AI Game -->
-    <string name="ai_instructions">Complete the AI challenge on the device provided.\nWhen you are done, enter the code you received:</string>
+    <string name="ai_instructions">Access the assigned device and complete the AI Protocol.\nEnter your access code when finished:</string>
     <string name="ai_quiz_question">What does AI stand for?</string>
     <string name="ai_quiz_option_a">Artificial Intelligence</string>
     <string name="ai_quiz_option_b">Automatic Internet</string>
@@ -106,11 +112,123 @@
     <string name="ai_quiz_explanation">AI stands for Artificial Intelligence — systems that can learn from data and solve problems in ways that resemble human thinking.</string>
 
     <!-- Robot Game -->
-    <string name="robot_instructions_kids">Go to the Ozobot and complete the robot challenge.\nWhen you are done, enter the code you received:</string>
-    <string name="robot_instructions_teens">Go to the LEGO Spike and complete the robot challenge.\nWhen you are done, enter the code you received:</string>
+    <string name="robot_instructions_kids">Proceed to the Ozobot and complete the Robot Protocol.\nEnter your access code when finished:</string>
+    <string name="robot_instructions_teens">Proceed to the LEGO Spike station and complete the Robot Protocol.\nEnter your access code when finished:</string>
     <string name="robot_quiz_question">How does a robot know what to do?</string>
     <string name="robot_quiz_option_a">It follows programmed instructions</string>
     <string name="robot_quiz_option_b">It thinks for itself like a human</string>
     <string name="robot_quiz_option_c">It guesses randomly</string>
     <string name="robot_quiz_explanation">Robots follow code — step-by-step instructions written by a programmer that tell the robot exactly what to do and when.</string>
+
+    <!-- ============================================================ -->
+    <!--  JUNIOR AGENT (Kids) quiz strings — edit here for kids       -->
+    <!-- ============================================================ -->
+
+    <!-- Binary Word Quizzes — Kids -->
+    <string name="word_data_question_kids">What is data?</string>
+    <string name="word_data_option_a_kids">Information a computer can save and use</string>
+    <string name="word_data_option_b_kids">A type of programming software</string>
+    <string name="word_data_option_c_kids">The physical parts of a computer</string>
+    <string name="word_data_explanation_kids">Data is information — like numbers, words, and pictures — that a computer can save and use.</string>
+
+    <string name="word_code_question_kids">What is code in programming?</string>
+    <string name="word_code_option_a_kids">Instructions that tell a computer what to do</string>
+    <string name="word_code_option_b_kids">A secret password for files</string>
+    <string name="word_code_option_c_kids">The screen of a computer</string>
+    <string name="word_code_explanation_kids">Code is instructions written in a special language that tell a computer exactly what to do, step by step.</string>
+
+    <string name="word_server_question_kids">What is a server?</string>
+    <string name="word_server_option_a_kids">A powerful computer that stores and shares information</string>
+    <string name="word_server_option_b_kids">A program that sends emails</string>
+    <string name="word_server_option_c_kids">A type of computer game</string>
+    <string name="word_server_explanation_kids">A server is a powerful computer that keeps websites and apps running and sends information to other devices.</string>
+
+    <string name="word_robot_question_kids">How does a robot know what to do?</string>
+    <string name="word_robot_option_a_kids">It follows instructions programmed by a person</string>
+    <string name="word_robot_option_b_kids">It thinks like a human brain</string>
+    <string name="word_robot_option_c_kids">It guesses randomly</string>
+    <string name="word_robot_explanation_kids">A robot does exactly what its code tells it to do. It follows instructions written by a programmer, step by step.</string>
+
+    <string name="word_cloud_question_kids">What is \"the cloud\" in computing?</string>
+    <string name="word_cloud_option_a_kids">Saving and using files on the internet</string>
+    <string name="word_cloud_option_b_kids">A weather app on your phone</string>
+    <string name="word_cloud_option_c_kids">A wireless keyboard connection</string>
+    <string name="word_cloud_explanation_kids">The cloud means your files are saved on computers connected to the internet, so you can access them from anywhere.</string>
+
+    <!-- Scratch Quiz — Kids -->
+    <string name="scratch_quiz_question_kids">What is Scratch used for?</string>
+    <string name="scratch_quiz_option_a_kids">Making programs by connecting colorful blocks</string>
+    <string name="scratch_quiz_option_b_kids">Hacking into computers</string>
+    <string name="scratch_quiz_option_c_kids">Drawing pictures</string>
+    <string name="scratch_quiz_explanation_kids">Scratch lets you make programs, games, and animations by dragging and snapping colorful blocks together — no typing needed!</string>
+
+    <!-- AI Quiz — Kids -->
+    <string name="ai_quiz_question_kids">What does AI stand for?</string>
+    <string name="ai_quiz_option_a_kids">Artificial Intelligence</string>
+    <string name="ai_quiz_option_b_kids">Automatic Internet</string>
+    <string name="ai_quiz_option_c_kids">Android Interface</string>
+    <string name="ai_quiz_explanation_kids">AI stands for Artificial Intelligence — computers that can learn and solve problems, a bit like how humans think.</string>
+
+    <!-- Robot Quiz — Kids -->
+    <string name="robot_quiz_question_kids">How does a robot know what to do?</string>
+    <string name="robot_quiz_option_a_kids">It follows programmed instructions</string>
+    <string name="robot_quiz_option_b_kids">It thinks for itself like a human</string>
+    <string name="robot_quiz_option_c_kids">It guesses randomly</string>
+    <string name="robot_quiz_explanation_kids">Robots follow code — instructions written by a programmer that tell the robot exactly what to do and when.</string>
+
+    <!-- ============================================================ -->
+    <!--  SENIOR AGENT (Teens) quiz strings — edit here for teens     -->
+    <!-- ============================================================ -->
+
+    <!-- Binary Word Quizzes — Teens -->
+    <string name="word_data_question_teens">What is the difference between data and information?</string>
+    <string name="word_data_option_a_teens">Data is raw unprocessed facts; information is data that has been given meaning</string>
+    <string name="word_data_option_b_teens">Data is stored on a hard drive; information is stored in the cloud</string>
+    <string name="word_data_option_c_teens">They mean the same thing</string>
+    <string name="word_data_explanation_teens">Data refers to raw facts and figures (e.g. numbers, text). Information is data that has been processed and given context, making it useful and meaningful.</string>
+
+    <string name="word_code_question_teens">What is the purpose of a function in programming?</string>
+    <string name="word_code_option_a_teens">To group reusable instructions that can be called multiple times</string>
+    <string name="word_code_option_b_teens">To store data permanently on the computer</string>
+    <string name="word_code_option_c_teens">To connect to the internet</string>
+    <string name="word_code_explanation_teens">A function is a named block of code that performs a specific task. By defining it once, you can call it multiple times throughout your program without repeating the same code.</string>
+
+    <string name="word_server_question_teens">In a client-server model, what does the client do?</string>
+    <string name="word_server_option_a_teens">It sends requests to the server and displays the responses</string>
+    <string name="word_server_option_b_teens">It stores all the websites and data</string>
+    <string name="word_server_option_c_teens">It runs the operating system for all connected devices</string>
+    <string name="word_server_explanation_teens">In a client-server model, the client (e.g. your browser) sends requests for data, and the server responds with the requested information. The server handles storage and processing.</string>
+
+    <string name="word_robot_question_teens">What does \'autonomous\' mean when describing a robot?</string>
+    <string name="word_robot_option_a_teens">The robot can operate and make decisions without constant human control</string>
+    <string name="word_robot_option_b_teens">The robot needs a human to control every movement</string>
+    <string name="word_robot_option_c_teens">The robot can only perform one pre-programmed task</string>
+    <string name="word_robot_explanation_teens">An autonomous robot can sense its environment, process information, and make decisions on its own — without a human directing each action.</string>
+
+    <string name="word_cloud_question_teens">What is a key advantage of cloud computing for a datacenter?</string>
+    <string name="word_cloud_option_a_teens">Resources can be scaled up or down instantly based on demand</string>
+    <string name="word_cloud_option_b_teens">Data is stored physically closer to the user</string>
+    <string name="word_cloud_option_c_teens">Cloud servers never require maintenance</string>
+    <string name="word_cloud_explanation_teens">Cloud computing allows datacenters to dynamically allocate resources. When demand spikes, more computing power can be added instantly — and reduced when not needed — making it highly flexible and efficient.</string>
+
+    <!-- Scratch Quiz — Teens -->
+    <string name="scratch_quiz_question_teens">In Scratch, what programming concept does a \'repeat\' block represent?</string>
+    <string name="scratch_quiz_option_a_teens">A loop — a sequence of instructions that executes multiple times</string>
+    <string name="scratch_quiz_option_b_teens">A variable — a container that stores a value</string>
+    <string name="scratch_quiz_option_c_teens">An event — something that triggers a response</string>
+    <string name="scratch_quiz_explanation_teens">A \'repeat\' block is an example of a loop. Loops allow a set of instructions to run a specified number of times, avoiding the need to write the same code repeatedly.</string>
+
+    <!-- AI Quiz — Teens -->
+    <string name="ai_quiz_question_teens">How does a machine learning model improve its performance over time?</string>
+    <string name="ai_quiz_option_a_teens">By analyzing large amounts of training data and adjusting its internal parameters</string>
+    <string name="ai_quiz_option_b_teens">By being manually reprogrammed after each mistake</string>
+    <string name="ai_quiz_option_c_teens">By randomly trying different approaches until one works</string>
+    <string name="ai_quiz_explanation_teens">Machine learning models learn by processing large datasets. They adjust their internal parameters based on patterns they find, gradually improving accuracy without being explicitly reprogrammed.</string>
+
+    <!-- Robot Quiz — Teens -->
+    <string name="robot_quiz_question_teens">What is the difference between a sensor and an actuator in a robot?</string>
+    <string name="robot_quiz_option_a_teens">A sensor collects data from the environment; an actuator produces movement or output</string>
+    <string name="robot_quiz_option_b_teens">A sensor controls the motors; an actuator reads the code</string>
+    <string name="robot_quiz_option_c_teens">They perform the same function in different programming languages</string>
+    <string name="robot_quiz_explanation_teens">Sensors are input devices that gather information (e.g. distance, light, color). Actuators are output devices that make the robot do something (e.g. motors, speakers, LEDs).</string>
 </resources>

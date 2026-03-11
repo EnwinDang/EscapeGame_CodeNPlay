@@ -10,12 +10,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Surface
+import com.example.escapegame.theme.MissionControlBackground
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,8 +24,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -48,7 +47,7 @@ fun HomeScreen(onTap: () -> Unit) {
     val initialTag = if (appLocales.isEmpty) Locale.getDefault().language else appLocales[0]?.language ?: "en"
     var activeLanguage by remember { mutableStateOf(initialTag) }
 
-    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+    MissionControlBackground {
         Box(modifier = Modifier.fillMaxSize().clickable { onTap() }) {
 
             // Language picker — top-right corner, does NOT trigger onTap
@@ -81,23 +80,14 @@ fun HomeScreen(onTap: () -> Unit) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Logo image — save your PNG as res/drawable/logo_codenplay.png
-                androidx.compose.foundation.Image(
-                    painter = painterResource(R.drawable.logo_codenplay),
-                    contentDescription = "CodeNPlay logo",
-                    modifier = Modifier.size(width = 240.dp, height = 80.dp)
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
                 // Branded title text matching logo colors
                 Text(
                     text = buildAnnotatedString {
-                        withStyle(SpanStyle(color = ColorCodeBlue, fontWeight = FontWeight.Bold)) { append("Code") }
-                        withStyle(SpanStyle(color = ColorNYellow, fontWeight = FontWeight.Bold)) { append("N") }
-                        withStyle(SpanStyle(color = ColorPlayGreen, fontWeight = FontWeight.Bold)) { append("Play") }
+                        withStyle(SpanStyle(color = ColorCodeBlue, fontWeight = FontWeight.ExtraBold)) { append("Code") }
+                        withStyle(SpanStyle(color = ColorNYellow, fontWeight = FontWeight.ExtraBold)) { append("N") }
+                        withStyle(SpanStyle(color = ColorPlayGreen, fontWeight = FontWeight.ExtraBold)) { append("Play") }
                     },
-                    style = MaterialTheme.typography.displaySmall,
+                    style = MaterialTheme.typography.displayLarge.copy(fontSize = 96.sp),
                     textAlign = TextAlign.Center
                 )
 

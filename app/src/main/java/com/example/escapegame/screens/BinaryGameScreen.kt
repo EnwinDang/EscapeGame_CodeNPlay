@@ -2,6 +2,7 @@ package com.example.escapegame.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,16 +25,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.escapegame.R
 import com.example.escapegame.logic.BinaryPuzzle
-import com.example.escapegame.viewmodel.Difficulty
+import com.example.escapegame.theme.MissionControlBackground
 import kotlinx.coroutines.delay
 
 @Composable
 fun BinaryGameScreen(
-    difficulty: Difficulty?,
-    onSolved: (String) -> Unit
+    timerSeconds: Int,
+    onSolved: (String) -> Unit,
+    onHome: () -> Unit,
 ) {
     BackHandler(enabled = true) { /* back disabled during game */ }
 
@@ -43,8 +47,7 @@ fun BinaryGameScreen(
     var showError by remember { mutableStateOf(false) }
     var solved by remember { mutableStateOf(false) }
 
-    val totalSeconds = if (difficulty == Difficulty.KIDS) 15 * 60 else 10 * 60
-    var timeLeft by remember { mutableIntStateOf(totalSeconds) }
+    var timeLeft by remember { mutableIntStateOf(timerSeconds) }
     var timerExpired by remember { mutableStateOf(false) }
 
     // Countdown timer — stops when puzzle is solved
@@ -63,79 +66,77 @@ fun BinaryGameScreen(
     val seconds = timeLeft % 60
     val timerText = "%02d:%02d".format(minutes, seconds)
 
+    MissionControlBackground {
+    Box(modifier = Modifier.fillMaxSize()) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(32.dp),
+            .padding(40.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        // Solved state — show code word
-        if (solved) {
-            Text(
-                text = stringResource(R.string.binary_solved_title),
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.primary,
-                textAlign = TextAlign.Center
-            )
+        when {
+            solved -> {
+                Text(
+                    text = stringResource(R.string.binary_solved_title),
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    textAlign = TextAlign.Center
+                )
 
-            Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                text = stringResource(R.string.binary_code_word_label),
-                style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Center
-            )
+                Text(
+                    text = stringResource(R.string.binary_code_word_label),
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center
+                )
 
-            Text(
-                text = stringResource(R.string.binary_code_word),
-                style = MaterialTheme.typography.displaySmall,
-                color = MaterialTheme.colorScheme.primary,
-                textAlign = TextAlign.Center
-            )
+                Text(
+                    text = puzzle.currentWord,
+                    style = MaterialTheme.typography.displaySmall,
+                    color = MaterialTheme.colorScheme.primary,
+                    textAlign = TextAlign.Center
+                )
 
-            Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
-            Button(
-                onClick = { onSolved(puzzle.currentWord) },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(stringResource(R.string.binary_continue_quiz))
+                Button(
+                    onClick = { onSolved(puzzle.currentWord) },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(stringResource(R.string.binary_continue_quiz))
+                }
             }
 
-            return
-        }
+            timerExpired -> {
+                Text(
+                    text = stringResource(R.string.binary_times_up),
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.error,
+                    textAlign = TextAlign.Center
+                )
 
-        // Timer expired state
-        if (timerExpired) {
-            Text(
-                text = stringResource(R.string.binary_times_up),
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.error,
-                textAlign = TextAlign.Center
-            )
+                Spacer(modifier = Modifier.height(8.dp))
 
-            Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = stringResource(R.string.binary_ask_master),
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center
+                )
 
-            Text(
-                text = stringResource(R.string.binary_ask_master),
-                style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Center
-            )
+                Spacer(modifier = Modifier.height(32.dp))
 
-            Spacer(modifier = Modifier.height(32.dp))
-
-            Button(
-                onClick = { onSolved(puzzle.currentWord) },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(stringResource(R.string.binary_continue_anyway))
+                Button(
+                    onClick = { onSolved(puzzle.currentWord) },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(stringResource(R.string.binary_continue_anyway))
+                }
             }
 
-            return
-        }
-
+            else -> {
         // Game header
         Text(
             text = stringResource(R.string.binary_step_label),
@@ -147,7 +148,7 @@ fun BinaryGameScreen(
 
         Text(
             text = timerText,
-            style = MaterialTheme.typography.headlineSmall,
+            style = MaterialTheme.typography.headlineLarge.copy(fontFamily = FontFamily.Monospace),
             color = if (timeLeft <= 60) MaterialTheme.colorScheme.error
                     else MaterialTheme.colorScheme.primary
         )
@@ -164,7 +165,12 @@ fun BinaryGameScreen(
 
         Text(
             text = binaryText,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyLarge.copy(
+                fontFamily = FontFamily.Monospace,
+                fontSize = 20.sp,
+                letterSpacing = 3.sp
+            ),
+            color = MaterialTheme.colorScheme.primary,
             textAlign = TextAlign.Center
         )
 
@@ -216,5 +222,13 @@ fun BinaryGameScreen(
                 style = MaterialTheme.typography.bodyMedium
             )
         }
+            } // else
+        } // when
+    }
+    HomeButton(
+        onHome = onHome,
+        modifier = Modifier.align(Alignment.TopStart).padding(16.dp)
+    )
+    } // Box
     }
 }

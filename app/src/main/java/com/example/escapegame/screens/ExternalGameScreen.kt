@@ -2,6 +2,7 @@ package com.example.escapegame.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.escapegame.R
+import com.example.escapegame.theme.MissionControlBackground
 
 @Composable
 fun ExternalGameScreen(
@@ -30,77 +32,89 @@ fun ExternalGameScreen(
     title: String,
     instructions: String,
     correctCode: String,
-    onCodeCorrect: () -> Unit
+    onCodeCorrect: () -> Unit,
+    onHome: () -> Unit,
 ) {
     BackHandler(enabled = true) { /* back disabled during game */ }
 
     var enteredCode by remember { mutableStateOf("") }
     var showError by remember { mutableStateOf(false) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = stringResource(R.string.external_step_label, stepNumber, title),
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
-            textAlign = TextAlign.Center
-        )
+    MissionControlBackground {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(40.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = stringResource(R.string.external_step_label, stepNumber, title),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center
+                )
 
-        Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-        Text(
-            text = title,
-            style = MaterialTheme.typography.headlineLarge,
-            textAlign = TextAlign.Center
-        )
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.headlineLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                    textAlign = TextAlign.Center
+                )
 
-        Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
-        Text(
-            text = instructions,
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center
-        )
+                Text(
+                    text = instructions,
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
 
-        Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
-        OutlinedTextField(
-            value = enteredCode,
-            onValueChange = {
-                enteredCode = it
-                showError = false
-            },
-            label = { Text(stringResource(R.string.external_enter_code_label)) },
-            modifier = Modifier.fillMaxWidth(),
-            singleLine = true
-        )
+                OutlinedTextField(
+                    value = enteredCode,
+                    onValueChange = {
+                        enteredCode = it
+                        showError = false
+                    },
+                    label = { Text(stringResource(R.string.external_enter_code_label)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
+                )
 
-        Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = {
-                if (enteredCode.trim().uppercase() == correctCode) {
-                    onCodeCorrect()
-                } else {
-                    showError = true
+                Button(
+                    onClick = {
+                        if (enteredCode.trim().uppercase() == correctCode) {
+                            onCodeCorrect()
+                        } else {
+                            showError = true
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth().height(60.dp)
+                ) {
+                    Text(stringResource(R.string.btn_submit), style = MaterialTheme.typography.titleMedium)
                 }
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(stringResource(R.string.btn_submit))
-        }
 
-        if (showError) {
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = stringResource(R.string.external_wrong_code),
-                color = MaterialTheme.colorScheme.error,
-                style = MaterialTheme.typography.bodyMedium
+                if (showError) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = stringResource(R.string.external_wrong_code),
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+            }
+
+            HomeButton(
+                onHome = onHome,
+                modifier = Modifier.align(Alignment.TopStart).padding(16.dp)
             )
         }
     }

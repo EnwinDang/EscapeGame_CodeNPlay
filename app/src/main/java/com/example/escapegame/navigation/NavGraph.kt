@@ -8,7 +8,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.escapegame.R
-import com.example.escapegame.logic.wordQuizMap
 import com.example.escapegame.screens.BinaryGameScreen
 import com.example.escapegame.screens.CongratulationsScreen
 import com.example.escapegame.screens.DifficultyScreen
@@ -16,7 +15,6 @@ import com.example.escapegame.screens.ExternalGameScreen
 import com.example.escapegame.screens.HomeScreen
 import com.example.escapegame.screens.QuizScreen
 import com.example.escapegame.screens.VideoScreen
-import com.example.escapegame.viewmodel.Difficulty
 import com.example.escapegame.viewmodel.GameViewModel
 
 object Routes {
@@ -36,6 +34,13 @@ object Routes {
 
 @Composable
 fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
+    val onHome: () -> Unit = {
+        viewModel.reset()
+        navController.navigate(Routes.HOME) {
+            popUpTo(Routes.HOME) { inclusive = true }
+        }
+    }
+
     NavHost(navController = navController, startDestination = Routes.HOME) {
 
         composable(Routes.HOME) {
@@ -60,9 +65,11 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
         }
 
         composable(Routes.BINARY_GAME) {
+            val config = viewModel.missionConfig
             BinaryGameScreen(
-                difficulty = viewModel.difficulty,
-                onSolved = { word -> navController.navigate("binary_quiz/$word") }
+                timerSeconds  = config.binaryTimerSeconds,
+                onSolved      = { word -> navController.navigate("binary_quiz/$word") },
+                onHome        = onHome,
             )
         }
 
@@ -70,102 +77,115 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
             route = Routes.BINARY_QUIZ,
             arguments = listOf(navArgument("word") { type = NavType.StringType })
         ) { backStackEntry ->
-            val word = backStackEntry.arguments?.getString("word") ?: "DATA"
-            val quiz = wordQuizMap[word] ?: wordQuizMap["DATA"]!!
+            val config = viewModel.missionConfig
+            val word   = backStackEntry.arguments?.getString("word") ?: "DATA"
+            val quiz   = config.wordQuizMap[word] ?: config.wordQuizMap["DATA"]!!
             QuizScreen(
-                question = stringResource(quiz.questionRes),
-                options = listOf(
+                question     = stringResource(quiz.questionRes),
+                options      = listOf(
                     stringResource(quiz.optionARes),
                     stringResource(quiz.optionBRes),
-                    stringResource(quiz.optionCRes)
+                    stringResource(quiz.optionCRes),
                 ),
                 correctIndex = quiz.correctIndex,
-                explanation = stringResource(quiz.explanationRes),
-                onContinue = { navController.navigate(Routes.SCRATCH_GAME) }
+                explanation  = stringResource(quiz.explanationRes),
+                uiStyle      = config.uiStyle,
+                onContinue   = { navController.navigate(Routes.SCRATCH_GAME) },
+                onHome       = onHome,
             )
         }
 
         composable(Routes.SCRATCH_GAME) {
+            val config = viewModel.missionConfig
             ExternalGameScreen(
-                stepNumber = 2,
-                title = stringResource(R.string.title_scratch_game),
-                instructions = stringResource(R.string.scratch_instructions),
-                correctCode = "LOOP",
-                onCodeCorrect = { navController.navigate(Routes.SCRATCH_QUIZ) }
+                stepNumber    = 2,
+                title         = stringResource(R.string.title_scratch_game),
+                instructions  = stringResource(R.string.scratch_instructions),
+                correctCode   = config.scratchCode,
+                onCodeCorrect = { navController.navigate(Routes.SCRATCH_QUIZ) },
+                onHome        = onHome,
             )
         }
 
         composable(Routes.SCRATCH_QUIZ) {
+            val config = viewModel.missionConfig
             QuizScreen(
-                question = stringResource(R.string.scratch_quiz_question),
-                options = listOf(
-                    stringResource(R.string.scratch_quiz_option_a),
-                    stringResource(R.string.scratch_quiz_option_b),
-                    stringResource(R.string.scratch_quiz_option_c)
+                question     = stringResource(config.scratchQuiz.questionRes),
+                options      = listOf(
+                    stringResource(config.scratchQuiz.optionARes),
+                    stringResource(config.scratchQuiz.optionBRes),
+                    stringResource(config.scratchQuiz.optionCRes),
                 ),
-                correctIndex = 0,
-                explanation = stringResource(R.string.scratch_quiz_explanation),
-                onContinue = { navController.navigate(Routes.AI_GAME) }
+                correctIndex = config.scratchQuiz.correctIndex,
+                explanation  = stringResource(config.scratchQuiz.explanationRes),
+                uiStyle      = config.uiStyle,
+                onContinue   = { navController.navigate(Routes.AI_GAME) },
+                onHome       = onHome,
             )
         }
 
         composable(Routes.AI_GAME) {
+            val config = viewModel.missionConfig
             ExternalGameScreen(
-                stepNumber = 3,
-                title = stringResource(R.string.title_ai_game),
-                instructions = stringResource(R.string.ai_instructions),
-                correctCode = "AI",
-                onCodeCorrect = { navController.navigate(Routes.AI_QUIZ) }
+                stepNumber    = 3,
+                title         = stringResource(R.string.title_ai_game),
+                instructions  = stringResource(R.string.ai_instructions),
+                correctCode   = config.aiCode,
+                onCodeCorrect = { navController.navigate(Routes.AI_QUIZ) },
+                onHome        = onHome,
             )
         }
 
         composable(Routes.AI_QUIZ) {
+            val config = viewModel.missionConfig
             QuizScreen(
-                question = stringResource(R.string.ai_quiz_question),
-                options = listOf(
-                    stringResource(R.string.ai_quiz_option_a),
-                    stringResource(R.string.ai_quiz_option_b),
-                    stringResource(R.string.ai_quiz_option_c)
+                question     = stringResource(config.aiQuiz.questionRes),
+                options      = listOf(
+                    stringResource(config.aiQuiz.optionARes),
+                    stringResource(config.aiQuiz.optionBRes),
+                    stringResource(config.aiQuiz.optionCRes),
                 ),
-                correctIndex = 0,
-                explanation = stringResource(R.string.ai_quiz_explanation),
-                onContinue = { navController.navigate(Routes.ROBOT_GAME) }
+                correctIndex = config.aiQuiz.correctIndex,
+                explanation  = stringResource(config.aiQuiz.explanationRes),
+                uiStyle      = config.uiStyle,
+                onContinue   = { navController.navigate(Routes.ROBOT_GAME) },
+                onHome       = onHome,
             )
         }
 
         composable(Routes.ROBOT_GAME) {
-            val robotInstructions = if (viewModel.difficulty == Difficulty.KIDS) {
-                stringResource(R.string.robot_instructions_kids)
-            } else {
-                stringResource(R.string.robot_instructions_teens)
-            }
+            val config = viewModel.missionConfig
             ExternalGameScreen(
-                stepNumber = 4,
-                title = stringResource(R.string.title_robot_game),
-                instructions = robotInstructions,
-                correctCode = "ROBOT",
-                onCodeCorrect = { navController.navigate(Routes.ROBOT_QUIZ) }
+                stepNumber    = 4,
+                title         = stringResource(R.string.title_robot_game),
+                instructions  = stringResource(config.robotInstructionsRes),
+                correctCode   = config.robotCode,
+                onCodeCorrect = { navController.navigate(Routes.ROBOT_QUIZ) },
+                onHome        = onHome,
             )
         }
 
         composable(Routes.ROBOT_QUIZ) {
+            val config = viewModel.missionConfig
             QuizScreen(
-                question = stringResource(R.string.robot_quiz_question),
-                options = listOf(
-                    stringResource(R.string.robot_quiz_option_a),
-                    stringResource(R.string.robot_quiz_option_b),
-                    stringResource(R.string.robot_quiz_option_c)
+                question     = stringResource(config.robotQuiz.questionRes),
+                options      = listOf(
+                    stringResource(config.robotQuiz.optionARes),
+                    stringResource(config.robotQuiz.optionBRes),
+                    stringResource(config.robotQuiz.optionCRes),
                 ),
-                correctIndex = 0,
-                explanation = stringResource(R.string.robot_quiz_explanation),
-                onContinue = { navController.navigate(Routes.CONGRATULATIONS) }
+                correctIndex = config.robotQuiz.correctIndex,
+                explanation  = stringResource(config.robotQuiz.explanationRes),
+                uiStyle      = config.uiStyle,
+                onContinue   = { navController.navigate(Routes.CONGRATULATIONS) },
+                onHome       = onHome,
             )
         }
 
         composable(Routes.CONGRATULATIONS) {
             CongratulationsScreen(
-                totalTime = viewModel.getTotalTime(),
-                difficulty = viewModel.difficulty,
+                totalTime   = viewModel.getTotalTime(),
+                difficulty  = viewModel.difficulty,
                 onPlayAgain = {
                     viewModel.reset()
                     navController.navigate(Routes.HOME) {
