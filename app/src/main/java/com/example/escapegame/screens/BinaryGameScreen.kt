@@ -10,10 +10,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.keyframes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -23,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.font.FontFamily
@@ -46,6 +53,27 @@ fun BinaryGameScreen(
     var userAnswer by remember { mutableStateOf("") }
     var showError by remember { mutableStateOf(false) }
     var solved by remember { mutableStateOf(false) }
+    var locked by remember { mutableStateOf(true) }
+    val shakeOffset = remember { Animatable(0f) }
+    var shakeKey by remember { mutableIntStateOf(0) }
+
+    LaunchedEffect(shakeKey) {
+        if (shakeKey == 0) return@LaunchedEffect
+        shakeOffset.snapTo(0f)
+        shakeOffset.animateTo(
+            targetValue = 0f,
+            animationSpec = keyframes {
+                durationMillis = 400
+                20f at 50
+                (-20f) at 100
+                20f at 150
+                (-20f) at 200
+                10f at 250
+                (-10f) at 300
+                0f at 400
+            }
+        )
+    }
 
     var timeLeft by remember { mutableIntStateOf(timerSeconds) }
     var timerExpired by remember { mutableStateOf(false) }
@@ -71,7 +99,8 @@ fun BinaryGameScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(40.dp),
+            .padding(40.dp)
+            .graphicsLayer { translationX = shakeOffset.value },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -176,28 +205,52 @@ fun BinaryGameScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        OutlinedTextField(
-            value = userAnswer,
-            onValueChange = { userAnswer = it },
-            label = { Text(stringResource(R.string.binary_answer_label)) },
-            modifier = Modifier.fillMaxWidth(),
-            singleLine = true
-        )
+        if (locked) {
+            IconButton(
+                onClick = { locked = false },
+                modifier = Modifier.size(96.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Lock,
+                    contentDescription = "Unlock to answer",
+                    modifier = Modifier.size(72.dp),
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
+        } else {
+            OutlinedTextField(
+                value = userAnswer,
+                onValueChange = { userAnswer = it },
+                label = { Text(stringResource(R.string.binary_answer_label)) },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
+            )
 
-        Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = {
-                if (puzzle.checkAnswer(userAnswer)) {
-                    solved = true
-                    showError = false
-                } else {
-                    showError = true
-                }
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(stringResource(R.string.btn_submit))
+            Button(
+                onClick = {
+                    if (puzzle.checkAnswer(userAnswer)) {
+                        solved = true
+                        showError = false
+                    } else {
+                        showError = true
+                        shakeKey++
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(stringResource(R.string.btn_submit))
+            }
+
+            if (showError) {
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = stringResource(R.string.binary_wrong),
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -208,19 +261,11 @@ fun BinaryGameScreen(
                 binaryText = puzzle.currentBinary
                 userAnswer = ""
                 showError = false
+                locked = true
             },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(stringResource(R.string.btn_new_puzzle))
-        }
-
-        if (showError) {
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = stringResource(R.string.binary_wrong),
-                color = MaterialTheme.colorScheme.error,
-                style = MaterialTheme.typography.bodyMedium
-            )
         }
             } // else
         } // when

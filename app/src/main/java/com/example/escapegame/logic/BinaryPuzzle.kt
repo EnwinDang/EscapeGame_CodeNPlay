@@ -1,6 +1,6 @@
 package com.example.escapegame.logic
 
-class BinaryPuzzle {
+class alBinaryPuzzle {
 
     private val words = listOf("DATA", "CODE", "SERVER", "ROBOT", "CLOUD")
 
