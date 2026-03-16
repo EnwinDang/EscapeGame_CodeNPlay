@@ -103,6 +103,26 @@
     <string name="scratch_quiz_option_c">Tekeningen maken</string>
     <string name="scratch_quiz_explanation">Scratch is een visuele programmeertaal waarbij je blokken sleept en verbindt om programma\'s, spelletjes en animaties te maken.</string>
 
+    <!-- AI Game Intro (verhaalpagina's) -->
+    <string name="ai_game_intro_go">GO!</string>
+    <string name="ai_intro_btn_next">Volgende</string>
+    <string name="ai_intro_btn_start">Start Missie</string>
+
+    <string name="ai_intro_alarm_title">ALARM!</string>
+    <string name="ai_intro_alarm_body">\"The Glitch\" is de hoofdserver van de Wereld-Cloud binnengedrongen — waar alle foto\'s, video\'s en games ter wereld zijn opgeslagen. De eerste beveiligingsmuur is doorbroken. We hebben jou nodig.</string>
+
+    <string name="ai_intro_threat_title">Het Plan van de Hacker</string>
+    <string name="ai_intro_threat_body">The Glitch verkleedt zijn kwaadaardige virussen als onschuldige datapakketjes — verstopt voor ieders ogen.\n\nZijn doelen:\n- De servers laten oververhitten\n- Alle wachtwoorden veranderen in \"I-Love-Cookies\"\n- Het internet wereldwijd supertraag maken</string>
+
+    <string name="ai_intro_mission_title">Jouw Missie</string>
+    <string name="ai_intro_mission_body">Jij bent onze AI Cyber Agent. Bewaken de datastroom — de hacker verstopt corrupte pakketjes tussen duizenden goede pakketjes.\n\nSpot het ene icoon dat er niet bij hoort en tik er snel op. De hacker wordt steeds sneller en slimmer. Laat geen enkel corrupt pakketje erdoorheen glippen!</string>
+
+    <!-- AI Game (Junior mini-game) -->
+    <string name="ai_game_step_label">Missie 3 · IA</string>
+    <string name="ai_game_find_intruder">Vind de indringer!</string>
+    <string name="ai_game_won_title">Inbraak geblokkeerd!</string>
+    <string name="ai_game_won_body">Je hebt alle indringers gedetecteerd!</string>
+
     <!-- AI Game -->
     <string name="ai_instructions">Gebruik het opgegeven apparaat en voltooi het AI Protocol.\nVoer je toegangscode in als je klaar bent:</string>
     <string name="ai_quiz_question">Waar staat AI voor?</string>
