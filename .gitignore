@@ -28,6 +28,9 @@ captures/
 *.apk
 *.ap_
 
+# Claude Code
+CLAUDE.md
+
 # Other build outputs
 *.aab
 *.aar
