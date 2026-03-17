@@ -3,6 +3,9 @@ package com.example.escapegame.screens
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.keyframes
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
@@ -10,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -31,9 +35,7 @@ fun BinaryGameScreen(
 
     // FIXED: Corrected class name to BinaryPuzzle
     val puzzle = remember { BinaryPuzzle().also { it.generatePuzzle() } }
-    var binaryText by remember { mutableStateOf(puzzle.currentBinary) }
     var userAnswer by remember { mutableStateOf("") }
-    var showError by remember { mutableStateOf(false) }
     var solved by remember { mutableStateOf(false) }
     var locked by remember { mutableStateOf(true) }
     val shakeOffset = remember { Animatable(0f) }
@@ -109,27 +111,78 @@ fun BinaryGameScreen(
                         }
                     }
                     else -> {
-                        Text(text = timerText, style = MaterialTheme.typography.headlineLarge.copy(fontFamily = FontFamily.Monospace), color = if (timeLeft <= 60) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary)
-                        Spacer(modifier = Modifier.height(24.dp))
-                        Text(text = stringResource(R.string.binary_decode_prompt), style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center)
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Text(text = binaryText, style = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.Monospace, fontSize = 20.sp, letterSpacing = 3.sp), color = MaterialTheme.colorScheme.primary, textAlign = TextAlign.Center)
-                        Spacer(modifier = Modifier.height(24.dp))
-                        if (locked) {
-                            IconButton(onClick = { locked = false }, modifier = Modifier.size(96.dp)) {
-                                Icon(Icons.Filled.Lock, contentDescription = null, modifier = Modifier.size(72.dp), tint = MaterialTheme.colorScheme.primary)
-                            }
-                        } else {
-                            OutlinedTextField(value = userAnswer, onValueChange = { userAnswer = it }, label = { Text(stringResource(R.string.binary_answer_label)) }, modifier = Modifier.fillMaxWidth(), singleLine = true)
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Button(onClick = { if (puzzle.checkAnswer(userAnswer)) { solved = true } else { showError = true; shakeKey++ } }, modifier = Modifier.fillMaxWidth()) {
-                                Text(stringResource(R.string.btn_submit))
+                        Row(
+                            modifier = Modifier.fillMaxSize(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            BinaryGridCard(word = puzzle.currentWord, modifier = Modifier.weight(0.4f).fillMaxHeight())
+                            Column(
+                                modifier = Modifier.weight(0.6f),
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(text = timerText, style = MaterialTheme.typography.headlineLarge.copy(fontFamily = FontFamily.Monospace), color = if (timeLeft <= 60) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary)
+                                Spacer(modifier = Modifier.height(24.dp))
+                                Text(text = stringResource(R.string.binary_decode_prompt), style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center)
+                                Spacer(modifier = Modifier.height(16.dp))
+                                Text(text = puzzle.currentBinary, style = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.Monospace, fontSize = 20.sp, letterSpacing = 3.sp), color = MaterialTheme.colorScheme.primary, textAlign = TextAlign.Center)
+                                Spacer(modifier = Modifier.height(24.dp))
+                                if (locked) {
+                                    IconButton(onClick = { locked = false }, modifier = Modifier.size(96.dp)) {
+                                        Icon(Icons.Filled.Lock, contentDescription = null, modifier = Modifier.size(72.dp), tint = MaterialTheme.colorScheme.primary)
+                                    }
+                                } else {
+                                    OutlinedTextField(value = userAnswer, onValueChange = { userAnswer = it }, label = { Text(stringResource(R.string.binary_answer_label)) }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+                                    Spacer(modifier = Modifier.height(16.dp))
+                                    Button(onClick = { if (puzzle.checkAnswer(userAnswer)) { solved = true } else { shakeKey++ } }, modifier = Modifier.fillMaxWidth()) {
+                                        Text(stringResource(R.string.btn_submit))
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
             HomeButton(onHome = onHome, modifier = Modifier.align(Alignment.TopStart).padding(16.dp))
+        }
+    }
+}
+
+@Composable
+private fun BinaryGridCard(word: String, modifier: Modifier = Modifier) {
+    val cyan = MaterialTheme.colorScheme.primary
+
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF111111)),
+        border = BorderStroke(2.dp, cyan)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            word.forEach { char ->
+                val bits = char.code.toString(2).padStart(8, '0')
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(3.dp)
+                ) {
+                    bits.forEach { bit ->
+                        Box(
+                            modifier = Modifier
+                                .weight(1f)
+                                .aspectRatio(1f)
+                                .background(if (bit == '1') Color.Black else Color.White)
+                                .border(1.dp, Color(0xFF444444))
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.height(3.dp))
+            }
         }
     }
 }
