@@ -22,7 +22,7 @@ data class MissionConfig(
 //  JUNIOR AGENT CONFIG  (Kids)
 // =============================================
 val JUNIOR_AGENT = MissionConfig(
-    binaryTimerSeconds   = 15 * 60,
+    binaryTimerSeconds   = 10 * 60,
     scratchCode          = "LOOP",
     aiCode               = "AI",
     robotCode            = "ROBOT",
@@ -61,7 +61,7 @@ val JUNIOR_AGENT = MissionConfig(
 //  SENIOR AGENT CONFIG  (Teens)
 // =============================================
 val SENIOR_AGENT = MissionConfig(
-    binaryTimerSeconds   = 10 * 60,
+    binaryTimerSeconds   = 5 * 60,
     scratchCode          = "LOOP",
     aiCode               = "AI",
     robotCode            = "ROBOT",
