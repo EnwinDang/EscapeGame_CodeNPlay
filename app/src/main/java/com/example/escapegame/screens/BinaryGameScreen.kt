@@ -229,6 +229,9 @@ fun BinaryGameScreen(
         onHome = onHome,
         modifier = Modifier.align(Alignment.TopStart).padding(16.dp)
     )
+    AISpeechBubble(
+        modifier = Modifier.align(Alignment.TopEnd).padding(16.dp)
+    )
     } // Box
     }
 }

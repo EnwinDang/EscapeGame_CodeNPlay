@@ -14,6 +14,7 @@ import com.example.escapegame.screens.DifficultyScreen
 import com.example.escapegame.screens.ExternalGameScreen
 import com.example.escapegame.screens.HomeScreen
 import com.example.escapegame.screens.QuizScreen
+import com.example.escapegame.screens.OutroScreen
 import com.example.escapegame.screens.VideoScreen
 import com.example.escapegame.viewmodel.GameViewModel
 
@@ -29,6 +30,7 @@ object Routes {
     const val AI_QUIZ = "ai_quiz"
     const val ROBOT_GAME = "robot_game"
     const val ROBOT_QUIZ = "robot_quiz"
+    const val OUTRO = "outro"
     const val CONGRATULATIONS = "congratulations"
 }
 
@@ -177,8 +179,14 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
                 correctIndex = config.robotQuiz.correctIndex,
                 explanation  = stringResource(config.robotQuiz.explanationRes),
                 uiStyle      = config.uiStyle,
-                onContinue   = { navController.navigate(Routes.CONGRATULATIONS) },
+                onContinue   = { navController.navigate(Routes.OUTRO) },
                 onHome       = onHome,
+            )
+        }
+
+        composable(Routes.OUTRO) {
+            OutroScreen(
+                onFinished = { navController.navigate(Routes.CONGRATULATIONS) }
             )
         }
 
