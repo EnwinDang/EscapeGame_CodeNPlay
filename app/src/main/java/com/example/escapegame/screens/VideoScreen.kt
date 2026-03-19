@@ -1,6 +1,7 @@
 package com.example.escapegame.screens
 
 import android.net.Uri
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -37,7 +38,18 @@ fun VideoScreen(onContinue: () -> Unit) {
             playWhenReady = true
             addListener(object : Player.Listener {
                 override fun onPlaybackStateChanged(state: Int) {
+                    val stateName = when (state) {
+                        Player.STATE_IDLE -> "IDLE"
+                        Player.STATE_BUFFERING -> "BUFFERING"
+                        Player.STATE_READY -> "READY"
+                        Player.STATE_ENDED -> "ENDED"
+                        else -> "UNKNOWN"
+                    }
+                    Log.d("VideoScreen", "Playback state: $stateName")
                     if (state == Player.STATE_ENDED) onContinue()
+                }
+                override fun onPlayerError(error: androidx.media3.common.PlaybackException) {
+                    Log.e("VideoScreen", "Player error: ${error.message}", error)
                 }
             })
         }
