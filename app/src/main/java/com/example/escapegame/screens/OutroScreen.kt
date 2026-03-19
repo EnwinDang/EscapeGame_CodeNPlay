@@ -8,12 +8,12 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import android.view.TextureView
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.ui.PlayerView
 
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
@@ -41,10 +41,7 @@ fun OutroScreen(onFinished: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         AndroidView(
             factory = { ctx ->
-                PlayerView(ctx).apply {
-                    this.player = player
-                    useController = false
-                }
+                TextureView(ctx).also { player.setVideoTextureView(it) }
             },
             modifier = Modifier.fillMaxSize()
         )

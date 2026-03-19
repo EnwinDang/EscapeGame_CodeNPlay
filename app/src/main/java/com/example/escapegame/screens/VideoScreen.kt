@@ -16,12 +16,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import android.view.TextureView
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.ui.PlayerView
 import com.example.escapegame.R
 
 @androidx.annotation.OptIn(UnstableApi::class)
@@ -50,10 +50,7 @@ fun VideoScreen(onContinue: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         AndroidView(
             factory = { ctx ->
-                PlayerView(ctx).apply {
-                    this.player = player
-                    useController = false
-                }
+                TextureView(ctx).also { player.setVideoTextureView(it) }
             },
             modifier = Modifier.fillMaxSize()
         )

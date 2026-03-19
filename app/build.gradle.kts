@@ -37,8 +37,8 @@ android {
     buildFeatures {
         compose = true
     }
-    androidResources {
-        noCompress += listOf("mp4", "mp3")
+    aaptOptions {
+        noCompress("mp4", "mp3")
     }
 }
 
