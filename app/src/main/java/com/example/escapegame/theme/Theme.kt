@@ -1,35 +1,35 @@
 package com.example.escapegame.theme
 
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 
-private val CodeNPlayScheme = lightColorScheme(
+private val CodeNPlayScheme = darkColorScheme(
     primary              = BrandBlue,
-    onPrimary            = LightBackground,
+    onPrimary            = DarkBackground,
     primaryContainer     = BlueContainer,
     onPrimaryContainer   = OnBlueContainer,
 
     secondary            = BrandGreen,
-    onSecondary          = LightBackground,
+    onSecondary          = DarkBackground,
     secondaryContainer   = GreenContainer,
     onSecondaryContainer = OnGreenContainer,
 
     tertiary             = BrandPink,
-    onTertiary           = LightBackground,
+    onTertiary           = DarkBackground,
     tertiaryContainer    = PinkContainer,
     onTertiaryContainer  = OnPinkContainer,
 
-    background           = LightBackground,
-    onBackground         = OnLight,
+    background           = DarkBackground,
+    onBackground         = OnDark,
 
-    surface              = LightSurface,
-    onSurface            = OnLight,
-    surfaceVariant       = LightSurfaceVar,
-    onSurfaceVariant     = OnLightMuted,
+    surface              = DarkSurface,
+    onSurface            = OnDark,
+    surfaceVariant       = DarkSurfaceVar,
+    onSurfaceVariant     = OnDarkMuted,
 
     error                = ErrorRed,
-    onError              = LightBackground,
+    onError              = DarkBackground,
     errorContainer       = ErrorContainer,
     onErrorContainer     = OnErrorContainer,
 

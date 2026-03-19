@@ -21,6 +21,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import android.media.MediaPlayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -40,6 +42,21 @@ fun BinaryGameScreen(
     onHome: () -> Unit,
 ) {
     BackHandler(enabled = true) { /* back disabled during game */ }
+
+    val context = LocalContext.current
+    var isBubblePlaying by remember { mutableStateOf(true) }
+    val mediaPlayer = remember {
+        val afd = context.assets.openFd("audio/test.mp3")
+        MediaPlayer().apply {
+            setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+            prepare()
+            start()
+            setOnCompletionListener { isBubblePlaying = false }
+        }
+    }
+    DisposableEffect(Unit) {
+        onDispose { mediaPlayer.release() }
+    }
 
     val puzzle = remember { BinaryPuzzle().also { it.generatePuzzle() } }
     var binaryText by remember { mutableStateOf(puzzle.currentBinary) }
@@ -230,7 +247,13 @@ fun BinaryGameScreen(
         modifier = Modifier.align(Alignment.TopStart).padding(16.dp)
     )
     AISpeechBubble(
-        modifier = Modifier.align(Alignment.TopEnd).padding(16.dp)
+        isPlaying = isBubblePlaying,
+        onPlay = {
+            mediaPlayer.seekTo(0)
+            mediaPlayer.start()
+            isBubblePlaying = true
+        },
+        modifier = Modifier.align(Alignment.TopEnd).padding(top = 48.dp, end = 48.dp)
     )
     } // Box
     }
