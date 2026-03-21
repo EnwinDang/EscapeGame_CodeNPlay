@@ -2,45 +2,30 @@ package com.example.escapegame.theme
 
 import androidx.compose.ui.graphics.Color
 
-// CodeNPlay brand colors (from logo)
-val BrandBlue        = Color(0xFF3AAFE8)   // "Code" — sky blue
-val BrandYellow      = Color(0xFFF5C518)   // "N"    — yellow
-val BrandGreen       = Color(0xFF7CC038)   // "Play" — green
+// CodeNPlay brand colors
+val BrandBlue        = Color(0xFF3AAFE8)
+val BrandYellow      = Color(0xFFF5C518)
+val BrandGreen       = Color(0xFF7CC038)
 
-// Dark backgrounds
-val DarkBackground   = Color(0xFF0A0F14)   // near-black navy
-val DarkSurface      = Color(0xFF111820)   // slightly lighter panel
-val DarkSurfaceVar   = Color(0xFF1A2735)   // card / input backgrounds
+// Matrix Palette
+val MatrixBlack      = Color(0xFF030303)
+val MatrixDarkGreen  = Color(0xFF008529)
+val MatrixGreen      = Color(0xFF1CA152)
+val MatrixNeonGreen  = Color(0xFF1CA152)
 
-// Primary (blue) tones — dark variant
-val BlueDark         = Color(0xFF7ED4F7)   // lighter blue for dark bg text
-val BlueContainer    = Color(0xFF0D3A52)
-val OnBlueContainer  = Color(0xFFB8E8FF)
+// Functional assignments
+val DarkBackground   = MatrixBlack
+val DarkSurface      = Color(0xFF0D0208)
+val DarkPrimary      = MatrixGreen
+val OnDarkPrimary    = MatrixBlack
+val DarkSecondary    = MatrixDarkGreen
+val DarkTertiary     = BrandBlue
 
-// Secondary (green) tones — dark variant
-val GreenDark        = Color(0xFF9FD65A)
-val GreenContainer   = Color(0xFF1A3A00)
-val OnGreenContainer = Color(0xFFBEF08A)
+// Neutral / UI support colors
+val DigitalGray      = Color(0xFF030303)
+val DigitalWhite     = Color(0xFF1CA152)
+val MatrixMutedGreen = Color(0xFF008529)
 
-// Tertiary (yellow) tones
-val YellowDark       = Color(0xFFF5C518)
-val YellowContainer  = Color(0xFF3A2A00)
-val OnYellowContainer = Color(0xFFFFF0A0)
-
-// Text
-val OnDark           = Color(0xFFE8F4FB)   // near-white
-val OnDarkMuted      = Color(0xFF7A9BB0)   // muted blue-grey
-
-// Error
-val ErrorRed         = Color(0xFFFF6B6B)
-val ErrorContainer   = Color(0xFF5C0000)
-val OnErrorContainer = Color(0xFFFFB4B4)
-
-// Tertiary — pink (extra brand accent)
-val BrandPink        = Color(0xFFFF6BA8)
-val PinkContainer    = Color(0xFF5C0022)
-val OnPinkContainer  = Color(0xFFFFD6E5)
-
-// Outlines
-val OutlineColor     = Color(0xFF2A4A60)
-val OutlineVariant   = Color(0xFF1A3040)
+// Error (High contrast)
+val MatrixRed        = Color(0xFFFF3131)
+val OnMatrixRed      = Color.White
