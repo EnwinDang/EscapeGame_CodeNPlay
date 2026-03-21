@@ -254,7 +254,7 @@ fun BinaryGameScreen(
             mediaPlayer.start()
             isBubblePlaying = true
         },
-        modifier = Modifier.align(Alignment.TopEnd).padding(top = 48.dp, end = 48.dp)
+        modifier = Modifier.align(Alignment.TopEnd).padding(top = 80.dp, end = 64.dp)
     )
     } // Box
     }

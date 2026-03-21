@@ -55,7 +55,7 @@ fun AISpeechBubble(
     }
 
     Box(
-        modifier = modifier.size(140.dp),
+        modifier = modifier.size(190.dp),
         contentAlignment = Alignment.Center
     ) {
         AndroidView(
@@ -85,7 +85,7 @@ fun AISpeechBubble(
                     imageVector = Icons.Filled.PlayArrow,
                     contentDescription = "Play voice",
                     tint = Color.White.copy(alpha = 0.9f),
-                    modifier = Modifier.size(52.dp)
+                    modifier = Modifier.size(70.dp)
                 )
             }
         }

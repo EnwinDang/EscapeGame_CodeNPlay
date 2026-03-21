@@ -12,6 +12,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,6 +27,8 @@ import com.example.escapegame.viewmodel.Difficulty
 
 @Composable
 fun DifficultyScreen(onDifficultySelected: (Difficulty) -> Unit) {
+    var selected by remember { mutableStateOf(Difficulty.KIDS) }
+
     MissionControlBackground {
         Column(
             modifier = Modifier
@@ -49,26 +55,38 @@ fun DifficultyScreen(onDifficultySelected: (Difficulty) -> Unit) {
 
             Spacer(modifier = Modifier.height(56.dp))
 
-            Button(
-                onClick = { onDifficultySelected(Difficulty.KIDS) },
-                modifier = Modifier.fillMaxWidth().height(72.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.btn_kids),
-                    style = MaterialTheme.typography.titleLarge
-                )
+            if (selected == Difficulty.KIDS) {
+                Button(
+                    onClick = { selected = Difficulty.KIDS; onDifficultySelected(Difficulty.KIDS) },
+                    modifier = Modifier.fillMaxWidth().height(72.dp)
+                ) {
+                    Text(text = stringResource(R.string.btn_kids), style = MaterialTheme.typography.titleLarge)
+                }
+            } else {
+                OutlinedButton(
+                    onClick = { selected = Difficulty.KIDS; onDifficultySelected(Difficulty.KIDS) },
+                    modifier = Modifier.fillMaxWidth().height(72.dp)
+                ) {
+                    Text(text = stringResource(R.string.btn_kids), style = MaterialTheme.typography.titleLarge)
+                }
             }
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            OutlinedButton(
-                onClick = { onDifficultySelected(Difficulty.TEENS) },
-                modifier = Modifier.fillMaxWidth().height(72.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.btn_teens),
-                    style = MaterialTheme.typography.titleLarge
-                )
+            if (selected == Difficulty.TEENS) {
+                Button(
+                    onClick = { selected = Difficulty.TEENS; onDifficultySelected(Difficulty.TEENS) },
+                    modifier = Modifier.fillMaxWidth().height(72.dp)
+                ) {
+                    Text(text = stringResource(R.string.btn_teens), style = MaterialTheme.typography.titleLarge)
+                }
+            } else {
+                OutlinedButton(
+                    onClick = { selected = Difficulty.TEENS; onDifficultySelected(Difficulty.TEENS) },
+                    modifier = Modifier.fillMaxWidth().height(72.dp)
+                ) {
+                    Text(text = stringResource(R.string.btn_teens), style = MaterialTheme.typography.titleLarge)
+                }
             }
         }
     }
