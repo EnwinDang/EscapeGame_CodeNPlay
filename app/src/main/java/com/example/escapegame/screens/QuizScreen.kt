@@ -10,11 +10,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.ui.graphics.Color
+import com.example.escapegame.theme.BrandGreen
+import com.example.escapegame.theme.MatrixRed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -93,13 +97,31 @@ fun QuizScreen(
                             Text(option, style = MaterialTheme.typography.titleSmall)
                         }
                     } else {
+                        val buttonColors = if (answered) {
+                            when {
+                                isSelected && isCorrect -> ButtonDefaults.buttonColors(
+                                    disabledContainerColor = BrandGreen,
+                                    disabledContentColor = Color.Black
+                                )
+                                isSelected -> ButtonDefaults.buttonColors(
+                                    disabledContainerColor = MatrixRed,
+                                    disabledContentColor = Color.White
+                                )
+                                else -> ButtonDefaults.buttonColors(
+                                    disabledContainerColor = BrandGreen,
+                                    disabledContentColor = Color.Black
+                                )
+                            }
+                        } else ButtonDefaults.buttonColors()
+
                         Button(
                             onClick = { if (!answered) selectedIndex = index },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 4.dp)
                                 .height(buttonHeight),
-                            enabled = !answered
+                            enabled = !answered,
+                            colors = buttonColors
                         ) {
                             Text(option, style = MaterialTheme.typography.titleSmall)
                         }
