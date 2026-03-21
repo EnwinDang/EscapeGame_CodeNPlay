@@ -1,5 +1,6 @@
 package com.example.escapegame.logic
 
+
 class BinaryPuzzle {
 
     private val words = listOf("DATA", "CODE", "SERVER", "ROBOT", "CLOUD")
@@ -17,7 +18,7 @@ class BinaryPuzzle {
 
     private fun wordToBinary(word: String): String {
         return word.map { char ->
-            char.code.toString(2)
+            char.code.toString(2).padStart(8, '0')
         }.joinToString(" ")
     }
 

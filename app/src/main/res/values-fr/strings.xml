@@ -103,6 +103,26 @@
     <string name="scratch_quiz_option_c">Dessiner des images</string>
     <string name="scratch_quiz_explanation">Scratch est un langage de programmation visuel où vous faites glisser et connectez des blocs pour créer des programmes, des jeux et des animations.</string>
 
+    <!-- AI Game Intro (pages narratives) -->
+    <string name="ai_game_intro_go">GO !</string>
+    <string name="ai_intro_btn_next">Suivant</string>
+    <string name="ai_intro_btn_start">Lancer la Mission</string>
+
+    <string name="ai_intro_alarm_title">ALARME !</string>
+    <string name="ai_intro_alarm_body">\"The Glitch\" a pénétré le serveur principal du World Cloud — où sont stockées toutes les photos, vidéos et jeux du monde entier. Le premier mur de sécurité est tombé. Nous avons besoin de toi maintenant.</string>
+
+    <string name="ai_intro_threat_title">Le Plan du Hacker</string>
+    <string name="ai_intro_threat_body">The Glitch déguise ses virus malveillants en paquets de données inoffensifs — cachés en pleine vue.\n\nSes objectifs :\n- Faire surchauffer les serveurs\n- Changer tous les mots de passe en \"I-Love-Cookies\"\n- Rendre internet impossiblement lent dans le monde entier</string>
+
+    <string name="ai_intro_mission_title">Ta Mission</string>
+    <string name="ai_intro_mission_body">Tu es notre Agent Cyber IA. Surveille le flux de données — le hacker cache des paquets corrompus parmi des milliers de bons paquets.\n\nRepère l\'icône qui ne ressemble pas aux autres et appuie dessus vite. Le hacker va s\'accélérer et devenir plus rusé. Ne laisse passer aucun paquet corrompu !</string>
+
+    <!-- AI Game (Junior mini-game) -->
+    <string name="ai_game_step_label">Mission 3 · IA</string>
+    <string name="ai_game_find_intruder">Trouve l\'intrus !</string>
+    <string name="ai_game_won_title">Intrusion bloquée !</string>
+    <string name="ai_game_won_body">Tu as détecté tous les intrus !</string>
+
     <!-- AI Game -->
     <string name="ai_instructions">Utilisez l\'appareil fourni et complétez le Protocole IA.\nEntrez votre code d\'accès une fois terminé :</string>
     <string name="ai_quiz_question">Que signifie IA ?</string>

@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.escapegame.R
+import com.example.escapegame.screens.AiGameIntroScreen
+import com.example.escapegame.screens.AiGameScreen
 import com.example.escapegame.screens.BinaryGameScreen
 import com.example.escapegame.screens.CongratulationsScreen
 import com.example.escapegame.screens.DifficultyScreen
@@ -16,6 +18,7 @@ import com.example.escapegame.screens.HomeScreen
 import com.example.escapegame.screens.QuizScreen
 import com.example.escapegame.screens.OutroScreen
 import com.example.escapegame.screens.VideoScreen
+import com.example.escapegame.viewmodel.Difficulty
 import com.example.escapegame.viewmodel.GameViewModel
 
 object Routes {
@@ -26,6 +29,7 @@ object Routes {
     const val BINARY_QUIZ = "binary_quiz/{word}"
     const val SCRATCH_GAME = "scratch_game"
     const val SCRATCH_QUIZ = "scratch_quiz"
+    const val AI_GAME_INTRO = "ai_game_intro"
     const val AI_GAME = "ai_game"
     const val AI_QUIZ = "ai_quiz"
     const val ROBOT_GAME = "robot_game"
@@ -121,21 +125,35 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
                 correctIndex = config.scratchQuiz.correctIndex,
                 explanation  = stringResource(config.scratchQuiz.explanationRes),
                 uiStyle      = config.uiStyle,
-                onContinue   = { navController.navigate(Routes.AI_GAME) },
+                onContinue   = { navController.navigate(Routes.AI_GAME_INTRO) },
                 onHome       = onHome,
+            )
+        }
+
+        composable(Routes.AI_GAME_INTRO) {
+            AiGameIntroScreen(
+                onReady = { navController.navigate(Routes.AI_GAME) },
+                onHome  = onHome,
             )
         }
 
         composable(Routes.AI_GAME) {
             val config = viewModel.missionConfig
-            ExternalGameScreen(
-                stepNumber    = 3,
-                title         = stringResource(R.string.title_ai_game),
-                instructions  = stringResource(R.string.ai_instructions),
-                correctCode   = config.aiCode,
-                onCodeCorrect = { navController.navigate(Routes.AI_QUIZ) },
-                onHome        = onHome,
-            )
+            if (viewModel.difficulty == Difficulty.KIDS) {
+                AiGameScreen(
+                    onGameCompleted = { navController.navigate(Routes.AI_QUIZ) },
+                    onHome          = onHome,
+                )
+            } else {
+                ExternalGameScreen(
+                    stepNumber    = 3,
+                    title         = stringResource(R.string.title_ai_game),
+                    instructions  = stringResource(R.string.ai_instructions),
+                    correctCode   = config.aiCode,
+                    onCodeCorrect = { navController.navigate(Routes.AI_QUIZ) },
+                    onHome        = onHome,
+                )
+            }
         }
 
         composable(Routes.AI_QUIZ) {
