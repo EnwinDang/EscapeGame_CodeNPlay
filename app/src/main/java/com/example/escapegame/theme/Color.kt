@@ -29,3 +29,11 @@ val MatrixMutedGreen = Color(0xFF008529)
 // Error (High contrast)
 val MatrixRed        = Color(0xFFFF3131)
 val OnMatrixRed      = Color.White
+
+// Status colors (icon + container pairs)
+val ErrorRed         = Color(0xFFFF3131)
+val ErrorContainer   = Color(0xFF3B0A0A)
+val YellowDark       = Color(0xFFF0A500)
+val YellowContainer  = Color(0xFF2D1F00)
+val BlueContainer    = Color(0xFF001A2D)
+val GreenContainer   = Color(0xFF002B0E)
