@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.escapegame.R
 import com.example.escapegame.logic.AgentUiStyle
+import com.example.escapegame.theme.MatrixDeepGreen
 import com.example.escapegame.theme.MissionControlBackground
 
 @Composable
@@ -101,7 +102,7 @@ fun QuizScreen(
                             when {
                                 isSelected && isCorrect -> ButtonDefaults.buttonColors(
                                     disabledContainerColor = BrandGreen,
-                                    disabledContentColor = Color.Black
+                                    disabledContentColor = MatrixDeepGreen
                                 )
                                 isSelected -> ButtonDefaults.buttonColors(
                                     disabledContainerColor = MatrixRed,
@@ -109,7 +110,7 @@ fun QuizScreen(
                                 )
                                 else -> ButtonDefaults.buttonColors(
                                     disabledContainerColor = BrandGreen,
-                                    disabledContentColor = Color.Black
+                                    disabledContentColor = MatrixDeepGreen
                                 )
                             }
                         } else ButtonDefaults.buttonColors()

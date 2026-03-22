@@ -12,12 +12,13 @@ val MatrixBlack      = Color(0xFF030303)
 val MatrixDarkGreen  = Color(0xFF008529)
 val MatrixGreen      = Color(0xFF1CA152)
 val MatrixNeonGreen  = Color(0xFF1CA152)
+val MatrixDeepGreen  = Color(0xFF003B00) // Nieuwe diepgroene kleur voor letters
 
 // Functional assignments
 val DarkBackground   = MatrixBlack
 val DarkSurface      = Color(0xFF0D0208)
 val DarkPrimary      = MatrixGreen
-val OnDarkPrimary    = MatrixBlack
+val OnDarkPrimary    = MatrixDeepGreen // Veranderd van MatrixBlack naar MatrixDeepGreen
 val DarkSecondary    = MatrixDarkGreen
 val DarkTertiary     = BrandBlue
 

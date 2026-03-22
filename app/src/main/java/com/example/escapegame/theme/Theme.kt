@@ -11,12 +11,12 @@ private val MatrixDarkScheme = darkColorScheme(
     onPrimaryContainer   = MatrixGreen,
 
     secondary            = DarkSecondary,
-    onSecondary          = MatrixBlack,
+    onSecondary          = MatrixDeepGreen, // Veranderd van MatrixBlack naar MatrixDeepGreen
     secondaryContainer   = DigitalGray,
     onSecondaryContainer = BrandBlue,
 
     tertiary             = DarkTertiary,
-    onTertiary           = MatrixBlack,
+    onTertiary           = MatrixDeepGreen, // Veranderd van MatrixBlack naar MatrixDeepGreen
     tertiaryContainer    = DigitalGray,
     onTertiaryContainer  = BrandYellow,
 
