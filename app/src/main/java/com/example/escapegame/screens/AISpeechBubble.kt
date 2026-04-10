@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
@@ -35,6 +36,27 @@ fun AISpeechBubble(
     onPlay: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val isPreview = LocalInspectionMode.current
+
+    if (isPreview) {
+        // Preview placeholder — no ExoPlayer
+        Box(
+            modifier = modifier
+                .size(190.dp)
+                .clip(CircleShape)
+                .background(Color.DarkGray.copy(alpha = 0.5f)),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Filled.PlayArrow,
+                contentDescription = null,
+                tint = Color.White.copy(alpha = 0.7f),
+                modifier = Modifier.size(70.dp)
+            )
+        }
+        return
+    }
+
     val context = LocalContext.current
 
     val player = remember {
@@ -45,7 +67,6 @@ fun AISpeechBubble(
         }
     }
 
-    // Sync video with audio state
     LaunchedEffect(isPlaying) {
         if (isPlaying) player.play() else player.pause()
     }
@@ -67,7 +88,6 @@ fun AISpeechBubble(
                 .clip(CircleShape)
         )
 
-        // Play button overlay — only visible when paused
         if (!isPlaying) {
             Box(
                 modifier = Modifier

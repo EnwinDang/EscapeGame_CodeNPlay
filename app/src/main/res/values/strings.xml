@@ -16,7 +16,22 @@
     <string name="btn_kids">Junior Agent</string>
     <string name="btn_teens">Senior Agent</string>
 
+    <!-- Difficulty Cards -->
+    <string name="junior_agent_description">Test your nerve. Learn the fundamental architecture of the Data Center core.</string>
+    <string name="junior_bullet_1">Python Basics &amp; Scratch</string>
+    <string name="junior_bullet_2">Binary Decoding</string>
+    <string name="junior_bullet_3">Low-difficulty challenges</string>
+    <string name="btn_junior_cta">INITIATE ENTRY PROTOCOL</string>
+    <string name="senior_agent_description">High-stakes challenges. Defend against advanced threats and optimize critical code.</string>
+    <string name="senior_bullet_1">Higher-level challenges</string>
+    <string name="senior_bullet_2">Game Level Optimization</string>
+    <string name="senior_bullet_3">Security &amp; AI concepts</string>
+    <string name="btn_senior_cta">ESCALATE PRIVILEGES</string>
+
     <!-- Binary Game -->
+    <string name="binary_verify_protocol">VERIFY PROTOCOL</string>
+    <string name="binary_reset_grid">RESET GRID</string>
+    <string name="binary_sector_label">CORE SECTOR</string>
     <string name="binary_step_label">Mission 1 — Binary Decoder</string>
     <string name="binary_decode_prompt">Decrypt the signal:</string>
     <string name="binary_answer_label">Decrypted text</string>

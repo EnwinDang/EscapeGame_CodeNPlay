@@ -4,7 +4,6 @@ import android.media.MediaPlayer
 import androidx.activity.compose.BackHandler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -23,7 +22,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -46,8 +44,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
@@ -65,7 +61,7 @@ import com.example.escapegame.theme.YellowDark
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-private data class StoryElement(
+private data class IntroStoryElement(
     val icon: ImageVector,
     val iconColor: Color,
     val titleRes: Int,
@@ -73,22 +69,22 @@ private data class StoryElement(
     val startTimeMs: Int,
 )
 
-private val storyElements = listOf(
-    StoryElement(
+private val introStoryElements = listOf(
+    IntroStoryElement(
         icon       = Icons.Filled.Warning,
         iconColor  = ErrorRed,
         titleRes   = R.string.ai_intro_alarm_title,
         bodyRes    = R.string.ai_intro_alarm_body,
         startTimeMs = 0
     ),
-    StoryElement(
+    IntroStoryElement(
         icon       = Icons.Filled.BugReport,
         iconColor  = YellowDark,
         titleRes   = R.string.ai_intro_threat_title,
         bodyRes    = R.string.ai_intro_threat_body,
         startTimeMs = 8000
     ),
-    StoryElement(
+    IntroStoryElement(
         icon       = Icons.Filled.SmartToy,
         iconColor  = BrandBlue,
         titleRes   = R.string.ai_intro_mission_title,
@@ -107,26 +103,28 @@ fun AiGameIntroScreen(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var isPlaying by remember { mutableStateOf(false) }
+    var hasFinishedAudio by remember { mutableStateOf(false) }
     var currentProgressMs by remember { mutableIntStateOf(0) }
     var countdownLabel by remember { mutableStateOf<String?>(null) }
     val goLabel = stringResource(R.string.ai_game_intro_go)
 
-    // Selecteer audio op basis van taal
     val locale = AppCompatDelegate.getApplicationLocales()[0]?.language ?: "en"
-    val audioPath = "audio/ai_$locale.mp3"
+    val audioPath = "audio/intro_$locale.mp3"
 
     val mediaPlayer = remember {
         MediaPlayer().apply {
             try {
                 val afd = context.assets.openFd(audioPath)
                 setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                prepare()
             } catch (e: Exception) {
-                // Fallback naar test.mp3 als taalspecifieke audio ontbreekt
-                val afd = context.assets.openFd("audio/test.mp3")
-                setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                // Als audio faalt, markeren we het als klaar zodat de knop werkt
+                hasFinishedAudio = true
             }
-            prepare()
-            setOnCompletionListener { isPlaying = false }
+            setOnCompletionListener { 
+                isPlaying = false
+                hasFinishedAudio = true
+            }
         }
     }
 
@@ -137,14 +135,15 @@ fun AiGameIntroScreen(
     LaunchedEffect(isPlaying) {
         if (isPlaying) {
             while (isPlaying) {
-                currentProgressMs = mediaPlayer.currentPosition
+                try {
+                    currentProgressMs = mediaPlayer.currentPosition
+                } catch (e: Exception) { isPlaying = false }
                 delay(100L)
             }
         }
     }
 
-    // Bepaal welk element nu getoond moet worden (de laatste die "begonnen" is)
-    val currentElement = storyElements.lastOrNull { currentProgressMs >= it.startTimeMs } ?: storyElements[0]
+    val currentElement = introStoryElements.lastOrNull { currentProgressMs >= it.startTimeMs } ?: introStoryElements[0]
 
     MissionControlBackground {
         AnimatedContent(
@@ -157,22 +156,18 @@ fun AiGameIntroScreen(
         ) { label ->
             if (label == null) {
                 Box(modifier = Modifier.fillMaxSize()) {
-                    // Home knop linksboven (of rechtsboven zoals bij andere schermen)
                     HomeButton(
                         onHome = onHome,
                         modifier = Modifier.align(Alignment.TopStart).padding(16.dp)
                     )
 
-                    // AI Speech Bubble - Iets kleiner bovenaan
                     AISpeechBubble(
                         isPlaying = isPlaying,
                         onPlay = {
                             if (!isPlaying) {
-                                mediaPlayer.start()
-                                isPlaying = true
+                                try { mediaPlayer.start(); isPlaying = true } catch(e: Exception) { hasFinishedAudio = true }
                             } else {
-                                mediaPlayer.pause()
-                                isPlaying = false
+                                try { mediaPlayer.pause(); isPlaying = false } catch(e: Exception) {}
                             }
                         },
                         modifier = Modifier
@@ -181,7 +176,6 @@ fun AiGameIntroScreen(
                             .size(160.dp)
                     )
 
-                    // Centraal paneel met groot icoon en tekst
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -192,13 +186,10 @@ fun AiGameIntroScreen(
                     ) {
                         AnimatedContent(
                             targetState = currentElement,
-                            transitionSpec = {
-                                (fadeIn() + scaleIn()) togetherWith (fadeOut() + scaleOut())
-                            },
+                            transitionSpec = { (fadeIn() + scaleIn()) togetherWith (fadeOut() + scaleOut()) },
                             label = "element_anim"
                         ) { element ->
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                // Groot icoon in het midden
                                 Box(
                                     modifier = Modifier
                                         .size(200.dp)
@@ -207,39 +198,16 @@ fun AiGameIntroScreen(
                                         .border(4.dp, element.iconColor, CircleShape),
                                     contentAlignment = Alignment.Center
                                 ) {
-                                    Icon(
-                                        imageVector = element.icon,
-                                        contentDescription = null,
-                                        modifier = Modifier.size(100.dp),
-                                        tint = element.iconColor
-                                    )
+                                    Icon(element.icon, null, Modifier.size(100.dp), element.iconColor)
                                 }
-
                                 Spacer(Modifier.height(32.dp))
-
-                                // Tekst onder het icoon
-                                Text(
-                                    text = stringResource(element.titleRes),
-                                    style = MaterialTheme.typography.displaySmall,
-                                    color = element.iconColor,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    textAlign = TextAlign.Center
-                                )
-
+                                Text(stringResource(element.titleRes), style = MaterialTheme.typography.displaySmall, color = element.iconColor, fontWeight = FontWeight.ExtraBold, textAlign = TextAlign.Center)
                                 Spacer(Modifier.height(16.dp))
-
-                                Text(
-                                    text = stringResource(element.bodyRes),
-                                    style = MaterialTheme.typography.headlineSmall,
-                                    color = Color.White,
-                                    textAlign = TextAlign.Center,
-                                    lineHeight = 34.sp
-                                )
+                                Text(stringResource(element.bodyRes), style = MaterialTheme.typography.headlineSmall, color = Color.White, textAlign = TextAlign.Center, lineHeight = 34.sp)
                             }
                         }
                     }
 
-                    // Start knop onderaan
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -249,7 +217,7 @@ fun AiGameIntroScreen(
                         Button(
                             onClick = {
                                 scope.launch {
-                                    mediaPlayer.stop()
+                                    try { mediaPlayer.stop() } catch(e: Exception) {}
                                     isPlaying = false
                                     for (step in listOf("3", "2", "1", goLabel)) {
                                         countdownLabel = step
@@ -258,17 +226,12 @@ fun AiGameIntroScreen(
                                     onReady()
                                 }
                             },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(80.dp),
+                            enabled = true, // ALTIJD AAN ZETTEN OM VASTLOPEN TE VOORKOMEN
+                            modifier = Modifier.fillMaxWidth().height(80.dp),
                             shape = RoundedCornerShape(20.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = BrandGreen)
                         ) {
-                            Text(
-                                text = stringResource(R.string.ai_intro_btn_start),
-                                style = MaterialTheme.typography.headlineMedium,
-                                fontWeight = FontWeight.Black
-                            )
+                            Text(stringResource(R.string.ai_intro_btn_start), style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Black)
                         }
                     }
                 }
@@ -282,16 +245,7 @@ fun AiGameIntroScreen(
 @Composable
 private fun CountdownContent(label: String, isGo: Boolean) {
     val textColor = if (isGo) BrandGreen else BrandBlue
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = label,
-            fontSize = 180.sp,
-            fontWeight = FontWeight.Black,
-            color = textColor,
-            textAlign = TextAlign.Center
-        )
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Text(label, fontSize = 180.sp, fontWeight = FontWeight.Black, color = textColor, textAlign = TextAlign.Center)
     }
 }

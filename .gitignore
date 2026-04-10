@@ -1,7 +1,7 @@
 
-
 # Claude Code
 .claude/
+CLAUDE_CONTEXT/
 
 # Gradle
 .gradle/
