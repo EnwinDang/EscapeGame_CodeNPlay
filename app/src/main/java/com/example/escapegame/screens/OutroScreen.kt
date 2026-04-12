@@ -1,37 +1,27 @@
 package com.example.escapegame.screens
 
-import android.util.Log
 import android.view.TextureView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
-import com.example.escapegame.R
 import com.example.escapegame.logic.VideoAsset
 import com.example.escapegame.logic.VideoAssetManager
 
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
-fun VideoScreen(
+fun OutroScreen(
     videoAssetManager: VideoAssetManager,
-    onContinue: () -> Unit,
+    onFinished: () -> Unit,
 ) {
-    val uri = remember { videoAssetManager.getUri(VideoAsset.INTRO) }
+    val uri = remember { videoAssetManager.getUri(VideoAsset.OUTRO) }
 
     val player = remember {
         ExoPlayer.Builder(videoAssetManager.context).build().apply {
@@ -40,11 +30,7 @@ fun VideoScreen(
             playWhenReady = true
             addListener(object : Player.Listener {
                 override fun onPlaybackStateChanged(state: Int) {
-                    Log.d("VideoScreen", "Playback state: $state")
-                    if (state == Player.STATE_ENDED) onContinue()
-                }
-                override fun onPlayerError(error: androidx.media3.common.PlaybackException) {
-                    Log.e("VideoScreen", "Player error: ${error.message}", error)
+                    if (state == Player.STATE_ENDED) onFinished()
                 }
             })
         }
@@ -61,18 +47,5 @@ fun VideoScreen(
             },
             modifier = Modifier.fillMaxSize()
         )
-
-        TextButton(
-            onClick = onContinue,
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(24.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.btn_continue),
-                style = MaterialTheme.typography.titleMedium,
-                color = Color.White.copy(alpha = 0.7f)
-            )
-        }
     }
 }

@@ -16,7 +16,22 @@
     <string name="btn_kids">Junior Agent</string>
     <string name="btn_teens">Senior Agent</string>
 
+    <!-- Difficulty Cards -->
+    <string name="junior_agent_description">Test your nerve. Learn the fundamental architecture of the Data Center core.</string>
+    <string name="junior_bullet_1">Python Basics &amp; Scratch</string>
+    <string name="junior_bullet_2">Binary Decoding</string>
+    <string name="junior_bullet_3">Low-difficulty challenges</string>
+    <string name="btn_junior_cta">INITIATE ENTRY PROTOCOL</string>
+    <string name="senior_agent_description">High-stakes challenges. Defend against advanced threats and optimize critical code.</string>
+    <string name="senior_bullet_1">Higher-level challenges</string>
+    <string name="senior_bullet_2">Game Level Optimization</string>
+    <string name="senior_bullet_3">Security &amp; AI concepts</string>
+    <string name="btn_senior_cta">ESCALATE PRIVILEGES</string>
+
     <!-- Binary Game -->
+    <string name="binary_verify_protocol">VERIFY PROTOCOL</string>
+    <string name="binary_reset_grid">RESET GRID</string>
+    <string name="binary_sector_label">CORE SECTOR</string>
     <string name="binary_step_label">Mission 1 — Binary Decoder</string>
     <string name="binary_decode_prompt">Decrypt the signal:</string>
     <string name="binary_answer_label">Decrypted text</string>
@@ -102,6 +117,26 @@
     <string name="scratch_quiz_option_b">Hacking into computers</string>
     <string name="scratch_quiz_option_c">Drawing pictures</string>
     <string name="scratch_quiz_explanation">Scratch is a visual programming language where you drag and connect blocks to create programs, games, and animations.</string>
+
+    <!-- AI Game Intro (story pages) -->
+    <string name="ai_game_intro_go">GO!</string>
+    <string name="ai_intro_btn_next">Next</string>
+    <string name="ai_intro_btn_start">Start Mission</string>
+
+    <string name="ai_intro_alarm_title">ALARM!</string>
+    <string name="ai_intro_alarm_body">\"The Glitch\" has breached the World Cloud\'s main server — where every photo, video, and game on earth is stored. The first security wall is down. We need you now.</string>
+
+    <string name="ai_intro_threat_title">The Hacker\'s Plan</string>
+    <string name="ai_intro_threat_body">The Glitch disguises malicious viruses as innocent data packets — hiding them in plain sight.\n\nHis goals:\n- Overheat the servers\n- Change every password to \"I-Love-Cookies\"\n- Make the internet impossibly slow worldwide</string>
+
+    <string name="ai_intro_mission_title">Your Mission</string>
+    <string name="ai_intro_mission_body">You are our AI Cyber Agent. Guard the data stream — the hacker hides corrupt packets among thousands of good ones.\n\nSpot the one icon that does not belong and tap it fast. The hacker will speed up and get smarter. Do not let a single corrupt packet through!</string>
+
+    <!-- AI Game (Junior mini-game) -->
+    <string name="ai_game_step_label">Mission 3 · AI</string>
+    <string name="ai_game_find_intruder">Find the intruder!</string>
+    <string name="ai_game_won_title">Intrusion blocked!</string>
+    <string name="ai_game_won_body">You detected all intruders!</string>
 
     <!-- AI Game -->
     <string name="ai_instructions">Access the assigned device and complete the AI Protocol.\nEnter your access code when finished:</string>

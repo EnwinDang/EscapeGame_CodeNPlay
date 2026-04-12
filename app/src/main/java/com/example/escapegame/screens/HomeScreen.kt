@@ -1,6 +1,7 @@
 package com.example.escapegame.screens
 
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,11 +11,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import com.example.escapegame.theme.MissionControlBackground
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,23 +24,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.os.LocaleListCompat
 import com.example.escapegame.R
+import com.example.escapegame.theme.BrandYellow
+import com.example.escapegame.theme.MatrixDeepGreen
+import com.example.escapegame.theme.MatrixGreen
+import com.example.escapegame.theme.MissionControlBackground
 import java.util.Locale
-
-// CodeNPlay brand colors — matched from the official logo
-private val ColorCodeBlue  = Color(0xFF3EA8DC)
-private val ColorNYellow   = Color(0xFFF5C516)
-private val ColorPlayGreen = Color(0xFF7DC242)
 
 @Composable
 fun HomeScreen(onTap: () -> Unit) {
@@ -49,8 +46,17 @@ fun HomeScreen(onTap: () -> Unit) {
 
     MissionControlBackground {
         Box(modifier = Modifier.fillMaxSize().clickable { onTap() }) {
+            // Logo afbeelding - alleen deze linksboven
+            Image(
+                painter = painterResource(id = R.drawable.codenplay_logo),
+                contentDescription = "CodeNPlay Logo",
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(24.dp)
+                    .size(width = 300.dp, height = 90.dp)
+            )
 
-            // Language picker — top-right corner, does NOT trigger onTap
+            // Language picker — top-right corner
             Row(
                 modifier = Modifier
                     .align(Alignment.TopEnd)
@@ -60,53 +66,56 @@ fun HomeScreen(onTap: () -> Unit) {
             ) {
                 listOf("en" to "EN", "nl" to "NL", "fr" to "FR").forEach { (tag, label) ->
                     if (tag == activeLanguage) {
-                        Button(onClick = {}, colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)) {
-                            Text(label)
+                        Button(
+                            onClick = {},
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.primary,
+                                contentColor = MatrixDeepGreen
+                            )
+                        ) {
+                            Text(label, fontWeight = FontWeight.Bold)
                         }
                     } else {
                         OutlinedButton(onClick = {
                             activeLanguage = tag
                             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tag))
                         }) {
-                            Text(label)
+                            Text(label, fontWeight = FontWeight.Bold)
                         }
                     }
                 }
             }
 
-            // Main content — tap anywhere to proceed
+            // Main content — Centraal uitgelijnd, maar iets naar boven verschoven
             Column(
                 modifier = Modifier.fillMaxSize().padding(32.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Branded title text matching logo colors
-                Text(
-                    text = buildAnnotatedString {
-                        withStyle(SpanStyle(color = ColorCodeBlue, fontWeight = FontWeight.ExtraBold)) { append("Code") }
-                        withStyle(SpanStyle(color = ColorNYellow, fontWeight = FontWeight.ExtraBold)) { append("N") }
-                        withStyle(SpanStyle(color = ColorPlayGreen, fontWeight = FontWeight.ExtraBold)) { append("Play") }
-                    },
-                    style = MaterialTheme.typography.displayLarge.copy(fontSize = 96.sp),
-                    textAlign = TextAlign.Center
-                )
-
-                Spacer(modifier = Modifier.height(4.dp))
-
                 Text(
                     text = stringResource(R.string.home_subtitle),
-                    style = MaterialTheme.typography.headlineSmall,
+                    style = MaterialTheme.typography.displayLarge.copy(
+                        fontSize = 64.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    ),
+                    color = BrandYellow,
                     textAlign = TextAlign.Center
                 )
 
-                Spacer(modifier = Modifier.height(48.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
                 Text(
                     text = stringResource(R.string.home_tap_to_start),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f),
+                    style = MaterialTheme.typography.headlineLarge.copy(
+                        fontSize = 36.sp,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    color = MatrixGreen.copy(alpha = 0.95f),
                     textAlign = TextAlign.Center
                 )
+
+                // Extra spacer onderaan om alles meer naar boven te duwen
+                Spacer(modifier = Modifier.height(150.dp))
             }
         }
     }
