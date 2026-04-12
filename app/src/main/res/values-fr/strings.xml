@@ -64,61 +64,15 @@
     <string name="difficulty_kids">Agent Junior</string>
     <string name="difficulty_teens">Agent Senior</string>
 
-    <!-- Binary Word Quizzes -->
-    <string name="word_data_question">Qu\'est-ce que la donnée en informatique ?</string>
-    <string name="word_data_option_a">Des informations que les ordinateurs peuvent stocker et traiter</string>
-    <string name="word_data_option_b">Un type de logiciel de programmation</string>
-    <string name="word_data_option_c">Les composants physiques d\'un ordinateur</string>
-    <string name="word_data_explanation">Les données sont tout type d\'information — chiffres, texte, images, sons — qu\'un ordinateur peut stocker, traiter ou envoyer.</string>
-
-    <string name="word_code_question">Qu\'est-ce que le code source ?</string>
-    <string name="word_code_option_a">Des instructions écrites par des programmeurs pour dire à un ordinateur quoi faire</string>
-    <string name="word_code_option_b">Un mot de passe secret pour accéder aux fichiers</string>
-    <string name="word_code_option_c">L\'écran d\'affichage d\'un ordinateur</string>
-    <string name="word_code_explanation">Le code source est du texte écrit dans un langage de programmation qui dit à un ordinateur exactement quoi faire, étape par étape.</string>
-
-    <string name="word_server_question">Qu\'est-ce qu\'un serveur ?</string>
-    <string name="word_server_option_a">Un ordinateur puissant qui stocke et partage des données avec d\'autres appareils</string>
-    <string name="word_server_option_b">Un programme qui envoie automatiquement des e-mails</string>
-    <string name="word_server_option_c">Un type de jeu vidéo</string>
-    <string name="word_server_explanation">Un serveur est un ordinateur puissant qui stocke des sites web, des applications et des données, et les envoie aux autres appareils quand on le demande.</string>
-
-    <string name="word_robot_question">Qu\'est-ce qui fait fonctionner un robot ?</string>
-    <string name="word_robot_option_a">Il suit des instructions programmées écrites par un humain</string>
-    <string name="word_robot_option_b">Il pense et prend des décisions comme un cerveau humain</string>
-    <string name="word_robot_option_c">Il effectue des actions aléatoires jusqu\'à ce que la bonne fonctionne</string>
-    <string name="word_robot_explanation">Un robot suit des instructions programmées — il fait exactement ce que le code lui dit, étape par étape, sans réfléchir par lui-même.</string>
-
-    <string name="word_cloud_question">Que signifie \"le cloud\" en informatique ?</string>
-    <string name="word_cloud_option_a">Stocker et accéder aux données via internet sur des serveurs distants</string>
-    <string name="word_cloud_option_b">Un programme de prévisions météo sur votre téléphone</string>
-    <string name="word_cloud_option_c">Une connexion clavier sans fil</string>
-    <string name="word_cloud_explanation">Le cloud signifie stocker vos données sur des ordinateurs puissants connectés à internet, pour y accéder depuis n\'importe quel appareil, n\'importe où.</string>
-
     <!-- Scratch Game -->
     <string name="scratch_instructions">Rendez-vous sur l\'ordinateur et complétez le Protocole Scratch.\nEntrez votre code d\'accès une fois terminé :</string>
-    <string name="scratch_quiz_question">À quoi sert Scratch ?</string>
-    <string name="scratch_quiz_option_a">Programmation visuelle par blocs</string>
-    <string name="scratch_quiz_option_b">Pirater des ordinateurs</string>
-    <string name="scratch_quiz_option_c">Dessiner des images</string>
-    <string name="scratch_quiz_explanation">Scratch est un langage de programmation visuel où vous faites glisser et connectez des blocs pour créer des programmes, des jeux et des animations.</string>
 
     <!-- AI Game -->
     <string name="ai_instructions">Utilisez l\'appareil fourni et complétez le Protocole IA.\nEntrez votre code d\'accès une fois terminé :</string>
-    <string name="ai_quiz_question">Que signifie IA ?</string>
-    <string name="ai_quiz_option_a">Intelligence Artificielle</string>
-    <string name="ai_quiz_option_b">Internet Automatique</string>
-    <string name="ai_quiz_option_c">Interface Android</string>
-    <string name="ai_quiz_explanation">IA signifie Intelligence Artificielle — des systèmes capables d\'apprendre à partir de données et de résoudre des problèmes d\'une manière similaire à la pensée humaine.</string>
 
     <!-- Robot Game -->
     <string name="robot_instructions_kids">Rendez-vous chez l\'Ozobot et complétez le Protocole Robot.\nEntrez votre code d\'accès une fois terminé :</string>
     <string name="robot_instructions_teens">Rendez-vous à la station LEGO Spike et complétez le Protocole Robot.\nEntrez votre code d\'accès une fois terminé :</string>
-    <string name="robot_quiz_question">Comment un robot sait-il quoi faire ?</string>
-    <string name="robot_quiz_option_a">Il suit des instructions programmées</string>
-    <string name="robot_quiz_option_b">Il pense par lui-même comme un humain</string>
-    <string name="robot_quiz_option_c">Il devine au hasard</string>
-    <string name="robot_quiz_explanation">Les robots suivent du code — des instructions étape par étape écrites par un programmeur qui disent au robot exactement quoi faire et quand.</string>
 
     <!-- ============================================================ -->
     <!--  JUNIOR AGENT (Kids) questions quiz — modifier ici pour kids -->
