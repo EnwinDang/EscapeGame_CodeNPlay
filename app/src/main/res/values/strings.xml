@@ -79,44 +79,8 @@
     <string name="difficulty_kids">Junior Agent</string>
     <string name="difficulty_teens">Senior Agent</string>
 
-    <!-- Binary Word Quizzes -->
-    <string name="word_data_question">What is data in computing?</string>
-    <string name="word_data_option_a">Information that computers can store and process</string>
-    <string name="word_data_option_b">A type of programming software</string>
-    <string name="word_data_option_c">The physical components of a computer</string>
-    <string name="word_data_explanation">Data is any kind of information — numbers, text, images, sounds — that a computer can store, process, or send.</string>
-
-    <string name="word_code_question">What is source code?</string>
-    <string name="word_code_option_a">Instructions written by programmers to tell a computer what to do</string>
-    <string name="word_code_option_b">A secret password for accessing files</string>
-    <string name="word_code_option_c">The display screen of a computer</string>
-    <string name="word_code_explanation">Source code is text written in a programming language that tells a computer exactly what to do, step by step.</string>
-
-    <string name="word_server_question">What is a server?</string>
-    <string name="word_server_option_a">A powerful computer that stores and shares data with other devices</string>
-    <string name="word_server_option_b">A program that sends emails automatically</string>
-    <string name="word_server_option_c">A type of computer game</string>
-    <string name="word_server_explanation">A server is a powerful computer that stores websites, apps, and data, and delivers them to other devices when requested.</string>
-
-    <string name="word_robot_question">What makes a robot work?</string>
-    <string name="word_robot_option_a">It follows programmed instructions written by a human</string>
-    <string name="word_robot_option_b">It thinks and makes decisions like a human brain</string>
-    <string name="word_robot_option_c">It runs on random actions until the right one works</string>
-    <string name="word_robot_explanation">A robot follows programmed instructions — it does exactly what the code tells it, step by step, without thinking for itself.</string>
-
-    <string name="word_cloud_question">What does \"the cloud\" mean in computing?</string>
-    <string name="word_cloud_option_a">Storing and accessing data over the internet on remote servers</string>
-    <string name="word_cloud_option_b">A weather forecasting program on your phone</string>
-    <string name="word_cloud_option_c">A wireless keyboard connection</string>
-    <string name="word_cloud_explanation">The cloud means storing your data on powerful computers connected to the internet, so you can access it from any device, anywhere.</string>
-
     <!-- Scratch Game -->
     <string name="scratch_instructions">Proceed to the laptop and complete the Scratch Protocol.\nEnter your access code when finished:</string>
-    <string name="scratch_quiz_question">What is Scratch used for?</string>
-    <string name="scratch_quiz_option_a">Visual block-based programming</string>
-    <string name="scratch_quiz_option_b">Hacking into computers</string>
-    <string name="scratch_quiz_option_c">Drawing pictures</string>
-    <string name="scratch_quiz_explanation">Scratch is a visual programming language where you drag and connect blocks to create programs, games, and animations.</string>
 
     <!-- AI Game Intro (story pages) -->
     <string name="ai_game_intro_go">GO!</string>
@@ -140,20 +104,10 @@
 
     <!-- AI Game -->
     <string name="ai_instructions">Access the assigned device and complete the AI Protocol.\nEnter your access code when finished:</string>
-    <string name="ai_quiz_question">What does AI stand for?</string>
-    <string name="ai_quiz_option_a">Artificial Intelligence</string>
-    <string name="ai_quiz_option_b">Automatic Internet</string>
-    <string name="ai_quiz_option_c">Android Interface</string>
-    <string name="ai_quiz_explanation">AI stands for Artificial Intelligence — systems that can learn from data and solve problems in ways that resemble human thinking.</string>
 
     <!-- Robot Game -->
     <string name="robot_instructions_kids">Proceed to the Ozobot and complete the Robot Protocol.\nEnter your access code when finished:</string>
     <string name="robot_instructions_teens">Proceed to the LEGO Spike station and complete the Robot Protocol.\nEnter your access code when finished:</string>
-    <string name="robot_quiz_question">How does a robot know what to do?</string>
-    <string name="robot_quiz_option_a">It follows programmed instructions</string>
-    <string name="robot_quiz_option_b">It thinks for itself like a human</string>
-    <string name="robot_quiz_option_c">It guesses randomly</string>
-    <string name="robot_quiz_explanation">Robots follow code — step-by-step instructions written by a programmer that tell the robot exactly what to do and when.</string>
 
     <!-- ============================================================ -->
     <!--  JUNIOR AGENT (Kids) quiz strings — edit here for kids       -->

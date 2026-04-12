@@ -64,44 +64,8 @@
     <string name="difficulty_kids">Junior Agent</string>
     <string name="difficulty_teens">Senior Agent</string>
 
-    <!-- Binary Word Quizzes -->
-    <string name="word_data_question">Wat is data in de informatica?</string>
-    <string name="word_data_option_a">Informatie die computers kunnen opslaan en verwerken</string>
-    <string name="word_data_option_b">Een soort programmeersoftware</string>
-    <string name="word_data_option_c">De fysieke onderdelen van een computer</string>
-    <string name="word_data_explanation">Data is elk soort informatie — getallen, tekst, afbeeldingen, geluiden — die een computer kan opslaan, verwerken of versturen.</string>
-
-    <string name="word_code_question">Wat is broncode?</string>
-    <string name="word_code_option_a">Instructies geschreven door programmeurs om een computer te vertellen wat hij moet doen</string>
-    <string name="word_code_option_b">Een geheim wachtwoord voor toegang tot bestanden</string>
-    <string name="word_code_option_c">Het beeldscherm van een computer</string>
-    <string name="word_code_explanation">Broncode is tekst geschreven in een programmeertaal die een computer stap voor stap precies vertelt wat hij moet doen.</string>
-
-    <string name="word_server_question">Wat is een server?</string>
-    <string name="word_server_option_a">Een krachtige computer die gegevens opslaat en deelt met andere apparaten</string>
-    <string name="word_server_option_b">Een programma dat automatisch e-mails verstuurt</string>
-    <string name="word_server_option_c">Een soort computerspel</string>
-    <string name="word_server_explanation">Een server is een krachtige computer die websites, apps en gegevens opslaat en ze op verzoek naar andere apparaten stuurt.</string>
-
-    <string name="word_robot_question">Waardoor werkt een robot?</string>
-    <string name="word_robot_option_a">Het volgt geprogrammeerde instructies geschreven door een mens</string>
-    <string name="word_robot_option_b">Het denkt en neemt beslissingen zoals een menselijk brein</string>
-    <string name="word_robot_option_c">Het werkt op willekeurige acties totdat de juiste werkt</string>
-    <string name="word_robot_explanation">Een robot volgt geprogrammeerde instructies — het doet precies wat de code zegt, stap voor stap, zonder zelf na te denken.</string>
-
-    <string name="word_cloud_question">Wat betekent \"de cloud\" in de informatica?</string>
-    <string name="word_cloud_option_a">Gegevens opslaan en benaderen via het internet op externe servers</string>
-    <string name="word_cloud_option_b">Een weersvoorspellingsprogramma op je telefoon</string>
-    <string name="word_cloud_option_c">Een draadloze toetsenbordverbinding</string>
-    <string name="word_cloud_explanation">De cloud betekent dat je gegevens worden opgeslagen op krachtige computers die verbonden zijn met het internet, zodat je ze overal en op elk apparaat kunt openen.</string>
-
     <!-- Scratch Game -->
     <string name="scratch_instructions">Ga naar de laptop en voltooi het Scratch Protocol.\nVoer je toegangscode in als je klaar bent:</string>
-    <string name="scratch_quiz_question">Waarvoor wordt Scratch gebruikt?</string>
-    <string name="scratch_quiz_option_a">Visueel blokgebaseerd programmeren</string>
-    <string name="scratch_quiz_option_b">Computers hacken</string>
-    <string name="scratch_quiz_option_c">Tekeningen maken</string>
-    <string name="scratch_quiz_explanation">Scratch is een visuele programmeertaal waarbij je blokken sleept en verbindt om programma\'s, spelletjes en animaties te maken.</string>
 
     <!-- AI Game Intro (verhaalpagina's) -->
     <string name="ai_game_intro_go">GO!</string>
@@ -125,20 +89,10 @@
 
     <!-- AI Game -->
     <string name="ai_instructions">Gebruik het opgegeven apparaat en voltooi het AI Protocol.\nVoer je toegangscode in als je klaar bent:</string>
-    <string name="ai_quiz_question">Waar staat AI voor?</string>
-    <string name="ai_quiz_option_a">Kunstmatige Intelligentie</string>
-    <string name="ai_quiz_option_b">Automatisch Internet</string>
-    <string name="ai_quiz_option_c">Android Interface</string>
-    <string name="ai_quiz_explanation">AI staat voor Kunstmatige Intelligentie — systemen die kunnen leren van gegevens en problemen oplossen op een manier die lijkt op menselijk denken.</string>
 
     <!-- Robot Game -->
     <string name="robot_instructions_kids">Ga naar de Ozobot en voltooi het Robot Protocol.\nVoer je toegangscode in als je klaar bent:</string>
     <string name="robot_instructions_teens">Ga naar het LEGO Spike station en voltooi het Robot Protocol.\nVoer je toegangscode in als je klaar bent:</string>
-    <string name="robot_quiz_question">Hoe weet een robot wat hij moet doen?</string>
-    <string name="robot_quiz_option_a">Het volgt geprogrammeerde instructies</string>
-    <string name="robot_quiz_option_b">Het denkt zelf na zoals een mens</string>
-    <string name="robot_quiz_option_c">Het raadt willekeurig</string>
-    <string name="robot_quiz_explanation">Robots volgen code — stap-voor-stap instructies geschreven door een programmeur die de robot precies vertellen wat hij moet doen en wanneer.</string>
 
     <!-- ============================================================ -->
     <!--  JUNIOR AGENT (Kids) quizvragen — hier aanpassen voor kids   -->
