@@ -1,6 +1,7 @@
 package com.example.escapegame.screens
 
 import android.media.MediaPlayer
+import com.example.escapegame.logic.VideoAssetManager
 import androidx.activity.compose.BackHandler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.core.Animatable
@@ -35,6 +36,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun BinaryGameScreen(
+    videoAssetManager: VideoAssetManager,
     timerSeconds: Int,
     onSolved: (String) -> Unit,
     onHome: () -> Unit,
@@ -271,6 +273,7 @@ fun BinaryGameScreen(
 
                                 // AISpeechBubble audio control
                                 AISpeechBubble(
+                                    videoAssetManager = videoAssetManager,
                                     isPlaying = isBubblePlaying,
                                     onPlay = {
                                         if (!isBubblePlaying) {
@@ -389,7 +392,13 @@ private fun BinaryGridCard(word: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true, widthDp = 900, heightDp = 560)
 @Composable
 private fun BinaryGameScreenPreview() {
+    val context = LocalContext.current
     EscapeGameTheme {
-        BinaryGameScreen(timerSeconds = 300, onSolved = {}, onHome = {})
+        BinaryGameScreen(
+            videoAssetManager = VideoAssetManager(context),
+            timerSeconds = 300,
+            onSolved = {},
+            onHome = {}
+        )
     }
 }

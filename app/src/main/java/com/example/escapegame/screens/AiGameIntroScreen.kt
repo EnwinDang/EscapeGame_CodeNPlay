@@ -12,6 +12,7 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -53,6 +54,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.escapegame.R
+import com.example.escapegame.logic.VideoAssetManager
 import com.example.escapegame.theme.BrandBlue
 import com.example.escapegame.theme.BrandGreen
 import com.example.escapegame.theme.ErrorRed
@@ -95,6 +97,7 @@ private val introStoryElements = listOf(
 
 @Composable
 fun AiGameIntroScreen(
+    videoAssetManager: VideoAssetManager,
     onReady: () -> Unit,
     onHome: () -> Unit,
 ) {
@@ -162,6 +165,7 @@ fun AiGameIntroScreen(
                     )
 
                     AISpeechBubble(
+                        videoAssetManager = videoAssetManager,
                         isPlaying = isPlaying,
                         onPlay = {
                             if (!isPlaying) {

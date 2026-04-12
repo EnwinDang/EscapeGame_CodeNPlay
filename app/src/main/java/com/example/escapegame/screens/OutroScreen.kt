@@ -1,28 +1,30 @@
 package com.example.escapegame.screens
 
-import android.net.Uri
+import android.view.TextureView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import android.view.TextureView
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+import com.example.escapegame.logic.VideoAsset
+import com.example.escapegame.logic.VideoAssetManager
 
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
-fun OutroScreen(onFinished: () -> Unit) {
-    val context = LocalContext.current
+fun OutroScreen(
+    videoAssetManager: VideoAssetManager,
+    onFinished: () -> Unit,
+) {
+    val uri = remember { videoAssetManager.getUri(VideoAsset.OUTRO) }
 
     val player = remember {
-        ExoPlayer.Builder(context).build().apply {
-            val uri = Uri.parse("asset:///videos/outro.mp4")
+        ExoPlayer.Builder(videoAssetManager.context).build().apply {
             setMediaItem(MediaItem.fromUri(uri))
             prepare()
             playWhenReady = true

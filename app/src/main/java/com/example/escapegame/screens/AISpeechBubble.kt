@@ -1,6 +1,6 @@
 package com.example.escapegame.screens
 
-import android.net.Uri
+import android.view.TextureView
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -19,19 +19,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import android.view.TextureView
 import androidx.media3.exoplayer.ExoPlayer
+import com.example.escapegame.logic.VideoAsset
+import com.example.escapegame.logic.VideoAssetManager
 
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
 fun AISpeechBubble(
+    videoAssetManager: VideoAssetManager,
     isPlaying: Boolean,
     onPlay: () -> Unit,
     modifier: Modifier = Modifier,
@@ -39,7 +40,6 @@ fun AISpeechBubble(
     val isPreview = LocalInspectionMode.current
 
     if (isPreview) {
-        // Preview placeholder — no ExoPlayer
         Box(
             modifier = modifier
                 .size(190.dp)
@@ -57,11 +57,11 @@ fun AISpeechBubble(
         return
     }
 
-    val context = LocalContext.current
+    val uri = remember { videoAssetManager.getUri(VideoAsset.AI_SPEECH_BUBBLE) }
 
     val player = remember {
-        ExoPlayer.Builder(context).build().apply {
-            setMediaItem(MediaItem.fromUri(Uri.parse("asset:///videos/ai_speech_bubble.mp4")))
+        ExoPlayer.Builder(videoAssetManager.context).build().apply {
+            setMediaItem(MediaItem.fromUri(uri))
             repeatMode = Player.REPEAT_MODE_ONE
             prepare()
         }

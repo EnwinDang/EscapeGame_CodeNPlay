@@ -55,6 +55,7 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
 
         composable(Routes.VIDEO) {
             VideoScreen(
+                videoAssetManager = viewModel.videoAssetManager,
                 onContinue = { navController.navigate(Routes.DIFFICULTY) }
             )
         }
@@ -72,6 +73,7 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
         composable(Routes.BINARY_GAME) {
             val config = viewModel.missionConfig
             BinaryGameScreen(
+                videoAssetManager = viewModel.videoAssetManager,
                 timerSeconds  = config.binaryTimerSeconds,
                 onSolved      = { word -> navController.navigate("binary_quiz/$word") },
                 onHome        = onHome,
@@ -133,6 +135,7 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
             val config = viewModel.missionConfig
             if (viewModel.difficulty == Difficulty.KIDS) {
                 AiGameScreen(
+                    videoAssetManager = viewModel.videoAssetManager,
                     onGameCompleted = { navController.navigate(Routes.AI_QUIZ) },
                     onHome          = onHome,
                 )
@@ -196,6 +199,7 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
 
         composable(Routes.OUTRO) {
             OutroScreen(
+                videoAssetManager = viewModel.videoAssetManager,
                 onFinished = { navController.navigate(Routes.CONGRATULATIONS) }
             )
         }

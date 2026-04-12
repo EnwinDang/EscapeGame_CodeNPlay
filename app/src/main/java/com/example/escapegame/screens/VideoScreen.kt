@@ -1,7 +1,7 @@
 package com.example.escapegame.screens
 
-import android.net.Uri
 import android.util.Log
+import android.view.TextureView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -14,38 +14,33 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import android.view.TextureView
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import com.example.escapegame.R
+import com.example.escapegame.logic.VideoAsset
+import com.example.escapegame.logic.VideoAssetManager
 
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
-fun VideoScreen(onContinue: () -> Unit) {
-    val context = LocalContext.current
+fun VideoScreen(
+    videoAssetManager: VideoAssetManager,
+    onContinue: () -> Unit,
+) {
+    val uri = remember { videoAssetManager.getUri(VideoAsset.INTRO) }
 
     val player = remember {
-        ExoPlayer.Builder(context).build().apply {
-            val uri = Uri.parse("asset:///videos/intro.mp4")
+        ExoPlayer.Builder(videoAssetManager.context).build().apply {
             setMediaItem(MediaItem.fromUri(uri))
             prepare()
             playWhenReady = true
             addListener(object : Player.Listener {
                 override fun onPlaybackStateChanged(state: Int) {
-                    val stateName = when (state) {
-                        Player.STATE_IDLE -> "IDLE"
-                        Player.STATE_BUFFERING -> "BUFFERING"
-                        Player.STATE_READY -> "READY"
-                        Player.STATE_ENDED -> "ENDED"
-                        else -> "UNKNOWN"
-                    }
-                    Log.d("VideoScreen", "Playback state: $stateName")
+                    Log.d("VideoScreen", "Playback state: $state")
                     if (state == Player.STATE_ENDED) onContinue()
                 }
                 override fun onPlayerError(error: androidx.media3.common.PlaybackException) {
@@ -67,7 +62,6 @@ fun VideoScreen(onContinue: () -> Unit) {
             modifier = Modifier.fillMaxSize()
         )
 
-        // Skip button — subtle, bottom-right
         TextButton(
             onClick = onContinue,
             modifier = Modifier
