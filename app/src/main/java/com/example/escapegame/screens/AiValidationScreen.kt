@@ -50,6 +50,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -193,14 +194,11 @@ fun AiValidationScreen(
                         TeensAiPhase.FIRST_RUN -> CenteredColumn {
                             PhaseTitle(stringResource(R.string.ai_teens_first_run_title))
                             Spacer(Modifier.height(28.dp))
-                            SystemPanel(borderColor = MaterialTheme.colorScheme.primary) {
-                                Text(
-                                    text = stringResource(R.string.ai_teens_first_run_body),
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    color = MatrixGreen,
-                                    lineHeight = 30.sp
-                                )
-                            }
+                            NumberedStepPanel(
+                                steps = stringResource(R.string.ai_teens_first_run_body)
+                                    .split("\n").map { it.removePrefix("→ ") },
+                                borderColor = MaterialTheme.colorScheme.primary
+                            )
                             Spacer(Modifier.height(36.dp))
                             ActionButton(
                                 label = stringResource(R.string.ai_teens_btn_enter_code),
@@ -323,14 +321,11 @@ fun AiValidationScreen(
                         TeensAiPhase.RECALIBRATE -> CenteredColumn {
                             PhaseTitle(stringResource(R.string.ai_teens_recalibrate_title))
                             Spacer(Modifier.height(28.dp))
-                            SystemPanel(borderColor = MaterialTheme.colorScheme.primary) {
-                                Text(
-                                    text = stringResource(R.string.ai_teens_recalibrate_body),
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    color = MatrixGreen,
-                                    lineHeight = 30.sp
-                                )
-                            }
+                            NumberedStepPanel(
+                                steps = stringResource(R.string.ai_teens_recalibrate_body)
+                                    .split("\n").map { it.removePrefix("→ ") },
+                                borderColor = MaterialTheme.colorScheme.primary
+                            )
                             Spacer(Modifier.height(36.dp))
                             ActionButton(
                                 label = stringResource(R.string.ai_teens_recalibrate_done_btn),
@@ -411,14 +406,11 @@ fun AiValidationScreen(
                             Spacer(Modifier.height(12.dp))
                             PhaseTitle(stringResource(R.string.ai_teens_second_run_title))
                             Spacer(Modifier.height(28.dp))
-                            SystemPanel(borderColor = MatrixGreen) {
-                                Text(
-                                    text = stringResource(R.string.ai_teens_first_run_body),
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    color = MatrixGreen,
-                                    lineHeight = 30.sp
-                                )
-                            }
+                            NumberedStepPanel(
+                                steps = stringResource(R.string.ai_teens_first_run_body)
+                                    .split("\n").map { it.removePrefix("→ ") },
+                                borderColor = MatrixGreen
+                            )
                             Spacer(Modifier.height(36.dp))
                             ActionButton(
                                 label = stringResource(R.string.ai_teens_btn_enter_code),
@@ -581,6 +573,46 @@ private fun SystemPanel(
             .padding(20.dp)
     ) {
         content()
+    }
+}
+
+@Composable
+private fun NumberedStepPanel(steps: List<String>, borderColor: Color) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Black.copy(alpha = 0.55f), RoundedCornerShape(12.dp))
+            .border(1.dp, borderColor.copy(alpha = 0.6f), RoundedCornerShape(12.dp))
+            .padding(20.dp),
+        verticalArrangement = Arrangement.spacedBy(18.dp)
+    ) {
+        steps.forEachIndexed { index, step ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    modifier = Modifier
+                        .size(28.dp)
+                        .background(borderColor.copy(alpha = 0.12f), RoundedCornerShape(6.dp))
+                        .border(1.dp, borderColor, RoundedCornerShape(6.dp)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "${index + 1}",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = borderColor,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Monospace
+                    )
+                }
+                Spacer(Modifier.width(14.dp))
+                Text(
+                    text = step,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = borderColor,
+                    fontFamily = FontFamily.Monospace,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
     }
 }
 
