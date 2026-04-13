@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.escapegame.R
 import com.example.escapegame.screens.AiGameScreen
+import com.example.escapegame.screens.AiValidationScreen
 import com.example.escapegame.screens.BinaryGameScreen
 import com.example.escapegame.screens.CongratulationsScreen
 import com.example.escapegame.screens.DifficultyScreen
@@ -140,13 +141,10 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
                     onHome          = onHome,
                 )
             } else {
-                ExternalGameScreen(
-                    stepNumber    = 3,
-                    title         = stringResource(R.string.title_ai_game),
-                    instructions  = stringResource(R.string.ai_instructions),
-                    correctCode   = config.aiCode,
-                    onCodeCorrect = { navController.navigate(Routes.AI_QUIZ) },
-                    onHome        = onHome,
+                AiValidationScreen(
+                    correctCode     = config.aiCode,
+                    onGameCompleted = { navController.navigate(Routes.AI_QUIZ) },
+                    onHome          = onHome,
                 )
             }
         }
