@@ -11,8 +11,10 @@
     <string name="video_story">⚠ SYSTEEMINBRAAK GEDETECTEERD\nHet datacenter is gecompromitteerd. Voltooi alle code-uitdagingen om de systemen te herstellen.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Selecteer Agentniveau</string>
-    <string name="difficulty_subtitle">Jouw niveau bepaalt je uitdagingen en welke uitrusting je ontvangt.</string>
+    <string name="difficulty_title">SELECTEER JE NIVEAU</string>
+    <string name="difficulty_subtitle">Kies je agentmachtiging</string>
+    <string name="difficulty_timer_junior">10 min timer</string>
+    <string name="difficulty_timer_senior">5 min timer</string>
     <string name="btn_kids">Junior Agent</string>
     <string name="btn_teens">Senior Agent</string>
 

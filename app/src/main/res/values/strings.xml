@@ -11,8 +11,10 @@
     <string name="video_story">⚠ SYSTEM BREACH DETECTED\nThe datacenter has been compromised. Complete all coding challenges to restore the systems.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Select Agent Level</string>
-    <string name="difficulty_subtitle">Your level determines your challenges and which equipment you will receive.</string>
+    <string name="difficulty_title">SELECT YOUR LEVEL</string>
+    <string name="difficulty_subtitle">Choose your agent clearance</string>
+    <string name="difficulty_timer_junior">10 min timer</string>
+    <string name="difficulty_timer_senior">5 min timer</string>
     <string name="btn_kids">Junior Agent</string>
     <string name="btn_teens">Senior Agent</string>
 

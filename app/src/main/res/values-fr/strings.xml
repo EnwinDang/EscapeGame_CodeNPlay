@@ -11,8 +11,10 @@
     <string name="video_story">⚠ VIOLATION SYSTÈME DÉTECTÉE\nLe datacenter a été compromis. Complétez tous les défis de codage pour restaurer les systèmes.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Sélectionner le Niveau d\'Agent</string>
-    <string name="difficulty_subtitle">Votre niveau détermine vos défis et l\'équipement que vous recevrez.</string>
+    <string name="difficulty_title">SÉLECTIONNE TON NIVEAU</string>
+    <string name="difficulty_subtitle">Choisis ton niveau d\'accréditation</string>
+    <string name="difficulty_timer_junior">10 min timer</string>
+    <string name="difficulty_timer_senior">5 min timer</string>
     <string name="btn_kids">Agent Junior</string>
     <string name="btn_teens">Agent Senior</string>
 
