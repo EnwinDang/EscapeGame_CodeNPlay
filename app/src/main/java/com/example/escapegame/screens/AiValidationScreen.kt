@@ -3,6 +3,7 @@ package com.example.escapegame.screens
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -33,6 +34,7 @@ import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -68,7 +70,7 @@ import com.example.escapegame.theme.MissionControlBackground
 private enum class TeensAiPhase {
     INTRO, FIRST_RUN, CODE_INPUT_1,
     BAD_PREDICTION,
-    RECALIBRATE,
+    RECALIBRATE, UPLOADING,
     SECOND_RUN, CODE_INPUT_2,
     SUCCESS
 }
@@ -112,7 +114,8 @@ fun AiValidationScreen(
         TeensAiPhase.FIRST_RUN,
         TeensAiPhase.CODE_INPUT_1   -> stringResource(R.string.ai_teens_status_phase1)
         TeensAiPhase.BAD_PREDICTION -> stringResource(R.string.ai_teens_status_mismatch)
-        TeensAiPhase.RECALIBRATE    -> stringResource(R.string.ai_teens_status_recalibrating)
+        TeensAiPhase.RECALIBRATE,
+        TeensAiPhase.UPLOADING      -> stringResource(R.string.ai_teens_status_recalibrating)
         TeensAiPhase.SECOND_RUN,
         TeensAiPhase.CODE_INPUT_2   -> stringResource(R.string.ai_teens_status_phase2)
         TeensAiPhase.SUCCESS        -> stringResource(R.string.ai_teens_status_restored)
@@ -331,8 +334,60 @@ fun AiValidationScreen(
                             Spacer(Modifier.height(36.dp))
                             ActionButton(
                                 label = stringResource(R.string.ai_teens_recalibrate_done_btn),
-                                onClick = { phase = TeensAiPhase.SECOND_RUN }
+                                onClick = { phase = TeensAiPhase.UPLOADING }
                             )
+                        }
+
+                        // ── UPLOADING — validates recorded data into the system ──
+                        TeensAiPhase.UPLOADING -> {
+                            val progressAnim = remember { Animatable(0f) }
+
+                            androidx.compose.runtime.LaunchedEffect(Unit) {
+                                progressAnim.animateTo(
+                                    targetValue = 1f,
+                                    animationSpec = tween(3000, easing = LinearEasing)
+                                )
+                                phase = TeensAiPhase.SECOND_RUN
+                            }
+
+                            val progress = progressAnim.value
+                            val statusMsg = when {
+                                progress < 0.30f -> stringResource(R.string.ai_teens_upload_status_1)
+                                progress < 0.60f -> stringResource(R.string.ai_teens_upload_status_2)
+                                progress < 0.90f -> stringResource(R.string.ai_teens_upload_status_3)
+                                else             -> stringResource(R.string.ai_teens_upload_status_4)
+                            }
+
+                            CenteredColumn {
+                                PhaseTitle(stringResource(R.string.ai_teens_uploading_title))
+                                Spacer(Modifier.height(40.dp))
+                                SystemPanel(borderColor = MatrixGreen) {
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Text(
+                                            text = statusMsg,
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MatrixGreen
+                                        )
+                                        Text(
+                                            text = "${(progress * 100).toInt()}%",
+                                            style = MaterialTheme.typography.labelLarge,
+                                            color = MatrixGreen,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                    Spacer(Modifier.height(16.dp))
+                                    LinearProgressIndicator(
+                                        progress = { progress },
+                                        modifier = Modifier.fillMaxWidth().height(8.dp),
+                                        color = MatrixGreen,
+                                        trackColor = MatrixGreen.copy(alpha = 0.2f)
+                                    )
+                                }
+                            }
                         }
 
                         // ── SECOND RUN — rerun after recalibration ─────────────

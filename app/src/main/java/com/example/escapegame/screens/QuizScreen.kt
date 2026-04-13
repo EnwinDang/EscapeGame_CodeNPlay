@@ -77,6 +77,7 @@ fun QuizScreen(
                 Text(
                     text = question,
                     style = MaterialTheme.typography.headlineSmall,
+                    color = Color.White,
                     textAlign = TextAlign.Center
                 )
 

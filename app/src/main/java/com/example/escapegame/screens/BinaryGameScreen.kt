@@ -75,7 +75,6 @@ fun BinaryGameScreen(
     }
 
     val puzzle = remember { BinaryPuzzle().also { it.generatePuzzle() } }
-    val sectorId = remember { (100..999).random() }
     var userAnswer by remember { mutableStateOf("") }
     var solved by remember { mutableStateOf(false) }
     val shakeOffset = remember { Animatable(0f) }
@@ -180,22 +179,22 @@ fun BinaryGameScreen(
                                 .fillMaxWidth()
                                 .background(Color.Black.copy(alpha = 0.5f))
                                 .padding(horizontal = 24.dp, vertical = 14.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "${stringResource(R.string.binary_sector_label)} $sectorId",
-                                style = MaterialTheme.typography.titleMedium.copy(fontFamily = FontFamily.Monospace),
-                                color = MaterialTheme.colorScheme.primary,
-                                fontWeight = FontWeight.Bold
-                            )
+                            // Left: empty space to balance right spacer
+                            Spacer(Modifier.weight(1f))
+                            // Center: timer
                             Text(
                                 text = timerText,
                                 style = MaterialTheme.typography.titleLarge.copy(fontFamily = FontFamily.Monospace),
                                 color = if (timeLeft <= 60) MaterialTheme.colorScheme.error
                                         else MaterialTheme.colorScheme.primary,
-                                fontWeight = FontWeight.Bold
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.weight(1f)
                             )
+                            // Right: empty space reserved for the Home button
+                            Spacer(Modifier.weight(1f))
                         }
 
                         // ── Main content ────────────────────────────────────────

@@ -222,15 +222,15 @@
     <string name="robot_quiz_explanation_teens">Sensors are input devices that gather information (e.g. distance, light, color). Actuators are output devices that make the robot do something (e.g. motors, speakers, LEDs).</string>
 
     <!-- AI Validation Game — Teens -->
-    <string name="ai_teens_intro_task">The AI model is producing incorrect predictions. Collect training data, retrain the model, and validate the results to restore the system.</string>
+    <string name="ai_teens_intro_task">Almost there, Agent. The AI system shows green across the board — one final validation routine on the micro:bit and the sector is cleared. Follow the steps, collect your code, and you\'re done.</string>
     <string name="ai_teens_btn_start">START VALIDATION</string>
     <string name="ai_teens_step1_title">VALIDATION TEST</string>
     <string name="ai_teens_step1_body">Test the retrained model on the micro:bit.\nNote the generated validation code.\n\n→ Run the test sequence\n→ Note the code\n→ Enter it below</string>
     <string name="ai_teens_btn_enter_code">ENTER CODE</string>
     <string name="ai_teens_code_hint">Validation code from micro:bit</string>
     <string name="ai_teens_code_title_1">ENTER VALIDATION CODE</string>
-    <string name="ai_teens_mismatch_body">The model has too few training examples.\nIt cannot reliably distinguish between signal classes.\n\nYou must collect more training data.</string>
-    <string name="ai_teens_btn_diagnose">COLLECT TRAINING DATA</string>
+    <string name="ai_teens_mismatch_body">The model was trained on corrupt data.\nThe training examples were wrong — so the AI learned the wrong patterns.\n\nYou must recalibrate with correct data.</string>
+    <string name="ai_teens_btn_diagnose">RECALIBRATE MODEL</string>
     <string name="ai_teens_training_body">The model is training on your new data.\nWait for training to complete, then validate.</string>
     <string name="ai_teens_btn_calibrated">VALIDATE MODEL</string>
     <string name="ai_teens_step2_title">PHASE 2 — REVALIDATION</string>
@@ -280,10 +280,15 @@
     <string name="ai_teens_first_run_title">TEST SEQUENCE</string>
     <string name="ai_teens_first_run_body">→ Press A+B on the micro:bit to start\n→ Follow the arrows — press A after each movement\n→ Note the code shown on the micro:bit\n→ Tap ENTER CODE when you have your code</string>
     <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
-    <string name="ai_teens_recalibrate_body">→ Press B on the micro:bit to enter training mode\n→ The micro:bit will show an arrow — perform that movement\n→ The system learns automatically — no button press needed\n→ Wait until the micro:bit shows DONE</string>
+    <string name="ai_teens_recalibrate_body">→ Press B on the micro:bit to enter training mode\n→ The micro:bit will show an arrow — perform that movement\n→ The system learns automatically — no button press needed\n→ The micro:bit shows DONE when all movements are calibrated</string>
     <string name="ai_teens_recalibrate_done_btn">DONE — RERUN SEQUENCE</string>
     <string name="ai_teens_second_run_title">REVALIDATION SEQUENCE</string>
     <string name="ai_teens_label_training_data">Training data:</string>
     <string name="ai_teens_data_quality_bad">INCORRECT</string>
     <string name="ai_teens_data_quality_good">CORRECTED ✓</string>
+    <string name="ai_teens_uploading_title">UPLOADING CALIBRATION DATA</string>
+    <string name="ai_teens_upload_status_1">Validating calibration samples…</string>
+    <string name="ai_teens_upload_status_2">Updating model weights…</string>
+    <string name="ai_teens_upload_status_3">Synchronizing parameters…</string>
+    <string name="ai_teens_upload_status_4">Upload complete</string>
 </resources>

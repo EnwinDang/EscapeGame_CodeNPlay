@@ -33,7 +33,7 @@ import kotlin.random.Random
 private class MatrixRainView(context: Context) : View(context) {
 
     private val chars = "01ABCDEF0110"
-    private val fontSize = 14f * resources.displayMetrics.density
+    private val fontSize = 20f * resources.displayMetrics.density
 
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         typeface = Typeface.MONOSPACE

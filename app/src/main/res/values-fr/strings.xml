@@ -207,15 +207,15 @@
     <string name="robot_quiz_explanation_teens">Les capteurs sont des dispositifs d\'entrée qui recueillent des informations (par ex. distance, lumière, couleur). Les actionneurs sont des dispositifs de sortie qui font agir le robot (par ex. moteurs, haut-parleurs, LEDs).</string>
 
     <!-- Jeu de Validation IA — Ados -->
-    <string name="ai_teens_intro_task">Le modèle IA produit des prédictions incorrectes. Collecte des données d\'entraînement, réentraîne le modèle et valide les résultats pour restaurer le système.</string>
+    <string name="ai_teens_intro_task">Presque fini, Agent. Le système IA affiche vert partout — il ne reste qu\'une dernière routine de validation sur le micro:bit et le secteur est sécurisé. Suis les étapes, note ton code, et c\'est terminé.</string>
     <string name="ai_teens_btn_start">DÉMARRER LA VALIDATION</string>
     <string name="ai_teens_step1_title">TEST DE VALIDATION</string>
     <string name="ai_teens_step1_body">Teste le modèle réentraîné sur le micro:bit.\nNote le code de validation généré.\n\n→ Lance la séquence de test\n→ Note le code\n→ Entre-le ci-dessous</string>
     <string name="ai_teens_btn_enter_code">ENTRER LE CODE</string>
     <string name="ai_teens_code_hint">Code de validation du micro:bit</string>
     <string name="ai_teens_code_title_1">ENTRER LE CODE DE VALIDATION</string>
-    <string name="ai_teens_mismatch_body">Le modèle a trop peu d\'exemples d\'entraînement.\nIl ne peut pas distinguer les classes de signaux.\n\nTu dois collecter plus de données d\'entraînement.</string>
-    <string name="ai_teens_btn_diagnose">COLLECTER LES DONNÉES</string>
+    <string name="ai_teens_mismatch_body">Le modèle a été entraîné sur des données corrompues.\nLes exemples d\'entraînement étaient faux — donc l\'IA a appris les mauvais schémas.\n\nTu dois le recalibrer avec des données correctes.</string>
+    <string name="ai_teens_btn_diagnose">RECALIBRER LE MODÈLE</string>
     <string name="ai_teens_training_body">Le modèle s\'entraîne sur tes nouvelles données.\nAttends la fin de l\'entraînement, puis valide.</string>
     <string name="ai_teens_btn_calibrated">VALIDER LE MODÈLE</string>
     <string name="ai_teens_step2_title">PHASE 2 — REVALIDATION</string>
@@ -265,10 +265,15 @@
     <string name="ai_teens_first_run_title">SÉQUENCE DE TEST</string>
     <string name="ai_teens_first_run_body">→ Appuie sur A+B sur le micro:bit pour démarrer\n→ Suis les flèches — appuie sur A après chaque mouvement\n→ Note le code affiché sur le micro:bit\n→ Appuie sur ENTRER CODE quand tu as ton code</string>
     <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
-    <string name="ai_teens_recalibrate_body">→ Appuie sur B sur le micro:bit pour le mode entraînement\n→ Le micro:bit affiche une flèche — effectue ce mouvement\n→ Le système apprend automatiquement — pas besoin d\'appuyer\n→ Attends que le micro:bit affiche DONE</string>
+    <string name="ai_teens_recalibrate_body">→ Appuie sur B sur le micro:bit pour le mode entraînement\n→ Le micro:bit affiche une flèche — effectue ce mouvement\n→ Le système apprend automatiquement — pas besoin d\'appuyer\n→ Le micro:bit affiche DONE quand tous les mouvements sont calibrés</string>
     <string name="ai_teens_recalibrate_done_btn">TERMINÉ — RELANCER LA SÉQUENCE</string>
     <string name="ai_teens_second_run_title">SÉQUENCE DE REVALIDATION</string>
     <string name="ai_teens_label_training_data">Données d\'entraînement :</string>
     <string name="ai_teens_data_quality_bad">INCORRECTES</string>
     <string name="ai_teens_data_quality_good">CORRIGÉES ✓</string>
+    <string name="ai_teens_uploading_title">CHARGEMENT DES DONNÉES</string>
+    <string name="ai_teens_upload_status_1">Validation des échantillons…</string>
+    <string name="ai_teens_upload_status_2">Mise à jour des poids du modèle…</string>
+    <string name="ai_teens_upload_status_3">Synchronisation des paramètres…</string>
+    <string name="ai_teens_upload_status_4">Chargement terminé</string>
 </resources>
