@@ -1,21 +1,46 @@
 package com.example.escapegame.screens
 
 import android.media.MediaPlayer
-import com.example.escapegame.logic.VideoAssetManager
 import androidx.activity.compose.BackHandler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.keyframes
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LockOpen
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
@@ -24,13 +49,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.escapegame.R
 import com.example.escapegame.logic.BinaryPuzzle
+import com.example.escapegame.logic.VideoAssetManager
+import com.example.escapegame.theme.BrandBlue
+import com.example.escapegame.theme.BrandYellow
 import com.example.escapegame.theme.EscapeGameTheme
-
+import com.example.escapegame.theme.ErrorRed
+import com.example.escapegame.theme.MatrixGreen
 import com.example.escapegame.theme.MissionControlBackground
 import kotlinx.coroutines.delay
 
@@ -41,7 +70,7 @@ fun BinaryGameScreen(
     onSolved: (String) -> Unit,
     onHome: () -> Unit,
 ) {
-    BackHandler(enabled = true) { /* back disabled during game */ }
+    BackHandler(enabled = true) { }
 
     val isPreview = LocalInspectionMode.current
     val context = LocalContext.current
@@ -70,28 +99,23 @@ fun BinaryGameScreen(
         } catch (_: Exception) { null }
     }
 
-    DisposableEffect(Unit) {
-        onDispose { mediaPlayer?.release() }
-    }
+    DisposableEffect(Unit) { onDispose { mediaPlayer?.release() } }
 
     val puzzle = remember { BinaryPuzzle().also { it.generatePuzzle() } }
-    val sectorId = remember { (100..999).random() }
     var userAnswer by remember { mutableStateOf("") }
     var solved by remember { mutableStateOf(false) }
+    var feedback by remember { mutableStateOf<Boolean?>(null) }   // true=correct, false=wrong
     val shakeOffset = remember { Animatable(0f) }
     var shakeKey by remember { mutableIntStateOf(0) }
 
     LaunchedEffect(shakeKey) {
         if (shakeKey == 0) return@LaunchedEffect
         shakeOffset.snapTo(0f)
-        shakeOffset.animateTo(
-            targetValue = 0f,
-            animationSpec = keyframes {
-                durationMillis = 400
-                20f at 50; (-20f) at 100; 20f at 150; (-20f) at 200
-                10f at 250; (-10f) at 300; 0f at 400
-            }
-        )
+        shakeOffset.animateTo(0f, keyframes {
+            durationMillis = 400
+            20f at 50; (-20f) at 100; 20f at 150; (-20f) at 200
+            10f at 250; (-10f) at 300; 0f at 400
+        })
     }
 
     var timeLeft by remember { mutableIntStateOf(timerSeconds) }
@@ -106,64 +130,111 @@ fun BinaryGameScreen(
         if (!solved && timeLeft == 0) timerExpired = true
     }
 
-    val minutes = timeLeft / 60
-    val seconds = timeLeft % 60
-    val timerText = "%02d:%02d".format(minutes, seconds)
+    fun submit() {
+        if (puzzle.checkAnswer(userAnswer)) {
+            feedback = true
+            solved = true
+        } else {
+            feedback = false
+            shakeKey++
+        }
+    }
 
     MissionControlBackground {
-        Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 24.dp, vertical = 16.dp)
+        ) {
+            // ── Top bar ───────────────────────────────────────────────────────
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                HomeButton(onHome = onHome)
+
+                Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+                    MissionProgressBar(activeMission = 0)
+                }
+
+                BinaryTimerPanel(timeLeft = timeLeft, totalSeconds = timerSeconds)
+            }
+
+            // ── Main area ─────────────────────────────────────────────────────
             when {
                 solved -> {
                     Column(
-                        modifier = Modifier.fillMaxSize().padding(40.dp),
+                        modifier = Modifier.weight(1f).fillMaxWidth(),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
+                        Text("✓", fontSize = 64.sp, color = MatrixGreen)
+                        Spacer(Modifier.height(12.dp))
                         Text(
-                            text = stringResource(R.string.binary_solved_title),
-                            style = MaterialTheme.typography.displaySmall,
-                            color = MaterialTheme.colorScheme.primary,
+                            stringResource(R.string.binary_solved_title),
+                            fontSize = 32.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = MatrixGreen,
                             textAlign = TextAlign.Center
                         )
-                        Spacer(Modifier.height(16.dp))
+                        Spacer(Modifier.height(8.dp))
                         Text(
-                            text = stringResource(R.string.binary_code_word_label),
-                            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                            color = MaterialTheme.colorScheme.primary,
+                            "${stringResource(R.string.binary_code_word_label)} ${puzzle.currentWord}",
+                            fontSize = 20.sp,
+                            color = Color.White.copy(alpha = 0.7f),
                             textAlign = TextAlign.Center
-                        )
-                        Text(
-                            text = puzzle.currentWord,
-                            style = MaterialTheme.typography.displayLarge,
-                            color = MaterialTheme.colorScheme.primary
                         )
                         Spacer(Modifier.height(32.dp))
-                        Button(
-                            onClick = { onSolved(puzzle.currentWord) },
-                            modifier = Modifier.fillMaxWidth().height(72.dp)
+                        Box(
+                            modifier = Modifier
+                                .width(280.dp)
+                                .height(56.dp)
+                                .clip(RoundedCornerShape(14.dp))
+                                .background(Brush.horizontalGradient(listOf(BrandBlue, MatrixGreen)))
+                                .clickable { onSolved(puzzle.currentWord) },
+                            contentAlignment = Alignment.Center
                         ) {
-                            Text(stringResource(R.string.binary_continue_quiz), style = MaterialTheme.typography.titleLarge)
+                            Text(
+                                stringResource(R.string.binary_continue_quiz),
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = Color.White,
+                                letterSpacing = 1.sp
+                            )
                         }
                     }
                 }
 
                 timerExpired -> {
                     Column(
-                        modifier = Modifier.fillMaxSize().padding(40.dp),
+                        modifier = Modifier.weight(1f).fillMaxWidth(),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = stringResource(R.string.binary_times_up),
-                            style = MaterialTheme.typography.displaySmall,
-                            color = MaterialTheme.colorScheme.error
+                            stringResource(R.string.binary_times_up),
+                            fontSize = 32.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = ErrorRed,
+                            textAlign = TextAlign.Center
                         )
                         Spacer(Modifier.height(32.dp))
-                        Button(
-                            onClick = { onSolved(puzzle.currentWord) },
-                            modifier = Modifier.fillMaxWidth().height(72.dp)
+                        Box(
+                            modifier = Modifier
+                                .width(280.dp)
+                                .height(56.dp)
+                                .clip(RoundedCornerShape(14.dp))
+                                .background(Brush.horizontalGradient(listOf(BrandBlue, MatrixGreen)))
+                                .clickable { onSolved(puzzle.currentWord) },
+                            contentAlignment = Alignment.Center
                         ) {
-                            Text(stringResource(R.string.binary_continue_anyway), style = MaterialTheme.typography.titleLarge)
+                            Text(
+                                stringResource(R.string.binary_continue_anyway),
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = Color.White,
+                                letterSpacing = 1.sp
+                            )
                         }
                     }
                 }
@@ -171,220 +242,302 @@ fun BinaryGameScreen(
                 else -> {
                     Column(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .graphicsLayer { translationX = shakeOffset.value }
+                            .weight(1f)
+                            .fillMaxWidth()
+                            .graphicsLayer { translationX = shakeOffset.value },
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        // ── Top header bar ──────────────────────────────────────
+                        // AI speech bubble + hint message
                         Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.Black.copy(alpha = 0.5f))
-                                .padding(horizontal = 24.dp, vertical = 14.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
+                            modifier = Modifier.fillMaxWidth(0.85f),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            Text(
-                                text = "${stringResource(R.string.binary_sector_label)} $sectorId",
-                                style = MaterialTheme.typography.titleMedium.copy(fontFamily = FontFamily.Monospace),
-                                color = MaterialTheme.colorScheme.primary,
-                                fontWeight = FontWeight.Bold
+                            AISpeechBubble(
+                                videoAssetManager = videoAssetManager,
+                                isPlaying = isBubblePlaying,
+                                onPlay = {
+                                    if (!isBubblePlaying) {
+                                        mediaPlayer?.start(); isBubblePlaying = true
+                                    } else {
+                                        mediaPlayer?.pause(); isBubblePlaying = false
+                                    }
+                                },
+                                modifier = Modifier.size(90.dp)
                             )
-                            Text(
-                                text = timerText,
-                                style = MaterialTheme.typography.titleLarge.copy(fontFamily = FontFamily.Monospace),
-                                color = if (timeLeft <= 60) MaterialTheme.colorScheme.error
-                                        else MaterialTheme.colorScheme.primary,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
 
-                        // ── Main content ────────────────────────────────────────
-                        Row(
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(24.dp),
-                            horizontalArrangement = Arrangement.spacedBy(24.dp)
-                        ) {
-                            // Left sidebar — decode controls
-                            Column(
+                            Box(
                                 modifier = Modifier
-                                    .weight(0.38f)
-                                    .fillMaxHeight(),
-                                verticalArrangement = Arrangement.spacedBy(16.dp)
+                                    .weight(1f)
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .background(Color.White.copy(alpha = 0.07f))
+                                    .border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(16.dp))
+                                    .padding(16.dp)
                             ) {
                                 Text(
-                                    text = "DECODE PARAMETERS",
-                                    style = MaterialTheme.typography.labelLarge.copy(fontFamily = FontFamily.Monospace),
-                                    color = MaterialTheme.colorScheme.primary,
-                                    fontWeight = FontWeight.Bold
+                                    text = "Decode the binary sequence to reveal the hidden word. Each 8-bit group represents one letter!",
+                                    fontSize = 14.sp,
+                                    color = Color.White.copy(alpha = 0.85f),
+                                    lineHeight = 20.sp
                                 )
+                            }
+                        }
+
+                        Spacer(Modifier.height(20.dp))
+
+                        // Main card
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth(0.85f)
+                                .clip(RoundedCornerShape(20.dp))
+                                .background(Color(0xFF0A1A0A).copy(alpha = 0.88f))
+                                .border(1.dp, BrandBlue.copy(alpha = 0.25f), RoundedCornerShape(20.dp))
+                                .padding(28.dp)
+                        ) {
+                            Text(
+                                text = "MISSION 1 — BINARY DECODE",
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = BrandBlue,
+                                letterSpacing = 1.5.sp
+                            )
+
+                            Spacer(Modifier.height(16.dp))
+
+                            // Binary display
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .background(Color(0xFF060F08))
+                                    .padding(vertical = 24.dp, horizontal = 16.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
                                 Text(
-                                    text = stringResource(R.string.binary_decode_prompt),
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = Color.White.copy(alpha = 0.8f)
-                                )
-
-                                // Binary sequence display
-                                Surface(
-                                    color = Color.Black.copy(alpha = 0.4f),
-                                    shape = MaterialTheme.shapes.medium,
-                                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f))
-                                ) {
-                                    Text(
-                                        text = puzzle.currentBinary,
-                                        style = MaterialTheme.typography.bodySmall.copy(
-                                            fontFamily = FontFamily.Monospace,
-                                            letterSpacing = 2.sp
-                                        ),
-                                        color = MaterialTheme.colorScheme.primary,
-                                        textAlign = TextAlign.Center,
-                                        modifier = Modifier.padding(12.dp).fillMaxWidth()
-                                    )
-                                }
-
-                                Spacer(Modifier.weight(1f))
-
-                                // Answer input
-                                OutlinedTextField(
-                                    value = userAnswer,
-                                    onValueChange = { userAnswer = it },
-                                    label = {
-                                        Text(
-                                            stringResource(R.string.binary_answer_label),
-                                            style = MaterialTheme.typography.bodySmall
-                                        )
-                                    },
-                                    modifier = Modifier.fillMaxWidth(),
-                                    singleLine = true,
-                                    textStyle = MaterialTheme.typography.titleMedium.copy(
-                                        fontWeight = FontWeight.ExtraBold,
-                                        textAlign = TextAlign.Center,
-                                        fontFamily = FontFamily.Monospace
-                                    ),
-                                    colors = OutlinedTextFieldDefaults.colors(
-                                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                                        unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-                                        focusedLabelColor = MaterialTheme.colorScheme.primary,
-                                        unfocusedLabelColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
-                                        focusedTextColor = MaterialTheme.colorScheme.primary,
-                                        unfocusedTextColor = MaterialTheme.colorScheme.primary
-                                    )
-                                )
-
-                                // AISpeechBubble audio control
-                                AISpeechBubble(
-                                    videoAssetManager = videoAssetManager,
-                                    isPlaying = isBubblePlaying,
-                                    onPlay = {
-                                        if (!isBubblePlaying) {
-                                            mediaPlayer?.start()
-                                            isBubblePlaying = true
-                                        } else {
-                                            mediaPlayer?.pause()
-                                            isBubblePlaying = false
-                                        }
-                                    },
-                                    modifier = Modifier.size(80.dp).align(Alignment.CenterHorizontally)
+                                    text = puzzle.currentBinary,
+                                    fontSize = 20.sp,
+                                    fontFamily = FontFamily.Monospace,
+                                    color = MatrixGreen,
+                                    textAlign = TextAlign.Center,
+                                    letterSpacing = 2.sp
                                 )
                             }
 
-                            // Right — binary grid + action buttons
-                            Column(
-                                modifier = Modifier
-                                    .weight(0.62f)
-                                    .fillMaxHeight(),
-                                verticalArrangement = Arrangement.spacedBy(16.dp)
+                            Spacer(Modifier.height(16.dp))
+
+                            // Input + send
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
-                                BinaryGridCard(
-                                    word = puzzle.currentWord,
-                                    modifier = Modifier.weight(1f).fillMaxWidth()
+                                OutlinedTextField(
+                                    value = userAnswer,
+                                    onValueChange = { userAnswer = it },
+                                    placeholder = {
+                                        Text(
+                                            "Type the decoded word...",
+                                            color = Color.White.copy(alpha = 0.3f),
+                                            fontSize = 15.sp
+                                        )
+                                    },
+                                    modifier = Modifier.weight(1f),
+                                    singleLine = true,
+                                    textStyle = androidx.compose.ui.text.TextStyle(
+                                        fontSize = 18.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        fontFamily = FontFamily.Monospace,
+                                        color = when (feedback) {
+                                            true  -> MatrixGreen
+                                            false -> ErrorRed
+                                            null  -> Color.White
+                                        }
+                                    ),
+                                    colors = OutlinedTextFieldDefaults.colors(
+                                        focusedBorderColor = when (feedback) {
+                                            true  -> MatrixGreen
+                                            false -> ErrorRed
+                                            null  -> BrandBlue
+                                        },
+                                        unfocusedBorderColor = Color.White.copy(alpha = 0.15f),
+                                        focusedContainerColor = Color(0xFF060F08),
+                                        unfocusedContainerColor = Color(0xFF060F08),
+                                    ),
+                                    shape = RoundedCornerShape(12.dp)
                                 )
 
-                                // Action buttons
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                                Box(
+                                    modifier = Modifier
+                                        .size(56.dp)
+                                        .clip(RoundedCornerShape(12.dp))
+                                        .background(MatrixGreen)
+                                        .clickable { submit() },
+                                    contentAlignment = Alignment.Center
                                 ) {
-                                    OutlinedButton(
-                                        onClick = { userAnswer = "" },
-                                        modifier = Modifier.weight(1f).height(56.dp),
-                                        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)),
-                                        colors = ButtonDefaults.outlinedButtonColors(
-                                            contentColor = MaterialTheme.colorScheme.primary
-                                        )
-                                    ) {
-                                        Text(
-                                            stringResource(R.string.binary_reset_grid),
-                                            style = MaterialTheme.typography.labelLarge,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                    Button(
-                                        onClick = {
-                                            if (puzzle.checkAnswer(userAnswer)) solved = true
-                                            else shakeKey++
-                                        },
-                                        modifier = Modifier.weight(1f).height(56.dp)
-                                    ) {
-                                        Icon(Icons.Filled.LockOpen, contentDescription = null)
-                                        Spacer(Modifier.width(8.dp))
-                                        Text(
-                                            stringResource(R.string.binary_verify_protocol),
-                                            style = MaterialTheme.typography.labelLarge,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
+                                    Icon(
+                                        imageVector = Icons.Filled.Send,
+                                        contentDescription = "Submit",
+                                        tint = Color.White,
+                                        modifier = Modifier.size(22.dp)
+                                    )
                                 }
+                            }
+
+                            // Feedback text
+                            if (feedback == true) {
+                                Spacer(Modifier.height(10.dp))
+                                Text(
+                                    "✓ Correct! Well done, Agent.",
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MatrixGreen,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            } else if (feedback == false) {
+                                Spacer(Modifier.height(10.dp))
+                                Text(
+                                    "✗ Incorrect. Try again!",
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = ErrorRed,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
                             }
                         }
                     }
                 }
             }
-
-            HomeButton(onHome = onHome, modifier = Modifier.align(Alignment.TopEnd).padding(16.dp))
         }
     }
 }
 
-@Composable
-private fun BinaryGridCard(word: String, modifier: Modifier = Modifier) {
-    val cyan = MaterialTheme.colorScheme.primary
+// ── Mission progress bar ──────────────────────────────────────────────────────
 
-    Card(
-        modifier = modifier,
-        colors = CardDefaults.cardColors(containerColor = Color.Black.copy(alpha = 0.6f)),
-        border = BorderStroke(2.dp, cyan)
+@Composable
+fun MissionProgressBar(activeMission: Int) {
+    val missions = listOf("BINARY", "SCRATCH", "AI", "ROBOT")
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            word.forEach { char ->
-                val bits = char.code.toString(2).padStart(8, '0')
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+        missions.forEachIndexed { index, name ->
+            val isActive = index == activeMission
+            val isDone   = index < activeMission
+
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Box(
+                    modifier = Modifier
+                        .size(36.dp)
+                        .clip(CircleShape)
+                        .background(
+                            when {
+                                isActive -> Color.Transparent
+                                else     -> Color.White.copy(alpha = 0.08f)
+                            }
+                        )
+                        .border(
+                            width = 2.dp,
+                            color = when {
+                                isActive -> MatrixGreen
+                                isDone   -> MatrixGreen.copy(alpha = 0.5f)
+                                else     -> Color.White.copy(alpha = 0.2f)
+                            },
+                            shape = CircleShape
+                        ),
+                    contentAlignment = Alignment.Center
                 ) {
-                    bits.forEach { bit ->
-                        Box(
-                            modifier = Modifier
-                                .weight(1f)
-                                .aspectRatio(1f)
-                                .background(
-                                    if (bit == '1') cyan.copy(alpha = 0.85f)
-                                    else Color.Black.copy(alpha = 0.7f)
-                                )
-                                .border(
-                                    1.dp,
-                                    if (bit == '1') cyan else cyan.copy(alpha = 0.2f)
-                                )
+                    if (isActive) {
+                        Text(
+                            text = "${index + 1}",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = MatrixGreen
+                        )
+                    } else {
+                        Icon(
+                            imageVector = Icons.Filled.Lock,
+                            contentDescription = null,
+                            tint = Color.White.copy(alpha = 0.35f),
+                            modifier = Modifier.size(16.dp)
                         )
                     }
                 }
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = name,
+                    fontSize = 10.sp,
+                    fontWeight = if (isActive) FontWeight.ExtraBold else FontWeight.Normal,
+                    color = if (isActive) MatrixGreen else Color.White.copy(alpha = 0.35f),
+                    letterSpacing = 0.5.sp
+                )
             }
+
+            if (index < missions.lastIndex) {
+                Box(
+                    modifier = Modifier
+                        .width(40.dp)
+                        .height(1.dp)
+                        .padding(bottom = 16.dp)
+                        .background(Color.White.copy(alpha = 0.15f))
+                )
+            }
+        }
+    }
+}
+
+// ── Timer panel ───────────────────────────────────────────────────────────────
+
+@Composable
+private fun BinaryTimerPanel(timeLeft: Int, totalSeconds: Int) {
+    val minutes = timeLeft / 60
+    val seconds = timeLeft % 60
+    val fraction = timeLeft.toFloat() / totalSeconds.coerceAtLeast(1)
+
+    Column(
+        modifier = Modifier
+            .clip(RoundedCornerShape(12.dp))
+            .background(Color.White.copy(alpha = 0.06f))
+            .border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(12.dp))
+            .padding(horizontal = 16.dp, vertical = 10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Timer,
+                contentDescription = null,
+                tint = BrandYellow,
+                modifier = Modifier.size(18.dp)
+            )
+            Text(
+                text = "%02d:%02d".format(minutes, seconds),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.ExtraBold,
+                fontFamily = FontFamily.Monospace,
+                color = if (timeLeft <= 60) ErrorRed else Color.White
+            )
+        }
+        Spacer(Modifier.height(6.dp))
+        // Progress bar
+        Box(
+            modifier = Modifier
+                .width(100.dp)
+                .height(3.dp)
+                .clip(RoundedCornerShape(2.dp))
+                .background(Color.White.copy(alpha = 0.1f))
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(fraction)
+                    .height(3.dp)
+                    .background(
+                        Brush.horizontalGradient(listOf(BrandBlue, MatrixGreen, BrandYellow))
+                    )
+            )
         }
     }
 }

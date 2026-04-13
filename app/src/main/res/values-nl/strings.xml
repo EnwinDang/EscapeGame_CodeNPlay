@@ -11,8 +11,20 @@
     <string name="video_story">⚠ SYSTEEMINBRAAK GEDETECTEERD\nHet datacenter is gecompromitteerd. Voltooi alle code-uitdagingen om de systemen te herstellen.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Selecteer Agentniveau</string>
-    <string name="difficulty_subtitle">Jouw niveau bepaalt je uitdagingen en welke uitrusting je ontvangt.</string>
+    <string name="difficulty_title">Kies je niveau</string>
+    <string name="difficulty_subtitle">Kies je agent-klaring</string>
+    <string name="junior_agent_description">10 min timer</string>
+    <string name="junior_bullet_1">Binaire berichten decoderen</string>
+    <string name="junior_bullet_2">Scratch-puzzels oplossen</string>
+    <string name="junior_bullet_3">Chatten met een AI</string>
+    <string name="junior_bullet_4">Een robot programmeren</string>
+    <string name="junior_bullet_5">Extra hints beschikbaar</string>
+    <string name="senior_agent_description">5 min timer</string>
+    <string name="senior_bullet_1">Binaire berichten decoderen</string>
+    <string name="senior_bullet_2">Scratch-puzzels oplossen</string>
+    <string name="senior_bullet_3">Chatten met een AI</string>
+    <string name="senior_bullet_4">Een robot programmeren</string>
+    <string name="senior_bullet_5">Geen hints — volledige uitdaging</string>
     <string name="btn_kids">Junior Agent</string>
     <string name="btn_teens">Senior Agent</string>
 

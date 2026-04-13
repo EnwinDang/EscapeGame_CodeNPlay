@@ -11,21 +11,25 @@
     <string name="video_story">⚠ SYSTEM BREACH DETECTED\nThe datacenter has been compromised. Complete all coding challenges to restore the systems.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Select Agent Level</string>
-    <string name="difficulty_subtitle">Your level determines your challenges and which equipment you will receive.</string>
+    <string name="difficulty_title">Select your level</string>
+    <string name="difficulty_subtitle">Choose your agent clearance</string>
     <string name="btn_kids">Junior Agent</string>
     <string name="btn_teens">Senior Agent</string>
 
     <!-- Difficulty Cards -->
-    <string name="junior_agent_description">Test your nerve. Learn the fundamental architecture of the Data Center core.</string>
-    <string name="junior_bullet_1">Python Basics &amp; Scratch</string>
-    <string name="junior_bullet_2">Binary Decoding</string>
-    <string name="junior_bullet_3">Low-difficulty challenges</string>
+    <string name="junior_agent_description">10 min timer</string>
+    <string name="junior_bullet_1">Decode binary messages</string>
+    <string name="junior_bullet_2">Solve Scratch puzzles</string>
+    <string name="junior_bullet_3">Chat with an AI</string>
+    <string name="junior_bullet_4">Program a robot</string>
+    <string name="junior_bullet_5">Extra hints available</string>
     <string name="btn_junior_cta">INITIATE ENTRY PROTOCOL</string>
-    <string name="senior_agent_description">High-stakes challenges. Defend against advanced threats and optimize critical code.</string>
-    <string name="senior_bullet_1">Higher-level challenges</string>
-    <string name="senior_bullet_2">Game Level Optimization</string>
-    <string name="senior_bullet_3">Security &amp; AI concepts</string>
+    <string name="senior_agent_description">5 min timer</string>
+    <string name="senior_bullet_1">Decode binary messages</string>
+    <string name="senior_bullet_2">Solve Scratch puzzles</string>
+    <string name="senior_bullet_3">Chat with an AI</string>
+    <string name="senior_bullet_4">Program a robot</string>
+    <string name="senior_bullet_5">No hints — full challenge</string>
     <string name="btn_senior_cta">ESCALATE PRIVILEGES</string>
 
     <!-- Binary Game -->
