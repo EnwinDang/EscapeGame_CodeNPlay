@@ -35,6 +35,12 @@
     <string name="btn_senior_cta">ESCALATE PRIVILEGES</string>
 
     <!-- Binary Game -->
+    <string name="binary_hint_message">Decode the binary sequence to reveal the hidden word. Each 8-bit group represents one letter!</string>
+    <string name="binary_mission_label">MISSION 1 — BINARY DECODE</string>
+    <string name="binary_input_placeholder">Type the decoded word...</string>
+    <string name="binary_correct_feedback">✓ Correct! Well done, Agent.</string>
+    <string name="binary_incorrect_feedback">✗ Incorrect. Try again!</string>
+    <string name="difficulty_confirm">CONFIRM</string>
     <string name="binary_verify_protocol">VERIFY PROTOCOL</string>
     <string name="binary_reset_grid">RESET GRID</string>
     <string name="binary_sector_label">CORE SECTOR</string>
@@ -105,6 +111,13 @@
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Mission 3 · AI</string>
     <string name="ai_game_find_intruder">Find the intruder!</string>
+    <string name="ai_junior_intro_line1">The virus \'The Glitch\' is attacking the server!</string>
+    <string name="ai_junior_intro_line2">Find the intruder on the screen.</string>
+    <string name="ai_junior_intro_line3">Click to eliminate it!</string>
+    <string name="ai_junior_intro_line4">Help us save the World Cloud!</string>
+    <string name="ai_game_instruction_1">Find the intruder on the screen.</string>
+    <string name="ai_game_instruction_2">Click to eliminate it!</string>
+    <string name="ai_game_instruction_3">Help us save the server!</string>
     <string name="ai_game_won_title">Intrusion blocked!</string>
     <string name="ai_game_won_body">You detected all intruders!</string>
 

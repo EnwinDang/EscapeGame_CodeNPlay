@@ -276,7 +276,7 @@ fun BinaryGameScreen(
                                     .padding(16.dp)
                             ) {
                                 Text(
-                                    text = "Decode the binary sequence to reveal the hidden word. Each 8-bit group represents one letter!",
+                                    text = stringResource(R.string.binary_hint_message),
                                     fontSize = 14.sp,
                                     color = Color.White.copy(alpha = 0.85f),
                                     lineHeight = 20.sp
@@ -296,7 +296,7 @@ fun BinaryGameScreen(
                                 .padding(28.dp)
                         ) {
                             Text(
-                                text = "MISSION 1 — BINARY DECODE",
+                                text = stringResource(R.string.binary_mission_label),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.ExtraBold,
                                 color = BrandBlue,
@@ -336,7 +336,7 @@ fun BinaryGameScreen(
                                     onValueChange = { userAnswer = it },
                                     placeholder = {
                                         Text(
-                                            "Type the decoded word...",
+                                            stringResource(R.string.binary_input_placeholder),
                                             color = Color.White.copy(alpha = 0.3f),
                                             fontSize = 15.sp
                                         )
@@ -387,7 +387,7 @@ fun BinaryGameScreen(
                             if (feedback == true) {
                                 Spacer(Modifier.height(10.dp))
                                 Text(
-                                    "✓ Correct! Well done, Agent.",
+                                    stringResource(R.string.binary_correct_feedback),
                                     fontSize = 13.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = MatrixGreen,
@@ -397,7 +397,7 @@ fun BinaryGameScreen(
                             } else if (feedback == false) {
                                 Spacer(Modifier.height(10.dp))
                                 Text(
-                                    "✗ Incorrect. Try again!",
+                                    stringResource(R.string.binary_incorrect_feedback),
                                     fontSize = 13.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = ErrorRed,

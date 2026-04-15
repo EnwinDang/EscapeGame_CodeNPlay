@@ -106,12 +106,14 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
         composable(Routes.SCRATCH_GAME) {
             val config = viewModel.missionConfig
             ExternalGameScreen(
-                stepNumber    = 2,
-                title         = stringResource(R.string.title_scratch_game),
-                instructions  = stringResource(R.string.scratch_instructions),
-                correctCode   = config.scratchCode,
-                onCodeCorrect = { navController.navigate(Routes.SCRATCH_QUIZ) },
-                onHome        = onHome,
+                stepNumber       = 2,
+                title            = stringResource(R.string.title_scratch_game),
+                instructions     = stringResource(R.string.scratch_instructions),
+                correctCode      = config.scratchCode,
+                onCodeCorrect    = { navController.navigate(Routes.SCRATCH_QUIZ) },
+                onHome           = onHome,
+                videoAssetManager = viewModel.videoAssetManager,
+                audioPrefix      = "scratch",
             )
         }
 
@@ -142,9 +144,10 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
                 )
             } else {
                 AiValidationScreen(
-                    correctCode     = config.aiCode,
-                    onGameCompleted = { navController.navigate(Routes.AI_QUIZ) },
-                    onHome          = onHome,
+                    correctCode       = config.aiCode,
+                    onGameCompleted   = { navController.navigate(Routes.AI_QUIZ) },
+                    onHome            = onHome,
+                    videoAssetManager = viewModel.videoAssetManager,
                 )
             }
         }
@@ -169,12 +172,14 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
         composable(Routes.ROBOT_GAME) {
             val config = viewModel.missionConfig
             ExternalGameScreen(
-                stepNumber    = 4,
-                title         = stringResource(R.string.title_robot_game),
-                instructions  = stringResource(config.robotInstructionsRes),
-                correctCode   = config.robotCode,
-                onCodeCorrect = { navController.navigate(Routes.ROBOT_QUIZ) },
-                onHome        = onHome,
+                stepNumber       = 4,
+                title            = stringResource(R.string.title_robot_game),
+                instructions     = stringResource(config.robotInstructionsRes),
+                correctCode      = config.robotCode,
+                onCodeCorrect    = { navController.navigate(Routes.ROBOT_QUIZ) },
+                onHome           = onHome,
+                videoAssetManager = viewModel.videoAssetManager,
+                audioPrefix      = "robot",
             )
         }
 

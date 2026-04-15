@@ -150,9 +150,9 @@ fun DifficultyScreen(
                 ) {
                     val confirmColor = if (selected == Difficulty.KIDS) BrandYellow else BrandBlue
                     val confirmLabel = if (selected == Difficulty.KIDS)
-                        "CONFIRM — ${stringResource(R.string.btn_kids).uppercase()}"
+                        "${stringResource(R.string.difficulty_confirm)} — ${stringResource(R.string.btn_kids).uppercase()}"
                     else
-                        "CONFIRM — ${stringResource(R.string.btn_teens).uppercase()}"
+                        "${stringResource(R.string.difficulty_confirm)} — ${stringResource(R.string.btn_teens).uppercase()}"
 
                     Button(
                         onClick = { selected?.let { onDifficultySelected(it) } },

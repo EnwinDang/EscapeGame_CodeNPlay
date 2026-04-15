@@ -31,6 +31,12 @@
     <string name="btn_teens">Senior Agent</string>
 
     <!-- Binary Game -->
+    <string name="binary_hint_message">Decodeer de binaire reeks om het verborgen woord te onthullen. Elke groep van 8 bits stelt één letter voor!</string>
+    <string name="binary_mission_label">MISSIE 1 — BINAIRE DECODERING</string>
+    <string name="binary_input_placeholder">Typ het gedecodeerde woord...</string>
+    <string name="binary_correct_feedback">✓ Correct! Goed gedaan, Agent.</string>
+    <string name="binary_incorrect_feedback">✗ Onjuist. Probeer opnieuw!</string>
+    <string name="difficulty_confirm">BEVESTIGEN</string>
     <string name="binary_step_label">Missie 1 — Binaire Decoder</string>
     <string name="binary_decode_prompt">Ontcijfer het signaal:</string>
     <string name="binary_answer_label">Ontcijferde tekst</string>
@@ -98,6 +104,13 @@
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Missie 3 · IA</string>
     <string name="ai_game_find_intruder">Vind de indringer!</string>
+    <string name="ai_junior_intro_line1">Het virus \'The Glitch\' valt de server aan!</string>
+    <string name="ai_junior_intro_line2">Vind de indringer op het scherm.</string>
+    <string name="ai_junior_intro_line3">Klik om hem te verwijderen!</string>
+    <string name="ai_junior_intro_line4">Help ons de World Cloud te redden!</string>
+    <string name="ai_game_instruction_1">Vind de indringer op het scherm.</string>
+    <string name="ai_game_instruction_2">Klik om hem te verwijderen!</string>
+    <string name="ai_game_instruction_3">Help ons de server te redden!</string>
     <string name="ai_game_won_title">Inbraak geblokkeerd!</string>
     <string name="ai_game_won_body">Je hebt alle indringers gedetecteerd!</string>
 

@@ -31,6 +31,12 @@
     <string name="senior_bullet_5">Aucun indice — défi complet</string>
 
     <!-- Binary Game -->
+    <string name="binary_hint_message">Décode la séquence binaire pour révéler le mot caché. Chaque groupe de 8 bits représente une lettre !</string>
+    <string name="binary_mission_label">MISSION 1 — DÉCODAGE BINAIRE</string>
+    <string name="binary_input_placeholder">Tape le mot décodé...</string>
+    <string name="binary_correct_feedback">✓ Correct ! Bien joué, Agent.</string>
+    <string name="binary_incorrect_feedback">✗ Incorrect. Réessaie !</string>
+    <string name="difficulty_confirm">CONFIRMER</string>
     <string name="binary_step_label">Mission 1 — Décodeur Binaire</string>
     <string name="binary_decode_prompt">Décryptez le signal :</string>
     <string name="binary_answer_label">Texte décrypté</string>
@@ -98,6 +104,13 @@
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Mission 3 · IA</string>
     <string name="ai_game_find_intruder">Trouve l\'intrus !</string>
+    <string name="ai_junior_intro_line1">Le virus \'The Glitch\' attaque le serveur !</string>
+    <string name="ai_junior_intro_line2">Trouve l\'intrus sur l\'écran.</string>
+    <string name="ai_junior_intro_line3">Clique pour l\'effacer !</string>
+    <string name="ai_junior_intro_line4">Aide-nous à sauver le World Cloud !</string>
+    <string name="ai_game_instruction_1">Trouve l\'intrus sur l\'écran.</string>
+    <string name="ai_game_instruction_2">Clique pour l\'effacer !</string>
+    <string name="ai_game_instruction_3">Aide-nous à sauver le serveur !</string>
     <string name="ai_game_won_title">Intrusion bloquée !</string>
     <string name="ai_game_won_body">Tu as détecté tous les intrus !</string>
 

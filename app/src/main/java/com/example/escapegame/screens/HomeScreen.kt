@@ -215,7 +215,7 @@ fun HomeScreen(onTap: () -> Unit) {
 
                 Text(
                     text = stringResource(R.string.home_tap_to_start).uppercase(),
-                    fontSize = 13.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = FontFamily.SansSerif,
                     color = Color.White.copy(alpha = pulseAlpha),

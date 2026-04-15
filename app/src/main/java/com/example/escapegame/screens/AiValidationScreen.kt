@@ -1,6 +1,8 @@
 package com.example.escapegame.screens
 
+import android.media.MediaPlayer
 import androidx.activity.compose.BackHandler
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
@@ -40,6 +42,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -49,6 +52,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -56,6 +61,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.escapegame.R
+import com.example.escapegame.logic.VideoAssetManager
 import com.example.escapegame.theme.ErrorRed
 import com.example.escapegame.theme.MatrixGreen
 import com.example.escapegame.theme.MissionControlBackground
@@ -81,13 +87,45 @@ fun AiValidationScreen(
     correctCode: String,
     onGameCompleted: () -> Unit,
     onHome: () -> Unit,
+    videoAssetManager: VideoAssetManager? = null,
 ) {
     BackHandler(enabled = true) {}
+
+    val isPreview = LocalInspectionMode.current
+    val context   = LocalContext.current
+    var isBubblePlaying    by remember { mutableStateOf(true) }
+    var hasFinishedAudio   by remember { mutableStateOf(videoAssetManager == null) }
+
+    val locale = if (isPreview) "fr"
+                 else AppCompatDelegate.getApplicationLocales()[0]?.language ?: "en"
+
+    val mediaPlayer: MediaPlayer? = remember {
+        if (isPreview || videoAssetManager == null) null
+        else try {
+            MediaPlayer().apply {
+                try {
+                    val afd = context.assets.openFd("audio/ai_senior_$locale.mp3")
+                    setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                } catch (_: Exception) {
+                    try {
+                        val afd = context.assets.openFd("audio/test.mp3")
+                        setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                    } catch (_: Exception) { }
+                }
+                try { prepare(); start() } catch (_: Exception) { }
+                setOnCompletionListener { isBubblePlaying = false; hasFinishedAudio = true }
+            }
+        } catch (_: Exception) { null }
+    }
+
+    DisposableEffect(Unit) { onDispose { mediaPlayer?.release() } }
 
     var phase by remember { mutableStateOf(TeensAiPhase.INTRO) }
     var firstCode by remember { mutableStateOf("") }
     var secondCode by remember { mutableStateOf("") }
     var showError by remember { mutableStateOf(false) }
+    // Controls the 2-step bad prediction reveal
+    var badPredictionShowDetail by remember { mutableStateOf(false) }
     val shakeOffset = remember { Animatable(0f) }
     var shakeKey by remember { mutableIntStateOf(0) }
 
@@ -159,13 +197,6 @@ fun AiValidationScreen(
 
                         // ── INTRO ──────────────────────────────────────────────
                         TeensAiPhase.INTRO -> CenteredColumn {
-                            Icon(
-                                Icons.Filled.SmartToy,
-                                contentDescription = null,
-                                modifier = Modifier.size(48.dp),
-                                tint = MatrixGreen
-                            )
-                            Spacer(Modifier.height(16.dp))
                             Text(
                                 text = stringResource(R.string.ai_teens_intro_title),
                                 style = MaterialTheme.typography.headlineMedium,
@@ -175,17 +206,60 @@ fun AiValidationScreen(
                                 textAlign = TextAlign.Center
                             )
                             Spacer(Modifier.height(24.dp))
-                            Text(
-                                text = stringResource(R.string.ai_teens_intro_task),
-                                style = MaterialTheme.typography.bodyLarge,
-                                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.85f),
-                                textAlign = TextAlign.Center
-                            )
+                            if (videoAssetManager != null) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                                ) {
+                                    AISpeechBubble(
+                                        videoAssetManager = videoAssetManager,
+                                        isPlaying = isBubblePlaying,
+                                        onPlay = {
+                                            if (!isBubblePlaying) {
+                                                mediaPlayer?.start(); isBubblePlaying = true
+                                            } else {
+                                                mediaPlayer?.pause(); isBubblePlaying = false
+                                            }
+                                        },
+                                        modifier = Modifier.size(90.dp)
+                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .weight(1f)
+                                            .background(
+                                                Color.White.copy(alpha = 0.07f),
+                                                RoundedCornerShape(16.dp)
+                                            )
+                                            .border(
+                                                1.dp,
+                                                Color.White.copy(alpha = 0.12f),
+                                                RoundedCornerShape(16.dp)
+                                            )
+                                            .padding(16.dp)
+                                    ) {
+                                        Text(
+                                            text = stringResource(R.string.ai_teens_intro_task),
+                                            fontSize = 14.sp,
+                                            color = Color.White.copy(alpha = 0.85f),
+                                            lineHeight = 20.sp
+                                        )
+                                    }
+                                }
+                            } else {
+                                Text(
+                                    text = stringResource(R.string.ai_teens_intro_task),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.85f),
+                                    textAlign = TextAlign.Center
+                                )
+                            }
                             Spacer(Modifier.height(40.dp))
                             ActionButton(
                                 label = stringResource(R.string.ai_teens_btn_start),
                                 containerColor = MatrixGreen,
                                 contentColor = Color.Black,
+                                enabled = hasFinishedAudio || isPreview,
                                 onClick = { phase = TeensAiPhase.FIRST_RUN }
                             )
                         }
@@ -228,9 +302,7 @@ fun AiValidationScreen(
                             )
                         }
 
-                        // ── BAD PREDICTION — dramatic error reveal ─────────────
-                        // No full-screen border: drama comes from pulsing icon/title
-                        // so it never overlaps with the Home button or status bar
+                        // ── BAD PREDICTION — 2-step dramatic error reveal ──────
                         TeensAiPhase.BAD_PREDICTION -> {
                             val pulseTransition = rememberInfiniteTransition(label = "pulse")
                             val pulseAlpha by pulseTransition.animateFloat(
@@ -244,7 +316,7 @@ fun AiValidationScreen(
                             )
 
                             CenteredColumn(horizontalPadding = 32.dp) {
-                                // Pulsing warning header
+                                // Pulsing warning header — always visible
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Icon(
                                         Icons.Filled.Warning,
@@ -262,7 +334,7 @@ fun AiValidationScreen(
                                     )
                                 }
                                 Spacer(Modifier.height(20.dp))
-                                // Prediction comparison panel
+                                // Prediction comparison panel — always visible
                                 SystemPanel(borderColor = ErrorRed) {
                                     ComparisonRow(
                                         stringResource(R.string.ai_teens_label_expected),
@@ -293,31 +365,44 @@ fun AiValidationScreen(
                                         ErrorRed
                                     )
                                 }
-                                Spacer(Modifier.height(16.dp))
-                                Text(
-                                    text = stringResource(R.string.ai_teens_label_diagnosis),
-                                    style = MaterialTheme.typography.labelLarge,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    letterSpacing = 3.sp
-                                )
-                                Spacer(Modifier.height(8.dp))
-                                Text(
-                                    text = stringResource(R.string.ai_teens_mismatch_body),
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
-                                    textAlign = TextAlign.Center
-                                )
-                                Spacer(Modifier.height(24.dp))
-                                ActionButton(
-                                    label = stringResource(R.string.ai_teens_btn_diagnose),
-                                    containerColor = ErrorRed,
-                                    contentColor = Color.White,
-                                    onClick = { phase = TeensAiPhase.RECALIBRATE }
-                                )
+
+                                if (!badPredictionShowDetail) {
+                                    // Step 1 — just show the error, let the student read it
+                                    Spacer(Modifier.height(32.dp))
+                                    ActionButton(
+                                        label = stringResource(R.string.btn_continue),
+                                        containerColor = ErrorRed,
+                                        contentColor = Color.White,
+                                        onClick = { badPredictionShowDetail = true }
+                                    )
+                                } else {
+                                    // Step 2 — show diagnosis + recalibrate action
+                                    Spacer(Modifier.height(16.dp))
+                                    Text(
+                                        text = stringResource(R.string.ai_teens_label_diagnosis),
+                                        style = MaterialTheme.typography.labelLarge,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        letterSpacing = 3.sp
+                                    )
+                                    Spacer(Modifier.height(8.dp))
+                                    Text(
+                                        text = stringResource(R.string.ai_teens_mismatch_body),
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                                        textAlign = TextAlign.Center
+                                    )
+                                    Spacer(Modifier.height(24.dp))
+                                    ActionButton(
+                                        label = stringResource(R.string.ai_teens_btn_diagnose),
+                                        containerColor = ErrorRed,
+                                        contentColor = Color.White,
+                                        onClick = { phase = TeensAiPhase.RECALIBRATE }
+                                    )
+                                }
                             }
                         }
 
-                        // ── RECALIBRATE — physical micro:bit training ──────────
+                        // ── RECALIBRATE — physical micro:bite training ──────────
                         TeensAiPhase.RECALIBRATE -> CenteredColumn {
                             PhaseTitle(stringResource(R.string.ai_teens_recalibrate_title))
                             Spacer(Modifier.height(28.dp))

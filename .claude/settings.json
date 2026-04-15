@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -n \"PlayerView\\\\|ExoPlayer\\\\|@OptIn\\\\|@UnstableApi\" /Users/nguyendang/Documents/Github/EscapeGame_CodeNPlay/app/src/main/java/com/example/escapegame/screens/*.kt)",
-      "Bash(grep -n \"HomeButton\" /Users/nguyendang/Documents/Github/EscapeGame_CodeNPlay/app/src/main/java/com/example/escapegame/screens/*.kt)"
-    ]
-  }
-}
