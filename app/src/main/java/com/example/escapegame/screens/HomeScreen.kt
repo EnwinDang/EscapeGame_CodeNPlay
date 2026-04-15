@@ -63,7 +63,6 @@ fun HomeScreen(onTap: () -> Unit) {
     var activeLanguage by remember { mutableStateOf(initialTag) }
     var showLangPicker by remember { mutableStateOf(false) }
 
-    // Float animation
     val floatTransition = rememberInfiniteTransition(label = "float")
     val floatY by floatTransition.animateFloat(
         initialValue = 0f,
@@ -73,6 +72,15 @@ fun HomeScreen(onTap: () -> Unit) {
             repeatMode = RepeatMode.Reverse
         ),
         label = "float_y"
+    )
+    val pulseAlpha by floatTransition.animateFloat(
+        initialValue = 0.4f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(1000),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "pulse_alpha"
     )
 
     MissionControlBackground {
@@ -87,7 +95,7 @@ fun HomeScreen(onTap: () -> Unit) {
             // Logo — top-left
             Image(
                 painter = painterResource(id = R.drawable.codenplay_logo),
-                contentDescription = "CodeNPlay Logo",
+                contentDescription = "CodeNPlay",
                 modifier = Modifier
                     .align(Alignment.TopStart)
                     .padding(24.dp)
@@ -210,7 +218,7 @@ fun HomeScreen(onTap: () -> Unit) {
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = FontFamily.SansSerif,
-                    color = Color.White.copy(alpha = 0.40f),
+                    color = Color.White.copy(alpha = pulseAlpha),
                     textAlign = TextAlign.Center,
                     letterSpacing = 3.sp
                 )

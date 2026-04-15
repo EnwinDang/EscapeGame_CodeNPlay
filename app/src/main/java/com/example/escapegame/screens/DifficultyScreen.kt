@@ -1,5 +1,10 @@
 package com.example.escapegame.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -19,13 +24,21 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.VerifiedUser
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -46,8 +59,11 @@ fun DifficultyScreen(
     onDifficultySelected: (Difficulty) -> Unit,
     onHome: () -> Unit = {},
 ) {
+    var selected by remember { mutableStateOf<Difficulty?>(null) }
+
     MissionControlBackground {
         Box(modifier = Modifier.fillMaxSize()) {
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -55,6 +71,7 @@ fun DifficultyScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // Title
                 Text(
                     text = stringResource(R.string.difficulty_title).uppercase(),
                     fontSize = 52.sp,
@@ -76,10 +93,11 @@ fun DifficultyScreen(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
+                // Cards
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .fillMaxHeight(0.88f),
+                        .fillMaxHeight(if (selected != null) 0.72f else 0.88f),
                     horizontalArrangement = Arrangement.spacedBy(24.dp)
                 ) {
                     AgentCard(
@@ -98,7 +116,8 @@ fun DifficultyScreen(
                             stringResource(R.string.junior_bullet_5),
                         ),
                         borderColor = BrandYellow.copy(alpha = 0.25f),
-                        onClick = { onDifficultySelected(Difficulty.KIDS) }
+                        isSelected = selected == Difficulty.KIDS,
+                        onClick = { selected = Difficulty.KIDS }
                     )
 
                     AgentCard(
@@ -117,8 +136,40 @@ fun DifficultyScreen(
                             stringResource(R.string.senior_bullet_5),
                         ),
                         borderColor = BrandBlue.copy(alpha = 0.25f),
-                        onClick = { onDifficultySelected(Difficulty.TEENS) }
+                        isSelected = selected == Difficulty.TEENS,
+                        onClick = { selected = Difficulty.TEENS }
                     )
+                }
+
+                Spacer(Modifier.height(24.dp))
+
+                // Confirm button — appears after selection
+                AnimatedVisibility(
+                    visible = selected != null,
+                    enter = fadeIn(tween(250)) + slideInVertically(tween(250)) { it / 2 }
+                ) {
+                    val confirmColor = if (selected == Difficulty.KIDS) BrandYellow else BrandBlue
+                    val confirmLabel = if (selected == Difficulty.KIDS)
+                        "CONFIRM — ${stringResource(R.string.btn_kids).uppercase()}"
+                    else
+                        "CONFIRM — ${stringResource(R.string.btn_teens).uppercase()}"
+
+                    Button(
+                        onClick = { selected?.let { onDifficultySelected(it) } },
+                        modifier = Modifier.fillMaxWidth().height(64.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = confirmColor,
+                            contentColor = Color.Black
+                        )
+                    ) {
+                        Text(
+                            text = confirmLabel,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 2.sp
+                        )
+                    }
                 }
             }
 
@@ -143,13 +194,25 @@ private fun AgentCard(
     timerText: String,
     bullets: List<String>,
     borderColor: Color,
+    isSelected: Boolean = false,
     onClick: () -> Unit
 ) {
+    val scale by animateFloatAsState(
+        targetValue = if (isSelected) 1.03f else 1f,
+        animationSpec = tween(200),
+        label = "card_scale"
+    )
+
     Box(
         modifier = modifier
+            .graphicsLayer { scaleX = scale; scaleY = scale }
             .clip(RoundedCornerShape(20.dp))
             .background(Color(0xFF0A1A0A).copy(alpha = 0.85f))
-            .border(1.dp, borderColor, RoundedCornerShape(20.dp))
+            .border(
+                width = if (isSelected) 2.dp else 1.dp,
+                color = if (isSelected) titleColor.copy(alpha = 0.7f) else borderColor,
+                shape = RoundedCornerShape(20.dp)
+            )
             .clickable { onClick() }
     ) {
         Column(

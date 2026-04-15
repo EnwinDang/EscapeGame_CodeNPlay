@@ -13,6 +13,8 @@
     <!-- Difficulty -->
     <string name="difficulty_title">Kies je niveau</string>
     <string name="difficulty_subtitle">Kies je agent-klaring</string>
+    <string name="difficulty_timer_junior">10 min timer</string>
+    <string name="difficulty_timer_senior">5 min timer</string>
     <string name="junior_agent_description">10 min timer</string>
     <string name="junior_bullet_1">Binaire berichten decoderen</string>
     <string name="junior_bullet_2">Scratch-puzzels oplossen</string>
@@ -217,4 +219,75 @@
     <string name="robot_quiz_option_b_teens">Een sensor stuurt de motoren aan; een actuator leest de code</string>
     <string name="robot_quiz_option_c_teens">Ze voeren dezelfde functie uit in verschillende programmeertalen</string>
     <string name="robot_quiz_explanation_teens">Sensoren zijn invoerapparaten die informatie verzamelen (bijv. afstand, licht, kleur). Actuatoren zijn uitvoerapparaten die de robot iets laten doen (bijv. motoren, luidsprekers, LED-lampjes).</string>
+
+    <!-- AI Validatie Game — Teens -->
+    <string name="ai_teens_intro_task">Bijna klaar, Agent. Het AI-systeem geeft overal groen — nog één laatste validatieroutine op de micro:bit en de sector is vrijgegeven. Volg de stappen, noteer je code, en je bent klaar.</string>
+    <string name="ai_teens_btn_start">START VALIDATIE</string>
+    <string name="ai_teens_step1_title">VALIDATIETEST</string>
+    <string name="ai_teens_step1_body">Test het hertrainde model op de micro:bit.\nNoteer de gegenereerde validatiecode.\n\n→ Voer de testsequentie uit\n→ Noteer de code\n→ Voer die hieronder in</string>
+    <string name="ai_teens_btn_enter_code">CODE INVOEREN</string>
+    <string name="ai_teens_code_hint">Validatiecode van de micro:bit</string>
+    <string name="ai_teens_code_title_1">VALIDATIECODE INVOEREN</string>
+    <string name="ai_teens_mismatch_body">Het model is getraind op corrupte data.\nDe trainingsvoorbeelden waren fout — dus het AI leerde de verkeerde patronen.\n\nJe moet het opnieuw kalibreren met correcte data.</string>
+    <string name="ai_teens_btn_diagnose">MODEL HERKALIBREREN</string>
+    <string name="ai_teens_training_body">Het model traint op je nieuwe data.\nWacht tot de training klaar is, dan valideren.</string>
+    <string name="ai_teens_btn_calibrated">MODEL VALIDEREN</string>
+    <string name="ai_teens_step2_title">FASE 2 — HERVALIDATIE</string>
+    <string name="ai_teens_step2_body">Het AI-model is opnieuw gekalibreerd.\nVoer de testsequentie opnieuw uit op de micro:bit.\n\nVoer de nieuwe validatiecode hieronder in.</string>
+    <string name="ai_teens_code_title_2">HERVALIDATIECODE INVOEREN</string>
+    <string name="ai_teens_revalidation_hint">Hervalidatiecode van de micro:bit</string>
+    <string name="ai_teens_success_body">AI-model succesvol hertraind.\nAlle systemen operationeel.\n\nToegangsscode vrijgegeven.</string>
+
+    <!-- AI Validatie — hardgecodeerde UI-teksten (statusbalk, panelen, labels) -->
+    <string name="ai_teens_intro_title">AI VALIDATIE</string>
+    <string name="ai_teens_status_phase1">FASE 1  ·  WACHT OP VALIDATIE</string>
+    <string name="ai_teens_status_mismatch">⚠  PREDICTION MISMATCH</string>
+    <string name="ai_teens_status_recalibrating">HERKALIBRATIE…</string>
+    <string name="ai_teens_status_phase2">FASE 2  ·  HERVALIDATIE</string>
+    <string name="ai_teens_status_restored">✓  SYSTEEM HERSTELD</string>
+    <string name="ai_teens_status_datacenter">Verbinding datacenter</string>
+    <string name="ai_teens_status_model_loaded">AI-model geladen</string>
+    <string name="ai_teens_status_waiting">Status: WACHT OP VALIDATIE</string>
+    <string name="ai_teens_mismatch_title">PREDICTION MISMATCH</string>
+    <string name="ai_teens_label_expected">Verwacht:</string>
+    <string name="ai_teens_label_received">Ontvangen:</string>
+    <string name="ai_teens_label_deviation">Afwijking:</string>
+    <string name="ai_teens_label_reliability">Betrouwbaarheid:</string>
+    <string name="ai_teens_reliability_critical">KRITIEK LAAG</string>
+    <string name="ai_teens_label_diagnosis">OORZAAK</string>
+    <string name="ai_teens_label_training_samples">Trainingsvoorbeelden:</string>
+    <string name="ai_teens_training_title">SYSTEEMKALIBRATIE</string>
+    <string name="ai_teens_training_new_params">Nieuwe parameters:</string>
+    <string name="ai_teens_training_param_lr">Leersnelheid</string>
+    <string name="ai_teens_training_param_epochs">Epochs</string>
+    <string name="ai_teens_training_param_dataset">Dataset</string>
+    <string name="ai_teens_training_dataset_corrected">BIJGEWERKT ✓</string>
+    <string name="ai_teens_training_progress_label">Training voortgang:</string>
+    <string name="ai_teens_training_in_progress">Kalibratie bezig…</string>
+    <string name="ai_teens_training_awaiting_microbit">74% — wacht op micro:bit kalibratie</string>
+    <string name="ai_teens_retrain_success">MODEL GETRAIND</string>
+    <string name="ai_teens_training_complete">Training voltooid — klaar om te valideren</string>
+    <string name="ai_teens_status_collecting">DATA VERZAMELEN BEZIG</string>
+    <string name="ai_teens_add_data_title">DATA VERZAMELEN</string>
+    <string name="ai_teens_add_data_body">Ga naar de micro:bit en verzamel trainingsvoorbeelden voor het AI-model.\n\nVoer voor elke gestureklasse de beweging meerdere keren uit, zodat het model het verschil leert.\n\n→ Volg de instructies op de micro:bit\n→ Keer terug als de dataverzameling klaar is</string>
+    <string name="ai_teens_add_data_btn">DATA VERZAMELD — MODEL TRAINEN</string>
+    <string name="ai_teens_success_title">✓ VALIDATIE GESLAAGD</string>
+    <string name="ai_teens_label_accuracy">Nauwkeurigheid:</string>
+    <string name="ai_teens_reliability_optimal">OPTIMAAL</string>
+    <string name="ai_teens_class_a">KLASSE A</string>
+    <string name="ai_teens_class_c">KLASSE C</string>
+    <string name="ai_teens_first_run_title">TESTSEQUENTIE</string>
+    <string name="ai_teens_first_run_body">→ Druk op A+B op de micro:bit om te starten\n→ Volg de pijlen — druk op A na elke beweging\n→ Noteer de code op de micro:bit\n→ Tik op CODE INVOEREN als je je code hebt</string>
+    <string name="ai_teens_recalibrate_title">HERKALIBRATIE</string>
+    <string name="ai_teens_recalibrate_body">→ Druk op B op de micro:bit voor de trainingsmodus\n→ De micro:bit toont een pijl — voer die beweging uit\n→ Het systeem leert automatisch — geen knop nodig\n→ De micro:bit toont DONE wanneer alle bewegingen gekalibreerd zijn</string>
+    <string name="ai_teens_recalibrate_done_btn">KLAAR — SEQUENTIE OPNIEUW UITVOEREN</string>
+    <string name="ai_teens_second_run_title">HERVALIDATIESEQUENTIE</string>
+    <string name="ai_teens_label_training_data">Trainingsdata:</string>
+    <string name="ai_teens_data_quality_bad">ONJUIST</string>
+    <string name="ai_teens_data_quality_good">GECORRIGEERD ✓</string>
+    <string name="ai_teens_uploading_title">KALIBRATIE DATA UPLOADEN</string>
+    <string name="ai_teens_upload_status_1">Kalibratiemonsters valideren…</string>
+    <string name="ai_teens_upload_status_2">Modelgewichten bijwerken…</string>
+    <string name="ai_teens_upload_status_3">Parameters synchroniseren…</string>
+    <string name="ai_teens_upload_status_4">Upload voltooid</string>
 </resources>
