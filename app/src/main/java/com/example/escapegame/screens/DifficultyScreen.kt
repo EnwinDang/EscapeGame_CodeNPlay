@@ -108,13 +108,6 @@ fun DifficultyScreen(
                         title = stringResource(R.string.btn_kids).uppercase(),
                         titleColor = BrandYellow,
                         timerText = stringResource(R.string.junior_agent_description),
-                        bullets = listOf(
-                            stringResource(R.string.junior_bullet_1),
-                            stringResource(R.string.junior_bullet_2),
-                            stringResource(R.string.junior_bullet_3),
-                            stringResource(R.string.junior_bullet_4),
-                            stringResource(R.string.junior_bullet_5),
-                        ),
                         borderColor = BrandYellow.copy(alpha = 0.25f),
                         isSelected = selected == Difficulty.KIDS,
                         onClick = { selected = Difficulty.KIDS }
@@ -128,13 +121,6 @@ fun DifficultyScreen(
                         title = stringResource(R.string.btn_teens).uppercase(),
                         titleColor = BrandBlue,
                         timerText = stringResource(R.string.senior_agent_description),
-                        bullets = listOf(
-                            stringResource(R.string.senior_bullet_1),
-                            stringResource(R.string.senior_bullet_2),
-                            stringResource(R.string.senior_bullet_3),
-                            stringResource(R.string.senior_bullet_4),
-                            stringResource(R.string.senior_bullet_5),
-                        ),
                         borderColor = BrandBlue.copy(alpha = 0.25f),
                         isSelected = selected == Difficulty.TEENS,
                         onClick = { selected = Difficulty.TEENS }
@@ -192,7 +178,6 @@ private fun AgentCard(
     title: String,
     titleColor: Color,
     timerText: String,
-    bullets: List<String>,
     borderColor: Color,
     isSelected: Boolean = false,
     onClick: () -> Unit
@@ -259,31 +244,6 @@ private fun AgentCard(
                 textAlign = TextAlign.Center
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                bullets.forEach { bullet ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "✦",
-                            color = titleColor.copy(alpha = 0.7f),
-                            fontSize = 13.sp,
-                            modifier = Modifier.width(22.dp)
-                        )
-                        Text(
-                            text = bullet,
-                            color = Color.White.copy(alpha = 0.70f),
-                            fontSize = 14.sp,
-                            lineHeight = 20.sp
-                        )
-                    }
-                }
-            }
         }
     }
 }

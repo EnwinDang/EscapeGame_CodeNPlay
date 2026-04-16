@@ -534,9 +534,7 @@ private fun BinaryTimerPanel(timeLeft: Int, totalSeconds: Int) {
                 modifier = Modifier
                     .fillMaxWidth(fraction)
                     .height(3.dp)
-                    .background(
-                        Brush.horizontalGradient(listOf(BrandBlue, MatrixGreen, BrandYellow))
-                    )
+                    .background(MatrixGreen)
             )
         }
     }
