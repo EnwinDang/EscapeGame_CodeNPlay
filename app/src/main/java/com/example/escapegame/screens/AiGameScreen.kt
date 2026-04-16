@@ -285,7 +285,7 @@ fun AiGameScreen(
                                     try { mediaPlayer?.pause(); isPlayingAudio = false } catch (_: Exception) {}
                                 }
                             },
-                            modifier = Modifier.size(160.dp)
+                            modifier = Modifier.size(200.dp)
                         )
 
                         Spacer(Modifier.height(24.dp))

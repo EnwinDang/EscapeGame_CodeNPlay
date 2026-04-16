@@ -100,6 +100,7 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
                 uiStyle      = config.uiStyle,
                 onContinue   = { navController.navigate(Routes.SCRATCH_GAME) },
                 onHome       = onHome,
+                videoAssetManager = viewModel.videoAssetManager,
             )
         }
 
@@ -131,6 +132,7 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
                 uiStyle      = config.uiStyle,
                 onContinue   = { navController.navigate(Routes.AI_GAME) },
                 onHome       = onHome,
+                videoAssetManager = viewModel.videoAssetManager,
             )
         }
 
@@ -166,6 +168,7 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
                 uiStyle      = config.uiStyle,
                 onContinue   = { navController.navigate(Routes.ROBOT_GAME) },
                 onHome       = onHome,
+                videoAssetManager = viewModel.videoAssetManager,
             )
         }
 
@@ -197,6 +200,7 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
                 uiStyle      = config.uiStyle,
                 onContinue   = { navController.navigate(Routes.OUTRO) },
                 onHome       = onHome,
+                videoAssetManager = viewModel.videoAssetManager,
             )
         }
 

@@ -183,7 +183,7 @@ fun ExternalGameScreen(
                                     mediaPlayer?.pause(); isBubblePlaying = false
                                 }
                             },
-                            modifier = Modifier.size(90.dp)
+                            modifier = Modifier.size(120.dp)
                         )
 
                         Box(

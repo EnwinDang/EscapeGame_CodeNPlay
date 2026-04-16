@@ -13,6 +13,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,6 +28,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.Icon
@@ -240,175 +246,263 @@ fun BinaryGameScreen(
                 }
 
                 else -> {
-                    Column(
+                    Row(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxWidth()
                             .graphicsLayer { translationX = shakeOffset.value },
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        // AI speech bubble + hint message
-                        Row(
-                            modifier = Modifier.fillMaxWidth(0.85f),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(16.dp)
-                        ) {
-                            AISpeechBubble(
-                                videoAssetManager = videoAssetManager,
-                                isPlaying = isBubblePlaying,
-                                onPlay = {
-                                    if (!isBubblePlaying) {
-                                        mediaPlayer?.start(); isBubblePlaying = true
-                                    } else {
-                                        mediaPlayer?.pause(); isBubblePlaying = false
-                                    }
-                                },
-                                modifier = Modifier.size(90.dp)
-                            )
-
-                            Box(
-                                modifier = Modifier
-                                    .weight(1f)
-                                    .clip(RoundedCornerShape(16.dp))
-                                    .background(Color.White.copy(alpha = 0.07f))
-                                    .border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(16.dp))
-                                    .padding(16.dp)
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.binary_hint_message),
-                                    fontSize = 14.sp,
-                                    color = Color.White.copy(alpha = 0.85f),
-                                    lineHeight = 20.sp
-                                )
-                            }
-                        }
-
-                        Spacer(Modifier.height(20.dp))
-
-                        // Main card
+                        // ── Left panel (2/5) ──────────────────────────────────
                         Column(
                             modifier = Modifier
-                                .fillMaxWidth(0.85f)
-                                .clip(RoundedCornerShape(20.dp))
-                                .background(Color(0xFF0A1A0A).copy(alpha = 0.88f))
-                                .border(1.dp, BrandBlue.copy(alpha = 0.25f), RoundedCornerShape(20.dp))
-                                .padding(28.dp)
+                                .weight(2f)
+                                .fillMaxHeight(),
+                            verticalArrangement = Arrangement.spacedBy(10.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            Text(
-                                text = stringResource(R.string.binary_mission_label),
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.ExtraBold,
-                                color = BrandBlue,
-                                letterSpacing = 1.5.sp
-                            )
-
-                            Spacer(Modifier.height(16.dp))
-
-                            // Binary display
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(RoundedCornerShape(12.dp))
-                                    .background(Color(0xFF060F08))
-                                    .padding(vertical = 24.dp, horizontal = 16.dp),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = puzzle.currentBinary,
-                                    fontSize = 20.sp,
-                                    fontFamily = FontFamily.Monospace,
-                                    color = MatrixGreen,
-                                    textAlign = TextAlign.Center,
-                                    letterSpacing = 2.sp
-                                )
-                            }
-
-                            Spacer(Modifier.height(16.dp))
-
-                            // Input + send
+                            // Speech bubble + hint
                             Row(
-                                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                                verticalAlignment = Alignment.CenterVertically
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(12.dp)
                             ) {
-                                OutlinedTextField(
-                                    value = userAnswer,
-                                    onValueChange = { userAnswer = it },
-                                    placeholder = {
-                                        Text(
-                                            stringResource(R.string.binary_input_placeholder),
-                                            color = Color.White.copy(alpha = 0.3f),
-                                            fontSize = 15.sp
-                                        )
-                                    },
-                                    modifier = Modifier.weight(1f),
-                                    singleLine = true,
-                                    textStyle = androidx.compose.ui.text.TextStyle(
-                                        fontSize = 18.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        fontFamily = FontFamily.Monospace,
-                                        color = when (feedback) {
-                                            true  -> MatrixGreen
-                                            false -> ErrorRed
-                                            null  -> Color.White
+                                AISpeechBubble(
+                                    videoAssetManager = videoAssetManager,
+                                    isPlaying = isBubblePlaying,
+                                    onPlay = {
+                                        if (!isBubblePlaying) {
+                                            mediaPlayer?.start(); isBubblePlaying = true
+                                        } else {
+                                            mediaPlayer?.pause(); isBubblePlaying = false
                                         }
-                                    ),
-                                    colors = OutlinedTextFieldDefaults.colors(
-                                        focusedBorderColor = when (feedback) {
-                                            true  -> MatrixGreen
-                                            false -> ErrorRed
-                                            null  -> BrandBlue
-                                        },
-                                        unfocusedBorderColor = Color.White.copy(alpha = 0.15f),
-                                        focusedContainerColor = Color(0xFF060F08),
-                                        unfocusedContainerColor = Color(0xFF060F08),
-                                    ),
-                                    shape = RoundedCornerShape(12.dp)
+                                    },
+                                    modifier = Modifier.size(110.dp)
                                 )
-
                                 Box(
                                     modifier = Modifier
-                                        .size(56.dp)
+                                        .weight(1f)
                                         .clip(RoundedCornerShape(12.dp))
-                                        .background(MatrixGreen)
-                                        .clickable { submit() },
-                                    contentAlignment = Alignment.Center
+                                        .background(Color.White.copy(alpha = 0.06f))
+                                        .border(1.dp, Color.White.copy(alpha = 0.1f), RoundedCornerShape(12.dp))
+                                        .padding(12.dp)
                                 ) {
-                                    Icon(
-                                        imageVector = Icons.Filled.Send,
-                                        contentDescription = "Submit",
-                                        tint = Color.White,
-                                        modifier = Modifier.size(22.dp)
+                                    Text(
+                                        text = stringResource(R.string.binary_hint_message),
+                                        fontSize = 13.sp,
+                                        color = Color.White.copy(alpha = 0.85f),
+                                        lineHeight = 18.sp
                                     )
                                 }
                             }
 
-                            // Feedback text
-                            if (feedback == true) {
-                                Spacer(Modifier.height(10.dp))
+                            // Mission label
+                            Text(
+                                text = stringResource(R.string.binary_mission_label),
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = BrandBlue,
+                                letterSpacing = 1.5.sp,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+
+                            // Binary string (text reference)
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(Color(0xFF060F08))
+                                    .border(1.dp, MatrixGreen.copy(alpha = 0.3f), RoundedCornerShape(10.dp))
+                                    .padding(horizontal = 12.dp, vertical = 10.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
                                 Text(
-                                    stringResource(R.string.binary_correct_feedback),
-                                    fontSize = 13.sp,
-                                    fontWeight = FontWeight.Bold,
+                                    text = puzzle.currentBinary,
+                                    fontSize = 11.sp,
+                                    fontFamily = FontFamily.Monospace,
                                     color = MatrixGreen,
                                     textAlign = TextAlign.Center,
-                                    modifier = Modifier.fillMaxWidth()
+                                    letterSpacing = 1.5.sp
                                 )
-                            } else if (feedback == false) {
-                                Spacer(Modifier.height(10.dp))
-                                Text(
-                                    stringResource(R.string.binary_incorrect_feedback),
-                                    fontSize = 13.sp,
+                            }
+
+                            // Input field
+                            OutlinedTextField(
+                                value = userAnswer,
+                                onValueChange = { userAnswer = it },
+                                placeholder = {
+                                    Text(
+                                        stringResource(R.string.binary_input_placeholder),
+                                        color = Color.White.copy(alpha = 0.3f),
+                                        fontSize = 15.sp
+                                    )
+                                },
+                                modifier = Modifier.fillMaxWidth(),
+                                singleLine = true,
+                                textStyle = androidx.compose.ui.text.TextStyle(
+                                    fontSize = 18.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = ErrorRed,
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.fillMaxWidth()
-                                )
+                                    fontFamily = FontFamily.Monospace,
+                                    color = when (feedback) {
+                                        true  -> MatrixGreen
+                                        false -> ErrorRed
+                                        null  -> Color.White
+                                    }
+                                ),
+                                colors = OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = when (feedback) {
+                                        true  -> MatrixGreen
+                                        false -> ErrorRed
+                                        null  -> BrandBlue
+                                    },
+                                    unfocusedBorderColor = Color.White.copy(alpha = 0.15f),
+                                    focusedContainerColor = Color(0xFF060F08),
+                                    unfocusedContainerColor = Color(0xFF060F08),
+                                ),
+                                shape = RoundedCornerShape(12.dp)
+                            )
+
+                            // Feedback
+                            when (feedback) {
+                                true  -> Text("✓ ${stringResource(R.string.binary_correct_feedback)}",
+                                    fontSize = 13.sp, fontWeight = FontWeight.Bold,
+                                    color = MatrixGreen, textAlign = TextAlign.Center,
+                                    modifier = Modifier.fillMaxWidth())
+                                false -> Text("✗ ${stringResource(R.string.binary_incorrect_feedback)}",
+                                    fontSize = 13.sp, fontWeight = FontWeight.Bold,
+                                    color = ErrorRed, textAlign = TextAlign.Center,
+                                    modifier = Modifier.fillMaxWidth())
+                                null  -> {}
+                            }
+                        }
+
+                        // ── Right panel (3/5) ─────────────────────────────────
+                        Column(
+                            modifier = Modifier
+                                .weight(3f)
+                                .fillMaxHeight(),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            // Visual binary grid
+                            Box(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(Color(0xFF0A1A0A).copy(alpha = 0.88f))
+                                    .border(1.dp, MatrixGreen.copy(alpha = 0.25f), RoundedCornerShape(20.dp))
+                                    .padding(20.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                BinaryGrid(binaryString = puzzle.currentBinary)
+                            }
+
+                            // Reset + Verify buttons
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .height(52.dp)
+                                        .clip(RoundedCornerShape(50.dp))
+                                        .border(1.5.dp, MatrixGreen.copy(alpha = 0.5f), RoundedCornerShape(50.dp))
+                                        .clickable { userAnswer = ""; feedback = null },
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                    ) {
+                                        Icon(Icons.Filled.Refresh, null, Modifier.size(15.dp), tint = MatrixGreen)
+                                        Text("RESET", fontSize = 11.sp, fontWeight = FontWeight.ExtraBold,
+                                            color = MatrixGreen, letterSpacing = 1.5.sp)
+                                    }
+                                }
+                                Box(
+                                    modifier = Modifier
+                                        .weight(2f)
+                                        .height(52.dp)
+                                        .clip(RoundedCornerShape(50.dp))
+                                        .background(MatrixGreen)
+                                        .clickable { submit() },
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                    ) {
+                                        Icon(Icons.Filled.Lock, null, Modifier.size(15.dp), tint = Color.Black)
+                                        Text("VERIFY PROTOCOL", fontSize = 11.sp,
+                                            fontWeight = FontWeight.ExtraBold,
+                                            color = Color.Black, letterSpacing = 1.sp)
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+// ── Binary reference roster ───────────────────────────────────────────────────
+
+// ── Binary visual grid ────────────────────────────────────────────────────────
+
+@Composable
+private fun BinaryGrid(binaryString: String, modifier: Modifier = Modifier) {
+    val bytes = remember(binaryString) { binaryString.split(" ") }
+    val numRows = bytes.size
+    val numCols = 8
+    val gapH = 8.dp
+    val gapV = 20.dp
+
+    BoxWithConstraints(modifier = modifier.fillMaxSize()) {
+        val availableWidth  = maxWidth
+        val availableHeight = maxHeight
+        val squareFromWidth  = (availableWidth  - gapH * (numCols - 1)) / numCols
+        val squareFromHeight = (availableHeight - gapV * (numRows - 1)) / numRows
+        val squareSize = minOf(squareFromWidth, squareFromHeight)
+
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(gapV, Alignment.CenterVertically),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            bytes.forEach { byte ->
+                Row(horizontalArrangement = Arrangement.spacedBy(gapH)) {
+                    byte.forEach { bit -> BitSquare(filled = bit == '1', size = squareSize) }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun BitSquare(filled: Boolean, size: androidx.compose.ui.unit.Dp) {
+    val radius = (size * 0.18f)
+    Box(
+        modifier = Modifier
+            .size(size)
+            .clip(RoundedCornerShape(radius))
+            .background(if (filled) MatrixGreen else Color.Transparent)
+            .border(
+                width = 1.5.dp,
+                color = if (filled) MatrixGreen else MatrixGreen.copy(alpha = 0.3f),
+                shape = RoundedCornerShape(radius)
+            )
+    ) {
+        if (filled) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.radialGradient(listOf(Color.White.copy(alpha = 0.18f), Color.Transparent))
+                    )
+            )
         }
     }
 }
