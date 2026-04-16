@@ -11,24 +11,36 @@
     <string name="video_story">⚠ SYSTEM BREACH DETECTED\nThe datacenter has been compromised. Complete all coding challenges to restore the systems.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Select Agent Level</string>
-    <string name="difficulty_subtitle">Your level determines your challenges and which equipment you will receive.</string>
+    <string name="difficulty_title">Select your level</string>
+    <string name="difficulty_subtitle">Choose your agent clearance</string>
+    <string name="difficulty_timer_junior">10 min timer</string>
+    <string name="difficulty_timer_senior">5 min timer</string>
     <string name="btn_kids">Junior Agent</string>
     <string name="btn_teens">Senior Agent</string>
 
     <!-- Difficulty Cards -->
-    <string name="junior_agent_description">Test your nerve. Learn the fundamental architecture of the Data Center core.</string>
-    <string name="junior_bullet_1">Python Basics &amp; Scratch</string>
-    <string name="junior_bullet_2">Binary Decoding</string>
-    <string name="junior_bullet_3">Low-difficulty challenges</string>
+    <string name="junior_agent_description">10 min timer</string>
+    <string name="junior_bullet_1">Decode binary messages</string>
+    <string name="junior_bullet_2">Solve Scratch puzzles</string>
+    <string name="junior_bullet_3">Chat with an AI</string>
+    <string name="junior_bullet_4">Program a robot</string>
+    <string name="junior_bullet_5">Extra hints available</string>
     <string name="btn_junior_cta">INITIATE ENTRY PROTOCOL</string>
-    <string name="senior_agent_description">High-stakes challenges. Defend against advanced threats and optimize critical code.</string>
-    <string name="senior_bullet_1">Higher-level challenges</string>
-    <string name="senior_bullet_2">Game Level Optimization</string>
-    <string name="senior_bullet_3">Security &amp; AI concepts</string>
+    <string name="senior_agent_description">5 min timer</string>
+    <string name="senior_bullet_1">Decode binary messages</string>
+    <string name="senior_bullet_2">Solve Scratch puzzles</string>
+    <string name="senior_bullet_3">Chat with an AI</string>
+    <string name="senior_bullet_4">Program a robot</string>
+    <string name="senior_bullet_5">No hints — full challenge</string>
     <string name="btn_senior_cta">ESCALATE PRIVILEGES</string>
 
     <!-- Binary Game -->
+    <string name="binary_hint_message">Decode the binary sequence to reveal the hidden word. Each 8-bit group represents one letter!</string>
+    <string name="binary_mission_label">MISSION 1 — BINARY DECODE</string>
+    <string name="binary_input_placeholder">Type the decoded word...</string>
+    <string name="binary_correct_feedback">✓ Correct! Well done, Agent.</string>
+    <string name="binary_incorrect_feedback">✗ Incorrect. Try again!</string>
+    <string name="difficulty_confirm">CONFIRM</string>
     <string name="binary_verify_protocol">VERIFY PROTOCOL</string>
     <string name="binary_reset_grid">RESET GRID</string>
     <string name="binary_sector_label">CORE SECTOR</string>
@@ -99,6 +111,13 @@
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Mission 3 · AI</string>
     <string name="ai_game_find_intruder">Find the intruder!</string>
+    <string name="ai_junior_intro_line1">The virus \'The Glitch\' is attacking the server!</string>
+    <string name="ai_junior_intro_line2">Find the intruder on the screen.</string>
+    <string name="ai_junior_intro_line3">Click to eliminate it!</string>
+    <string name="ai_junior_intro_line4">Help us save the World Cloud!</string>
+    <string name="ai_game_instruction_1">Find the intruder on the screen.</string>
+    <string name="ai_game_instruction_2">Click to eliminate it!</string>
+    <string name="ai_game_instruction_3">Help us save the server!</string>
     <string name="ai_game_won_title">Intrusion blocked!</string>
     <string name="ai_game_won_body">You detected all intruders!</string>
 
@@ -220,4 +239,75 @@
     <string name="robot_quiz_option_b_teens">A sensor controls the motors; an actuator reads the code</string>
     <string name="robot_quiz_option_c_teens">They perform the same function in different programming languages</string>
     <string name="robot_quiz_explanation_teens">Sensors are input devices that gather information (e.g. distance, light, color). Actuators are output devices that make the robot do something (e.g. motors, speakers, LEDs).</string>
+
+    <!-- AI Validation Game — Teens -->
+    <string name="ai_teens_intro_task">Almost there, Agent. The AI system shows green across the board — one final validation routine on the micro:bit and the sector is cleared. Follow the steps, collect your code, and you\'re done.</string>
+    <string name="ai_teens_btn_start">START VALIDATION</string>
+    <string name="ai_teens_step1_title">VALIDATION TEST</string>
+    <string name="ai_teens_step1_body">Test the retrained model on the micro:bit.\nNote the generated validation code.\n\n→ Run the test sequence\n→ Note the code\n→ Enter it below</string>
+    <string name="ai_teens_btn_enter_code">ENTER CODE</string>
+    <string name="ai_teens_code_hint">Validation code from micro:bit</string>
+    <string name="ai_teens_code_title_1">ENTER VALIDATION CODE</string>
+    <string name="ai_teens_mismatch_body">The model was trained on corrupt data.\nThe training examples were wrong — so the AI learned the wrong patterns.\n\nYou must recalibrate with correct data.</string>
+    <string name="ai_teens_btn_diagnose">RECALIBRATE MODEL</string>
+    <string name="ai_teens_training_body">The model is training on your new data.\nWait for training to complete, then validate.</string>
+    <string name="ai_teens_btn_calibrated">VALIDATE MODEL</string>
+    <string name="ai_teens_step2_title">PHASE 2 — REVALIDATION</string>
+    <string name="ai_teens_step2_body">The AI model has been recalibrated.\nRun the test sequence again on the micro:bit.\n\nEnter the new validation code below.</string>
+    <string name="ai_teens_code_title_2">ENTER REVALIDATION CODE</string>
+    <string name="ai_teens_revalidation_hint">Revalidation code from micro:bit</string>
+    <string name="ai_teens_success_body">AI model successfully retrained.\nAll systems operational.\n\nAccess code released.</string>
+
+    <!-- AI Validation — hardcoded UI strings (status bar, panels, labels) -->
+    <string name="ai_teens_intro_title">AI VALIDATION</string>
+    <string name="ai_teens_status_phase1">PHASE 1  ·  AWAITING VALIDATION</string>
+    <string name="ai_teens_status_mismatch">⚠  PREDICTION MISMATCH</string>
+    <string name="ai_teens_status_recalibrating">RECALIBRATING…</string>
+    <string name="ai_teens_status_phase2">PHASE 2  ·  REVALIDATION</string>
+    <string name="ai_teens_status_restored">✓  SYSTEM RESTORED</string>
+    <string name="ai_teens_status_datacenter">Datacenter connection</string>
+    <string name="ai_teens_status_model_loaded">AI model loaded</string>
+    <string name="ai_teens_status_waiting">Status: AWAITING VALIDATION</string>
+    <string name="ai_teens_mismatch_title">PREDICTION MISMATCH</string>
+    <string name="ai_teens_label_expected">Expected:</string>
+    <string name="ai_teens_label_received">Received:</string>
+    <string name="ai_teens_label_deviation">Deviation:</string>
+    <string name="ai_teens_label_reliability">Reliability:</string>
+    <string name="ai_teens_reliability_critical">CRITICALLY LOW</string>
+    <string name="ai_teens_label_diagnosis">CAUSE</string>
+    <string name="ai_teens_label_training_samples">Training samples:</string>
+    <string name="ai_teens_training_title">SYSTEM CALIBRATION</string>
+    <string name="ai_teens_training_new_params">New parameters:</string>
+    <string name="ai_teens_training_param_lr">Learning rate</string>
+    <string name="ai_teens_training_param_epochs">Epochs</string>
+    <string name="ai_teens_training_param_dataset">Dataset</string>
+    <string name="ai_teens_training_dataset_corrected">UPDATED ✓</string>
+    <string name="ai_teens_training_progress_label">Training progress:</string>
+    <string name="ai_teens_training_in_progress">Calibrating…</string>
+    <string name="ai_teens_training_awaiting_microbit">74% — awaiting micro:bit calibration</string>
+    <string name="ai_teens_retrain_success">MODEL TRAINED</string>
+    <string name="ai_teens_training_complete">Training complete — ready to validate</string>
+    <string name="ai_teens_status_collecting">DATA COLLECTION IN PROGRESS</string>
+    <string name="ai_teens_add_data_title">DATA COLLECTION</string>
+    <string name="ai_teens_add_data_body">Go to the micro:bit and collect training examples for the AI model.\n\nFor each gesture class, perform the movement multiple times so the model can learn the difference.\n\n→ Follow the instructions on the micro:bit\n→ Return here when data collection is complete</string>
+    <string name="ai_teens_add_data_btn">DATA COLLECTED — TRAIN MODEL</string>
+    <string name="ai_teens_success_title">✓ VALIDATION PASSED</string>
+    <string name="ai_teens_label_accuracy">Accuracy:</string>
+    <string name="ai_teens_reliability_optimal">OPTIMAL</string>
+    <string name="ai_teens_class_a">CLASS A</string>
+    <string name="ai_teens_class_c">CLASS C</string>
+    <string name="ai_teens_first_run_title">TEST SEQUENCE</string>
+    <string name="ai_teens_first_run_body">→ Press A+B on the micro:bit to start\n→ Follow the arrows — press A after each movement\n→ Note the code shown on the micro:bit\n→ Tap ENTER CODE when you have your code</string>
+    <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
+    <string name="ai_teens_recalibrate_body">→ Press B on the micro:bit to enter training mode\n→ The micro:bit will show an arrow — perform that movement\n→ The system learns automatically — no button press needed\n→ The micro:bit shows DONE when all movements are calibrated</string>
+    <string name="ai_teens_recalibrate_done_btn">DONE — RERUN SEQUENCE</string>
+    <string name="ai_teens_second_run_title">REVALIDATION SEQUENCE</string>
+    <string name="ai_teens_label_training_data">Training data:</string>
+    <string name="ai_teens_data_quality_bad">INCORRECT</string>
+    <string name="ai_teens_data_quality_good">CORRECTED ✓</string>
+    <string name="ai_teens_uploading_title">UPLOADING CALIBRATION DATA</string>
+    <string name="ai_teens_upload_status_1">Validating calibration samples…</string>
+    <string name="ai_teens_upload_status_2">Updating model weights…</string>
+    <string name="ai_teens_upload_status_3">Synchronizing parameters…</string>
+    <string name="ai_teens_upload_status_4">Upload complete</string>
 </resources>

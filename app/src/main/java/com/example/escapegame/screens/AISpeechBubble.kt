@@ -18,7 +18,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -42,7 +45,7 @@ fun AISpeechBubble(
     if (isPreview) {
         Box(
             modifier = modifier
-                .size(190.dp)
+                .size(200.dp)
                 .clip(CircleShape)
                 .background(Color.DarkGray.copy(alpha = 0.5f)),
             contentAlignment = Alignment.Center
@@ -76,7 +79,7 @@ fun AISpeechBubble(
     }
 
     Box(
-        modifier = modifier.size(190.dp),
+        modifier = modifier.size(200.dp),
         contentAlignment = Alignment.Center
     ) {
         AndroidView(
@@ -86,6 +89,10 @@ fun AISpeechBubble(
             modifier = Modifier
                 .fillMaxSize()
                 .clip(CircleShape)
+                .graphicsLayer {
+                    blendMode = BlendMode.Screen
+                    compositingStrategy = CompositingStrategy.Offscreen
+                }
         )
 
         if (!isPlaying) {

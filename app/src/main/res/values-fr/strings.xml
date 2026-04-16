@@ -11,12 +11,32 @@
     <string name="video_story">⚠ VIOLATION SYSTÈME DÉTECTÉE\nLe datacenter a été compromis. Complétez tous les défis de codage pour restaurer les systèmes.</string>
 
     <!-- Difficulty -->
-    <string name="difficulty_title">Sélectionner le Niveau d\'Agent</string>
-    <string name="difficulty_subtitle">Votre niveau détermine vos défis et l\'équipement que vous recevrez.</string>
+    <string name="difficulty_title">Choisissez votre niveau</string>
+    <string name="difficulty_subtitle">Choisissez votre accréditation d\'agent</string>
+    <string name="difficulty_timer_junior">10 min timer</string>
+    <string name="difficulty_timer_senior">5 min timer</string>
     <string name="btn_kids">Agent Junior</string>
     <string name="btn_teens">Agent Senior</string>
+    <string name="junior_agent_description">Minuterie de 10 min</string>
+    <string name="junior_bullet_1">Décoder des messages binaires</string>
+    <string name="junior_bullet_2">Résoudre des puzzles Scratch</string>
+    <string name="junior_bullet_3">Discuter avec une IA</string>
+    <string name="junior_bullet_4">Programmer un robot</string>
+    <string name="junior_bullet_5">Indices supplémentaires disponibles</string>
+    <string name="senior_agent_description">Minuterie de 5 min</string>
+    <string name="senior_bullet_1">Décoder des messages binaires</string>
+    <string name="senior_bullet_2">Résoudre des puzzles Scratch</string>
+    <string name="senior_bullet_3">Discuter avec une IA</string>
+    <string name="senior_bullet_4">Programmer un robot</string>
+    <string name="senior_bullet_5">Aucun indice — défi complet</string>
 
     <!-- Binary Game -->
+    <string name="binary_hint_message">Décode la séquence binaire pour révéler le mot caché. Chaque groupe de 8 bits représente une lettre !</string>
+    <string name="binary_mission_label">MISSION 1 — DÉCODAGE BINAIRE</string>
+    <string name="binary_input_placeholder">Tape le mot décodé...</string>
+    <string name="binary_correct_feedback">✓ Correct ! Bien joué, Agent.</string>
+    <string name="binary_incorrect_feedback">✗ Incorrect. Réessaie !</string>
+    <string name="difficulty_confirm">CONFIRMER</string>
     <string name="binary_step_label">Mission 1 — Décodeur Binaire</string>
     <string name="binary_decode_prompt">Décryptez le signal :</string>
     <string name="binary_answer_label">Texte décrypté</string>
@@ -84,6 +104,13 @@
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Mission 3 · IA</string>
     <string name="ai_game_find_intruder">Trouve l\'intrus !</string>
+    <string name="ai_junior_intro_line1">Le virus \'The Glitch\' attaque le serveur !</string>
+    <string name="ai_junior_intro_line2">Trouve l\'intrus sur l\'écran.</string>
+    <string name="ai_junior_intro_line3">Clique pour l\'effacer !</string>
+    <string name="ai_junior_intro_line4">Aide-nous à sauver le World Cloud !</string>
+    <string name="ai_game_instruction_1">Trouve l\'intrus sur l\'écran.</string>
+    <string name="ai_game_instruction_2">Clique pour l\'effacer !</string>
+    <string name="ai_game_instruction_3">Aide-nous à sauver le serveur !</string>
     <string name="ai_game_won_title">Intrusion bloquée !</string>
     <string name="ai_game_won_body">Tu as détecté tous les intrus !</string>
 
@@ -205,4 +232,75 @@
     <string name="robot_quiz_option_b_teens">Un capteur contrôle les moteurs ; un actionneur lit le code</string>
     <string name="robot_quiz_option_c_teens">Ils remplissent la même fonction dans des langages de programmation différents</string>
     <string name="robot_quiz_explanation_teens">Les capteurs sont des dispositifs d\'entrée qui recueillent des informations (par ex. distance, lumière, couleur). Les actionneurs sont des dispositifs de sortie qui font agir le robot (par ex. moteurs, haut-parleurs, LEDs).</string>
+
+    <!-- Jeu de Validation IA — Ados -->
+    <string name="ai_teens_intro_task">Presque fini, Agent. Le système IA affiche vert partout — il ne reste qu\'une dernière routine de validation sur le micro:bit et le secteur est sécurisé. Suis les étapes, note ton code, et c\'est terminé.</string>
+    <string name="ai_teens_btn_start">DÉMARRER LA VALIDATION</string>
+    <string name="ai_teens_step1_title">TEST DE VALIDATION</string>
+    <string name="ai_teens_step1_body">Teste le modèle réentraîné sur le micro:bit.\nNote le code de validation généré.\n\n→ Lance la séquence de test\n→ Note le code\n→ Entre-le ci-dessous</string>
+    <string name="ai_teens_btn_enter_code">ENTRER LE CODE</string>
+    <string name="ai_teens_code_hint">Code de validation du micro:bit</string>
+    <string name="ai_teens_code_title_1">ENTRER LE CODE DE VALIDATION</string>
+    <string name="ai_teens_mismatch_body">Le modèle a été entraîné sur des données corrompues.\nLes exemples d\'entraînement étaient faux — donc l\'IA a appris les mauvais schémas.\n\nTu dois le recalibrer avec des données correctes.</string>
+    <string name="ai_teens_btn_diagnose">RECALIBRER LE MODÈLE</string>
+    <string name="ai_teens_training_body">Le modèle s\'entraîne sur tes nouvelles données.\nAttends la fin de l\'entraînement, puis valide.</string>
+    <string name="ai_teens_btn_calibrated">VALIDER LE MODÈLE</string>
+    <string name="ai_teens_step2_title">PHASE 2 — REVALIDATION</string>
+    <string name="ai_teens_step2_body">Le modèle IA a été recalibré.\nExécute à nouveau la séquence de test sur le micro:bit.\n\nEntre le nouveau code de validation ci-dessous.</string>
+    <string name="ai_teens_code_title_2">ENTRER LE CODE DE REVALIDATION</string>
+    <string name="ai_teens_revalidation_hint">Code de revalidation du micro:bit</string>
+    <string name="ai_teens_success_body">Modèle IA reformé avec succès.\nTous les systèmes opérationnels.\n\nCode d\'accès libéré.</string>
+
+    <!-- Jeu de Validation IA — textes UI codés en dur (barre de statut, panneaux, étiquettes) -->
+    <string name="ai_teens_intro_title">VALIDATION IA</string>
+    <string name="ai_teens_status_phase1">PHASE 1  ·  EN ATTENTE DE VALIDATION</string>
+    <string name="ai_teens_status_mismatch">⚠  PRÉDICTION INCORRECTE</string>
+    <string name="ai_teens_status_recalibrating">RECALIBRATION…</string>
+    <string name="ai_teens_status_phase2">PHASE 2  ·  REVALIDATION</string>
+    <string name="ai_teens_status_restored">✓  SYSTÈME RESTAURÉ</string>
+    <string name="ai_teens_status_datacenter">Connexion datacenter</string>
+    <string name="ai_teens_status_model_loaded">Modèle IA chargé</string>
+    <string name="ai_teens_status_waiting">Statut : EN ATTENTE DE VALIDATION</string>
+    <string name="ai_teens_mismatch_title">PRÉDICTION INCORRECTE</string>
+    <string name="ai_teens_label_expected">Attendu :</string>
+    <string name="ai_teens_label_received">Reçu :</string>
+    <string name="ai_teens_label_deviation">Écart :</string>
+    <string name="ai_teens_label_reliability">Fiabilité :</string>
+    <string name="ai_teens_reliability_critical">CRITIQUE</string>
+    <string name="ai_teens_label_diagnosis">CAUSE</string>
+    <string name="ai_teens_label_training_samples">Exemples d\'entraînement :</string>
+    <string name="ai_teens_training_title">CALIBRATION SYSTÈME</string>
+    <string name="ai_teens_training_new_params">Nouveaux paramètres :</string>
+    <string name="ai_teens_training_param_lr">Taux d\'apprentissage</string>
+    <string name="ai_teens_training_param_epochs">Epochs</string>
+    <string name="ai_teens_training_param_dataset">Jeu de données</string>
+    <string name="ai_teens_training_dataset_corrected">MIS À JOUR ✓</string>
+    <string name="ai_teens_training_progress_label">Progression d\'entraînement :</string>
+    <string name="ai_teens_training_in_progress">Calibration en cours…</string>
+    <string name="ai_teens_training_awaiting_microbit">74% — en attente calibration micro:bit</string>
+    <string name="ai_teens_retrain_success">MODÈLE ENTRAÎNÉ</string>
+    <string name="ai_teens_training_complete">Entraînement terminé — prêt à valider</string>
+    <string name="ai_teens_status_collecting">COLLECTE DE DONNÉES EN COURS</string>
+    <string name="ai_teens_add_data_title">COLLECTE DE DONNÉES</string>
+    <string name="ai_teens_add_data_body">Va sur le micro:bit et collecte des exemples d\'entraînement pour le modèle IA.\n\nPour chaque classe de geste, effectue le mouvement plusieurs fois pour que le modèle apprenne la différence.\n\n→ Suis les instructions sur le micro:bit\n→ Reviens ici quand la collecte est terminée</string>
+    <string name="ai_teens_add_data_btn">DONNÉES COLLECTÉES — ENTRAÎNER</string>
+    <string name="ai_teens_success_title">✓ VALIDATION RÉUSSIE</string>
+    <string name="ai_teens_label_accuracy">Précision :</string>
+    <string name="ai_teens_reliability_optimal">OPTIMAL</string>
+    <string name="ai_teens_class_a">CLASSE A</string>
+    <string name="ai_teens_class_c">CLASSE C</string>
+    <string name="ai_teens_first_run_title">SÉQUENCE DE TEST</string>
+    <string name="ai_teens_first_run_body">→ Appuie sur A+B sur le micro:bit pour démarrer\n→ Suis les flèches — appuie sur A après chaque mouvement\n→ Note le code affiché sur le micro:bit\n→ Appuie sur ENTRER CODE quand tu as ton code</string>
+    <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
+    <string name="ai_teens_recalibrate_body">→ Appuie sur B sur le micro:bit pour le mode entraînement\n→ Le micro:bit affiche une flèche — effectue ce mouvement\n→ Le système apprend automatiquement — pas besoin d\'appuyer\n→ Le micro:bit affiche DONE quand tous les mouvements sont calibrés</string>
+    <string name="ai_teens_recalibrate_done_btn">TERMINÉ — RELANCER LA SÉQUENCE</string>
+    <string name="ai_teens_second_run_title">SÉQUENCE DE REVALIDATION</string>
+    <string name="ai_teens_label_training_data">Données d\'entraînement :</string>
+    <string name="ai_teens_data_quality_bad">INCORRECTES</string>
+    <string name="ai_teens_data_quality_good">CORRIGÉES ✓</string>
+    <string name="ai_teens_uploading_title">CHARGEMENT DES DONNÉES</string>
+    <string name="ai_teens_upload_status_1">Validation des échantillons…</string>
+    <string name="ai_teens_upload_status_2">Mise à jour des poids du modèle…</string>
+    <string name="ai_teens_upload_status_3">Synchronisation des paramètres…</string>
+    <string name="ai_teens_upload_status_4">Chargement terminé</string>
 </resources>

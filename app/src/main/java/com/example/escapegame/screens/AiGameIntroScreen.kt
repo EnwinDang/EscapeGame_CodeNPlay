@@ -177,7 +177,7 @@ fun AiGameIntroScreen(
                         modifier = Modifier
                             .align(Alignment.TopCenter)
                             .padding(top = 20.dp)
-                            .size(160.dp)
+                            .size(200.dp)
                     )
 
                     Column(

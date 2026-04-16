@@ -285,35 +285,59 @@ fun AiGameScreen(
                                     try { mediaPlayer?.pause(); isPlayingAudio = false } catch (_: Exception) {}
                                 }
                             },
-                            modifier = Modifier.size(160.dp)
+                            modifier = Modifier.size(200.dp)
                         )
 
                         Spacer(Modifier.height(24.dp))
 
-                        AnimatedContent(
-                            targetState = currentStoryElement,
-                            transitionSpec = { (fadeIn() + scaleIn()) togetherWith (fadeOut() + scaleOut()) },
-                            label = "story_anim"
-                        ) { element ->
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        // Instruction card
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth(0.85f)
+                                .clip(RoundedCornerShape(16.dp))
+                                .background(Color.White.copy(alpha = 0.07f))
+                                .border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(16.dp))
+                                .padding(horizontal = 24.dp, vertical = 20.dp)
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
                                 Text(
-                                    text = stringResource(element.titleRes),
-                                    style = MaterialTheme.typography.headlineSmall,
-                                    color = element.iconColor,
+                                    text = stringResource(R.string.ai_junior_intro_line1),
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.ExtraBold,
+                                    color = ErrorRed,
+                                    textAlign = TextAlign.Center
+                                )
+                                Spacer(Modifier.height(16.dp))
+                                Text(
+                                    text = stringResource(R.string.ai_junior_intro_line2),
+                                    fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
+                                    color = Color.White,
                                     textAlign = TextAlign.Center
                                 )
                                 Spacer(Modifier.height(8.dp))
                                 Text(
-                                    text = stringResource(element.bodyRes),
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    textAlign = TextAlign.Center,
-                                    color = MaterialTheme.colorScheme.onBackground
+                                    text = stringResource(R.string.ai_junior_intro_line3),
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MatrixGreen,
+                                    textAlign = TextAlign.Center
+                                )
+                                Spacer(Modifier.height(8.dp))
+                                Text(
+                                    text = stringResource(R.string.ai_junior_intro_line4),
+                                    fontSize = 15.sp,
+                                    fontWeight = FontWeight.Normal,
+                                    color = Color.White.copy(alpha = 0.75f),
+                                    textAlign = TextAlign.Center
                                 )
                             }
                         }
 
-                        Spacer(Modifier.height(48.dp))
+                        Spacer(Modifier.height(32.dp))
 
                         Button(
                             onClick = {
@@ -428,7 +452,29 @@ fun AiGameScreen(
                                     modifier = Modifier.fillMaxWidth().height(12.dp).clip(RoundedCornerShape(6.dp)),
                                     color = if (timeProgress > 0.4f) MatrixGreen else ErrorRed
                                 )
-                                Spacer(Modifier.height(32.dp))
+                                Spacer(Modifier.height(16.dp))
+                                Text(
+                                    text = stringResource(R.string.ai_game_instruction_1),
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White,
+                                    textAlign = TextAlign.Center
+                                )
+                                Text(
+                                    text = stringResource(R.string.ai_game_instruction_2),
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MatrixGreen,
+                                    textAlign = TextAlign.Center
+                                )
+                                Text(
+                                    text = stringResource(R.string.ai_game_instruction_3),
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Normal,
+                                    color = Color.White.copy(alpha = 0.6f),
+                                    textAlign = TextAlign.Center
+                                )
+                                Spacer(Modifier.height(20.dp))
 
                                 round.symbols.chunked(3).forEach { rowSymbols ->
                                     Row(

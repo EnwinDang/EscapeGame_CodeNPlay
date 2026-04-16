@@ -3,11 +3,20 @@ package com.example.escapegame.screens
 import android.view.TextureView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.example.escapegame.R
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
@@ -47,5 +56,18 @@ fun OutroScreen(
             },
             modifier = Modifier.fillMaxSize()
         )
+
+        TextButton(
+            onClick = onFinished,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(24.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.btn_continue),
+                style = MaterialTheme.typography.titleMedium,
+                color = Color.White.copy(alpha = 0.7f)
+            )
+        }
     }
 }
