@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -18,7 +17,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.Color
-import com.example.escapegame.logic.VideoAssetManager
 import com.example.escapegame.theme.BrandGreen
 import com.example.escapegame.theme.MatrixRed
 import androidx.compose.runtime.Composable
@@ -45,7 +43,6 @@ fun QuizScreen(
     uiStyle: AgentUiStyle,
     onContinue: () -> Unit,
     onHome: () -> Unit,
-    videoAssetManager: VideoAssetManager? = null,
 ) {
     BackHandler(enabled = true) { /* back disabled during game */ }
 
@@ -69,16 +66,6 @@ fun QuizScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                if (videoAssetManager != null) {
-                    AISpeechBubble(
-                        videoAssetManager = videoAssetManager,
-                        isPlaying = true,
-                        onPlay = {},
-                        modifier = Modifier.size(120.dp)
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                }
-
                 Text(
                     text = stringResource(R.string.quiz_title),
                     style = MaterialTheme.typography.titleMedium,
