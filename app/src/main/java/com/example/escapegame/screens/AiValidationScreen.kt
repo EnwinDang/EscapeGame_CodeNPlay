@@ -484,23 +484,43 @@ fun AiValidationScreen(
                             ActionButton(
                                 label = stringResource(R.string.btn_submit),
                                 onClick = {
-                                    if (secondCode.trim().uppercase() == correctCode) {
-                                        phase = TeensAiPhase.SUCCESS
-                                    } else {
-                                        errorMessage = context.getString(R.string.external_wrong_code)
-                                        showError = true
-                                        shakeKey++
+                                    when {
+                                        secondCode.trim().uppercase() == correctCode -> phase = TeensAiPhase.SUCCESS
+                                        secondCode.trim().uppercase() == "DATA" -> {
+                                            errorMessage = context.getString(R.string.ai_teens_too_many_errors)
+                                            showError = true
+                                            shakeKey++
+                                        }
+                                        else -> {
+                                            errorMessage = context.getString(R.string.external_wrong_code)
+                                            showError = true
+                                            shakeKey++
+                                        }
                                     }
                                 }
                             )
                             if (showError) {
-                                Spacer(Modifier.height(16.dp))
+                                Spacer(Modifier.height(12.dp))
                                 Text(
                                     text = errorMessage,
                                     color = ErrorRed,
                                     style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.Bold
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.Center
                                 )
+                                if (secondCode.trim().uppercase() == "DATA") {
+                                    Spacer(Modifier.height(12.dp))
+                                    ActionButton(
+                                        label = stringResource(R.string.ai_teens_btn_retrain),
+                                        containerColor = ErrorRed,
+                                        contentColor = Color.White,
+                                        onClick = {
+                                            secondCode = ""
+                                            showError = false
+                                            phase = TeensAiPhase.RECALIBRATE
+                                        }
+                                    )
+                                }
                             }
                         }
 

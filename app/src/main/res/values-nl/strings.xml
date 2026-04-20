@@ -291,10 +291,12 @@
     <string name="ai_teens_class_a">KLASSE A</string>
     <string name="ai_teens_class_c">KLASSE C</string>
     <string name="ai_teens_first_run_title">TESTSEQUENTIE</string>
-    <string name="ai_teens_first_run_body">→ Druk op A+B om de test te starten\n→ Bekijk de reeks — pijlen verschijnen één voor één\n→ Als GO verschijnt: kantel links voor L, rechts voor R, schud voor U\n→ De micro:bit toont een code — voer hem in op het volgende scherm</string>
-    <string name="ai_teens_recalibrate_title">HERKALIBRATIE</string>
-    <string name="ai_teens_recalibrate_body">→ Druk op B om de training te starten\n→ De micro:bit toont pijlen één voor één\n→ Reageer onmiddellijk: kantel links voor L, rechts voor R, schud voor U\n→ Je ziet ✔ of ✘ na elke invoer\n→ Als DONE verschijnt, is de training voltooid</string>
-    <string name="ai_teens_recalibrate_done_btn">KLAAR — SEQUENTIE OPNIEUW UITVOEREN</string>
+    <string name="ai_teens_first_run_body">→ Druk op A+B om de test te starten\n→ Bekijk de reeks — pijlen verschijnen één voor één\n→ Als GO verschijnt: kantel links voor L, rechts voor R, schud voor U\n→ De micro:bit toont een code — onthoud hem en voer hem hieronder in</string>
+    <string name="ai_teens_recalibrate_title">TRAININGSMODUS — NIEUWE DATA INJECTEREN</string>
+    <string name="ai_teens_recalibrate_body">→ Druk op B — de AI gaat in trainingsmodus\n→ 9 acties verschijnen één voor één — reageer op elke pijl\n→ Kantel links = L · rechts = R · schud = U\n→ ✔ geldige invoer · ✘ slechte data — een paar fouten zijn toegestaan\n→ Te veel fouten corrumperen het model en produceren een valse uitvoer — blijf scherp</string>
+    <string name="ai_teens_recalibrate_done_btn">DATA GEÏNJECTEERD — SEQUENTIE HERSTARTEN</string>
+    <string name="ai_teens_too_many_errors">Te veel trainingsfouten — het model is nog steeds corrupt. Train de AI opnieuw.</string>
+    <string name="ai_teens_btn_retrain">AI OPNIEUW TRAINEN</string>
     <string name="ai_teens_second_run_title">HERVALIDATIESEQUENTIE</string>
     <string name="ai_teens_label_training_data">Trainingsdata:</string>
     <string name="ai_teens_data_quality_bad">ONJUIST</string>

@@ -298,10 +298,12 @@
     <string name="ai_teens_class_a">CLASS A</string>
     <string name="ai_teens_class_c">CLASS C</string>
     <string name="ai_teens_first_run_title">TEST SEQUENCE</string>
-    <string name="ai_teens_first_run_body">→ Press A+B to start the test\n→ The micro:bit shows TEST, then the sequence — arrows appear one by one\n→ When GO appears: tilt left for L, tilt right for R, shake for U\n→ Enter the code shown on the micro:bit below</string>
-    <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
-    <string name="ai_teens_recalibrate_body">→ Press B to start training\n→ The micro:bit shows arrows one by one\n→ Respond immediately: tilt left for L, tilt right for R, shake for U\n→ You will see ✔ or ✘ after each input\n→ When DONE appears, training is complete</string>
-    <string name="ai_teens_recalibrate_done_btn">DONE — RERUN SEQUENCE</string>
+    <string name="ai_teens_first_run_body">→ Press A+B to start the test\n→ The micro:bit shows TEST, then the sequence — arrows appear one by one\n→ When GO appears: tilt left for L, tilt right for R, shake for U\n→ The micro:bit shows a code — memorize it and enter it below</string>
+    <string name="ai_teens_recalibrate_title">TRAINING MODE — INJECT NEW DATA</string>
+    <string name="ai_teens_recalibrate_body">→ Press B — the AI enters training mode\n→ 9 movement prompts appear one by one — react to each arrow\n→ Tilt left = L · tilt right = R · shake = U\n→ ✔ valid input · ✘ bad data — a few mistakes are allowed\n→ Too many errors corrupt the model and produce false output — stay sharp</string>
+    <string name="ai_teens_recalibrate_done_btn">DATA INJECTED — RERUN SEQUENCE</string>
+    <string name="ai_teens_too_many_errors">Too many training errors — the model is still corrupted. Retrain the AI.</string>
+    <string name="ai_teens_btn_retrain">RETRAIN THE AI</string>
     <string name="ai_teens_second_run_title">REVALIDATION SEQUENCE</string>
     <string name="ai_teens_label_training_data">Training data:</string>
     <string name="ai_teens_data_quality_bad">INCORRECT</string>
