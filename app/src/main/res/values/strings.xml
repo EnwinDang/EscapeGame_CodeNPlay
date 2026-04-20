@@ -297,9 +297,9 @@
     <string name="ai_teens_class_a">CLASS A</string>
     <string name="ai_teens_class_c">CLASS C</string>
     <string name="ai_teens_first_run_title">TEST SEQUENCE</string>
-    <string name="ai_teens_first_run_body">→ Press A+B on the micro:bit to start\n→ Follow the arrows — press A after each movement\n→ Note the code shown on the micro:bit\n→ Tap ENTER CODE when you have your code</string>
+    <string name="ai_teens_first_run_body">→ Press A+B to start the test\n→ Watch the sequence — arrows appear one by one\n→ When GO appears: tilt left for L, tilt right for R, shake for U\n→ The micro:bit will show INPUT, DATA, or PROMPT</string>
     <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
-    <string name="ai_teens_recalibrate_body">→ Press B on the micro:bit to enter training mode\n→ The micro:bit will show an arrow — perform that movement\n→ The system learns automatically — no button press needed\n→ The micro:bit shows DONE when all movements are calibrated</string>
+    <string name="ai_teens_recalibrate_body">→ Press B to start training\n→ The micro:bit shows arrows one by one\n→ Respond immediately: tilt left for L, tilt right for R, shake for U\n→ You will see ✔ or ✘ after each input\n→ When DONE appears, training is complete</string>
     <string name="ai_teens_recalibrate_done_btn">DONE — RERUN SEQUENCE</string>
     <string name="ai_teens_second_run_title">REVALIDATION SEQUENCE</string>
     <string name="ai_teens_label_training_data">Training data:</string>

@@ -121,6 +121,30 @@ fun AiValidationScreen(
     DisposableEffect(Unit) { onDispose { mediaPlayer?.release() } }
 
     var phase by remember { mutableStateOf(TeensAiPhase.INTRO) }
+    var phaseAudioPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
+
+    // Play a different audio clip when BAD_PREDICTION or RECALIBRATE starts.
+    // Silently skipped if the file doesn't exist yet.
+    androidx.compose.runtime.LaunchedEffect(phase) {
+        phaseAudioPlayer?.release()
+        phaseAudioPlayer = null
+        if (isPreview || videoAssetManager == null) return@LaunchedEffect
+        val filename = when (phase) {
+            TeensAiPhase.BAD_PREDICTION -> "ai_senior_mismatch_$locale.mp3"
+            TeensAiPhase.RECALIBRATE    -> "ai_senior_recalibrate_$locale.mp3"
+            else                        -> return@LaunchedEffect
+        }
+        try {
+            phaseAudioPlayer = MediaPlayer().apply {
+                val afd = context.assets.openFd("audio/$filename")
+                setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                prepare()
+                start()
+            }
+        } catch (_: Exception) { }
+    }
+
+    DisposableEffect("phaseAudio") { onDispose { phaseAudioPlayer?.release() } }
     var firstCode by remember { mutableStateOf("") }
     var secondCode by remember { mutableStateOf("") }
     var showError by remember { mutableStateOf(false) }

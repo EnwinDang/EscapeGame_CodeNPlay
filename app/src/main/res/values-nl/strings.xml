@@ -290,9 +290,9 @@
     <string name="ai_teens_class_a">KLASSE A</string>
     <string name="ai_teens_class_c">KLASSE C</string>
     <string name="ai_teens_first_run_title">TESTSEQUENTIE</string>
-    <string name="ai_teens_first_run_body">→ Druk op A+B op de micro:bit om te starten\n→ Volg de pijlen — druk op A na elke beweging\n→ Noteer de code op de micro:bit\n→ Tik op CODE INVOEREN als je je code hebt</string>
+    <string name="ai_teens_first_run_body">→ Druk op A+B om de test te starten\n→ Bekijk de reeks — pijlen verschijnen één voor één\n→ Als GO verschijnt: kantel links voor L, rechts voor R, schud voor U\n→ De micro:bit toont INPUT, DATA of PROMPT</string>
     <string name="ai_teens_recalibrate_title">HERKALIBRATIE</string>
-    <string name="ai_teens_recalibrate_body">→ Druk op B op de micro:bit voor de trainingsmodus\n→ De micro:bit toont een pijl — voer die beweging uit\n→ Het systeem leert automatisch — geen knop nodig\n→ De micro:bit toont DONE wanneer alle bewegingen gekalibreerd zijn</string>
+    <string name="ai_teens_recalibrate_body">→ Druk op B om de training te starten\n→ De micro:bit toont pijlen één voor één\n→ Reageer onmiddellijk: kantel links voor L, rechts voor R, schud voor U\n→ Je ziet ✔ of ✘ na elke invoer\n→ Als DONE verschijnt, is de training voltooid</string>
     <string name="ai_teens_recalibrate_done_btn">KLAAR — SEQUENTIE OPNIEUW UITVOEREN</string>
     <string name="ai_teens_second_run_title">HERVALIDATIESEQUENTIE</string>
     <string name="ai_teens_label_training_data">Trainingsdata:</string>
