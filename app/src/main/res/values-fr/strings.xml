@@ -220,11 +220,11 @@
     <string name="scratch_quiz_explanation_teens">Un bloc \'répéter\' est un exemple de boucle. Les boucles permettent à un ensemble d\'instructions de s\'exécuter un nombre déterminé de fois, évitant de réécrire le même code plusieurs fois.</string>
 
     <!-- Quiz IA — Teens -->
-    <string name="ai_quiz_question_teens">Comment un modèle d\'apprentissage automatique améliore-t-il ses performances ?</string>
-    <string name="ai_quiz_option_a_teens">En analysant de grandes quantités de données d\'entraînement et en ajustant ses paramètres internes</string>
-    <string name="ai_quiz_option_b_teens">En étant manuellement reprogrammé après chaque erreur</string>
-    <string name="ai_quiz_option_c_teens">En essayant aléatoirement différentes approches jusqu\'à ce qu\'une fonctionne</string>
-    <string name="ai_quiz_explanation_teens">Les modèles d\'apprentissage automatique apprennent en traitant de grands ensembles de données. Ils ajustent leurs paramètres internes en fonction des schémas trouvés, améliorant progressivement leur précision.</string>
+    <string name="ai_quiz_question_teens">Qu\'est-ce qu\'un « prompt » dans le contexte de l\'IA ?</string>
+    <string name="ai_quiz_option_a_teens">Une instruction ou une entrée donnée à une IA pour obtenir une réponse</string>
+    <string name="ai_quiz_option_b_teens">Un type d\'erreur qui se produit lorsqu\'un modèle IA échoue</string>
+    <string name="ai_quiz_option_c_teens">La vitesse de traitement d\'un système IA</string>
+    <string name="ai_quiz_explanation_teens">Un prompt est l\'instruction ou la question que tu donnes à un système IA. Écrire des prompts clairs et bien structurés améliore directement la qualité de la réponse de l\'IA — cette compétence s\'appelle l\'ingénierie des prompts.</string>
 
     <!-- Quiz Robot — Teens -->
     <string name="robot_quiz_question_teens">Quelle est la différence entre un capteur et un actionneur dans un robot ?</string>
@@ -234,22 +234,23 @@
     <string name="robot_quiz_explanation_teens">Les capteurs sont des dispositifs d\'entrée qui recueillent des informations (par ex. distance, lumière, couleur). Les actionneurs sont des dispositifs de sortie qui font agir le robot (par ex. moteurs, haut-parleurs, LEDs).</string>
 
     <!-- Jeu de Validation IA — Ados -->
-    <string name="ai_teens_intro_task">Presque fini, Agent. Le système IA affiche vert partout — il ne reste qu\'une dernière routine de validation sur le micro:bit et le secteur est sécurisé. Suis les étapes, note ton code, et c\'est terminé.</string>
+    <string name="ai_teens_intro_task">Le système IA doit être vérifié. Lance le test et assure-toi que tout est sûr. On compte sur toi, agent !</string>
     <string name="ai_teens_btn_start">DÉMARRER LA VALIDATION</string>
     <string name="ai_teens_step1_title">TEST DE VALIDATION</string>
     <string name="ai_teens_step1_body">Teste le modèle réentraîné sur le micro:bit.\nNote le code de validation généré.\n\n→ Lance la séquence de test\n→ Note le code\n→ Entre-le ci-dessous</string>
     <string name="ai_teens_btn_enter_code">ENTRER LE CODE</string>
     <string name="ai_teens_code_hint">Code de validation du micro:bit</string>
+    <string name="ai_teens_input_error">Tu n\'as pas exécuté la séquence correctement. Réessaie.</string>
     <string name="ai_teens_code_title_1">ENTRER LE CODE DE VALIDATION</string>
-    <string name="ai_teens_mismatch_body">Le modèle a été entraîné sur des données corrompues.\nLes exemples d\'entraînement étaient faux — donc l\'IA a appris les mauvais schémas.\n\nTu dois le recalibrer avec des données correctes.</string>
-    <string name="ai_teens_btn_diagnose">RECALIBRER LE MODÈLE</string>
+    <string name="ai_teens_mismatch_body">La cyberattaque a corrompu les données d\'entraînement de l\'IA. Le système ne peut pas être fiable tant qu\'il n\'est pas recalibré avec des données propres.\n\nTu dois réentraîner le modèle pour restaurer le datacenter.</string>
+    <string name="ai_teens_btn_diagnose">DÉMARRER LA RECALIBRATION</string>
     <string name="ai_teens_training_body">Le modèle s\'entraîne sur tes nouvelles données.\nAttends la fin de l\'entraînement, puis valide.</string>
     <string name="ai_teens_btn_calibrated">VALIDER LE MODÈLE</string>
     <string name="ai_teens_step2_title">PHASE 2 — REVALIDATION</string>
     <string name="ai_teens_step2_body">Le modèle IA a été recalibré.\nExécute à nouveau la séquence de test sur le micro:bit.\n\nEntre le nouveau code de validation ci-dessous.</string>
     <string name="ai_teens_code_title_2">ENTRER LE CODE DE REVALIDATION</string>
     <string name="ai_teens_revalidation_hint">Code de revalidation du micro:bit</string>
-    <string name="ai_teens_success_body">Modèle IA reformé avec succès.\nTous les systèmes opérationnels.\n\nCode d\'accès libéré.</string>
+    <string name="ai_teens_success_body">Le modèle corrompu a été effacé et réentraîné. L\'IA du datacenter est de nouveau en ligne. Excellent travail, agent. La mission continue !</string>
 
     <!-- Jeu de Validation IA — textes UI codés en dur (barre de statut, panneaux, étiquettes) -->
     <string name="ai_teens_intro_title">VALIDATION IA</string>
@@ -284,16 +285,18 @@
     <string name="ai_teens_add_data_title">COLLECTE DE DONNÉES</string>
     <string name="ai_teens_add_data_body">Va sur le micro:bit et collecte des exemples d\'entraînement pour le modèle IA.\n\nPour chaque classe de geste, effectue le mouvement plusieurs fois pour que le modèle apprenne la différence.\n\n→ Suis les instructions sur le micro:bit\n→ Reviens ici quand la collecte est terminée</string>
     <string name="ai_teens_add_data_btn">DONNÉES COLLECTÉES — ENTRAÎNER</string>
-    <string name="ai_teens_success_title">✓ VALIDATION RÉUSSIE</string>
+    <string name="ai_teens_success_title">MODÈLE IA SÉCURISÉ</string>
     <string name="ai_teens_label_accuracy">Précision :</string>
     <string name="ai_teens_reliability_optimal">OPTIMAL</string>
     <string name="ai_teens_class_a">CLASSE A</string>
     <string name="ai_teens_class_c">CLASSE C</string>
     <string name="ai_teens_first_run_title">SÉQUENCE DE TEST</string>
-    <string name="ai_teens_first_run_body">→ Appuie sur A+B sur le micro:bit pour démarrer\n→ Suis les flèches — appuie sur A après chaque mouvement\n→ Note le code affiché sur le micro:bit\n→ Appuie sur ENTRER CODE quand tu as ton code</string>
-    <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
-    <string name="ai_teens_recalibrate_body">→ Appuie sur B sur le micro:bit pour le mode entraînement\n→ Le micro:bit affiche une flèche — effectue ce mouvement\n→ Le système apprend automatiquement — pas besoin d\'appuyer\n→ Le micro:bit affiche DONE quand tous les mouvements sont calibrés</string>
-    <string name="ai_teens_recalibrate_done_btn">TERMINÉ — RELANCER LA SÉQUENCE</string>
+    <string name="ai_teens_first_run_body">→ Appuie sur A+B pour démarrer le test\n→ Mémorise la séquence — les flèches apparaissent une par une\n→ Quand GO apparaît : reproduis chaque mouvement dans l\'ordre — gauche = ← · droite = → · secoue = ↑\n→ Le micro:bit affiche un code — mémorise-le et entre-le ci-dessous</string>
+    <string name="ai_teens_recalibrate_title">MODE ENTRAÎNEMENT — INJECTER LES DONNÉES</string>
+    <string name="ai_teens_recalibrate_body">→ Appuie sur B — l\'IA entre en mode entraînement\n→ 9 actions apparaissent une par une — réagis à chaque flèche\n→ Incline à gauche = ← · à droite = → · secoue = ↑\n→ ✔ donnée valide · ✘ mauvaise donnée — quelques erreurs sont tolérées\n→ Trop d\'erreurs corrompent le modèle et génèrent une fausse sortie — reste concentré</string>
+    <string name="ai_teens_recalibrate_done_btn">DONNÉES INJECTÉES — RELANCER LA SÉQUENCE</string>
+    <string name="ai_teens_too_many_errors">Trop d\'erreurs d\'entraînement — le modèle est toujours corrompu. Ré-entraîne l\'IA.</string>
+    <string name="ai_teens_btn_retrain">RÉENTRAÎNER L\'IA</string>
     <string name="ai_teens_second_run_title">SÉQUENCE DE REVALIDATION</string>
     <string name="ai_teens_label_training_data">Données d\'entraînement :</string>
     <string name="ai_teens_data_quality_bad">INCORRECTES</string>

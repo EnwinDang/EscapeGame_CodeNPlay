@@ -63,7 +63,7 @@ val JUNIOR_AGENT = MissionConfig(
 val SENIOR_AGENT = MissionConfig(
     binaryTimerSeconds   = 5 * 60,
     scratchCode          = "LOOP",
-    aiCode               = "AI",
+    aiCode               = "PROMPT",
     robotCode            = "ROBOT",
     robotInstructionsRes = R.string.robot_instructions_teens,
 

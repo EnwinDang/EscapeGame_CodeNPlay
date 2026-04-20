@@ -62,6 +62,7 @@ import com.example.escapegame.R
 import com.example.escapegame.logic.BinaryPuzzle
 import com.example.escapegame.logic.VideoAssetManager
 import com.example.escapegame.theme.BrandBlue
+import com.example.escapegame.theme.BrandGreen
 import com.example.escapegame.theme.BrandYellow
 import com.example.escapegame.theme.EscapeGameTheme
 import com.example.escapegame.theme.ErrorRed
@@ -196,7 +197,7 @@ fun BinaryGameScreen(
                                 .width(280.dp)
                                 .height(56.dp)
                                 .clip(RoundedCornerShape(14.dp))
-                                .background(Brush.horizontalGradient(listOf(BrandBlue, MatrixGreen)))
+                                .background(MatrixGreen)
                                 .clickable { onSolved(puzzle.currentWord) },
                             contentAlignment = Alignment.Center
                         ) {
@@ -230,7 +231,7 @@ fun BinaryGameScreen(
                                 .width(280.dp)
                                 .height(56.dp)
                                 .clip(RoundedCornerShape(14.dp))
-                                .background(Brush.horizontalGradient(listOf(BrandBlue, MatrixGreen)))
+                                .background(MatrixGreen)
                                 .clickable { onSolved(puzzle.currentWord) },
                             contentAlignment = Alignment.Center
                         ) {
