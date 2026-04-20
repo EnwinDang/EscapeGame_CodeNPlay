@@ -291,7 +291,7 @@
     <string name="ai_teens_class_a">CLASSE A</string>
     <string name="ai_teens_class_c">CLASSE C</string>
     <string name="ai_teens_first_run_title">SÉQUENCE DE TEST</string>
-    <string name="ai_teens_first_run_body">→ Appuie sur A+B pour démarrer le test\n→ Regarde la séquence — les flèches apparaissent une par une\n→ Quand GO apparaît : incline à gauche pour L, à droite pour R, secoue pour U\n→ Le micro:bit affichera INPUT, DATA ou PROMPT</string>
+    <string name="ai_teens_first_run_body">→ Appuie sur A+B pour démarrer le test\n→ Regarde la séquence — les flèches apparaissent une par une\n→ Quand GO apparaît : incline à gauche pour L, à droite pour R, secoue pour U\n→ Le micro:bit affichera un code — entre-le dans l\'écran suivant</string>
     <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
     <string name="ai_teens_recalibrate_body">→ Appuie sur B pour démarrer l\'entraînement\n→ Le micro:bit affiche les flèches une par une\n→ Réponds immédiatement : incline à gauche pour L, à droite pour R, secoue pour U\n→ Tu verras ✔ ou ✘ après chaque entrée\n→ Quand DONE apparaît, l\'entraînement est terminé</string>
     <string name="ai_teens_recalibrate_done_btn">TERMINÉ — RELANCER LA SÉQUENCE</string>

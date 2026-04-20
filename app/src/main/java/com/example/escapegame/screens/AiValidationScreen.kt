@@ -287,7 +287,7 @@ fun AiValidationScreen(
                             )
                         }
 
-                        // ── FIRST RUN — instructions ───────────────────────────
+                        // ── FIRST RUN — instructions + inline code entry ──────
                         TeensAiPhase.FIRST_RUN -> CenteredColumn {
                             PhaseTitle(stringResource(R.string.ai_teens_first_run_title))
                             Spacer(Modifier.height(28.dp))
@@ -296,30 +296,14 @@ fun AiValidationScreen(
                                     .split("\n").map { it.removePrefix("→ ") },
                                 borderColor = MaterialTheme.colorScheme.primary
                             )
-                            Spacer(Modifier.height(36.dp))
-                            ActionButton(
-                                label = stringResource(R.string.ai_teens_btn_enter_code),
-                                onClick = { phase = TeensAiPhase.CODE_INPUT_1 }
-                            )
-                        }
-
-                        // ── CODE INPUT 1 — DATA advances, INPUT shows specific error ──
-                        TeensAiPhase.CODE_INPUT_1 -> CenteredColumn {
-                            PhaseTitle(stringResource(R.string.ai_teens_code_title_1))
-                            Spacer(Modifier.height(8.dp))
-                            Text(
-                                text = stringResource(R.string.ai_teens_code_hint),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
-                            )
-                            Spacer(Modifier.height(36.dp))
+                            Spacer(Modifier.height(28.dp))
                             CodeField(
                                 value = firstCode,
                                 onValueChange = { firstCode = it; showError = false }
                             )
-                            Spacer(Modifier.height(24.dp))
+                            Spacer(Modifier.height(16.dp))
                             ActionButton(
-                                label = stringResource(R.string.btn_submit),
+                                label = stringResource(R.string.ai_teens_btn_enter_code),
                                 onClick = {
                                     when (firstCode.trim().uppercase()) {
                                         "DATA"  -> phase = TeensAiPhase.BAD_PREDICTION
@@ -337,7 +321,7 @@ fun AiValidationScreen(
                                 }
                             )
                             if (showError) {
-                                Spacer(Modifier.height(16.dp))
+                                Spacer(Modifier.height(12.dp))
                                 Text(
                                     text = errorMessage,
                                     color = ErrorRed,
@@ -346,6 +330,9 @@ fun AiValidationScreen(
                                 )
                             }
                         }
+
+                        // CODE_INPUT_1 is no longer a separate phase — entry is embedded in FIRST_RUN
+                        TeensAiPhase.CODE_INPUT_1 -> { }
 
                         // ── BAD PREDICTION — warning + storyline + recalibrate button ──
                         TeensAiPhase.BAD_PREDICTION -> {
