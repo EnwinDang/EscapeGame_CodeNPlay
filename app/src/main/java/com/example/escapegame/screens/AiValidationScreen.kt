@@ -148,8 +148,7 @@ fun AiValidationScreen(
     var firstCode by remember { mutableStateOf("") }
     var secondCode by remember { mutableStateOf("") }
     var showError by remember { mutableStateOf(false) }
-    // Controls the 2-step bad prediction reveal
-    var badPredictionShowDetail by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf("") }
     val shakeOffset = remember { Animatable(0f) }
     var shakeKey by remember { mutableIntStateOf(0) }
 
@@ -304,7 +303,7 @@ fun AiValidationScreen(
                             )
                         }
 
-                        // ── CODE INPUT 1 — any code triggers the error ─────────
+                        // ── CODE INPUT 1 — DATA advances, INPUT shows specific error ──
                         TeensAiPhase.CODE_INPUT_1 -> CenteredColumn {
                             PhaseTitle(stringResource(R.string.ai_teens_code_title_1))
                             Spacer(Modifier.height(8.dp))
@@ -316,17 +315,39 @@ fun AiValidationScreen(
                             Spacer(Modifier.height(36.dp))
                             CodeField(
                                 value = firstCode,
-                                onValueChange = { firstCode = it }
+                                onValueChange = { firstCode = it; showError = false }
                             )
                             Spacer(Modifier.height(24.dp))
                             ActionButton(
                                 label = stringResource(R.string.btn_submit),
-                                // Any non-blank code advances — the model is broken regardless
-                                onClick = { if (firstCode.isNotBlank()) phase = TeensAiPhase.BAD_PREDICTION }
+                                onClick = {
+                                    when (firstCode.trim().uppercase()) {
+                                        "DATA"  -> phase = TeensAiPhase.BAD_PREDICTION
+                                        "INPUT" -> {
+                                            errorMessage = context.getString(R.string.ai_teens_input_error)
+                                            showError = true
+                                            shakeKey++
+                                        }
+                                        else -> {
+                                            errorMessage = context.getString(R.string.external_wrong_code)
+                                            showError = true
+                                            shakeKey++
+                                        }
+                                    }
+                                }
                             )
+                            if (showError) {
+                                Spacer(Modifier.height(16.dp))
+                                Text(
+                                    text = errorMessage,
+                                    color = ErrorRed,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
                         }
 
-                        // ── BAD PREDICTION — 2-step dramatic error reveal ──────
+                        // ── BAD PREDICTION — warning + storyline + recalibrate button ──
                         TeensAiPhase.BAD_PREDICTION -> {
                             val pulseTransition = rememberInfiniteTransition(label = "pulse")
                             val pulseAlpha by pulseTransition.animateFloat(
@@ -340,7 +361,6 @@ fun AiValidationScreen(
                             )
 
                             CenteredColumn(horizontalPadding = 32.dp) {
-                                // Pulsing warning header — always visible
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Icon(
                                         Icons.Filled.Warning,
@@ -357,72 +377,20 @@ fun AiValidationScreen(
                                         letterSpacing = 2.sp
                                     )
                                 }
-                                Spacer(Modifier.height(20.dp))
-                                // Prediction comparison panel — always visible
-                                SystemPanel(borderColor = ErrorRed) {
-                                    ComparisonRow(
-                                        stringResource(R.string.ai_teens_label_expected),
-                                        stringResource(R.string.ai_teens_class_a),
-                                        MatrixGreen
-                                    )
-                                    Spacer(Modifier.height(6.dp))
-                                    ComparisonRow(
-                                        stringResource(R.string.ai_teens_label_received),
-                                        stringResource(R.string.ai_teens_class_c),
-                                        ErrorRed
-                                    )
-                                    Spacer(Modifier.height(10.dp))
-                                    Box(
-                                        Modifier.fillMaxWidth().height(1.dp)
-                                            .background(ErrorRed.copy(alpha = 0.3f))
-                                    )
-                                    Spacer(Modifier.height(10.dp))
-                                    ComparisonRow(
-                                        stringResource(R.string.ai_teens_label_training_data),
-                                        stringResource(R.string.ai_teens_data_quality_bad),
-                                        ErrorRed
-                                    )
-                                    Spacer(Modifier.height(6.dp))
-                                    ComparisonRow(
-                                        stringResource(R.string.ai_teens_label_accuracy),
-                                        "12%",
-                                        ErrorRed
-                                    )
-                                }
-
-                                if (!badPredictionShowDetail) {
-                                    // Step 1 — just show the error, let the student read it
-                                    Spacer(Modifier.height(32.dp))
-                                    ActionButton(
-                                        label = stringResource(R.string.btn_continue),
-                                        containerColor = ErrorRed,
-                                        contentColor = Color.White,
-                                        onClick = { badPredictionShowDetail = true }
-                                    )
-                                } else {
-                                    // Step 2 — show diagnosis + recalibrate action
-                                    Spacer(Modifier.height(16.dp))
-                                    Text(
-                                        text = stringResource(R.string.ai_teens_label_diagnosis),
-                                        style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        letterSpacing = 3.sp
-                                    )
-                                    Spacer(Modifier.height(8.dp))
-                                    Text(
-                                        text = stringResource(R.string.ai_teens_mismatch_body),
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
-                                        textAlign = TextAlign.Center
-                                    )
-                                    Spacer(Modifier.height(24.dp))
-                                    ActionButton(
-                                        label = stringResource(R.string.ai_teens_btn_diagnose),
-                                        containerColor = ErrorRed,
-                                        contentColor = Color.White,
-                                        onClick = { phase = TeensAiPhase.RECALIBRATE }
-                                    )
-                                }
+                                Spacer(Modifier.height(24.dp))
+                                Text(
+                                    text = stringResource(R.string.ai_teens_mismatch_body),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.85f),
+                                    textAlign = TextAlign.Center
+                                )
+                                Spacer(Modifier.height(40.dp))
+                                ActionButton(
+                                    label = stringResource(R.string.ai_teens_btn_diagnose),
+                                    containerColor = ErrorRed,
+                                    contentColor = Color.White,
+                                    onClick = { phase = TeensAiPhase.RECALIBRATE }
+                                )
                             }
                         }
 
@@ -521,22 +489,6 @@ fun AiValidationScreen(
                                 borderColor = MatrixGreen
                             )
                             Spacer(Modifier.height(36.dp))
-                            ActionButton(
-                                label = stringResource(R.string.ai_teens_btn_enter_code),
-                                onClick = { phase = TeensAiPhase.CODE_INPUT_2 }
-                            )
-                        }
-
-                        // ── CODE INPUT 2 — validated against correctCode ────────
-                        TeensAiPhase.CODE_INPUT_2 -> CenteredColumn {
-                            PhaseTitle(stringResource(R.string.ai_teens_code_title_1))
-                            Spacer(Modifier.height(8.dp))
-                            Text(
-                                text = stringResource(R.string.ai_teens_code_hint),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
-                            )
-                            Spacer(Modifier.height(36.dp))
                             CodeField(
                                 value = secondCode,
                                 onValueChange = { secondCode = it; showError = false }
@@ -548,6 +500,7 @@ fun AiValidationScreen(
                                     if (secondCode.trim().uppercase() == correctCode) {
                                         phase = TeensAiPhase.SUCCESS
                                     } else {
+                                        errorMessage = context.getString(R.string.external_wrong_code)
                                         showError = true
                                         shakeKey++
                                     }
@@ -556,13 +509,16 @@ fun AiValidationScreen(
                             if (showError) {
                                 Spacer(Modifier.height(16.dp))
                                 Text(
-                                    text = stringResource(R.string.external_wrong_code),
+                                    text = errorMessage,
                                     color = ErrorRed,
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.Bold
                                 )
                             }
                         }
+
+                        // CODE_INPUT_2 is no longer a separate phase — code entry is embedded in SECOND_RUN
+                        TeensAiPhase.CODE_INPUT_2 -> { }
 
                         // ── SUCCESS ────────────────────────────────────────────
                         TeensAiPhase.SUCCESS -> CenteredColumn {
@@ -582,37 +538,6 @@ fun AiValidationScreen(
                                 textAlign = TextAlign.Center
                             )
                             Spacer(Modifier.height(24.dp))
-                            SystemPanel(borderColor = MatrixGreen) {
-                                ComparisonRow(
-                                    stringResource(R.string.ai_teens_label_expected),
-                                    stringResource(R.string.ai_teens_class_a),
-                                    MatrixGreen
-                                )
-                                Spacer(Modifier.height(6.dp))
-                                ComparisonRow(
-                                    stringResource(R.string.ai_teens_label_received),
-                                    stringResource(R.string.ai_teens_class_a),
-                                    MatrixGreen
-                                )
-                                Spacer(Modifier.height(10.dp))
-                                Box(
-                                    Modifier.fillMaxWidth().height(1.dp)
-                                        .background(MatrixGreen.copy(alpha = 0.3f))
-                                )
-                                Spacer(Modifier.height(10.dp))
-                                ComparisonRow(
-                                    stringResource(R.string.ai_teens_label_training_data),
-                                    stringResource(R.string.ai_teens_data_quality_good),
-                                    MatrixGreen
-                                )
-                                Spacer(Modifier.height(6.dp))
-                                ComparisonRow(
-                                    stringResource(R.string.ai_teens_label_accuracy),
-                                    "98.7%",
-                                    MatrixGreen
-                                )
-                            }
-                            Spacer(Modifier.height(20.dp))
                             Text(
                                 text = stringResource(R.string.ai_teens_success_body),
                                 style = MaterialTheme.typography.bodyLarge,

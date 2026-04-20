@@ -220,11 +220,11 @@
     <string name="scratch_quiz_explanation_teens">Un bloc \'répéter\' est un exemple de boucle. Les boucles permettent à un ensemble d\'instructions de s\'exécuter un nombre déterminé de fois, évitant de réécrire le même code plusieurs fois.</string>
 
     <!-- Quiz IA — Teens -->
-    <string name="ai_quiz_question_teens">Comment un modèle d\'apprentissage automatique améliore-t-il ses performances ?</string>
-    <string name="ai_quiz_option_a_teens">En analysant de grandes quantités de données d\'entraînement et en ajustant ses paramètres internes</string>
-    <string name="ai_quiz_option_b_teens">En étant manuellement reprogrammé après chaque erreur</string>
-    <string name="ai_quiz_option_c_teens">En essayant aléatoirement différentes approches jusqu\'à ce qu\'une fonctionne</string>
-    <string name="ai_quiz_explanation_teens">Les modèles d\'apprentissage automatique apprennent en traitant de grands ensembles de données. Ils ajustent leurs paramètres internes en fonction des schémas trouvés, améliorant progressivement leur précision.</string>
+    <string name="ai_quiz_question_teens">Qu\'est-ce qu\'un « prompt » dans le contexte de l\'IA ?</string>
+    <string name="ai_quiz_option_a_teens">Une instruction ou une entrée donnée à une IA pour obtenir une réponse</string>
+    <string name="ai_quiz_option_b_teens">Un type d\'erreur qui se produit lorsqu\'un modèle IA échoue</string>
+    <string name="ai_quiz_option_c_teens">La vitesse de traitement d\'un système IA</string>
+    <string name="ai_quiz_explanation_teens">Un prompt est l\'instruction ou la question que tu donnes à un système IA. Écrire des prompts clairs et bien structurés améliore directement la qualité de la réponse de l\'IA — cette compétence s\'appelle l\'ingénierie des prompts.</string>
 
     <!-- Quiz Robot — Teens -->
     <string name="robot_quiz_question_teens">Quelle est la différence entre un capteur et un actionneur dans un robot ?</string>
@@ -234,15 +234,16 @@
     <string name="robot_quiz_explanation_teens">Les capteurs sont des dispositifs d\'entrée qui recueillent des informations (par ex. distance, lumière, couleur). Les actionneurs sont des dispositifs de sortie qui font agir le robot (par ex. moteurs, haut-parleurs, LEDs).</string>
 
     <!-- Jeu de Validation IA — Ados -->
-    <string name="ai_teens_intro_task">Presque fini, Agent. Le système IA affiche vert partout — il ne reste qu\'une dernière routine de validation sur le micro:bit et le secteur est sécurisé. Suis les étapes, note ton code, et c\'est terminé.</string>
+    <string name="ai_teens_intro_task">Nous sommes arrivés dans la section IA du datacenter. Ta mission est de tester le système IA et de vérifier s\'il a été affecté par la cyberattaque. Suis les étapes et entre le code affiché sur le micro:bit.</string>
     <string name="ai_teens_btn_start">DÉMARRER LA VALIDATION</string>
     <string name="ai_teens_step1_title">TEST DE VALIDATION</string>
     <string name="ai_teens_step1_body">Teste le modèle réentraîné sur le micro:bit.\nNote le code de validation généré.\n\n→ Lance la séquence de test\n→ Note le code\n→ Entre-le ci-dessous</string>
     <string name="ai_teens_btn_enter_code">ENTRER LE CODE</string>
     <string name="ai_teens_code_hint">Code de validation du micro:bit</string>
+    <string name="ai_teens_input_error">Tu n\'as pas exécuté la séquence correctement. Réessaie.</string>
     <string name="ai_teens_code_title_1">ENTRER LE CODE DE VALIDATION</string>
-    <string name="ai_teens_mismatch_body">Le modèle a été entraîné sur des données corrompues.\nLes exemples d\'entraînement étaient faux — donc l\'IA a appris les mauvais schémas.\n\nTu dois le recalibrer avec des données correctes.</string>
-    <string name="ai_teens_btn_diagnose">RECALIBRER LE MODÈLE</string>
+    <string name="ai_teens_mismatch_body">La cyberattaque a corrompu les données d\'entraînement de l\'IA. Le système ne peut pas être fiable tant qu\'il n\'est pas recalibré avec des données propres.\n\nTu dois réentraîner le modèle pour restaurer le datacenter.</string>
+    <string name="ai_teens_btn_diagnose">DÉMARRER LA RECALIBRATION</string>
     <string name="ai_teens_training_body">Le modèle s\'entraîne sur tes nouvelles données.\nAttends la fin de l\'entraînement, puis valide.</string>
     <string name="ai_teens_btn_calibrated">VALIDER LE MODÈLE</string>
     <string name="ai_teens_step2_title">PHASE 2 — REVALIDATION</string>

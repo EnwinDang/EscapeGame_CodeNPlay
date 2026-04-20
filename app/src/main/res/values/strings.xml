@@ -227,11 +227,11 @@
     <string name="scratch_quiz_explanation_teens">A \'repeat\' block is an example of a loop. Loops allow a set of instructions to run a specified number of times, avoiding the need to write the same code repeatedly.</string>
 
     <!-- AI Quiz — Teens -->
-    <string name="ai_quiz_question_teens">How does a machine learning model improve its performance over time?</string>
-    <string name="ai_quiz_option_a_teens">By analyzing large amounts of training data and adjusting its internal parameters</string>
-    <string name="ai_quiz_option_b_teens">By being manually reprogrammed after each mistake</string>
-    <string name="ai_quiz_option_c_teens">By randomly trying different approaches until one works</string>
-    <string name="ai_quiz_explanation_teens">Machine learning models learn by processing large datasets. They adjust their internal parameters based on patterns they find, gradually improving accuracy without being explicitly reprogrammed.</string>
+    <string name="ai_quiz_question_teens">What is a "prompt" in the context of AI?</string>
+    <string name="ai_quiz_option_a_teens">An instruction or input you give to an AI to get a response</string>
+    <string name="ai_quiz_option_b_teens">A type of error that occurs when an AI model fails</string>
+    <string name="ai_quiz_option_c_teens">The processing speed of an AI system</string>
+    <string name="ai_quiz_explanation_teens">A prompt is the instruction or question you give to an AI system. Writing clear, well-structured prompts directly improves the quality of the AI\'s response — this skill is called prompt engineering.</string>
 
     <!-- Robot Quiz — Teens -->
     <string name="robot_quiz_question_teens">What is the difference between a sensor and an actuator in a robot?</string>
@@ -241,15 +241,16 @@
     <string name="robot_quiz_explanation_teens">Sensors are input devices that gather information (e.g. distance, light, color). Actuators are output devices that make the robot do something (e.g. motors, speakers, LEDs).</string>
 
     <!-- AI Validation Game — Teens -->
-    <string name="ai_teens_intro_task">Almost there, Agent. The AI system shows green across the board — one final validation routine on the micro:bit and the sector is cleared. Follow the steps, collect your code, and you\'re done.</string>
+    <string name="ai_teens_intro_task">We\'ve arrived at the AI section of the datacenter. Your mission is to test the AI system and check whether it was affected by the cyberattack. Follow the steps carefully and enter the code the micro:bit shows you.</string>
     <string name="ai_teens_btn_start">START VALIDATION</string>
     <string name="ai_teens_step1_title">VALIDATION TEST</string>
     <string name="ai_teens_step1_body">Test the retrained model on the micro:bit.\nNote the generated validation code.\n\n→ Run the test sequence\n→ Note the code\n→ Enter it below</string>
     <string name="ai_teens_btn_enter_code">ENTER CODE</string>
     <string name="ai_teens_code_hint">Validation code from micro:bit</string>
+    <string name="ai_teens_input_error">You did not execute the sequence correctly. Try again.</string>
     <string name="ai_teens_code_title_1">ENTER VALIDATION CODE</string>
-    <string name="ai_teens_mismatch_body">The model was trained on corrupt data.\nThe training examples were wrong — so the AI learned the wrong patterns.\n\nYou must recalibrate with correct data.</string>
-    <string name="ai_teens_btn_diagnose">RECALIBRATE MODEL</string>
+    <string name="ai_teens_mismatch_body">The cyberattack has corrupted the AI training data. The system cannot be trusted until it is recalibrated with clean data.\n\nYou must retrain the model to restore the datacenter.</string>
+    <string name="ai_teens_btn_diagnose">START RECALIBRATION</string>
     <string name="ai_teens_training_body">The model is training on your new data.\nWait for training to complete, then validate.</string>
     <string name="ai_teens_btn_calibrated">VALIDATE MODEL</string>
     <string name="ai_teens_step2_title">PHASE 2 — REVALIDATION</string>
@@ -268,7 +269,7 @@
     <string name="ai_teens_status_datacenter">Datacenter connection</string>
     <string name="ai_teens_status_model_loaded">AI model loaded</string>
     <string name="ai_teens_status_waiting">Status: AWAITING VALIDATION</string>
-    <string name="ai_teens_mismatch_title">PREDICTION MISMATCH</string>
+    <string name="ai_teens_mismatch_title">WARNING — AI DATA CORRUPTED</string>
     <string name="ai_teens_label_expected">Expected:</string>
     <string name="ai_teens_label_received">Received:</string>
     <string name="ai_teens_label_deviation">Deviation:</string>
@@ -297,7 +298,7 @@
     <string name="ai_teens_class_a">CLASS A</string>
     <string name="ai_teens_class_c">CLASS C</string>
     <string name="ai_teens_first_run_title">TEST SEQUENCE</string>
-    <string name="ai_teens_first_run_body">→ Press A+B to start the test\n→ Watch the sequence — arrows appear one by one\n→ When GO appears: tilt left for L, tilt right for R, shake for U\n→ The micro:bit will show INPUT, DATA, or PROMPT</string>
+    <string name="ai_teens_first_run_body">→ Press A+B to start the test\n→ The micro:bit shows TEST, then the sequence — arrows appear one by one\n→ When GO appears: tilt left for L, tilt right for R, shake for U\n→ Enter the code shown on the micro:bit below</string>
     <string name="ai_teens_recalibrate_title">RECALIBRATION</string>
     <string name="ai_teens_recalibrate_body">→ Press B to start training\n→ The micro:bit shows arrows one by one\n→ Respond immediately: tilt left for L, tilt right for R, shake for U\n→ You will see ✔ or ✘ after each input\n→ When DONE appears, training is complete</string>
     <string name="ai_teens_recalibrate_done_btn">DONE — RERUN SEQUENCE</string>
