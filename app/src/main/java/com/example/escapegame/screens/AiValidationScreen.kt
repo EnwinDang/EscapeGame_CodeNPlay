@@ -263,9 +263,9 @@ fun AiValidationScreen(
                                     ) {
                                         Text(
                                             text = stringResource(R.string.ai_teens_intro_task),
-                                            fontSize = 14.sp,
+                                            fontSize = 18.sp,
                                             color = Color.White.copy(alpha = 0.85f),
-                                            lineHeight = 20.sp
+                                            lineHeight = 26.sp
                                         )
                                     }
                                 }
@@ -282,7 +282,7 @@ fun AiValidationScreen(
                                 label = stringResource(R.string.ai_teens_btn_start),
                                 containerColor = MatrixGreen,
                                 contentColor = Color.Black,
-                                enabled = hasFinishedAudio || isPreview,
+                                enabled = true,
                                 onClick = { phase = TeensAiPhase.FIRST_RUN }
                             )
                         }
@@ -529,13 +529,6 @@ fun AiValidationScreen(
 
                         // ── SUCCESS ────────────────────────────────────────────
                         TeensAiPhase.SUCCESS -> CenteredColumn {
-                            Icon(
-                                Icons.Filled.SmartToy,
-                                contentDescription = null,
-                                modifier = Modifier.size(56.dp),
-                                tint = MatrixGreen
-                            )
-                            Spacer(Modifier.height(16.dp))
                             Text(
                                 text = stringResource(R.string.ai_teens_success_title),
                                 style = MaterialTheme.typography.headlineLarge,

@@ -234,7 +234,7 @@
     <string name="robot_quiz_explanation_teens">Sensoren zijn invoerapparaten die informatie verzamelen (bijv. afstand, licht, kleur). Actuatoren zijn uitvoerapparaten die de robot iets laten doen (bijv. motoren, luidsprekers, LED-lampjes).</string>
 
     <!-- AI Validatie Game — Teens -->
-    <string name="ai_teens_intro_task">We zijn aangekomen bij de AI-sectie van het datacenter. Jouw missie is om het AI-systeem te testen en te controleren of het door de cyberaanval is aangetast. Volg de stappen en voer de code in die op de micro:bit verschijnt.</string>
+    <string name="ai_teens_intro_task">Het AI-systeem moet worden gecontroleerd. Voer de test uit en zorg dat alles veilig is. We rekenen op jou, agent!</string>
     <string name="ai_teens_btn_start">START VALIDATIE</string>
     <string name="ai_teens_step1_title">VALIDATIETEST</string>
     <string name="ai_teens_step1_body">Test het hertrainde model op de micro:bit.\nNoteer de gegenereerde validatiecode.\n\n→ Voer de testsequentie uit\n→ Noteer de code\n→ Voer die hieronder in</string>
@@ -250,7 +250,7 @@
     <string name="ai_teens_step2_body">Het AI-model is opnieuw gekalibreerd.\nVoer de testsequentie opnieuw uit op de micro:bit.\n\nVoer de nieuwe validatiecode hieronder in.</string>
     <string name="ai_teens_code_title_2">HERVALIDATIECODE INVOEREN</string>
     <string name="ai_teens_revalidation_hint">Hervalidatiecode van de micro:bit</string>
-    <string name="ai_teens_success_body">AI-model succesvol hertraind.\nAlle systemen operationeel.\n\nToegangsscode vrijgegeven.</string>
+    <string name="ai_teens_success_body">Het corrupte model is gewist en opnieuw getraind. De AI van het datacenter is weer online. Uitstekend werk, agent. De missie gaat verder!</string>
 
     <!-- AI Validatie — hardgecodeerde UI-teksten (statusbalk, panelen, labels) -->
     <string name="ai_teens_intro_title">AI VALIDATIE</string>
@@ -285,15 +285,15 @@
     <string name="ai_teens_add_data_title">DATA VERZAMELEN</string>
     <string name="ai_teens_add_data_body">Ga naar de micro:bit en verzamel trainingsvoorbeelden voor het AI-model.\n\nVoer voor elke gestureklasse de beweging meerdere keren uit, zodat het model het verschil leert.\n\n→ Volg de instructies op de micro:bit\n→ Keer terug als de dataverzameling klaar is</string>
     <string name="ai_teens_add_data_btn">DATA VERZAMELD — MODEL TRAINEN</string>
-    <string name="ai_teens_success_title">✓ VALIDATIE GESLAAGD</string>
+    <string name="ai_teens_success_title">AI-MODEL BEVEILIGD</string>
     <string name="ai_teens_label_accuracy">Nauwkeurigheid:</string>
     <string name="ai_teens_reliability_optimal">OPTIMAAL</string>
     <string name="ai_teens_class_a">KLASSE A</string>
     <string name="ai_teens_class_c">KLASSE C</string>
     <string name="ai_teens_first_run_title">TESTSEQUENTIE</string>
-    <string name="ai_teens_first_run_body">→ Druk op A+B om de test te starten\n→ Bekijk de reeks — pijlen verschijnen één voor één\n→ Als GO verschijnt: kantel links voor L, rechts voor R, schud voor U\n→ De micro:bit toont een code — onthoud hem en voer hem hieronder in</string>
+    <string name="ai_teens_first_run_body">→ Druk op A+B om de test te starten\n→ Onthoud de reeks — pijlen verschijnen één voor één\n→ Als GO verschijnt: voer elke beweging in volgorde uit — links = ← · rechts = → · schud = ↑\n→ De micro:bit toont een code — voer hem hieronder in</string>
     <string name="ai_teens_recalibrate_title">TRAININGSMODUS — NIEUWE DATA INJECTEREN</string>
-    <string name="ai_teens_recalibrate_body">→ Druk op B — de AI gaat in trainingsmodus\n→ 9 acties verschijnen één voor één — reageer op elke pijl\n→ Kantel links = L · rechts = R · schud = U\n→ ✔ geldige invoer · ✘ slechte data — een paar fouten zijn toegestaan\n→ Te veel fouten corrumperen het model en produceren een valse uitvoer — blijf scherp</string>
+    <string name="ai_teens_recalibrate_body">→ Druk op B — de AI gaat in trainingsmodus\n→ 9 acties verschijnen één voor één — reageer op elke pijl\n→ Kantel links = ← · rechts = → · schud = ↑\n→ ✔ geldige invoer · ✘ slechte data — een paar fouten zijn toegestaan\n→ Te veel fouten corrumperen het model en produceren een valse uitvoer — blijf scherp</string>
     <string name="ai_teens_recalibrate_done_btn">DATA GEÏNJECTEERD — SEQUENTIE HERSTARTEN</string>
     <string name="ai_teens_too_many_errors">Te veel trainingsfouten — het model is nog steeds corrupt. Train de AI opnieuw.</string>
     <string name="ai_teens_btn_retrain">AI OPNIEUW TRAINEN</string>

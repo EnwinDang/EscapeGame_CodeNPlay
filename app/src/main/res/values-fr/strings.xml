@@ -234,7 +234,7 @@
     <string name="robot_quiz_explanation_teens">Les capteurs sont des dispositifs d\'entrée qui recueillent des informations (par ex. distance, lumière, couleur). Les actionneurs sont des dispositifs de sortie qui font agir le robot (par ex. moteurs, haut-parleurs, LEDs).</string>
 
     <!-- Jeu de Validation IA — Ados -->
-    <string name="ai_teens_intro_task">Nous sommes arrivés dans la section IA du datacenter. Ta mission est de tester le système IA et de vérifier s\'il a été affecté par la cyberattaque. Suis les étapes et entre le code affiché sur le micro:bit.</string>
+    <string name="ai_teens_intro_task">Le système IA doit être vérifié. Lance le test et assure-toi que tout est sûr. On compte sur toi, agent !</string>
     <string name="ai_teens_btn_start">DÉMARRER LA VALIDATION</string>
     <string name="ai_teens_step1_title">TEST DE VALIDATION</string>
     <string name="ai_teens_step1_body">Teste le modèle réentraîné sur le micro:bit.\nNote le code de validation généré.\n\n→ Lance la séquence de test\n→ Note le code\n→ Entre-le ci-dessous</string>
@@ -250,7 +250,7 @@
     <string name="ai_teens_step2_body">Le modèle IA a été recalibré.\nExécute à nouveau la séquence de test sur le micro:bit.\n\nEntre le nouveau code de validation ci-dessous.</string>
     <string name="ai_teens_code_title_2">ENTRER LE CODE DE REVALIDATION</string>
     <string name="ai_teens_revalidation_hint">Code de revalidation du micro:bit</string>
-    <string name="ai_teens_success_body">Modèle IA reformé avec succès.\nTous les systèmes opérationnels.\n\nCode d\'accès libéré.</string>
+    <string name="ai_teens_success_body">Le modèle corrompu a été effacé et réentraîné. L\'IA du datacenter est de nouveau en ligne. Excellent travail, agent. La mission continue !</string>
 
     <!-- Jeu de Validation IA — textes UI codés en dur (barre de statut, panneaux, étiquettes) -->
     <string name="ai_teens_intro_title">VALIDATION IA</string>
@@ -285,15 +285,15 @@
     <string name="ai_teens_add_data_title">COLLECTE DE DONNÉES</string>
     <string name="ai_teens_add_data_body">Va sur le micro:bit et collecte des exemples d\'entraînement pour le modèle IA.\n\nPour chaque classe de geste, effectue le mouvement plusieurs fois pour que le modèle apprenne la différence.\n\n→ Suis les instructions sur le micro:bit\n→ Reviens ici quand la collecte est terminée</string>
     <string name="ai_teens_add_data_btn">DONNÉES COLLECTÉES — ENTRAÎNER</string>
-    <string name="ai_teens_success_title">✓ VALIDATION RÉUSSIE</string>
+    <string name="ai_teens_success_title">MODÈLE IA SÉCURISÉ</string>
     <string name="ai_teens_label_accuracy">Précision :</string>
     <string name="ai_teens_reliability_optimal">OPTIMAL</string>
     <string name="ai_teens_class_a">CLASSE A</string>
     <string name="ai_teens_class_c">CLASSE C</string>
     <string name="ai_teens_first_run_title">SÉQUENCE DE TEST</string>
-    <string name="ai_teens_first_run_body">→ Appuie sur A+B pour démarrer le test\n→ Regarde la séquence — les flèches apparaissent une par une\n→ Quand GO apparaît : incline à gauche pour L, à droite pour R, secoue pour U\n→ Le micro:bit affiche un code — mémorise-le et entre-le ci-dessous</string>
+    <string name="ai_teens_first_run_body">→ Appuie sur A+B pour démarrer le test\n→ Mémorise la séquence — les flèches apparaissent une par une\n→ Quand GO apparaît : reproduis chaque mouvement dans l\'ordre — gauche = ← · droite = → · secoue = ↑\n→ Le micro:bit affiche un code — mémorise-le et entre-le ci-dessous</string>
     <string name="ai_teens_recalibrate_title">MODE ENTRAÎNEMENT — INJECTER LES DONNÉES</string>
-    <string name="ai_teens_recalibrate_body">→ Appuie sur B — l\'IA entre en mode entraînement\n→ 9 actions apparaissent une par une — réagis à chaque flèche\n→ Incline à gauche = L · à droite = R · secoue = U\n→ ✔ donnée valide · ✘ mauvaise donnée — quelques erreurs sont tolérées\n→ Trop d\'erreurs corrompent le modèle et génèrent une fausse sortie — reste concentré</string>
+    <string name="ai_teens_recalibrate_body">→ Appuie sur B — l\'IA entre en mode entraînement\n→ 9 actions apparaissent une par une — réagis à chaque flèche\n→ Incline à gauche = ← · à droite = → · secoue = ↑\n→ ✔ donnée valide · ✘ mauvaise donnée — quelques erreurs sont tolérées\n→ Trop d\'erreurs corrompent le modèle et génèrent une fausse sortie — reste concentré</string>
     <string name="ai_teens_recalibrate_done_btn">DONNÉES INJECTÉES — RELANCER LA SÉQUENCE</string>
     <string name="ai_teens_too_many_errors">Trop d\'erreurs d\'entraînement — le modèle est toujours corrompu. Ré-entraîne l\'IA.</string>
     <string name="ai_teens_btn_retrain">RÉENTRAÎNER L\'IA</string>
