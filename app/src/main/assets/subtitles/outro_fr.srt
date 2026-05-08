@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:04,000
+Bien joué à vous ! On vient de recevoir les diagnostics de Hal et tous les systèmes fonctionnent à nouveau.
+
+2
+00:00:04,000 --> 00:00:09,000
+Oui, on a pu redémarrer tous les pare-feux et normalement, le Data Center devrait être comme neuf.
+
+3
+00:00:09,000 --> 00:00:12,000
+Un tout grand merci. Sans vous, on n'y serait pas arrivé.
+
+4
+00:00:12,000 --> 00:00:17,000
+Et si vous voulez suivre la suite de nos aventures dans le vlog Horizon, n'hésitez pas à vous abonner à notre chaîne YouTube.
+
+5
+00:00:17,000 --> 00:00:19,000
+À la prochaine !

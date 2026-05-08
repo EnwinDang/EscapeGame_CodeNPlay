@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:04,000
+Well done! We just received Hal's diagnostics and all systems are working again.
+
+2
+00:00:04,000 --> 00:00:09,000
+Yes, we were able to restart all the firewalls and normally, the Data Center should be as good as new.
+
+3
+00:00:09,000 --> 00:00:12,000
+A huge thank you. Without you, we wouldn't have made it.
+
+4
+00:00:12,000 --> 00:00:17,000
+And if you want to follow the rest of our adventures in the Horizon vlog, don't forget to subscribe to our YouTube channel.
+
+5
+00:00:17,000 --> 00:00:19,000
+See you next time!

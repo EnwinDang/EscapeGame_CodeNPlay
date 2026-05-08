@@ -218,6 +218,7 @@ fun AiGameScreen(
     var shakeKey     by remember { mutableIntStateOf(0) }
     val round        = remember(attemptKey) { generateRound(attemptKey) }
     var timeProgress by remember(attemptKey) { mutableFloatStateOf(1f) }
+    var roundTimedOut by remember { mutableStateOf(false) }
 
     LaunchedEffect(attemptKey, gamePhase) {
         if (gamePhase != GamePhase.GAME || gameWon) return@LaunchedEffect
@@ -228,7 +229,7 @@ fun AiGameScreen(
             if (gamePhase != GamePhase.GAME || gameWon) return@LaunchedEffect
             timeProgress = 1f - i.toFloat() / steps
         }
-        shakeKey++; delay(500L); attemptKey++
+        shakeKey++; delay(500L); roundTimedOut = true
     }
 
     LaunchedEffect(shakeKey) {
@@ -395,6 +396,38 @@ fun AiGameScreen(
             GamePhase.GAME -> {
                 Box(modifier = Modifier.fillMaxSize()) {
                     when {
+                        roundTimedOut -> {
+                            Column(
+                                modifier = Modifier.fillMaxSize().padding(40.dp),
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.binary_times_up),
+                                    fontSize = 32.sp,
+                                    fontWeight = FontWeight.ExtraBold,
+                                    color = ErrorRed,
+                                    textAlign = TextAlign.Center
+                                )
+                                Spacer(Modifier.height(32.dp))
+                                Button(
+                                    onClick = { roundTimedOut = false; attemptKey++ },
+                                    modifier = Modifier.fillMaxWidth().height(64.dp),
+                                    shape = RoundedCornerShape(16.dp),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = MatrixGreen,
+                                        contentColor = Color.Black
+                                    )
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.binary_continue_anyway),
+                                        fontSize = 16.sp,
+                                        fontWeight = FontWeight.ExtraBold
+                                    )
+                                }
+                            }
+                        }
+
                         gameWon -> {
                             Column(
                                 modifier = Modifier.fillMaxSize().padding(40.dp),

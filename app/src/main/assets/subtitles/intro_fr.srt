@@ -1,0 +1,84 @@
+1
+00:00:00,000 --> 00:00:07,000
+2052 - GROENLAND
+
+2
+00:00:07,000 --> 00:00:27,000
+SYSTEM FAILURE / VIRUS DETECTED
+
+3
+00:00:27,000 --> 00:00:31,000
+PROJET HORIZON
+AVENTURE AU COEUR DU NUMÉRIQUE
+
+4
+00:00:31,000 --> 00:00:35,000
+Technicien: Oké, ça tourne, tu peux y aller.
+
+5
+00:00:35,000 --> 00:00:39,000
+Swann: Bienvenue au Data Palace! Ici Swann et Ismail.
+
+6
+00:00:39,000 --> 00:00:45,000
+On est les responsables de ce data center qui a été conçu pour stocker les données des ressources importantes pour les scientifiques du monde entier.
+
+7
+00:00:45,000 --> 00:00:49,000
+Ismail: Alors, si vous voyez ce message, c'est qu'on a besoin de vous en fait.
+
+8
+00:00:49,000 --> 00:00:53,000
+Euh, il y a eu une grosse cyberattaque il y a quelques heures et ça a détraqué plein de systèmes du data center.
+
+9
+00:00:53,000 --> 00:00:59,000
+Swann: D'ailleurs nous on va partir pour régler les systèmes du gestionnaire de réseau du centre,
+
+10
+00:00:59,000 --> 00:01:05,000
+mais il nous faut toutes les compétences et l'intelligence d'informaticien et d'informaticiennes comme vous pour ben régler tous les autres systèmes.
+
+11
+00:01:05,000 --> 00:01:07,000
+Swann: D'ailleurs Hal, tu peux nous faire la liste des problèmes?
+
+12
+00:01:07,000 --> 00:01:11,000
+HAL: Selon le système de diagnostic, plusieurs serveurs sont proches de la surchauffe.
+
+13
+00:01:11,000 --> 00:01:14,000
+Il va falloir les refroidir en urgence.
+
+14
+00:01:14,000 --> 00:01:18,000
+HAL: Un bouchon a été détecté dans un conduit d'aération 25B.
+
+15
+00:01:18,000 --> 00:01:21,000
+Il faut le retirer au plus vite afin de réactiver les systèmes de refroidissement.
+
+16
+00:01:21,000 --> 00:01:24,000
+Ismail: Comme vous pouvez le voir, il y a beaucoup de choses à faire.
+
+17
+00:01:24,000 --> 00:01:28,000
+Mais n'hésitez pas à vous référer à l'enveloppe qui vous a été confiée.
+
+18
+00:01:28,000 --> 00:01:31,000
+Et si vous avez besoin d'aide, demandez à un des techniciens qui vous accompagne.
+
+19
+00:01:31,000 --> 00:01:33,000
+Swann: Vous aurez besoin de travailler ensemble pour venir à bout des défis qui vous attendent.
+
+20
+00:01:33,000 --> 00:01:36,000
+Alors n'hésitez pas à vous serrer les coudes.
+
+21
+00:01:36,000 --> 00:01:45,000
+Ismail: Merci de votre aide et bonne chance à tous!
