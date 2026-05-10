@@ -46,7 +46,7 @@
     <string name="binary_continue_quiz">Procéder au débriefing</string>
     <string name="binary_times_up">Temps expiré !</string>
     <string name="binary_ask_master">Contactez votre Commandant de Mission pour assistance.</string>
-    <string name="binary_continue_anyway">Contournement — continuer quand même</string>
+    <string name="binary_continue_anyway">Prochain défi →</string>
     <string name="binary_wrong">Incorrect — réessayez.</string>
     <string name="btn_new_puzzle">Nouveau Signal</string>
 
@@ -125,36 +125,12 @@
     <!--  JUNIOR AGENT (Kids) questions quiz — modifier ici pour kids -->
     <!-- ============================================================ -->
 
-    <!-- Quiz de mots binaires — Kids -->
-    <string name="word_data_question_kids">Qu\'est-ce que la donnée ?</string>
-    <string name="word_data_option_a_kids">Des informations qu\'un ordinateur peut enregistrer et utiliser</string>
-    <string name="word_data_option_b_kids">Un type de logiciel de programmation</string>
-    <string name="word_data_option_c_kids">Les pièces physiques d\'un ordinateur</string>
-    <string name="word_data_explanation_kids">Les données sont des informations — comme des chiffres, des mots et des images — qu\'un ordinateur peut enregistrer et utiliser.</string>
-
-    <string name="word_code_question_kids">Qu\'est-ce que le code en programmation ?</string>
-    <string name="word_code_option_a_kids">Des instructions qui disent à l\'ordinateur quoi faire</string>
-    <string name="word_code_option_b_kids">Un mot de passe secret pour les fichiers</string>
-    <string name="word_code_option_c_kids">L\'écran d\'un ordinateur</string>
-    <string name="word_code_explanation_kids">Le code, ce sont des instructions dans un langage spécial qui disent à l\'ordinateur exactement quoi faire, étape par étape.</string>
-
-    <string name="word_server_question_kids">Qu\'est-ce qu\'un serveur ?</string>
-    <string name="word_server_option_a_kids">Un ordinateur puissant qui stocke et partage des informations</string>
-    <string name="word_server_option_b_kids">Un programme qui envoie des e-mails</string>
-    <string name="word_server_option_c_kids">Un type de jeu vidéo</string>
-    <string name="word_server_explanation_kids">Un serveur est un ordinateur puissant qui fait fonctionner les sites web et les applications et envoie des informations aux autres appareils.</string>
-
-    <string name="word_robot_question_kids">Comment un robot sait-il quoi faire ?</string>
-    <string name="word_robot_option_a_kids">Il suit des instructions programmées par une personne</string>
-    <string name="word_robot_option_b_kids">Il pense comme un cerveau humain</string>
-    <string name="word_robot_option_c_kids">Il devine au hasard</string>
-    <string name="word_robot_explanation_kids">Un robot fait exactement ce que son code lui dit de faire. Il suit des instructions écrites par un programmeur, étape par étape.</string>
-
-    <string name="word_cloud_question_kids">C\'est quoi \"le cloud\" ?</string>
-    <string name="word_cloud_option_a_kids">Enregistrer et utiliser des fichiers sur internet</string>
-    <string name="word_cloud_option_b_kids">Une appli météo sur ton téléphone</string>
-    <string name="word_cloud_option_c_kids">Une connexion clavier sans fil</string>
-    <string name="word_cloud_explanation_kids">Le cloud, c\'est quand tes fichiers sont enregistrés sur des ordinateurs connectés à internet, pour y accéder de n\'importe où.</string>
+    <!-- Quiz binaire — Kids -->
+    <string name="binary_quiz_question_kids">Qu\'est-ce que le code binaire ?</string>
+    <string name="binary_quiz_option_a_kids">Une façon pour les ordinateurs de stocker des informations avec des 0 et des 1</string>
+    <string name="binary_quiz_option_b_kids">Un type de virus informatique</string>
+    <string name="binary_quiz_option_c_kids">Un langage de programmation pour les robots</string>
+    <string name="binary_quiz_explanation_kids">Le binaire est un système numérique utilisant seulement 0 et 1. Chaque lettre, image et son sur un ordinateur est stocké sous forme de 0s et de 1s.</string>
 
     <!-- Quiz Scratch — Kids -->
     <string name="scratch_quiz_question_kids">À quoi sert Scratch ?</string>
@@ -181,36 +157,12 @@
     <!--  SENIOR AGENT (Teens) questions quiz — modifier ici pour teens -->
     <!-- ============================================================ -->
 
-    <!-- Quiz de mots binaires — Teens -->
-    <string name="word_data_question_teens">Quelle est la différence entre données et information ?</string>
-    <string name="word_data_option_a_teens">Les données sont des faits bruts non traités ; l\'information est des données auxquelles on a donné un sens</string>
-    <string name="word_data_option_b_teens">Les données sont sur un disque dur ; l\'information est dans le cloud</string>
-    <string name="word_data_option_c_teens">Ils signifient la même chose</string>
-    <string name="word_data_explanation_teens">Les données désignent des faits et chiffres bruts. L\'information est constituée de données traitées et mises en contexte, ce qui les rend utiles et compréhensibles.</string>
-
-    <string name="word_code_question_teens">Quel est le rôle d\'une fonction en programmation ?</string>
-    <string name="word_code_option_a_teens">Regrouper des instructions réutilisables qui peuvent être appelées plusieurs fois</string>
-    <string name="word_code_option_b_teens">Stocker des données de façon permanente sur l\'ordinateur</string>
-    <string name="word_code_option_c_teens">Se connecter à internet</string>
-    <string name="word_code_explanation_teens">Une fonction est un bloc de code nommé qui effectue une tâche spécifique. En la définissant une seule fois, on peut l\'appeler plusieurs fois dans le programme sans répéter le même code.</string>
-
-    <string name="word_server_question_teens">Dans un modèle client-serveur, que fait le client ?</string>
-    <string name="word_server_option_a_teens">Il envoie des requêtes au serveur et affiche les réponses</string>
-    <string name="word_server_option_b_teens">Il stocke tous les sites web et les données</string>
-    <string name="word_server_option_c_teens">Il gère le système d\'exploitation de tous les appareils connectés</string>
-    <string name="word_server_explanation_teens">Dans un modèle client-serveur, le client (par ex. votre navigateur) envoie des requêtes de données, et le serveur répond avec les informations demandées. Le serveur gère le stockage et le traitement.</string>
-
-    <string name="word_robot_question_teens">Que signifie \'autonome\' pour un robot ?</string>
-    <string name="word_robot_option_a_teens">Le robot peut fonctionner et prendre des décisions sans contrôle humain constant</string>
-    <string name="word_robot_option_b_teens">Le robot a besoin d\'un humain pour contrôler chaque mouvement</string>
-    <string name="word_robot_option_c_teens">Le robot ne peut effectuer qu\'une seule tâche préprogrammée</string>
-    <string name="word_robot_explanation_teens">Un robot autonome peut percevoir son environnement, traiter des informations et prendre des décisions seul — sans qu\'un humain dirige chaque action.</string>
-
-    <string name="word_cloud_question_teens">Quel est l\'avantage principal du cloud computing pour un datacenter ?</string>
-    <string name="word_cloud_option_a_teens">Les ressources peuvent être augmentées ou réduites instantanément selon la demande</string>
-    <string name="word_cloud_option_b_teens">Les données sont stockées physiquement plus près de l\'utilisateur</string>
-    <string name="word_cloud_option_c_teens">Les serveurs cloud ne nécessitent jamais de maintenance</string>
-    <string name="word_cloud_explanation_teens">Le cloud computing permet aux datacenters d\'allouer dynamiquement des ressources. En cas de pic de demande, plus de puissance de calcul peut être ajoutée instantanément — et réduite quand ce n\'est pas nécessaire.</string>
+    <!-- Quiz binaire — Teens -->
+    <string name="binary_quiz_question_teens">Pourquoi les ordinateurs utilisent-ils le binaire (base-2) plutôt que le décimal (base-10) ?</string>
+    <string name="binary_quiz_option_a_teens">Les circuits électroniques représentent facilement deux états : allumé (1) et éteint (0)</string>
+    <string name="binary_quiz_option_b_teens">Les calculs binaires sont plus rapides à comprendre pour les humains</string>
+    <string name="binary_quiz_option_c_teens">Le binaire utilise moins d\'espace de stockage que tout autre système</string>
+    <string name="binary_quiz_explanation_teens">Les ordinateurs utilisent le binaire car les transistors ont deux états stables : allumé et éteint, représentant 1 et 0. Cela en fait le moyen le plus fiable et efficace de traiter les données électroniquement.</string>
 
     <!-- Quiz Scratch — Teens -->
     <string name="scratch_quiz_question_teens">Quel concept de programmation un bloc \'répéter\' représente-t-il dans Scratch ?</string>

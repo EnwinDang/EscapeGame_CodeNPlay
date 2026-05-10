@@ -11,7 +11,7 @@ data class MissionConfig(
     val aiCode: String,
     val robotCode: String,
     @StringRes val robotInstructionsRes: Int,
-    val wordQuizMap: Map<String, QuizConfig>,
+    val binaryQuiz: QuizConfig,
     val scratchQuiz: QuizConfig,
     val aiQuiz: QuizConfig,
     val robotQuiz: QuizConfig,
@@ -28,7 +28,14 @@ val JUNIOR_AGENT = MissionConfig(
     robotCode            = "ROBOT",
     robotInstructionsRes = R.string.robot_instructions_kids,
 
-    wordQuizMap = juniorWordQuizMap,
+    binaryQuiz = QuizConfig(
+        questionRes    = R.string.binary_quiz_question_kids,
+        optionARes     = R.string.binary_quiz_option_a_kids,
+        optionBRes     = R.string.binary_quiz_option_b_kids,
+        optionCRes     = R.string.binary_quiz_option_c_kids,
+        correctIndex   = 0,
+        explanationRes = R.string.binary_quiz_explanation_kids,
+    ),
 
     scratchQuiz = QuizConfig(
         questionRes    = R.string.scratch_quiz_question_kids,
@@ -67,7 +74,14 @@ val SENIOR_AGENT = MissionConfig(
     robotCode            = "ROBOT",
     robotInstructionsRes = R.string.robot_instructions_teens,
 
-    wordQuizMap = seniorWordQuizMap,
+    binaryQuiz = QuizConfig(
+        questionRes    = R.string.binary_quiz_question_teens,
+        optionARes     = R.string.binary_quiz_option_a_teens,
+        optionBRes     = R.string.binary_quiz_option_b_teens,
+        optionCRes     = R.string.binary_quiz_option_c_teens,
+        correctIndex   = 0,
+        explanationRes = R.string.binary_quiz_explanation_teens,
+    ),
 
     scratchQuiz = QuizConfig(
         questionRes    = R.string.scratch_quiz_question_teens,

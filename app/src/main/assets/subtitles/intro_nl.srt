@@ -1,0 +1,84 @@
+1
+00:00:00,000 --> 00:00:07,000
+2052 - GROENLAND
+
+2
+00:00:07,000 --> 00:00:27,000
+SYSTEEMFOUT / VIRUS GEDETECTEERD
+
+3
+00:00:27,000 --> 00:00:31,000
+PROJECT HORIZON
+AVONTUUR IN HET HART VAN HET DIGITALE
+
+4
+00:00:31,000 --> 00:00:35,000
+Technicus: Oké, we draaien, je kunt beginnen.
+
+5
+00:00:35,000 --> 00:00:39,000
+Swann: Welkom in het Data Palace! Hier zijn Swann en Ismail.
+
+6
+00:00:39,000 --> 00:00:45,000
+Wij zijn de verantwoordelijken voor dit datacenter dat ontworpen is om gegevens op te slaan van bronnen die belangrijk zijn voor wetenschappers over de hele wereld.
+
+7
+00:00:45,000 --> 00:00:49,000
+Ismail: Dus, als jullie dit bericht zien, is dat omdat we jullie hulp nodig hebben.
+
+8
+00:00:49,000 --> 00:00:53,000
+Eh, er is een paar uur geleden een grote cyberaanval geweest en die heeft veel systemen van het datacenter ontregeld.
+
+9
+00:00:53,000 --> 00:00:59,000
+Swann: Wij gaan vertrekken om de systemen van de netwerkbeheerder van het centrum te repareren,
+
+10
+00:00:59,000 --> 00:01:05,000
+maar we hebben alle vaardigheden en intelligentie van informatici zoals jullie nodig om de andere systemen te herstellen.
+
+11
+00:01:05,000 --> 00:01:07,000
+Swann: Trouwens Hal, kun je ons de lijst met problemen geven?
+
+12
+00:01:07,000 --> 00:01:11,000
+HAL: Volgens het diagnosesysteem zijn verschillende servers bijna oververhit.
+
+13
+00:01:11,000 --> 00:01:14,000
+Ze moeten met spoed worden gekoeld.
+
+14
+00:01:14,000 --> 00:01:18,000
+HAL: Er is een verstopping gedetecteerd in ventilatiekanaal 25B.
+
+15
+00:01:18,000 --> 00:01:21,000
+Deze moet zo snel mogelijk worden verwijderd om de koelsystemen weer te activeren.
+
+16
+00:01:21,000 --> 00:01:24,000
+Ismail: Zoals jullie kunnen zien, is er veel te doen.
+
+17
+00:01:24,000 --> 00:01:28,000
+Maar aarzel niet om de envelop te raadplegen die aan jullie is toevertrouwd.
+
+18
+00:01:28,000 --> 00:01:31,000
+En als jullie hulp nodig hebben, vraag het dan aan een van de technici die jullie begeleiden.
+
+19
+00:01:31,000 --> 00:01:33,000
+Swann: Jullie zullen moeten samenwerken om de uitdagingen die op jullie wachten te overwinnen.
+
+20
+00:01:33,000 --> 00:01:36,000
+Dus aarzel niet om de handen ineen te slaan.
+
+21
+00:01:36,000 --> 00:01:45,000
+Ismail: Bedankt voor jullie hulp en veel succes aan iedereen!

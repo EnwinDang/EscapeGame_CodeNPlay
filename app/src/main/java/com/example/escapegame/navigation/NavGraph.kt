@@ -3,10 +3,8 @@ package com.example.escapegame.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import com.example.escapegame.R
 import com.example.escapegame.screens.AiGameScreen
 import com.example.escapegame.screens.AiValidationScreen
@@ -26,7 +24,7 @@ object Routes {
     const val VIDEO = "video"
     const val DIFFICULTY = "difficulty"
     const val BINARY_GAME = "binary_game"
-    const val BINARY_QUIZ = "binary_quiz/{word}"
+    const val BINARY_QUIZ = "binary_quiz"
     const val SCRATCH_GAME = "scratch_game"
     const val SCRATCH_QUIZ = "scratch_quiz"
     const val AI_GAME = "ai_game"
@@ -76,27 +74,22 @@ fun NavGraph(navController: NavHostController, viewModel: GameViewModel) {
             BinaryGameScreen(
                 videoAssetManager = viewModel.videoAssetManager,
                 timerSeconds  = config.binaryTimerSeconds,
-                onSolved      = { word -> navController.navigate("binary_quiz/$word") },
+                onSolved      = { navController.navigate(Routes.BINARY_QUIZ) },
                 onHome        = onHome,
             )
         }
 
-        composable(
-            route = Routes.BINARY_QUIZ,
-            arguments = listOf(navArgument("word") { type = NavType.StringType })
-        ) { backStackEntry ->
+        composable(Routes.BINARY_QUIZ) {
             val config = viewModel.missionConfig
-            val word   = backStackEntry.arguments?.getString("word") ?: "DATA"
-            val quiz   = config.wordQuizMap[word] ?: config.wordQuizMap["DATA"]!!
             QuizScreen(
-                question     = stringResource(quiz.questionRes),
+                question     = stringResource(config.binaryQuiz.questionRes),
                 options      = listOf(
-                    stringResource(quiz.optionARes),
-                    stringResource(quiz.optionBRes),
-                    stringResource(quiz.optionCRes),
+                    stringResource(config.binaryQuiz.optionARes),
+                    stringResource(config.binaryQuiz.optionBRes),
+                    stringResource(config.binaryQuiz.optionCRes),
                 ),
-                correctIndex = quiz.correctIndex,
-                explanation  = stringResource(quiz.explanationRes),
+                correctIndex = config.binaryQuiz.correctIndex,
+                explanation  = stringResource(config.binaryQuiz.explanationRes),
                 uiStyle      = config.uiStyle,
                 onContinue   = { navController.navigate(Routes.SCRATCH_GAME) },
                 onHome       = onHome,

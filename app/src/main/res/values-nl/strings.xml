@@ -46,7 +46,7 @@
     <string name="binary_continue_quiz">Doorgaan naar debriefing</string>
     <string name="binary_times_up">Tijd verlopen!</string>
     <string name="binary_ask_master">Contacteer je Missieleider voor hulp.</string>
-    <string name="binary_continue_anyway">Override — toch doorgaan</string>
+    <string name="binary_continue_anyway">Volgende uitdaging →</string>
     <string name="binary_wrong">Onjuist — probeer opnieuw.</string>
     <string name="btn_new_puzzle">Nieuw Signaal</string>
 
@@ -125,36 +125,12 @@
     <!--  JUNIOR AGENT (Kids) quizvragen — hier aanpassen voor kids   -->
     <!-- ============================================================ -->
 
-    <!-- Binaire woordquizzen — Kids -->
-    <string name="word_data_question_kids">Wat is data?</string>
-    <string name="word_data_option_a_kids">Informatie die een computer kan opslaan en gebruiken</string>
-    <string name="word_data_option_b_kids">Een soort programmeersoftware</string>
-    <string name="word_data_option_c_kids">De fysieke onderdelen van een computer</string>
-    <string name="word_data_explanation_kids">Data is informatie — zoals getallen, woorden en afbeeldingen — die een computer kan opslaan en gebruiken.</string>
-
-    <string name="word_code_question_kids">Wat is code bij het programmeren?</string>
-    <string name="word_code_option_a_kids">Instructies die een computer vertellen wat hij moet doen</string>
-    <string name="word_code_option_b_kids">Een geheim wachtwoord voor bestanden</string>
-    <string name="word_code_option_c_kids">Het scherm van een computer</string>
-    <string name="word_code_explanation_kids">Code zijn instructies in een speciale taal die een computer stap voor stap precies vertellen wat hij moet doen.</string>
-
-    <string name="word_server_question_kids">Wat is een server?</string>
-    <string name="word_server_option_a_kids">Een krachtige computer die informatie opslaat en deelt</string>
-    <string name="word_server_option_b_kids">Een programma dat e-mails verstuurt</string>
-    <string name="word_server_option_c_kids">Een soort computerspel</string>
-    <string name="word_server_explanation_kids">Een server is een krachtige computer die websites en apps draaiende houdt en informatie naar andere apparaten stuurt.</string>
-
-    <string name="word_robot_question_kids">Hoe weet een robot wat hij moet doen?</string>
-    <string name="word_robot_option_a_kids">Hij volgt instructies die door een persoon zijn geprogrammeerd</string>
-    <string name="word_robot_option_b_kids">Hij denkt zoals een menselijk brein</string>
-    <string name="word_robot_option_c_kids">Hij raadt willekeurig</string>
-    <string name="word_robot_explanation_kids">Een robot doet precies wat zijn code zegt. Hij volgt instructies geschreven door een programmeur, stap voor stap.</string>
-
-    <string name="word_cloud_question_kids">Wat is \"de cloud\" bij computers?</string>
-    <string name="word_cloud_option_a_kids">Bestanden opslaan en gebruiken via het internet</string>
-    <string name="word_cloud_option_b_kids">Een weerapplicatie op je telefoon</string>
-    <string name="word_cloud_option_c_kids">Een draadloze toetsenbordverbinding</string>
-    <string name="word_cloud_explanation_kids">De cloud betekent dat je bestanden zijn opgeslagen op computers verbonden met het internet, zodat je ze overal kunt gebruiken.</string>
+    <!-- Binaire quiz — Kids -->
+    <string name="binary_quiz_question_kids">Wat is binaire code?</string>
+    <string name="binary_quiz_option_a_kids">Een manier waarop computers informatie opslaan met alleen 0s en 1s</string>
+    <string name="binary_quiz_option_b_kids">Een soort computervirus</string>
+    <string name="binary_quiz_option_c_kids">Een programmeertaal voor robots</string>
+    <string name="binary_quiz_explanation_kids">Binair is een talstelsel met alleen 0 en 1. Elke letter, afbeelding en elk geluid op een computer wordt opgeslagen als een reeks van 0s en 1s.</string>
 
     <!-- Scratch Quiz — Kids -->
     <string name="scratch_quiz_question_kids">Waarvoor gebruik je Scratch?</string>
@@ -181,36 +157,12 @@
     <!--  SENIOR AGENT (Teens) quizvragen — hier aanpassen voor teens -->
     <!-- ============================================================ -->
 
-    <!-- Binaire woordquizzen — Teens -->
-    <string name="word_data_question_teens">Wat is het verschil tussen data en informatie?</string>
-    <string name="word_data_option_a_teens">Data zijn ruwe, onverwerkte feiten; informatie is data waaraan betekenis is gegeven</string>
-    <string name="word_data_option_b_teens">Data wordt opgeslagen op een harde schijf; informatie in de cloud</string>
-    <string name="word_data_option_c_teens">Ze betekenen hetzelfde</string>
-    <string name="word_data_explanation_teens">Data verwijst naar ruwe feiten en cijfers. Informatie is data die verwerkt en in context geplaatst is, waardoor het nuttig en begrijpelijk wordt.</string>
-
-    <string name="word_code_question_teens">Wat is het doel van een functie in programmeren?</string>
-    <string name="word_code_option_a_teens">Herbruikbare instructies groeperen die meerdere keren kunnen worden aangeroepen</string>
-    <string name="word_code_option_b_teens">Data permanent op de computer opslaan</string>
-    <string name="word_code_option_c_teens">Verbinding maken met het internet</string>
-    <string name="word_code_explanation_teens">Een functie is een benoemd blok code dat een specifieke taak uitvoert. Door het één keer te definiëren, kun je het meerdere keren aanroepen zonder dezelfde code te herhalen.</string>
-
-    <string name="word_server_question_teens">Wat doet de client in een client-server model?</string>
-    <string name="word_server_option_a_teens">Het stuurt verzoeken naar de server en toont de antwoorden</string>
-    <string name="word_server_option_b_teens">Het slaat alle websites en data op</string>
-    <string name="word_server_option_c_teens">Het beheert het besturingssysteem voor alle verbonden apparaten</string>
-    <string name="word_server_explanation_teens">In een client-server model stuurt de client (bijv. je browser) verzoeken om data, en de server reageert met de gevraagde informatie. De server beheert de opslag en verwerking.</string>
-
-    <string name="word_robot_question_teens">Wat betekent \'autonoom\' bij een robot?</string>
-    <string name="word_robot_option_a_teens">De robot kan werken en beslissingen nemen zonder constante menselijke besturing</string>
-    <string name="word_robot_option_b_teens">De robot heeft een mens nodig om elke beweging te sturen</string>
-    <string name="word_robot_option_c_teens">De robot kan slechts één vooraf geprogrammeerde taak uitvoeren</string>
-    <string name="word_robot_explanation_teens">Een autonome robot kan zijn omgeving waarnemen, informatie verwerken en zelfstandig beslissingen nemen — zonder dat een mens elke actie hoeft aan te sturen.</string>
-
-    <string name="word_cloud_question_teens">Wat is een belangrijk voordeel van cloud computing voor een datacenter?</string>
-    <string name="word_cloud_option_a_teens">Resources kunnen direct omhoog of omlaag worden geschaald op basis van de vraag</string>
-    <string name="word_cloud_option_b_teens">Data wordt fysiek dichter bij de gebruiker opgeslagen</string>
-    <string name="word_cloud_option_c_teens">Cloudservers hebben nooit onderhoud nodig</string>
-    <string name="word_cloud_explanation_teens">Cloud computing stelt datacenters in staat om dynamisch resources toe te wijzen. Bij een piek in de vraag kan direct meer rekenkracht worden toegevoegd — en verminderd wanneer niet nodig — wat het zeer flexibel en efficiënt maakt.</string>
+    <!-- Binaire quiz — Teens -->
+    <string name="binary_quiz_question_teens">Waarom gebruiken computers binair (basis-2) in plaats van decimaal (basis-10)?</string>
+    <string name="binary_quiz_option_a_teens">Elektronische schakelingen kunnen betrouwbaar twee toestanden weergeven: aan (1) en uit (0)</string>
+    <string name="binary_quiz_option_b_teens">Binaire berekeningen zijn sneller voor mensen te begrijpen</string>
+    <string name="binary_quiz_option_c_teens">Binair gebruikt minder opslagruimte dan elk ander talstelsel</string>
+    <string name="binary_quiz_explanation_teens">Computers gebruiken binair omdat transistoren twee stabiele toestanden hebben: aan en uit, die 1 en 0 voorstellen. Dit maakt binair de meest betrouwbare en efficiënte manier om gegevens elektrisch te verwerken.</string>
 
     <!-- Scratch Quiz — Teens -->
     <string name="scratch_quiz_question_teens">Welk programmeerprincipe vertegenwoordigt een \'herhaal\' blok in Scratch?</string>

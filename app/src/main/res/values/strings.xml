@@ -53,7 +53,7 @@
     <string name="binary_continue_quiz">Proceed to debrief</string>
     <string name="binary_times_up">Time expired!</string>
     <string name="binary_ask_master">Contact your Mission Commander for assistance.</string>
-    <string name="binary_continue_anyway">Override — proceed anyway</string>
+    <string name="binary_continue_anyway">Next Challenge →</string>
     <string name="binary_wrong">Incorrect — try again.</string>
     <string name="btn_new_puzzle">New Signal</string>
 
@@ -132,36 +132,12 @@
     <!--  JUNIOR AGENT (Kids) quiz strings — edit here for kids       -->
     <!-- ============================================================ -->
 
-    <!-- Binary Word Quizzes — Kids -->
-    <string name="word_data_question_kids">What is data?</string>
-    <string name="word_data_option_a_kids">Information a computer can save and use</string>
-    <string name="word_data_option_b_kids">A type of programming software</string>
-    <string name="word_data_option_c_kids">The physical parts of a computer</string>
-    <string name="word_data_explanation_kids">Data is information — like numbers, words, and pictures — that a computer can save and use.</string>
-
-    <string name="word_code_question_kids">What is code in programming?</string>
-    <string name="word_code_option_a_kids">Instructions that tell a computer what to do</string>
-    <string name="word_code_option_b_kids">A secret password for files</string>
-    <string name="word_code_option_c_kids">The screen of a computer</string>
-    <string name="word_code_explanation_kids">Code is instructions written in a special language that tell a computer exactly what to do, step by step.</string>
-
-    <string name="word_server_question_kids">What is a server?</string>
-    <string name="word_server_option_a_kids">A powerful computer that stores and shares information</string>
-    <string name="word_server_option_b_kids">A program that sends emails</string>
-    <string name="word_server_option_c_kids">A type of computer game</string>
-    <string name="word_server_explanation_kids">A server is a powerful computer that keeps websites and apps running and sends information to other devices.</string>
-
-    <string name="word_robot_question_kids">How does a robot know what to do?</string>
-    <string name="word_robot_option_a_kids">It follows instructions programmed by a person</string>
-    <string name="word_robot_option_b_kids">It thinks like a human brain</string>
-    <string name="word_robot_option_c_kids">It guesses randomly</string>
-    <string name="word_robot_explanation_kids">A robot does exactly what its code tells it to do. It follows instructions written by a programmer, step by step.</string>
-
-    <string name="word_cloud_question_kids">What is \"the cloud\" in computing?</string>
-    <string name="word_cloud_option_a_kids">Saving and using files on the internet</string>
-    <string name="word_cloud_option_b_kids">A weather app on your phone</string>
-    <string name="word_cloud_option_c_kids">A wireless keyboard connection</string>
-    <string name="word_cloud_explanation_kids">The cloud means your files are saved on computers connected to the internet, so you can access them from anywhere.</string>
+    <!-- Binary Quiz — Kids -->
+    <string name="binary_quiz_question_kids">What is binary code?</string>
+    <string name="binary_quiz_option_a_kids">A way computers store information using only 0s and 1s</string>
+    <string name="binary_quiz_option_b_kids">A type of computer virus</string>
+    <string name="binary_quiz_option_c_kids">A programming language for robots</string>
+    <string name="binary_quiz_explanation_kids">Binary is a number system using only 0 and 1. Every letter, picture, and sound on a computer is stored as a pattern of 0s and 1s.</string>
 
     <!-- Scratch Quiz — Kids -->
     <string name="scratch_quiz_question_kids">What is Scratch used for?</string>
@@ -188,36 +164,12 @@
     <!--  SENIOR AGENT (Teens) quiz strings — edit here for teens     -->
     <!-- ============================================================ -->
 
-    <!-- Binary Word Quizzes — Teens -->
-    <string name="word_data_question_teens">What is the difference between data and information?</string>
-    <string name="word_data_option_a_teens">Data is raw unprocessed facts; information is data that has been given meaning</string>
-    <string name="word_data_option_b_teens">Data is stored on a hard drive; information is stored in the cloud</string>
-    <string name="word_data_option_c_teens">They mean the same thing</string>
-    <string name="word_data_explanation_teens">Data refers to raw facts and figures (e.g. numbers, text). Information is data that has been processed and given context, making it useful and meaningful.</string>
-
-    <string name="word_code_question_teens">What is the purpose of a function in programming?</string>
-    <string name="word_code_option_a_teens">To group reusable instructions that can be called multiple times</string>
-    <string name="word_code_option_b_teens">To store data permanently on the computer</string>
-    <string name="word_code_option_c_teens">To connect to the internet</string>
-    <string name="word_code_explanation_teens">A function is a named block of code that performs a specific task. By defining it once, you can call it multiple times throughout your program without repeating the same code.</string>
-
-    <string name="word_server_question_teens">In a client-server model, what does the client do?</string>
-    <string name="word_server_option_a_teens">It sends requests to the server and displays the responses</string>
-    <string name="word_server_option_b_teens">It stores all the websites and data</string>
-    <string name="word_server_option_c_teens">It runs the operating system for all connected devices</string>
-    <string name="word_server_explanation_teens">In a client-server model, the client (e.g. your browser) sends requests for data, and the server responds with the requested information. The server handles storage and processing.</string>
-
-    <string name="word_robot_question_teens">What does \'autonomous\' mean when describing a robot?</string>
-    <string name="word_robot_option_a_teens">The robot can operate and make decisions without constant human control</string>
-    <string name="word_robot_option_b_teens">The robot needs a human to control every movement</string>
-    <string name="word_robot_option_c_teens">The robot can only perform one pre-programmed task</string>
-    <string name="word_robot_explanation_teens">An autonomous robot can sense its environment, process information, and make decisions on its own — without a human directing each action.</string>
-
-    <string name="word_cloud_question_teens">What is a key advantage of cloud computing for a datacenter?</string>
-    <string name="word_cloud_option_a_teens">Resources can be scaled up or down instantly based on demand</string>
-    <string name="word_cloud_option_b_teens">Data is stored physically closer to the user</string>
-    <string name="word_cloud_option_c_teens">Cloud servers never require maintenance</string>
-    <string name="word_cloud_explanation_teens">Cloud computing allows datacenters to dynamically allocate resources. When demand spikes, more computing power can be added instantly — and reduced when not needed — making it highly flexible and efficient.</string>
+    <!-- Binary Quiz — Teens -->
+    <string name="binary_quiz_question_teens">Why do computers use binary (base-2) instead of decimal (base-10)?</string>
+    <string name="binary_quiz_option_a_teens">Electronic circuits can reliably represent two states: on (1) and off (0)</string>
+    <string name="binary_quiz_option_b_teens">Binary calculations are faster for humans to understand</string>
+    <string name="binary_quiz_option_c_teens">Binary uses less storage space than any other number system</string>
+    <string name="binary_quiz_explanation_teens">Computers use binary because transistors have two stable states: on and off, representing 1 and 0. This makes binary the most reliable and efficient way to process data electrically.</string>
 
     <!-- Scratch Quiz — Teens -->
     <string name="scratch_quiz_question_teens">In Scratch, what programming concept does a \'repeat\' block represent?</string>
