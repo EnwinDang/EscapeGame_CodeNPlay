@@ -46,7 +46,7 @@
     <string name="binary_continue_quiz">Doorgaan naar debriefing</string>
     <string name="binary_times_up">Tijd verlopen!</string>
     <string name="binary_ask_master">Contacteer je Missieleider voor hulp.</string>
-    <string name="binary_continue_anyway">Override — toch doorgaan</string>
+    <string name="binary_continue_anyway">Volgende uitdaging →</string>
     <string name="binary_wrong">Onjuist — probeer opnieuw.</string>
     <string name="btn_new_puzzle">Nieuw Signaal</string>
 

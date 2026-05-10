@@ -46,7 +46,7 @@
     <string name="binary_continue_quiz">Procéder au débriefing</string>
     <string name="binary_times_up">Temps expiré !</string>
     <string name="binary_ask_master">Contactez votre Commandant de Mission pour assistance.</string>
-    <string name="binary_continue_anyway">Contournement — continuer quand même</string>
+    <string name="binary_continue_anyway">Prochain défi →</string>
     <string name="binary_wrong">Incorrect — réessayez.</string>
     <string name="btn_new_puzzle">Nouveau Signal</string>
 

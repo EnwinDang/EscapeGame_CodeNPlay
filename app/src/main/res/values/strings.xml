@@ -53,7 +53,7 @@
     <string name="binary_continue_quiz">Proceed to debrief</string>
     <string name="binary_times_up">Time expired!</string>
     <string name="binary_ask_master">Contact your Mission Commander for assistance.</string>
-    <string name="binary_continue_anyway">Override — proceed anyway</string>
+    <string name="binary_continue_anyway">Next Challenge →</string>
     <string name="binary_wrong">Incorrect — try again.</string>
     <string name="btn_new_puzzle">New Signal</string>
 

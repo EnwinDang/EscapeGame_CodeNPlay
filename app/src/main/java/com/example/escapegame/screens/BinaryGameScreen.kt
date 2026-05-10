@@ -74,7 +74,7 @@ import kotlinx.coroutines.delay
 fun BinaryGameScreen(
     videoAssetManager: VideoAssetManager,
     timerSeconds: Int,
-    onSolved: (String) -> Unit,
+    onSolved: () -> Unit,
     onHome: () -> Unit,
 ) {
     BackHandler(enabled = true) { }
@@ -198,7 +198,7 @@ fun BinaryGameScreen(
                                 .height(56.dp)
                                 .clip(RoundedCornerShape(14.dp))
                                 .background(MatrixGreen)
-                                .clickable { onSolved(puzzle.currentWord) },
+                                .clickable { onSolved() },
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
@@ -232,7 +232,7 @@ fun BinaryGameScreen(
                                 .height(56.dp)
                                 .clip(RoundedCornerShape(14.dp))
                                 .background(MatrixGreen)
-                                .clickable { onSolved(puzzle.currentWord) },
+                                .clickable { onSolved() },
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
