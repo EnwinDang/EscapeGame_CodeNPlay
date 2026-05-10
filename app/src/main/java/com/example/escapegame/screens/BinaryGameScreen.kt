@@ -462,8 +462,8 @@ private fun BinaryGrid(binaryString: String, modifier: Modifier = Modifier) {
     val gapV = 20.dp
 
     BoxWithConstraints(modifier = modifier.fillMaxSize()) {
-        val availableWidth  = maxWidth
-        val availableHeight = maxHeight
+        val availableWidth  = this.maxWidth
+        val availableHeight = this.maxHeight
         val squareFromWidth  = (availableWidth  - gapH * (numCols - 1)) / numCols
         val squareFromHeight = (availableHeight - gapV * (numRows - 1)) / numRows
         val squareSize = minOf(squareFromWidth, squareFromHeight)
