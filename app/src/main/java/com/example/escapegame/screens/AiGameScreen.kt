@@ -27,17 +27,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BatteryAlert
-import androidx.compose.material.icons.filled.BatteryFull
-import androidx.compose.material.icons.filled.BugReport
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.LockOpen
-import androidx.compose.material.icons.filled.Shield
-import androidx.compose.material.icons.filled.SmartToy
-import androidx.compose.material.icons.filled.Warning
-import androidx.compose.material.icons.filled.Wifi
-import androidx.compose.material.icons.filled.WifiOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -59,7 +48,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
@@ -83,17 +71,17 @@ private enum class GamePhase { INTRO, COUNTDOWN, GAME }
 
 // ── Icon-spotting game logic ──────────────────────────────────────────────────
 
-private data class SymbolGroup(val normal: ImageVector, val intruder: ImageVector)
+private data class SymbolGroup(val normal: String, val intruder: String)
 
 private val symbolGroups = listOf(
-    SymbolGroup(normal = Icons.Filled.BatteryFull,  intruder = Icons.Filled.BatteryAlert),
-    SymbolGroup(normal = Icons.Filled.Shield,        intruder = Icons.Filled.Warning),
-    SymbolGroup(normal = Icons.Filled.Wifi,          intruder = Icons.Filled.WifiOff),
-    SymbolGroup(normal = Icons.Filled.SmartToy,      intruder = Icons.Filled.BugReport),
-    SymbolGroup(normal = Icons.Filled.Lock,          intruder = Icons.Filled.LockOpen),
+    SymbolGroup(normal = "🤖", intruder = "👾"),
+    SymbolGroup(normal = "🔒", intruder = "🔓"),
+    SymbolGroup(normal = "💻", intruder = "🦠"),
+    SymbolGroup(normal = "⚡", intruder = "💥"),
+    SymbolGroup(normal = "🛡️", intruder = "☠️"),
 )
 
-private data class GameRound(val symbols: List<ImageVector>, val intruderIndex: Int)
+private data class GameRound(val symbols: List<String>, val intruderIndex: Int)
 
 private fun generateRound(attemptKey: Int): GameRound {
     val group = symbolGroups[attemptKey % symbolGroups.size]
@@ -103,8 +91,7 @@ private fun generateRound(attemptKey: Int): GameRound {
 }
 
 private data class StoryElement(
-    val icon: ImageVector,
-    val iconColor: Color,
+    val icon: String,
     val titleRes: Int,
     val bodyRes: Int,
     val startTimeMs: Int,
@@ -112,24 +99,21 @@ private data class StoryElement(
 
 private val storyElements = listOf(
     StoryElement(
-        icon       = Icons.Filled.Warning,
-        iconColor  = ErrorRed,
-        titleRes   = R.string.ai_intro_alarm_title,
-        bodyRes    = R.string.ai_intro_alarm_body,
+        icon        = "🚨",
+        titleRes    = R.string.ai_intro_alarm_title,
+        bodyRes     = R.string.ai_intro_alarm_body,
         startTimeMs = 0
     ),
     StoryElement(
-        icon       = Icons.Filled.BugReport,
-        iconColor  = YellowDark,
-        titleRes   = R.string.ai_intro_threat_title,
-        bodyRes    = R.string.ai_intro_threat_body,
+        icon        = "🦠",
+        titleRes    = R.string.ai_intro_threat_title,
+        bodyRes     = R.string.ai_intro_threat_body,
         startTimeMs = 8000
     ),
     StoryElement(
-        icon       = Icons.Filled.SmartToy,
-        iconColor  = BrandBlue,
-        titleRes   = R.string.ai_intro_mission_title,
-        bodyRes    = R.string.ai_intro_mission_body,
+        icon        = "🤖",
+        titleRes    = R.string.ai_intro_mission_title,
+        bodyRes     = R.string.ai_intro_mission_body,
         startTimeMs = 20000
     ),
 )
@@ -531,7 +515,7 @@ fun AiGameScreen(
                                                 colors = ButtonDefaults.buttonColors(containerColor = Color.Black.copy(alpha = 0.5f)),
                                                 border = BorderStroke(1.dp, MatrixGreen.copy(alpha = 0.4f))
                                             ) {
-                                                Icon(icon, null, Modifier.size(64.dp), tint = MatrixGreen)
+                                                Text(icon, fontSize = 48.sp, textAlign = TextAlign.Center)
                                             }
                                         }
                                     }

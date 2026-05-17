@@ -32,7 +32,10 @@
 
     <!-- Binary Game -->
     <string name="binary_hint_message">Decodeer de binaire reeks om het verborgen woord te onthullen. Elke groep van 8 bits stelt één letter voor!</string>
+    <string name="binary_legend">■ 1 = aan  ·  □ 0 = uit</string>
     <string name="binary_mission_label">MISSIE 1 — BINAIRE DECODERING</string>
+    <string name="binary_verify_protocol">PROTOCOL VERIFIËREN</string>
+    <string name="binary_reset_grid">WISSEN</string>
     <string name="binary_input_placeholder">Typ het gedecodeerde woord...</string>
     <string name="binary_correct_feedback">✓ Correct! Goed gedaan, Agent.</string>
     <string name="binary_incorrect_feedback">✗ Onjuist. Probeer opnieuw!</string>
@@ -92,27 +95,27 @@
     <string name="ai_intro_btn_next">Volgende</string>
     <string name="ai_intro_btn_start">Start Missie</string>
 
-    <string name="ai_intro_alarm_title">ALARM!</string>
-    <string name="ai_intro_alarm_body">\"The Glitch\" is de hoofdserver van de Wereld-Cloud binnengedrongen — waar alle foto\'s, video\'s en games ter wereld zijn opgeslagen. De eerste beveiligingsmuur is doorbroken. We hebben jou nodig.</string>
+    <string name="ai_intro_alarm_title">🚨 INBRAAK GEDETECTEERD!</string>
+    <string name="ai_intro_alarm_body">ALERT, Agent! \"The Glitch\" heeft de World Cloud gekraakt — alle foto\'s, video\'s en games ter wereld. De eerste firewall is GEVALLEN. Dit is geen oefening!</string>
 
-    <string name="ai_intro_threat_title">Het Plan van de Hacker</string>
-    <string name="ai_intro_threat_body">The Glitch verkleedt zijn kwaadaardige virussen als onschuldige datapakketjes — verstopt voor ieders ogen.\n\nZijn doelen:\n- De servers laten oververhitten\n- Alle wachtwoorden veranderen in \"I-Love-Cookies\"\n- Het internet wereldwijd supertraag maken</string>
+    <string name="ai_intro_threat_title">VIJANDSINFORMATIE</string>
+    <string name="ai_intro_threat_body">The Glitch verstopt zijn virussen als gewone data — recht voor je neus.\n\nZijn doelen:\n→ Servers laten oververhitten\n→ Alle wachtwoorden veranderen in \"I-Love-Cookies\"\n→ Het internet wereldwijd platleggen</string>
 
-    <string name="ai_intro_mission_title">Jouw Missie</string>
-    <string name="ai_intro_mission_body">Jij bent onze AI Cyber Agent. Bewaken de datastroom — de hacker verstopt corrupte pakketjes tussen duizenden goede pakketjes.\n\nSpot het ene icoon dat er niet bij hoort en tik er snel op. De hacker wordt steeds sneller en slimmer. Laat geen enkel corrupt pakketje erdoorheen glippen!</string>
+    <string name="ai_intro_mission_title">JOUW ORDERS</string>
+    <string name="ai_intro_mission_body">Jij bent de laatste verdedigingslinie, Agent. Scan de datastroom — spoor het corrupte icoon op en elimineer het snel. The Glitch wordt elke ronde sneller. Eén fout en de World Cloud valt!</string>
 
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Missie 3 · IA</string>
     <string name="ai_game_find_intruder">Vind de indringer!</string>
-    <string name="ai_junior_intro_line1">Het virus \'The Glitch\' valt de server aan!</string>
-    <string name="ai_junior_intro_line2">Vind de indringer op het scherm.</string>
-    <string name="ai_junior_intro_line3">Klik om hem te verwijderen!</string>
-    <string name="ai_junior_intro_line4">Help ons de World Cloud te redden!</string>
-    <string name="ai_game_instruction_1">Vind de indringer op het scherm.</string>
-    <string name="ai_game_instruction_2">Klik om hem te verwijderen!</string>
-    <string name="ai_game_instruction_3">Help ons de server te redden!</string>
-    <string name="ai_game_won_title">Inbraak geblokkeerd!</string>
-    <string name="ai_game_won_body">Je hebt alle indringers gedetecteerd!</string>
+    <string name="ai_junior_intro_line1">⚠ The Glitch zit in de server!</string>
+    <string name="ai_junior_intro_line2">Scan de iconen — één is een virus.</string>
+    <string name="ai_junior_intro_line3">TIK HET aan om het te vernietigen!</string>
+    <string name="ai_junior_intro_line4">Red de World Cloud, Agent!</string>
+    <string name="ai_game_instruction_1">Scan de iconen!</string>
+    <string name="ai_game_instruction_2">TIK het virus om het te vernietigen!</string>
+    <string name="ai_game_instruction_3">Laat het er niet doorheen!</string>
+    <string name="ai_game_won_title">BEDREIGING GENEUTRALISEERD!</string>
+    <string name="ai_game_won_body">Alle virussen geëlimineerd. Server beveiligd!</string>
 
     <!-- AI Game -->
     <string name="ai_instructions">Gebruik het opgegeven apparaat en voltooi het AI Protocol.\nVoer je toegangscode in als je klaar bent:</string>
@@ -127,31 +130,31 @@
 
     <!-- Binaire quiz — Kids -->
     <string name="binary_quiz_question_kids">Wat is binaire code?</string>
-    <string name="binary_quiz_option_a_kids">Een manier waarop computers informatie opslaan met alleen 0s en 1s</string>
-    <string name="binary_quiz_option_b_kids">Een soort computervirus</string>
-    <string name="binary_quiz_option_c_kids">Een programmeertaal voor robots</string>
-    <string name="binary_quiz_explanation_kids">Binair is een talstelsel met alleen 0 en 1. Elke letter, afbeelding en elk geluid op een computer wordt opgeslagen als een reeks van 0s en 1s.</string>
+    <string name="binary_quiz_option_a_kids">Computertaal met alleen 0s en 1s</string>
+    <string name="binary_quiz_option_b_kids">Een computervirus</string>
+    <string name="binary_quiz_option_c_kids">Een robotentaal</string>
+    <string name="binary_quiz_explanation_kids">Binair gebruikt alleen 0 en 1. Elke letter en afbeelding op een computer is gemaakt van 0s en 1s!</string>
 
     <!-- Scratch Quiz — Kids -->
-    <string name="scratch_quiz_question_kids">Waarvoor gebruik je Scratch?</string>
-    <string name="scratch_quiz_option_a_kids">Programma\'s maken door gekleurde blokken te verbinden</string>
+    <string name="scratch_quiz_question_kids">Wat is Scratch?</string>
+    <string name="scratch_quiz_option_a_kids">Spelletjes maken met gekleurde blokken</string>
     <string name="scratch_quiz_option_b_kids">Computers hacken</string>
     <string name="scratch_quiz_option_c_kids">Tekeningen maken</string>
-    <string name="scratch_quiz_explanation_kids">Met Scratch maak je programma\'s, spelletjes en animaties door gekleurde blokken te slepen en aan elkaar te klikken — zonder typen!</string>
+    <string name="scratch_quiz_explanation_kids">Met Scratch maak je spelletjes door blokken aan elkaar te klikken. Geen typen nodig!</string>
 
     <!-- AI Quiz — Kids -->
-    <string name="ai_quiz_question_kids">Waar staat AI voor?</string>
+    <string name="ai_quiz_question_kids">Wat betekent AI?</string>
     <string name="ai_quiz_option_a_kids">Kunstmatige Intelligentie</string>
     <string name="ai_quiz_option_b_kids">Automatisch Internet</string>
     <string name="ai_quiz_option_c_kids">Android Interface</string>
-    <string name="ai_quiz_explanation_kids">AI staat voor Kunstmatige Intelligentie — computers die kunnen leren en problemen oplossen, een beetje zoals mensen denken.</string>
+    <string name="ai_quiz_explanation_kids">AI betekent Kunstmatige Intelligentie. Het is een computer die kan leren en denken, net als jij!</string>
 
     <!-- Robot Quiz — Kids -->
-    <string name="robot_quiz_question_kids">Hoe weet een robot wat hij moet doen?</string>
-    <string name="robot_quiz_option_a_kids">Hij volgt geprogrammeerde instructies</string>
-    <string name="robot_quiz_option_b_kids">Hij denkt zelf na zoals een mens</string>
-    <string name="robot_quiz_option_c_kids">Hij raadt willekeurig</string>
-    <string name="robot_quiz_explanation_kids">Robots volgen code — instructies geschreven door een programmeur die de robot precies vertellen wat hij moet doen en wanneer.</string>
+    <string name="robot_quiz_question_kids">Hoe werkt een robot?</string>
+    <string name="robot_quiz_option_a_kids">Hij volgt instructies</string>
+    <string name="robot_quiz_option_b_kids">Hij denkt zoals een mens</string>
+    <string name="robot_quiz_option_c_kids">Hij raadt</string>
+    <string name="robot_quiz_explanation_kids">Een robot volgt code. Een programmeur schrijft instructies die de robot precies vertellen wat hij moet doen!</string>
 
     <!-- ============================================================ -->
     <!--  SENIOR AGENT (Teens) quizvragen — hier aanpassen voor teens -->
@@ -186,15 +189,16 @@
     <string name="robot_quiz_explanation_teens">Sensoren zijn invoerapparaten die informatie verzamelen (bijv. afstand, licht, kleur). Actuatoren zijn uitvoerapparaten die de robot iets laten doen (bijv. motoren, luidsprekers, LED-lampjes).</string>
 
     <!-- AI Validatie Game — Teens -->
-    <string name="ai_teens_intro_task">Het AI-systeem moet worden gecontroleerd. Voer de test uit en zorg dat alles veilig is. We rekenen op jou, agent!</string>
+    <string name="ai_teens_intro_task">KRITIEK: Het datacenter-AI is gecompromitteerd. Voer de validatiesequentie NU uit — de tijd tikt. We rekenen op jou, Agent!</string>
     <string name="ai_teens_btn_start">START VALIDATIE</string>
+    <string name="ai_teens_wait_audio">⏳ Wacht tot de AI klaar is met praten…</string>
     <string name="ai_teens_step1_title">VALIDATIETEST</string>
     <string name="ai_teens_step1_body">Test het hertrainde model op de micro:bit.\nNoteer de gegenereerde validatiecode.\n\n→ Voer de testsequentie uit\n→ Noteer de code\n→ Voer die hieronder in</string>
     <string name="ai_teens_btn_enter_code">CODE INVOEREN</string>
     <string name="ai_teens_code_hint">Validatiecode van de micro:bit</string>
     <string name="ai_teens_input_error">Je hebt de reeks niet correct uitgevoerd. Probeer opnieuw.</string>
     <string name="ai_teens_code_title_1">VALIDATIECODE INVOEREN</string>
-    <string name="ai_teens_mismatch_body">De cyberaanval heeft de AI-trainingsdata gecorrumpeerd. Het systeem kan niet worden vertrouwd totdat het opnieuw is gekalibreerd met schone data.\n\nJe moet het model opnieuw trainen om het datacenter te herstellen.</string>
+    <string name="ai_teens_mismatch_body">ALERT! De cyberaanval heeft corrupte data in het AI-model geïnjecteerd. Het systeem is GECOMPROMITTEERD — het is niet te vertrouwen.\n\nInjecteer onmiddellijk schone trainingsdata. Het datacenter is in gevaar!</string>
     <string name="ai_teens_btn_diagnose">START HERKALIBRATIE</string>
     <string name="ai_teens_training_body">Het model traint op je nieuwe data.\nWacht tot de training klaar is, dan valideren.</string>
     <string name="ai_teens_btn_calibrated">MODEL VALIDEREN</string>
@@ -202,12 +206,12 @@
     <string name="ai_teens_step2_body">Het AI-model is opnieuw gekalibreerd.\nVoer de testsequentie opnieuw uit op de micro:bit.\n\nVoer de nieuwe validatiecode hieronder in.</string>
     <string name="ai_teens_code_title_2">HERVALIDATIECODE INVOEREN</string>
     <string name="ai_teens_revalidation_hint">Hervalidatiecode van de micro:bit</string>
-    <string name="ai_teens_success_body">Het corrupte model is gewist en opnieuw getraind. De AI van het datacenter is weer online. Uitstekend werk, agent. De missie gaat verder!</string>
+    <string name="ai_teens_success_body">Model gewist. Schone data geïnjecteerd. Datacenter-AI weer online. Uitstekend werk, Agent — de missie gaat verder!</string>
 
     <!-- AI Validatie — hardgecodeerde UI-teksten (statusbalk, panelen, labels) -->
     <string name="ai_teens_intro_title">AI VALIDATIE</string>
     <string name="ai_teens_status_phase1">FASE 1  ·  WACHT OP VALIDATIE</string>
-    <string name="ai_teens_status_mismatch">⚠  PREDICTION MISMATCH</string>
+    <string name="ai_teens_status_mismatch">⚠  DATA GECORRUMPEERD</string>
     <string name="ai_teens_status_recalibrating">HERKALIBRATIE…</string>
     <string name="ai_teens_status_phase2">FASE 2  ·  HERVALIDATIE</string>
     <string name="ai_teens_status_restored">✓  SYSTEEM HERSTELD</string>
@@ -231,7 +235,7 @@
     <string name="ai_teens_training_progress_label">Training voortgang:</string>
     <string name="ai_teens_training_in_progress">Kalibratie bezig…</string>
     <string name="ai_teens_training_awaiting_microbit">74% — wacht op micro:bit kalibratie</string>
-    <string name="ai_teens_retrain_success">MODEL GETRAIND</string>
+    <string name="ai_teens_retrain_success">✓ MODEL HERSTELD</string>
     <string name="ai_teens_training_complete">Training voltooid — klaar om te valideren</string>
     <string name="ai_teens_status_collecting">DATA VERZAMELEN BEZIG</string>
     <string name="ai_teens_add_data_title">DATA VERZAMELEN</string>
@@ -247,15 +251,15 @@
     <string name="ai_teens_recalibrate_title">TRAININGSMODUS — NIEUWE DATA INJECTEREN</string>
     <string name="ai_teens_recalibrate_body">→ Druk op B — de AI gaat in trainingsmodus\n→ 9 acties verschijnen één voor één — reageer op elke pijl\n→ Kantel links = ← · rechts = → · schud = ↑\n→ ✔ geldige invoer · ✘ slechte data — een paar fouten zijn toegestaan\n→ Te veel fouten corrumperen het model en produceren een valse uitvoer — blijf scherp</string>
     <string name="ai_teens_recalibrate_done_btn">DATA GEÏNJECTEERD — SEQUENTIE HERSTARTEN</string>
-    <string name="ai_teens_too_many_errors">Te veel trainingsfouten — het model is nog steeds corrupt. Train de AI opnieuw.</string>
+    <string name="ai_teens_too_many_errors">KRITIEKE FOUT — te veel slechte samples. Model nog steeds corrupt. Hertrainen onmiddellijk!</string>
     <string name="ai_teens_btn_retrain">AI OPNIEUW TRAINEN</string>
     <string name="ai_teens_second_run_title">HERVALIDATIESEQUENTIE</string>
     <string name="ai_teens_label_training_data">Trainingsdata:</string>
     <string name="ai_teens_data_quality_bad">ONJUIST</string>
     <string name="ai_teens_data_quality_good">GECORRIGEERD ✓</string>
-    <string name="ai_teens_uploading_title">KALIBRATIE DATA UPLOADEN</string>
+    <string name="ai_teens_uploading_title">UPLOADEN — NIET ONDERBREKEN</string>
     <string name="ai_teens_upload_status_1">Kalibratiemonsters valideren…</string>
     <string name="ai_teens_upload_status_2">Modelgewichten bijwerken…</string>
     <string name="ai_teens_upload_status_3">Parameters synchroniseren…</string>
-    <string name="ai_teens_upload_status_4">Upload voltooid</string>
+    <string name="ai_teens_upload_status_4">Upload voltooid — systeem beveiligd</string>
 </resources>

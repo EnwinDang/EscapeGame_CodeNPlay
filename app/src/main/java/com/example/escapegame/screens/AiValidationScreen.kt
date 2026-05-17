@@ -282,9 +282,19 @@ fun AiValidationScreen(
                                 label = stringResource(R.string.ai_teens_btn_start),
                                 containerColor = MatrixGreen,
                                 contentColor = Color.Black,
-                                enabled = true,
+                                enabled = hasFinishedAudio || isPreview,
                                 onClick = { phase = TeensAiPhase.FIRST_RUN }
                             )
+                            if (!hasFinishedAudio && !isPreview) {
+                                Spacer(Modifier.height(12.dp))
+                                Text(
+                                    text = stringResource(R.string.ai_teens_wait_audio),
+                                    fontSize = 13.sp,
+                                    color = Color.White.copy(alpha = 0.5f),
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            }
                         }
 
                         // ── FIRST RUN — instructions + inline code entry ──────

@@ -32,7 +32,10 @@
 
     <!-- Binary Game -->
     <string name="binary_hint_message">Décode la séquence binaire pour révéler le mot caché. Chaque groupe de 8 bits représente une lettre !</string>
+    <string name="binary_legend">■ 1 = allumé  ·  □ 0 = éteint</string>
     <string name="binary_mission_label">MISSION 1 — DÉCODAGE BINAIRE</string>
+r    <string name="binary_verify_protocol">VÉRIFIER PROTOCOLE</string>
+    <string name="binary_reset_grid">EFFACER</string>
     <string name="binary_input_placeholder">Tape le mot décodé...</string>
     <string name="binary_correct_feedback">✓ Correct ! Bien joué, Agent.</string>
     <string name="binary_incorrect_feedback">✗ Incorrect. Réessaie !</string>
@@ -92,27 +95,27 @@
     <string name="ai_intro_btn_next">Suivant</string>
     <string name="ai_intro_btn_start">Lancer la Mission</string>
 
-    <string name="ai_intro_alarm_title">ALARME !</string>
-    <string name="ai_intro_alarm_body">\"The Glitch\" a pénétré le serveur principal du World Cloud — où sont stockées toutes les photos, vidéos et jeux du monde entier. Le premier mur de sécurité est tombé. Nous avons besoin de toi maintenant.</string>
+    <string name="ai_intro_alarm_title">🚨 INTRUSION DÉTECTÉE !</string>
+    <string name="ai_intro_alarm_body">ALERTE, Agent ! \"The Glitch\" a piraté le World Cloud — toutes les photos, vidéos et jeux du monde. Le premier pare-feu est TOMBÉ. Ce n\'est pas un exercice !</string>
 
-    <string name="ai_intro_threat_title">Le Plan du Hacker</string>
-    <string name="ai_intro_threat_body">The Glitch déguise ses virus malveillants en paquets de données inoffensifs — cachés en pleine vue.\n\nSes objectifs :\n- Faire surchauffer les serveurs\n- Changer tous les mots de passe en \"I-Love-Cookies\"\n- Rendre internet impossiblement lent dans le monde entier</string>
+    <string name="ai_intro_threat_title">RENSEIGNEMENTS ENNEMIS</string>
+    <string name="ai_intro_threat_body">The Glitch cache ses virus comme des données normales — sous ton nez.\n\nSes cibles :\n→ Faire surchauffer les serveurs\n→ Bloquer tous les mots de passe sur \"I-Love-Cookies\"\n→ Faire crasher internet dans le monde entier</string>
 
-    <string name="ai_intro_mission_title">Ta Mission</string>
-    <string name="ai_intro_mission_body">Tu es notre Agent Cyber IA. Surveille le flux de données — le hacker cache des paquets corrompus parmi des milliers de bons paquets.\n\nRepère l\'icône qui ne ressemble pas aux autres et appuie dessus vite. Le hacker va s\'accélérer et devenir plus rusé. Ne laisse passer aucun paquet corrompu !</string>
+    <string name="ai_intro_mission_title">TES ORDRES</string>
+    <string name="ai_intro_mission_body">Tu es la dernière ligne de défense, Agent. Scanne le flux de données — repère l\'icône corrompue et élimine-la vite. The Glitch accélère à chaque round. Une erreur et le World Cloud tombe !</string>
 
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Mission 3 · IA</string>
     <string name="ai_game_find_intruder">Trouve l\'intrus !</string>
-    <string name="ai_junior_intro_line1">Le virus \'The Glitch\' attaque le serveur !</string>
-    <string name="ai_junior_intro_line2">Trouve l\'intrus sur l\'écran.</string>
-    <string name="ai_junior_intro_line3">Clique pour l\'effacer !</string>
-    <string name="ai_junior_intro_line4">Aide-nous à sauver le World Cloud !</string>
-    <string name="ai_game_instruction_1">Trouve l\'intrus sur l\'écran.</string>
-    <string name="ai_game_instruction_2">Clique pour l\'effacer !</string>
-    <string name="ai_game_instruction_3">Aide-nous à sauver le serveur !</string>
-    <string name="ai_game_won_title">Intrusion bloquée !</string>
-    <string name="ai_game_won_body">Tu as détecté tous les intrus !</string>
+    <string name="ai_junior_intro_line1">⚠ The Glitch est dans le serveur !</string>
+    <string name="ai_junior_intro_line2">Scanne les icônes — une est un virus.</string>
+    <string name="ai_junior_intro_line3">APPUIE DESSUS pour le détruire !</string>
+    <string name="ai_junior_intro_line4">Sauve le World Cloud, Agent !</string>
+    <string name="ai_game_instruction_1">Scanne les icônes !</string>
+    <string name="ai_game_instruction_2">APPUIE sur le virus pour le détruire !</string>
+    <string name="ai_game_instruction_3">Ne le laisse pas passer !</string>
+    <string name="ai_game_won_title">MENACE NEUTRALISÉE !</string>
+    <string name="ai_game_won_body">Tous les virus éliminés. Serveur sécurisé !</string>
 
     <!-- AI Game -->
     <string name="ai_instructions">Utilisez l\'appareil fourni et complétez le Protocole IA.\nEntrez votre code d\'accès une fois terminé :</string>
@@ -126,32 +129,32 @@
     <!-- ============================================================ -->
 
     <!-- Quiz binaire — Kids -->
-    <string name="binary_quiz_question_kids">Qu\'est-ce que le code binaire ?</string>
-    <string name="binary_quiz_option_a_kids">Une façon pour les ordinateurs de stocker des informations avec des 0 et des 1</string>
-    <string name="binary_quiz_option_b_kids">Un type de virus informatique</string>
-    <string name="binary_quiz_option_c_kids">Un langage de programmation pour les robots</string>
-    <string name="binary_quiz_explanation_kids">Le binaire est un système numérique utilisant seulement 0 et 1. Chaque lettre, image et son sur un ordinateur est stocké sous forme de 0s et de 1s.</string>
+    <string name="binary_quiz_question_kids">C\'est quoi le code binaire ?</string>
+    <string name="binary_quiz_option_a_kids">Un langage avec seulement des 0 et des 1</string>
+    <string name="binary_quiz_option_b_kids">Un virus informatique</string>
+    <string name="binary_quiz_option_c_kids">Un langage pour robots</string>
+    <string name="binary_quiz_explanation_kids">Le binaire utilise seulement 0 et 1. Chaque lettre et image sur un ordinateur est faite de 0s et de 1s !</string>
 
     <!-- Quiz Scratch — Kids -->
-    <string name="scratch_quiz_question_kids">À quoi sert Scratch ?</string>
-    <string name="scratch_quiz_option_a_kids">Créer des programmes en assemblant des blocs colorés</string>
+    <string name="scratch_quiz_question_kids">C\'est quoi Scratch ?</string>
+    <string name="scratch_quiz_option_a_kids">Faire des jeux avec des blocs colorés</string>
     <string name="scratch_quiz_option_b_kids">Pirater des ordinateurs</string>
     <string name="scratch_quiz_option_c_kids">Dessiner des images</string>
-    <string name="scratch_quiz_explanation_kids">Avec Scratch, tu crées des programmes, des jeux et des animations en glissant et assemblant des blocs colorés — sans taper de code !</string>
+    <string name="scratch_quiz_explanation_kids">Avec Scratch, tu fais des jeux en cliquant des blocs ensemble. Pas besoin de taper du code !</string>
 
     <!-- Quiz IA — Kids -->
-    <string name="ai_quiz_question_kids">Que signifie IA ?</string>
+    <string name="ai_quiz_question_kids">Que veut dire IA ?</string>
     <string name="ai_quiz_option_a_kids">Intelligence Artificielle</string>
     <string name="ai_quiz_option_b_kids">Internet Automatique</string>
     <string name="ai_quiz_option_c_kids">Interface Android</string>
-    <string name="ai_quiz_explanation_kids">IA signifie Intelligence Artificielle — des ordinateurs qui peuvent apprendre et résoudre des problèmes, un peu comme les humains pensent.</string>
+    <string name="ai_quiz_explanation_kids">IA veut dire Intelligence Artificielle. C\'est un ordinateur qui peut apprendre et réfléchir, comme toi !</string>
 
     <!-- Quiz Robot — Kids -->
-    <string name="robot_quiz_question_kids">Comment un robot sait-il quoi faire ?</string>
-    <string name="robot_quiz_option_a_kids">Il suit des instructions programmées</string>
-    <string name="robot_quiz_option_b_kids">Il pense par lui-même comme un humain</string>
-    <string name="robot_quiz_option_c_kids">Il devine au hasard</string>
-    <string name="robot_quiz_explanation_kids">Les robots suivent du code — des instructions écrites par un programmeur qui disent au robot exactement quoi faire et quand.</string>
+    <string name="robot_quiz_question_kids">Comment marche un robot ?</string>
+    <string name="robot_quiz_option_a_kids">Il suit des instructions</string>
+    <string name="robot_quiz_option_b_kids">Il pense comme un humain</string>
+    <string name="robot_quiz_option_c_kids">Il devine</string>
+    <string name="robot_quiz_explanation_kids">Un robot suit du code. Un programmeur écrit des instructions qui disent au robot exactement quoi faire !</string>
 
     <!-- ============================================================ -->
     <!--  SENIOR AGENT (Teens) questions quiz — modifier ici pour teens -->
@@ -186,15 +189,16 @@
     <string name="robot_quiz_explanation_teens">Les capteurs sont des dispositifs d\'entrée qui recueillent des informations (par ex. distance, lumière, couleur). Les actionneurs sont des dispositifs de sortie qui font agir le robot (par ex. moteurs, haut-parleurs, LEDs).</string>
 
     <!-- Jeu de Validation IA — Ados -->
-    <string name="ai_teens_intro_task">Le système IA doit être vérifié. Lance le test et assure-toi que tout est sûr. On compte sur toi, agent !</string>
+    <string name="ai_teens_intro_task">CRITIQUE : Le datacenter IA a été compromis. Lance la séquence de validation MAINTENANT — le temps est compté. On compte sur toi, Agent !</string>
     <string name="ai_teens_btn_start">DÉMARRER LA VALIDATION</string>
+    <string name="ai_teens_wait_audio">⏳ Attends que l\'IA finisse de parler…</string>
     <string name="ai_teens_step1_title">TEST DE VALIDATION</string>
     <string name="ai_teens_step1_body">Teste le modèle réentraîné sur le micro:bit.\nNote le code de validation généré.\n\n→ Lance la séquence de test\n→ Note le code\n→ Entre-le ci-dessous</string>
     <string name="ai_teens_btn_enter_code">ENTRER LE CODE</string>
     <string name="ai_teens_code_hint">Code de validation du micro:bit</string>
     <string name="ai_teens_input_error">Tu n\'as pas exécuté la séquence correctement. Réessaie.</string>
     <string name="ai_teens_code_title_1">ENTRER LE CODE DE VALIDATION</string>
-    <string name="ai_teens_mismatch_body">La cyberattaque a corrompu les données d\'entraînement de l\'IA. Le système ne peut pas être fiable tant qu\'il n\'est pas recalibré avec des données propres.\n\nTu dois réentraîner le modèle pour restaurer le datacenter.</string>
+    <string name="ai_teens_mismatch_body">ALERTE ! La cyberattaque a injecté des données corrompues dans le modèle IA. Le système est COMPROMIS — il ne peut pas être fiable.\n\nInjecte des données d\'entraînement propres immédiatement. Le datacenter est en danger !</string>
     <string name="ai_teens_btn_diagnose">DÉMARRER LA RECALIBRATION</string>
     <string name="ai_teens_training_body">Le modèle s\'entraîne sur tes nouvelles données.\nAttends la fin de l\'entraînement, puis valide.</string>
     <string name="ai_teens_btn_calibrated">VALIDER LE MODÈLE</string>
@@ -202,12 +206,12 @@
     <string name="ai_teens_step2_body">Le modèle IA a été recalibré.\nExécute à nouveau la séquence de test sur le micro:bit.\n\nEntre le nouveau code de validation ci-dessous.</string>
     <string name="ai_teens_code_title_2">ENTRER LE CODE DE REVALIDATION</string>
     <string name="ai_teens_revalidation_hint">Code de revalidation du micro:bit</string>
-    <string name="ai_teens_success_body">Le modèle corrompu a été effacé et réentraîné. L\'IA du datacenter est de nouveau en ligne. Excellent travail, agent. La mission continue !</string>
+    <string name="ai_teens_success_body">Modèle effacé. Données propres injectées. IA du datacenter de nouveau en ligne. Excellent travail, Agent — la mission continue !</string>
 
     <!-- Jeu de Validation IA — textes UI codés en dur (barre de statut, panneaux, étiquettes) -->
     <string name="ai_teens_intro_title">VALIDATION IA</string>
     <string name="ai_teens_status_phase1">PHASE 1  ·  EN ATTENTE DE VALIDATION</string>
-    <string name="ai_teens_status_mismatch">⚠  PRÉDICTION INCORRECTE</string>
+    <string name="ai_teens_status_mismatch">⚠  DONNÉES CORROMPUES</string>
     <string name="ai_teens_status_recalibrating">RECALIBRATION…</string>
     <string name="ai_teens_status_phase2">PHASE 2  ·  REVALIDATION</string>
     <string name="ai_teens_status_restored">✓  SYSTÈME RESTAURÉ</string>
@@ -231,7 +235,7 @@
     <string name="ai_teens_training_progress_label">Progression d\'entraînement :</string>
     <string name="ai_teens_training_in_progress">Calibration en cours…</string>
     <string name="ai_teens_training_awaiting_microbit">74% — en attente calibration micro:bit</string>
-    <string name="ai_teens_retrain_success">MODÈLE ENTRAÎNÉ</string>
+    <string name="ai_teens_retrain_success">✓ MODÈLE RESTAURÉ</string>
     <string name="ai_teens_training_complete">Entraînement terminé — prêt à valider</string>
     <string name="ai_teens_status_collecting">COLLECTE DE DONNÉES EN COURS</string>
     <string name="ai_teens_add_data_title">COLLECTE DE DONNÉES</string>
@@ -247,15 +251,15 @@
     <string name="ai_teens_recalibrate_title">MODE ENTRAÎNEMENT — INJECTER LES DONNÉES</string>
     <string name="ai_teens_recalibrate_body">→ Appuie sur B — l\'IA entre en mode entraînement\n→ 9 actions apparaissent une par une — réagis à chaque flèche\n→ Incline à gauche = ← · à droite = → · secoue = ↑\n→ ✔ donnée valide · ✘ mauvaise donnée — quelques erreurs sont tolérées\n→ Trop d\'erreurs corrompent le modèle et génèrent une fausse sortie — reste concentré</string>
     <string name="ai_teens_recalibrate_done_btn">DONNÉES INJECTÉES — RELANCER LA SÉQUENCE</string>
-    <string name="ai_teens_too_many_errors">Trop d\'erreurs d\'entraînement — le modèle est toujours corrompu. Ré-entraîne l\'IA.</string>
+    <string name="ai_teens_too_many_errors">ÉCHEC CRITIQUE — trop de mauvais échantillons. Modèle toujours corrompu. Réentraîne immédiatement !</string>
     <string name="ai_teens_btn_retrain">RÉENTRAÎNER L\'IA</string>
     <string name="ai_teens_second_run_title">SÉQUENCE DE REVALIDATION</string>
     <string name="ai_teens_label_training_data">Données d\'entraînement :</string>
     <string name="ai_teens_data_quality_bad">INCORRECTES</string>
     <string name="ai_teens_data_quality_good">CORRIGÉES ✓</string>
-    <string name="ai_teens_uploading_title">CHARGEMENT DES DONNÉES</string>
+    <string name="ai_teens_uploading_title">CHARGEMENT — NE PAS INTERROMPRE</string>
     <string name="ai_teens_upload_status_1">Validation des échantillons…</string>
     <string name="ai_teens_upload_status_2">Mise à jour des poids du modèle…</string>
     <string name="ai_teens_upload_status_3">Synchronisation des paramètres…</string>
-    <string name="ai_teens_upload_status_4">Chargement terminé</string>
+    <string name="ai_teens_upload_status_4">Chargement terminé — système sécurisé</string>
 </resources>
