@@ -23,9 +23,9 @@ data class MissionConfig(
 // =============================================
 val JUNIOR_AGENT = MissionConfig(
     binaryTimerSeconds   = 10 * 60,
-    scratchCode          = "LOOP",
+    scratchCode          = "POPCORN",
     aiCode               = "AI",
-    robotCode            = "ROBOT",
+    robotCode            = "578",
     robotInstructionsRes = R.string.robot_instructions_kids,
 
     binaryQuiz = QuizConfig(
@@ -69,9 +69,9 @@ val JUNIOR_AGENT = MissionConfig(
 // =============================================
 val SENIOR_AGENT = MissionConfig(
     binaryTimerSeconds   = 5 * 60,
-    scratchCode          = "LOOP",
+    scratchCode          = "POPCORN",
     aiCode               = "PROMPT",
-    robotCode            = "ROBOT",
+    robotCode            = "578",
     robotInstructionsRes = R.string.robot_instructions_teens,
 
     binaryQuiz = QuizConfig(
