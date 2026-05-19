@@ -96,7 +96,7 @@ data class MissionConfig(
     val aiCode: String,                   // code players type at AI station
     val robotCode: String,                // code players type at Robot station
     val robotInstructionsRes: Int,        // @StringRes — which robot instructions to show
-    val wordQuizMap: Map<String, QuizConfig>,  // binary word → quiz (for Mission 1)
+    val binaryQuiz: QuizConfig,           // quiz shown after Mission 1
     val scratchQuiz: QuizConfig,
     val aiQuiz: QuizConfig,
     val robotQuiz: QuizConfig,
@@ -110,14 +110,14 @@ data class MissionConfig(
 
 These are the codes players must type to unlock each mission. Defined in `MissionConfig.kt`.
 
-| Mission | Code (Junior & Senior) | Notes |
-|---|---|---|
-| Mission 1 — Binary | *(no code — solved by decoding)* | Word is random: DATA / CODE / SERVER / ROBOT / CLOUD |
-| Mission 2 — Scratch | `LOOP` | Player goes to the laptop and gets this code |
-| Mission 3 — AI | `AI` | Junior: from mini-game / Senior: from micro:bit |
-| Mission 4 — Robot | `ROBOT` | Junior: from Ozobot / Senior: from LEGO Spike |
+| Mission | Junior Code | Senior Code | Notes |
+|---|---|---|---|
+| Mission 1 — Binary | *(no code — solved by decoding)* | *(no code — solved by decoding)* | Word is random: DATA / CODE / SERVER / ROBOT / CLOUD |
+| Mission 2 — Scratch | `POPCORN` | `POPCORN` | Player goes to the laptop and gets this code |
+| Mission 3 — AI | `AI` | `PROMPT` | Junior: from mini-game / Senior: from micro:bit |
+| Mission 4 — Robot | `578` | `578` | Junior: from Ozobot / Senior: from LEGO Spike |
 
-> To change a code, edit `scratchCode`, `aiCode`, or `robotCode` in `MissionConfig.kt`. The code check is case-insensitive (`.trim().uppercase()`), so `loop`, `Loop`, and `LOOP` all work.
+> To change a code, edit `scratchCode`, `aiCode`, or `robotCode` in `MissionConfig.kt`. The code check is case-insensitive (`.trim().uppercase()`), so `popcorn`, `Popcorn`, and `POPCORN` all work.
 
 ---
 
@@ -144,8 +144,8 @@ data class QuizConfig(
 3. The explanation is always shown after submission, whether the player was right or wrong.
 4. A "Proceed" button then appears to continue to the next mission.
 
-**Binary quiz — special case:**
-Mission 1 ends by calling `onSolved(puzzle.currentWord)`, which navigates to `binary_quiz/{word}`. The NavGraph then looks up `config.wordQuizMap[word]` to find the right quiz for that word. If the word is not found, it falls back to the DATA quiz.
+**Binary quiz:**
+Mission 1 ends by calling `onSolved()`, which navigates to `BINARY_QUIZ`. The quiz shown is `config.binaryQuiz` — one fixed quiz per difficulty level, independent of which binary word was decoded.
 
 ---
 
@@ -192,7 +192,7 @@ audio/[screen]_[level]_[locale].mp3
 | `ai_senior_fr.mp3` | AI Senior validation intro (FR) |
 | `robot_fr.mp3` | Robot mission (FR) |
 
-**Fallback chain:** If `binary_fr.mp3` is missing, the app tries `test.mp3`. If that too is missing, audio is silently skipped. `AiGameScreen` has an extra fallback step: it tries `ai_junior_[locale].mp3` → `ai_[locale].mp3` → `test.mp3`.
+**Fallback chain:** If a locale-specific file is missing, the app tries `test.mp3`. If that too is missing, audio is silently skipped.
 
 **Screens where audio completion gates the next button:**
 Only two screens disable their action button until `hasFinishedAudio = true`:
@@ -201,10 +201,7 @@ Only two screens disable their action button until `hasFinishedAudio = true`:
 
 All other screens (Binary, Scratch, Robot) play audio automatically but **never block interaction**.
 
-> ⚠️ **Dead file:** `AiGameIntroScreen.kt` exists in the codebase with its own `hasFinishedAudio` logic, but it is **not referenced anywhere in `NavGraph.kt`**. It is unused and can be safely deleted or ignored.
-
-**To add English or Dutch audio:**
-Simply add `binary_en.mp3`, `binary_nl.mp3`, `scratch_en.mp3`, etc. to `app/src/main/assets/audio/`. The app will automatically pick up the right file based on the active language.
+**All language versions are currently present** (`_en`, `_nl`, `_fr`) for every screen. To add or replace a file, drop the MP3 into `app/src/main/assets/audio/` with the correct name — no code changes needed.
 
 ---
 
@@ -287,8 +284,8 @@ This runs at screen load time and picks the correct file for the current languag
 - Shows the encoded binary string from `BinaryPuzzle` immediately — there is no start button.
 - Top bar: home button, 4-mission progress indicator, countdown timer.
 - Speech bubble plays `binary_[locale].mp3`. Audio plays automatically; when it ends the bubble shows a play icon. **Nothing is gated on audio completion** — the puzzle is always interactive.
-- Submitting a correct answer navigates to `binary_quiz/{word}`.
-- Timer expiry shows a "Override — proceed anyway" option.
+- Submitting a correct answer navigates to `BINARY_QUIZ`.
+- Timer expiry shows an "Override — proceed anyway" option.
 
 ### `QuizScreen.kt`
 - Generic quiz composable used after every mission.
@@ -310,12 +307,13 @@ This runs at screen load time and picks the correct file for the current languag
 - **GAME:** 5 rounds of icon-spotting. One icon per grid is different — player must tap it. Speed increases each round. After 5 correct taps, game is won.
 
 ### `AiValidationScreen.kt` (Senior only)
-- Multi-phase micro:bit validation flow: `INTRO → FIRST_RUN → CODE_INPUT_1 → BAD_PREDICTION → RECALIBRATE → UPLOADING → SECOND_RUN → CODE_INPUT_2 → SUCCESS`.
+- Multi-phase micro:bit validation flow: `INTRO → FIRST_RUN → BAD_PREDICTION → RECALIBRATE → UPLOADING → SECOND_RUN → SUCCESS`.
 - **INTRO:** Speech bubble plays `ai_senior_[locale].mp3`. Start button disabled until audio finishes.
-- **BAD_PREDICTION:** 2-step reveal. First shows the error panel with a "Continue" button. After Continue, shows the diagnosis + "Recalibrate" button.
-- **UPLOADING:** Animated progress bar (3 seconds), then auto-advances.
-- **CODE_INPUT_2:** Only the correct code (`config.aiCode`) advances to SUCCESS.
-- A status indicator (top-left) shows the current phase in colour throughout.
+- **FIRST_RUN:** Instructions + inline code field. Entering `DATA` triggers BAD_PREDICTION; any other input shows an error.
+- **BAD_PREDICTION:** Pulsing error panel + AI speech bubble plays `AI_[LOCALE].mpeg`. Advance button disabled until audio finishes.
+- **UPLOADING:** Animated progress bar (3 seconds), then auto-advances to SECOND_RUN.
+- **SECOND_RUN:** Same instructions + new code field. Only `config.aiCode` advances to SUCCESS.
+- A status indicator (top-left dot) shows the current phase in colour throughout.
 
 ### `CongratulationsScreen.kt`
 - Shows mission complete, total time, and difficulty level.
@@ -381,13 +379,7 @@ Change `correctIndex`:
 ### Add a new binary word
 
 1. **`logic/BinaryPuzzle.kt`** — add the word to the random selection pool
-2. **`logic/WordQuizData.kt`** — add a `QuizConfig` for the word in both `juniorWordQuizMap` and `seniorWordQuizMap`
-3. **All three `strings.xml` files** — add 5 new strings per difficulty:
-   - `word_XXX_question_kids` / `_teens`
-   - `word_XXX_option_a_kids` / `_teens`
-   - `word_XXX_option_b_kids` / `_teens`
-   - `word_XXX_option_c_kids` / `_teens`
-   - `word_XXX_explanation_kids` / `_teens`
+2. The binary quiz shown after Mission 1 is a single fixed quiz per difficulty (`binaryQuiz` in `MissionConfig.kt`), not word-specific — no quiz changes are needed just for adding a new word.
 
 ---
 
@@ -465,12 +457,12 @@ And add the string resources in all three `strings.xml` files.
 logic/
   MissionConfig.kt        ← START HERE for all difficulty-specific config
   QuizConfig.kt           ← Data class: question + 3 options + explanation
-  WordQuizData.kt         ← Binary word quiz maps (junior + senior)
   BinaryPuzzle.kt         ← Binary puzzle generation and answer checking
+  SoundEffects.kt         ← playSuccessSfx / playFailSfx helpers
   VideoAsset.kt           ← Enum of video asset names
-  VideoAssetManager.kt    ← Loads video files from assets/
-  VideoConfig.kt          ← Video configuration
-  VideoUpdateManager.kt   ← Handles video state
+  VideoAssetManager.kt    ← Resolves video assets (bundled or cached)
+  VideoConfig.kt          ← Remote manifest URL (empty = offline mode)
+  VideoUpdateManager.kt   ← Downloads updated videos from remote manifest
 
 viewmodel/
   GameViewModel.kt        ← Stores difficulty, start time, exposes missionConfig
@@ -479,18 +471,18 @@ navigation/
   NavGraph.kt             ← Full mission flow / all routes
 
 screens/
-  HomeScreen.kt           ← Landing screen with language picker
-  VideoScreen.kt          ← Intro video (intro.mp4)
-  DifficultyScreen.kt     ← Junior / Senior Agent selection
-  BinaryGameScreen.kt     ← Mission 1: Binary Decoder
-  QuizScreen.kt           ← Generic quiz (used after every mission)
-  ExternalGameScreen.kt   ← Scratch (M2) + Robot (M4) code-entry screens
-  AiGameScreen.kt         ← Mission 3 Junior: icon-spotting game
-  AiValidationScreen.kt   ← Mission 3 Senior: micro:bit AI validation
-  AISpeechBubble.kt       ← Circular video + audio composable
-  CongratulationsScreen.kt← Mission Complete screen
-  OutroScreen.kt          ← Outro video screen
-  HomeButton.kt           ← Reusable home/back button with confirmation dialog
+  HomeScreen.kt            ← Landing screen with language picker
+  VideoScreen.kt           ← Intro video (intro.mp4) with subtitles
+  DifficultyScreen.kt      ← Junior / Senior Agent selection
+  BinaryGameScreen.kt      ← Mission 1: Binary Decoder
+  QuizScreen.kt            ← Generic quiz (used after every mission)
+  ExternalGameScreen.kt    ← Scratch (M2) + Robot (M4) code-entry screens
+  AiGameScreen.kt          ← Mission 3 Junior: icon-spotting game
+  AiValidationScreen.kt    ← Mission 3 Senior: micro:bit AI validation
+  AISpeechBubble.kt        ← Circular video + audio composable
+  CongratulationsScreen.kt ← Mission Complete screen
+  OutroScreen.kt           ← Outro video screen
+  HomeButton.kt            ← Reusable home/back button with confirmation dialog
 
 theme/
   MissionControlBackground.kt ← Dark background with animated cyan grid
@@ -622,7 +614,7 @@ data class MissionConfig(
     val aiCode: String,                   // code que les joueurs tapent à la station IA
     val robotCode: String,                // code que les joueurs tapent à la station Robot
     val robotInstructionsRes: Int,        // @StringRes — quelles instructions robot afficher
-    val wordQuizMap: Map<String, QuizConfig>,  // mot binaire → quiz (pour Mission 1)
+    val binaryQuiz: QuizConfig,           // quiz affiché après la Mission 1
     val scratchQuiz: QuizConfig,
     val aiQuiz: QuizConfig,
     val robotQuiz: QuizConfig,
@@ -636,14 +628,14 @@ data class MissionConfig(
 
 Ce sont les codes que les joueurs doivent taper pour débloquer chaque mission. Définis dans `MissionConfig.kt`.
 
-| Mission | Code (Junior et Senior) | Notes |
-|---|---|---|
-| Mission 1 — Binaire | *(pas de code — résolu par décodage)* | Mot aléatoire : DATA / CODE / SERVER / ROBOT / CLOUD |
-| Mission 2 — Scratch | `LOOP` | Le joueur va au laptop et obtient ce code |
-| Mission 3 — IA | `AI` | Junior : depuis le mini-jeu / Senior : depuis le micro:bit |
-| Mission 4 — Robot | `ROBOT` | Junior : depuis l'Ozobot / Senior : depuis LEGO Spike |
+| Mission | Code Junior | Code Senior | Notes |
+|---|---|---|---|
+| Mission 1 — Binaire | *(pas de code — résolu par décodage)* | *(pas de code — résolu par décodage)* | Mot aléatoire : DATA / CODE / SERVER / ROBOT / CLOUD |
+| Mission 2 — Scratch | `POPCORN` | `POPCORN` | Le joueur va au laptop et obtient ce code |
+| Mission 3 — IA | `AI` | `PROMPT` | Junior : depuis le mini-jeu / Senior : depuis le micro:bit |
+| Mission 4 — Robot | `578` | `578` | Junior : depuis l'Ozobot / Senior : depuis LEGO Spike |
 
-> La vérification est insensible à la casse (`.trim().uppercase()`), donc `loop`, `Loop` et `LOOP` fonctionnent tous.
+> La vérification est insensible à la casse (`.trim().uppercase()`), donc `popcorn`, `Popcorn` et `POPCORN` fonctionnent tous.
 
 ---
 
@@ -861,9 +853,12 @@ L'ajout d'une mission nécessite des modifications à 4 endroits :
 logic/
   MissionConfig.kt        ← COMMENCER ICI pour toute la config spécifique à la difficulté
   QuizConfig.kt           ← Classe de données : question + 3 options + explication
-  WordQuizData.kt         ← Cartes de quiz de mots binaires (junior + senior)
   BinaryPuzzle.kt         ← Génération du puzzle binaire et vérification des réponses
-  VideoAssetManager.kt    ← Charge les fichiers vidéo depuis assets/
+  SoundEffects.kt         ← playSuccessSfx / playFailSfx
+  VideoAsset.kt           ← Enum des noms de fichiers vidéo
+  VideoAssetManager.kt    ← Résout les assets vidéo (intégrés ou mis en cache)
+  VideoConfig.kt          ← URL du manifeste distant (vide = mode hors-ligne)
+  VideoUpdateManager.kt   ← Télécharge les vidéos mises à jour depuis le manifeste
 
 viewmodel/
   GameViewModel.kt        ← Stocke la difficulté, l'heure de début, expose missionConfig
@@ -872,17 +867,18 @@ navigation/
   NavGraph.kt             ← Flux complet des missions / toutes les routes
 
 screens/
-  HomeScreen.kt           ← Écran d'accueil avec sélecteur de langue
-  VideoScreen.kt          ← Vidéo d'intro (intro.mp4)
-  DifficultyScreen.kt     ← Sélection Agent Junior / Senior
-  BinaryGameScreen.kt     ← Mission 1 : Décodeur Binaire
-  QuizScreen.kt           ← Quiz générique (utilisé après chaque mission)
-  ExternalGameScreen.kt   ← Écrans de saisie de code Scratch (M2) + Robot (M4)
-  AiGameScreen.kt         ← Mission 3 Junior : jeu de repérage d'icônes
-  AiValidationScreen.kt   ← Mission 3 Senior : validation IA micro:bit
-  AISpeechBubble.kt       ← Composable vidéo circulaire + audio
-  CongratulationsScreen.kt← Écran Mission Accomplie
-  HomeButton.kt           ← Bouton home réutilisable avec dialogue de confirmation
+  HomeScreen.kt            ← Écran d'accueil avec sélecteur de langue
+  VideoScreen.kt           ← Vidéo d'intro (intro.mp4) avec sous-titres
+  DifficultyScreen.kt      ← Sélection Agent Junior / Senior
+  BinaryGameScreen.kt      ← Mission 1 : Décodeur Binaire
+  QuizScreen.kt            ← Quiz générique (utilisé après chaque mission)
+  ExternalGameScreen.kt    ← Écrans de saisie de code Scratch (M2) + Robot (M4)
+  AiGameScreen.kt          ← Mission 3 Junior : jeu de repérage d'icônes
+  AiValidationScreen.kt    ← Mission 3 Senior : validation IA micro:bit
+  AISpeechBubble.kt        ← Composable vidéo circulaire + audio
+  CongratulationsScreen.kt ← Écran Mission Accomplie
+  OutroScreen.kt           ← Écran vidéo outro
+  HomeButton.kt            ← Bouton home réutilisable avec dialogue de confirmation
 
 theme/
   Color.kt                ← Palette de couleurs complète

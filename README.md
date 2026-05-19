@@ -6,7 +6,7 @@
 
 # 🇬🇧 ENGLISH
 
-## What is EscapeGmae?
+## What is EscapeGame?
 
 EscapeGame is an Android tablet app that turns coding education into an escape room experience. Players become "agents" who must complete 4 coding missions to save a hacked datacenter. Each mission teaches a real computer science concept through gameplay, followed by a quiz.
 
@@ -51,19 +51,19 @@ Mission 1 — Binary Decoder  (timed puzzle)
   ↓
 Binary Quiz
   ↓
-Mission 2 — Scratch Protocol  (go to laptop, enter code: LOOP)
+Mission 2 — Scratch Protocol  (go to laptop, enter code: POPCORN)
   ↓
 Scratch Quiz
   ↓
 Mission 3 — AI Protocol
   Junior: icon-spotting mini-game  (enter code: AI)
-  Senior: micro:bit AI validation  (enter code: AI)
+  Senior: micro:bit AI validation  (enter code: PROMPT)
   ↓
 AI Quiz
   ↓
 Mission 4 — Robot Protocol
-  Junior: Ozobot station  (enter code: ROBOT)
-  Senior: LEGO Spike station  (enter code: ROBOT)
+  Junior: Ozobot station  (enter code: 578)
+  Senior: LEGO Spike station  (enter code: 578)
   ↓
 Robot Quiz
   ↓
@@ -88,12 +88,12 @@ Congratulations Screen
 
 These codes are entered by players to unlock each mission. They are defined in `logic/MissionConfig.kt`.
 
-| Mission | Code |
-|---|---|
-| Binary Decoder | *(solved by decoding binary — no code to give)* |
-| Scratch Protocol | `LOOP` |
-| AI Protocol | `AI` |
-| Robot Protocol | `ROBOT` |
+| Mission | Junior Code | Senior Code |
+|---|---|---|
+| Binary Decoder | *(solved by decoding binary)* | *(solved by decoding binary)* |
+| Scratch Protocol | `POPCORN` | `POPCORN` |
+| AI Protocol | `AI` | `PROMPT` |
+| Robot Protocol | `578` | `578` |
 
 ---
 
@@ -112,7 +112,7 @@ app/src/main/assets/audio/
 | `ai_senior_fr.mp3` / `ai_senior_en.mp3` / `ai_senior_nl.mp3` | AI validation (Senior) intro |
 | `robot_fr.mp3` / `robot_en.mp3` / `robot_nl.mp3` | Robot mission screen |
 
-> ⚠️ Currently only `_fr.mp3` versions exist. Add `_en.mp3` and `_nl.mp3` to enable audio in those languages. If a language file is missing, the app silently skips audio.
+> All language versions (`_en.mp3`, `_nl.mp3`, `_fr.mp3`) are present. If a language file is ever missing, the app silently skips audio.
 
 ---
 
@@ -276,7 +276,7 @@ CodeNPlay/
 
 # 🇫🇷 FRANÇAIS
 
-## Qu'est-ce que EscapeGmae?
+## Qu'est-ce que EscapeGame?
 
 EscapeGame est une application Android pour tablettes qui transforme l'apprentissage de la programmation en jeu d'évasion. Les joueurs incarnent des "agents" qui doivent accomplir 4 missions de codage pour sauver un datacenter piraté. Chaque mission enseigne un vrai concept informatique à travers le jeu, suivi d'un quiz.
 
@@ -321,19 +321,19 @@ Mission 1 — Décodeur Binaire  (puzzle chronométré)
   ↓
 Quiz Binaire
   ↓
-Mission 2 — Protocole Scratch  (aller au laptop, entrer le code : LOOP)
+Mission 2 — Protocole Scratch  (aller au laptop, entrer le code : POPCORN)
   ↓
 Quiz Scratch
   ↓
 Mission 3 — Protocole IA
   Junior : mini-jeu de repérage d'icônes  (entrer le code : AI)
-  Senior : validation IA avec micro:bit   (entrer le code : AI)
+  Senior : validation IA avec micro:bit   (entrer le code : PROMPT)
   ↓
 Quiz IA
   ↓
 Mission 4 — Protocole Robot
-  Junior : station Ozobot   (entrer le code : ROBOT)
-  Senior : station LEGO Spike  (entrer le code : ROBOT)
+  Junior : station Ozobot   (entrer le code : 578)
+  Senior : station LEGO Spike  (entrer le code : 578)
   ↓
 Quiz Robot
   ↓
@@ -358,12 +358,12 @@ Quiz Robot
 
 Ces codes sont saisis par les joueurs pour débloquer chaque mission. Ils sont définis dans `logic/MissionConfig.kt`.
 
-| Mission | Code |
-|---|---|
-| Décodeur Binaire | *(résolu en décodant le binaire — pas de code à donner)* |
-| Protocole Scratch | `LOOP` |
-| Protocole IA | `AI` |
-| Protocole Robot | `ROBOT` |
+| Mission | Code Junior | Code Senior |
+|---|---|---|
+| Décodeur Binaire | *(résolu en décodant le binaire)* | *(résolu en décodant le binaire)* |
+| Protocole Scratch | `POPCORN` | `POPCORN` |
+| Protocole IA | `AI` | `PROMPT` |
+| Protocole Robot | `578` | `578` |
 
 ---
 
@@ -382,7 +382,7 @@ app/src/main/assets/audio/
 | `ai_senior_fr.mp3` / `ai_senior_en.mp3` / `ai_senior_nl.mp3` | Intro validation IA (Senior) |
 | `robot_fr.mp3` / `robot_en.mp3` / `robot_nl.mp3` | Écran mission Robot |
 
-> ⚠️ Pour l'instant, seuls les fichiers `_fr.mp3` existent. Ajoutez `_en.mp3` et `_nl.mp3` pour activer l'audio dans ces langues. Si un fichier est manquant, l'application ignore silencieusement l'audio.
+> Toutes les versions linguistiques (`_en.mp3`, `_nl.mp3`, `_fr.mp3`) sont présentes. Si un fichier est manquant, l'application ignore silencieusement l'audio.
 
 ---
 

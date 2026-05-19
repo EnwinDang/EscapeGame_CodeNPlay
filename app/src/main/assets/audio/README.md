@@ -26,4 +26,3 @@ Languages: `en`, `nl`, `fr`
 ## Notes
 
 - The Outro screen uses subtitles only (no audio file needed).
-- `AiGameIntroScreen` is not currently connected to the navigation graph and its `intro_*.mp3` files are not in use.
