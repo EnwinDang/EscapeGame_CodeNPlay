@@ -1,6 +1,8 @@
 package com.example.escapegame.screens
 
 import android.media.MediaPlayer
+import com.example.escapegame.logic.playSuccessSfx
+import com.example.escapegame.logic.playFailSfx
 import androidx.activity.compose.BackHandler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.core.Animatable
@@ -29,7 +31,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -141,9 +142,11 @@ fun BinaryGameScreen(
         if (puzzle.checkAnswer(userAnswer)) {
             feedback = true
             solved = true
+            playSuccessSfx(context)
         } else {
             feedback = false
             shakeKey++
+            playFailSfx(context)
         }
     }
 
@@ -393,9 +396,18 @@ fun BinaryGameScreen(
                                     .background(Color(0xFF0A1A0A).copy(alpha = 0.88f))
                                     .border(1.dp, MatrixGreen.copy(alpha = 0.25f), RoundedCornerShape(20.dp))
                                     .padding(20.dp),
-                                contentAlignment = Alignment.Center
                             ) {
                                 BinaryGrid(binaryString = puzzle.currentBinary)
+                                Text(
+                                    text = stringResource(R.string.binary_legend),
+                                    fontSize = 16.sp,
+                                    color = MatrixGreen.copy(alpha = 0.65f),
+                                    fontFamily = FontFamily.Monospace,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier
+                                        .align(Alignment.BottomCenter)
+                                        .fillMaxWidth()
+                                )
                             }
 
                             // Reset + Verify buttons
@@ -417,7 +429,7 @@ fun BinaryGameScreen(
                                         horizontalArrangement = Arrangement.spacedBy(6.dp)
                                     ) {
                                         Icon(Icons.Filled.Refresh, null, Modifier.size(15.dp), tint = MatrixGreen)
-                                        Text("RESET", fontSize = 11.sp, fontWeight = FontWeight.ExtraBold,
+                                        Text(stringResource(R.string.binary_reset_grid), fontSize = 11.sp, fontWeight = FontWeight.ExtraBold,
                                             color = MatrixGreen, letterSpacing = 1.5.sp)
                                     }
                                 }
@@ -435,7 +447,7 @@ fun BinaryGameScreen(
                                         horizontalArrangement = Arrangement.spacedBy(6.dp)
                                     ) {
                                         Icon(Icons.Filled.Lock, null, Modifier.size(15.dp), tint = Color.Black)
-                                        Text("VERIFY PROTOCOL", fontSize = 11.sp,
+                                        Text(stringResource(R.string.binary_verify_protocol), fontSize = 11.sp,
                                             fontWeight = FontWeight.ExtraBold,
                                             color = Color.Black, letterSpacing = 1.sp)
                                     }

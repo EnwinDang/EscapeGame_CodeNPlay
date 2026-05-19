@@ -1,6 +1,8 @@
 package com.example.escapegame.screens
 
 import android.media.MediaPlayer
+import com.example.escapegame.logic.playSuccessSfx
+import com.example.escapegame.logic.playFailSfx
 import androidx.activity.compose.BackHandler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.core.Animatable
@@ -287,10 +289,12 @@ fun ExternalGameScreen(
                             .background(MatrixGreen)
                             .clickable {
                                 if (enteredCode.trim().uppercase() == correctCode) {
+                                    playSuccessSfx(context)
                                     onCodeCorrect()
                                 } else {
                                     showError = true
                                     shakeKey++
+                                    playFailSfx(context)
                                 }
                             },
                         contentAlignment = Alignment.Center

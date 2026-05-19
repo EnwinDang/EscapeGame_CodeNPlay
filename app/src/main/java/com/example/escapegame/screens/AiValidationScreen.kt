@@ -15,6 +15,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -50,8 +51,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
@@ -61,6 +67,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.escapegame.R
+import com.example.escapegame.logic.playSuccessSfx
+import com.example.escapegame.logic.playFailSfx
 import com.example.escapegame.logic.VideoAssetManager
 import com.example.escapegame.theme.ErrorRed
 import com.example.escapegame.theme.MatrixGreen
@@ -122,17 +130,19 @@ fun AiValidationScreen(
 
     var phase by remember { mutableStateOf(TeensAiPhase.INTRO) }
     var phaseAudioPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
+    var phaseAudioIsPlaying by remember { mutableStateOf(false) }
+    var phaseAudioFinished by remember { mutableStateOf(false) }
 
-    // Play a different audio clip when BAD_PREDICTION or RECALIBRATE starts.
-    // Silently skipped if the file doesn't exist yet.
     androidx.compose.runtime.LaunchedEffect(phase) {
         phaseAudioPlayer?.release()
         phaseAudioPlayer = null
-        if (isPreview || videoAssetManager == null) return@LaunchedEffect
+        phaseAudioIsPlaying = false
+        phaseAudioFinished = false
+        if (isPreview || videoAssetManager == null) { phaseAudioFinished = true; return@LaunchedEffect }
+        val localeSuffix = when (locale) { "nl" -> "NL"; "fr" -> "FR"; else -> "ENG" }
         val filename = when (phase) {
-            TeensAiPhase.BAD_PREDICTION -> "ai_senior_mismatch_$locale.mp3"
-            TeensAiPhase.RECALIBRATE    -> "ai_senior_recalibrate_$locale.mp3"
-            else                        -> return@LaunchedEffect
+            TeensAiPhase.BAD_PREDICTION -> "AI_$localeSuffix.mpeg"
+            else                        -> { phaseAudioFinished = true; return@LaunchedEffect }
         }
         try {
             phaseAudioPlayer = MediaPlayer().apply {
@@ -140,8 +150,10 @@ fun AiValidationScreen(
                 setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
                 prepare()
                 start()
+                phaseAudioIsPlaying = true
+                setOnCompletionListener { phaseAudioIsPlaying = false; phaseAudioFinished = true }
             }
-        } catch (_: Exception) { }
+        } catch (_: Exception) { phaseAudioFinished = true }
     }
 
     DisposableEffect("phaseAudio") { onDispose { phaseAudioPlayer?.release() } }
@@ -250,15 +262,8 @@ fun AiValidationScreen(
                                     Box(
                                         modifier = Modifier
                                             .weight(1f)
-                                            .background(
-                                                Color.White.copy(alpha = 0.07f),
-                                                RoundedCornerShape(16.dp)
-                                            )
-                                            .border(
-                                                1.dp,
-                                                Color.White.copy(alpha = 0.12f),
-                                                RoundedCornerShape(16.dp)
-                                            )
+                                            .background(Color.White.copy(alpha = 0.07f), RoundedCornerShape(16.dp))
+                                            .border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(16.dp))
                                             .padding(16.dp)
                                     ) {
                                         Text(
@@ -282,9 +287,19 @@ fun AiValidationScreen(
                                 label = stringResource(R.string.ai_teens_btn_start),
                                 containerColor = MatrixGreen,
                                 contentColor = Color.Black,
-                                enabled = true,
+                                enabled = hasFinishedAudio || isPreview,
                                 onClick = { phase = TeensAiPhase.FIRST_RUN }
                             )
+                            if (!hasFinishedAudio && !isPreview) {
+                                Spacer(Modifier.height(12.dp))
+                                Text(
+                                    text = stringResource(R.string.ai_teens_wait_audio),
+                                    fontSize = 13.sp,
+                                    color = Color.White.copy(alpha = 0.5f),
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            }
                         }
 
                         // ── FIRST RUN — instructions + inline code entry ──────
@@ -306,7 +321,7 @@ fun AiValidationScreen(
                                 label = stringResource(R.string.ai_teens_btn_enter_code),
                                 onClick = {
                                     when (firstCode.trim().uppercase()) {
-                                        "DATA"  -> phase = TeensAiPhase.BAD_PREDICTION
+                                        "DATA"  -> { phase = TeensAiPhase.BAD_PREDICTION; playFailSfx(context) }
                                         "INPUT" -> {
                                             errorMessage = context.getString(R.string.ai_teens_input_error)
                                             showError = true
@@ -365,19 +380,57 @@ fun AiValidationScreen(
                                     )
                                 }
                                 Spacer(Modifier.height(24.dp))
-                                Text(
-                                    text = stringResource(R.string.ai_teens_mismatch_body),
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.85f),
-                                    textAlign = TextAlign.Center
-                                )
+                                if (videoAssetManager != null) {
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                                    ) {
+                                        AISpeechBubble(
+                                            videoAssetManager = videoAssetManager,
+                                            isPlaying = phaseAudioIsPlaying,
+                                            onPlay = {
+                                                if (!phaseAudioIsPlaying) {
+                                                    phaseAudioPlayer?.start(); phaseAudioIsPlaying = true
+                                                } else {
+                                                    phaseAudioPlayer?.pause(); phaseAudioIsPlaying = false
+                                                }
+                                            },
+                                            modifier = Modifier.size(120.dp)
+                                        )
+                                        Text(
+                                            text = stringResource(R.string.ai_teens_mismatch_body),
+                                            style = MaterialTheme.typography.bodyLarge,
+                                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.85f),
+                                            modifier = Modifier.weight(1f)
+                                        )
+                                    }
+                                } else {
+                                    Text(
+                                        text = stringResource(R.string.ai_teens_mismatch_body),
+                                        style = MaterialTheme.typography.bodyLarge,
+                                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.85f),
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
                                 Spacer(Modifier.height(40.dp))
                                 ActionButton(
                                     label = stringResource(R.string.ai_teens_btn_diagnose),
                                     containerColor = ErrorRed,
                                     contentColor = Color.White,
+                                    enabled = phaseAudioFinished || isPreview,
                                     onClick = { phase = TeensAiPhase.RECALIBRATE }
                                 )
+                                if (!phaseAudioFinished && !isPreview) {
+                                    Spacer(Modifier.height(12.dp))
+                                    Text(
+                                        text = stringResource(R.string.ai_teens_wait_audio),
+                                        fontSize = 13.sp,
+                                        color = Color.White.copy(alpha = 0.5f),
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                }
                             }
                         }
 
@@ -485,7 +538,7 @@ fun AiValidationScreen(
                                 label = stringResource(R.string.btn_submit),
                                 onClick = {
                                     when {
-                                        secondCode.trim().uppercase() == correctCode -> phase = TeensAiPhase.SUCCESS
+                                        secondCode.trim().uppercase() == correctCode -> { phase = TeensAiPhase.SUCCESS; playSuccessSfx(context) }
                                         secondCode.trim().uppercase() == "DATA" -> {
                                             errorMessage = context.getString(R.string.ai_teens_too_many_errors)
                                             showError = true
@@ -647,26 +700,6 @@ private fun NumberedStepPanel(steps: List<String>, borderColor: Color) {
                 )
             }
         }
-    }
-}
-
-@Composable
-private fun ComparisonRow(label: String, value: String, valueColor: Color) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            label,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Text(
-            value,
-            style = MaterialTheme.typography.bodyMedium,
-            color = valueColor,
-            fontWeight = FontWeight.Bold
-        )
     }
 }
 

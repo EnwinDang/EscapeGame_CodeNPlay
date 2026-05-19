@@ -13,53 +13,16 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BatteryAlert
-import androidx.compose.material.icons.filled.BatteryFull
-import androidx.compose.material.icons.filled.BugReport
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.LockOpen
-import androidx.compose.material.icons.filled.Shield
-import androidx.compose.material.icons.filled.SmartToy
-import androidx.compose.material.icons.filled.Warning
-import androidx.compose.material.icons.filled.Wifi
-import androidx.compose.material.icons.filled.WifiOff
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
@@ -68,12 +31,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.escapegame.R
+import com.example.escapegame.logic.playSuccessSfx
+import com.example.escapegame.logic.playFailSfx
 import com.example.escapegame.theme.BrandBlue
 import com.example.escapegame.theme.BrandGreen
 import com.example.escapegame.theme.ErrorRed
 import com.example.escapegame.theme.MatrixGreen
 import com.example.escapegame.theme.MissionControlBackground
-import com.example.escapegame.theme.YellowDark
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -81,60 +45,47 @@ import kotlinx.coroutines.launch
 
 private enum class GamePhase { INTRO, COUNTDOWN, GAME }
 
-// ── Icon-spotting game logic ──────────────────────────────────────────────────
+// ── Emoji-spotting game logic ─────────────────────────────────────────────────
 
-private data class SymbolGroup(val normal: ImageVector, val intruder: ImageVector)
+private data class EmojiGroup(val normal: String, val intruder: String)
 
-private val symbolGroups = listOf(
-    SymbolGroup(normal = Icons.Filled.BatteryFull,  intruder = Icons.Filled.BatteryAlert),
-    SymbolGroup(normal = Icons.Filled.Shield,        intruder = Icons.Filled.Warning),
-    SymbolGroup(normal = Icons.Filled.Wifi,          intruder = Icons.Filled.WifiOff),
-    SymbolGroup(normal = Icons.Filled.SmartToy,      intruder = Icons.Filled.BugReport),
-    SymbolGroup(normal = Icons.Filled.Lock,          intruder = Icons.Filled.LockOpen),
+private data class GameRound(val items: List<String>, val intruderIndex: Int)
+
+private val emojiGroups = listOf(
+    EmojiGroup("🤖", "🐛"),
+    EmojiGroup("🛡️", "⚠️"),
+    EmojiGroup("🔒", "🔓"),
+    EmojiGroup("☁️", "⛈️"),
+    EmojiGroup("💾", "🗑️"),
 )
-
-private data class GameRound(val symbols: List<ImageVector>, val intruderIndex: Int)
 
 private fun generateRound(attemptKey: Int): GameRound {
-    val group = symbolGroups[attemptKey % symbolGroups.size]
-    val list  = MutableList(5) { group.normal }.also { it.add(group.intruder) }
-    list.shuffle()
-    return GameRound(list, list.indexOf(group.intruder))
+    val group = emojiGroups[attemptKey % emojiGroups.size]
+    val intruderIndex = (0..5).random()
+    val items = MutableList(6) { group.normal }
+    items[intruderIndex] = group.intruder
+    return GameRound(items, intruderIndex)
 }
 
-private data class StoryElement(
-    val icon: ImageVector,
-    val iconColor: Color,
-    val titleRes: Int,
-    val bodyRes: Int,
-    val startTimeMs: Int,
-)
+// ── UI Components ─────────────────────────────────────────────────────────────
 
-private val storyElements = listOf(
-    StoryElement(
-        icon       = Icons.Filled.Warning,
-        iconColor  = ErrorRed,
-        titleRes   = R.string.ai_intro_alarm_title,
-        bodyRes    = R.string.ai_intro_alarm_body,
-        startTimeMs = 0
-    ),
-    StoryElement(
-        icon       = Icons.Filled.BugReport,
-        iconColor  = YellowDark,
-        titleRes   = R.string.ai_intro_threat_title,
-        bodyRes    = R.string.ai_intro_threat_body,
-        startTimeMs = 8000
-    ),
-    StoryElement(
-        icon       = Icons.Filled.SmartToy,
-        iconColor  = BrandBlue,
-        titleRes   = R.string.ai_intro_mission_title,
-        bodyRes    = R.string.ai_intro_mission_body,
-        startTimeMs = 20000
-    ),
-)
+@Composable
+private fun EmojiCard(emoji: String, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        modifier = Modifier.size(120.dp).padding(4.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.08f)),
+        border = BorderStroke(2.dp, Color.White.copy(alpha = 0.2f)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text(text = emoji, fontSize = 52.sp, textAlign = TextAlign.Center)
+        }
+    }
+}
 
-// ── Main composable ───────────────────────────────────────────────────────────
+// ── Main Game Screen ─────────────────────────────────────────────────────────
 
 @Composable
 fun AiGameScreen(
@@ -152,13 +103,12 @@ fun AiGameScreen(
     var countdownLabel   by remember { mutableStateOf("") }
     val goLabel = stringResource(R.string.ai_game_intro_go)
 
-    // Audio
+    // Audio Logic
     var isPlayingAudio   by remember { mutableStateOf(true) }
     var hasFinishedAudio by remember { mutableStateOf(false) }
     var currentProgressMs by remember { mutableIntStateOf(0) }
 
-    val locale    = if (isPreview) "en"
-                   else AppCompatDelegate.getApplicationLocales()[0]?.language ?: "en"
+    val locale    = if (isPreview) "en" else AppCompatDelegate.getApplicationLocales()[0]?.language ?: "en"
     val audioPath = "audio/ai_junior_$locale.mp3"
 
     val mediaPlayer: MediaPlayer? = remember {
@@ -170,23 +120,16 @@ fun AiGameScreen(
                     setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
                 } catch (_: Exception) {
                     try {
-                        val afd = context.assets.openFd("audio/ai_$locale.mp3")
+                        val afd = context.assets.openFd("audio/test.mp3")
                         setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-                    } catch (_: Exception) {
-                        try {
-                            val afd = context.assets.openFd("audio/test.mp3")
-                            setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-                        } catch (_: Exception) { }
-                    }
+                    } catch (_: Exception) { }
                 }
                 try { 
                     prepare()
                     start() 
-                } catch (_: Exception) { 
-                    hasFinishedAudio = true 
-                }
+                } catch (_: Exception) { hasFinishedAudio = true }
                 setOnCompletionListener {
-                    isPlayingAudio   = false
+                    isPlayingAudio = false
                     hasFinishedAudio = true
                 }
             }
@@ -201,15 +144,13 @@ fun AiGameScreen(
     LaunchedEffect(isPlayingAudio) {
         if (isPlayingAudio) {
             while (isPlayingAudio) {
-                try {
-                    currentProgressMs = mediaPlayer?.currentPosition ?: 0
-                } catch (_: Exception) { isPlayingAudio = false }
+                try { currentProgressMs = mediaPlayer?.currentPosition ?: 0 } catch (_: Exception) { isPlayingAudio = false }
                 delay(100L)
             }
         }
     }
 
-    // Game state
+    // Game Logic
     val totalRounds = 5
     var correctCount by remember { mutableIntStateOf(0) }
     var attemptKey   by remember { mutableIntStateOf(0) }
@@ -222,10 +163,10 @@ fun AiGameScreen(
 
     LaunchedEffect(attemptKey, gamePhase) {
         if (gamePhase != GamePhase.GAME || gameWon) return@LaunchedEffect
-        val durationMs = maxOf(8000L - correctCount * 500L, 3000L)
-        val steps = 60; val stepDelay = durationMs / steps
+        val durationMs = maxOf(9000L - correctCount * 800L, 4000L)
+        val steps = 100
         for (i in 1..steps) {
-            delay(stepDelay)
+            delay(durationMs / steps)
             if (gamePhase != GamePhase.GAME || gameWon) return@LaunchedEffect
             timeProgress = 1f - i.toFloat() / steps
         }
@@ -235,316 +176,134 @@ fun AiGameScreen(
     LaunchedEffect(shakeKey) {
         if (shakeKey == 0) return@LaunchedEffect
         shakeOffset.snapTo(0f)
-        shakeOffset.animateTo(
-            targetValue = 0f,
-            animationSpec = keyframes {
-                durationMillis = 400
-                20f at 50; (-20f) at 100; 20f at 150; (-20f) at 200
-                10f at 250; (-10f) at 300; 0f at 400
-            }
-        )
+        shakeOffset.animateTo(0f, animationSpec = keyframes {
+            durationMillis = 400
+            20f at 50; (-20f) at 100; 20f at 150; (-20f) at 200; 10f at 250; (-10f) at 300; 0f at 400
+        })
     }
-
-    val currentStoryElement = storyElements.lastOrNull { currentProgressMs >= it.startTimeMs } ?: storyElements[0]
 
     MissionControlBackground {
         when (gamePhase) {
-
-            // ── INTRO ─────────────────────────────────────────────────────────
             GamePhase.INTRO -> {
                 Box(modifier = Modifier.fillMaxSize()) {
-                    Column(
+                    Row(
                         modifier = Modifier.fillMaxSize().padding(40.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        horizontalArrangement = Arrangement.spacedBy(32.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
-                            text = stringResource(R.string.ai_game_step_label),
-                            style = MaterialTheme.typography.titleLarge,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            textAlign = TextAlign.Center
-                        )
-
-                        Spacer(Modifier.height(8.dp))
-
-                        Text(
-                            text = stringResource(R.string.title_ai_game),
-                            style = MaterialTheme.typography.displaySmall,
-                            color = MaterialTheme.colorScheme.primary,
-                            textAlign = TextAlign.Center
-                        )
-
-                        Spacer(Modifier.height(24.dp))
-
-                        AISpeechBubble(
-                            videoAssetManager = videoAssetManager,
-                            isPlaying = isPlayingAudio,
-                            onPlay = {
-                                if (!isPlayingAudio) {
-                                    try { mediaPlayer?.start(); isPlayingAudio = true } catch (_: Exception) {}
-                                } else {
-                                    try { mediaPlayer?.pause(); isPlayingAudio = false } catch (_: Exception) {}
-                                }
-                            },
-                            modifier = Modifier.size(200.dp)
-                        )
-
-                        Spacer(Modifier.height(24.dp))
-
-                        // Instruction card
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth(0.85f)
-                                .clip(RoundedCornerShape(16.dp))
-                                .background(Color.White.copy(alpha = 0.07f))
-                                .border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(16.dp))
-                                .padding(horizontal = 24.dp, vertical = 20.dp)
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier.weight(1f)
                         ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
+                            Text(text = stringResource(R.string.title_ai_game), style = MaterialTheme.typography.displaySmall, color = MatrixGreen)
+                            Spacer(Modifier.height(24.dp))
+                            AISpeechBubble(videoAssetManager, isPlayingAudio, {
+                                if (!isPlayingAudio) mediaPlayer?.start().also { isPlayingAudio = true }
+                                else mediaPlayer?.pause().also { isPlayingAudio = false }
+                            }, Modifier.size(180.dp))
+                        }
+
+                        Column(
+                            modifier = Modifier.weight(1f),
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Surface(
+                                color = Color.Black.copy(alpha = 0.6f),
+                                shape = RoundedCornerShape(16.dp),
+                                border = BorderStroke(1.dp, MatrixGreen.copy(alpha = 0.4f)),
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Text(
-                                    text = stringResource(R.string.ai_junior_intro_line1),
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    color = ErrorRed,
-                                    textAlign = TextAlign.Center
-                                )
-                                Spacer(Modifier.height(16.dp))
-                                Text(
-                                    text = stringResource(R.string.ai_junior_intro_line2),
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color.White,
-                                    textAlign = TextAlign.Center
-                                )
-                                Spacer(Modifier.height(8.dp))
-                                Text(
-                                    text = stringResource(R.string.ai_junior_intro_line3),
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MatrixGreen,
-                                    textAlign = TextAlign.Center
-                                )
-                                Spacer(Modifier.height(8.dp))
-                                Text(
-                                    text = stringResource(R.string.ai_junior_intro_line4),
-                                    fontSize = 15.sp,
-                                    fontWeight = FontWeight.Normal,
-                                    color = Color.White.copy(alpha = 0.75f),
-                                    textAlign = TextAlign.Center
+                                    text = stringResource(R.string.ai_junior_intro_line1) + "\n\n" +
+                                           stringResource(R.string.ai_junior_intro_line2) + "\n" +
+                                           stringResource(R.string.ai_junior_intro_line3),
+                                    modifier = Modifier.padding(24.dp),
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = Color.White
                                 )
                             }
-                        }
-
-                        Spacer(Modifier.height(32.dp))
-
-                        Button(
-                            onClick = {
-                                scope.launch {
-                                    try { mediaPlayer?.stop() } catch (_: Exception) {}
-                                    isPlayingAudio = false
-                                    for (step in listOf("3", "2", "1", goLabel)) {
-                                        countdownLabel = step
-                                        gamePhase = GamePhase.COUNTDOWN
-                                        delay(1000L)
+                            Spacer(Modifier.height(24.dp))
+                            Button(
+                                onClick = {
+                                    scope.launch {
+                                        mediaPlayer?.stop(); isPlayingAudio = false
+                                        for (step in listOf("3", "2", "1", goLabel)) { countdownLabel = step; gamePhase = GamePhase.COUNTDOWN; delay(1000L) }
+                                        gamePhase = GamePhase.GAME
                                     }
-                                    gamePhase = GamePhase.GAME
-                                }
-                            },
-                            enabled = hasFinishedAudio || isPreview,
-                            modifier = Modifier.fillMaxWidth().height(72.dp),
-                            shape = RoundedCornerShape(16.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = BrandGreen,
-                                contentColor = Color.Black,
-                                disabledContainerColor = BrandGreen.copy(alpha = 0.3f),
-                                disabledContentColor = Color.White.copy(alpha = 0.5f)
-                            )
-                        ) {
-                            Text(
-                                text = stringResource(R.string.ai_intro_btn_start),
-                                style = MaterialTheme.typography.titleLarge,
-                                fontWeight = FontWeight.Bold
-                            )
+                                },
+                                enabled = hasFinishedAudio,
+                                modifier = Modifier.fillMaxWidth().height(64.dp),
+                                shape = RoundedCornerShape(16.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = BrandGreen)
+                            ) {
+                                Text(stringResource(R.string.ai_intro_btn_start), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Black)
+                            }
                         }
                     }
-
-                    HomeButton(
-                        onHome = onHome,
-                        modifier = Modifier.align(Alignment.TopEnd).padding(16.dp)
-                    )
+                    HomeButton(onHome, Modifier.align(Alignment.TopEnd).padding(16.dp))
                 }
             }
 
-            // ── COUNTDOWN ─────────────────────────────────────────────────────
             GamePhase.COUNTDOWN -> {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(
-                        text = countdownLabel,
-                        fontSize = 180.sp,
-                        fontWeight = FontWeight.Black,
-                        color = if (countdownLabel == goLabel) BrandGreen
-                                else MaterialTheme.colorScheme.primary,
-                        textAlign = TextAlign.Center
-                    )
+                Box(Modifier.fillMaxSize(), Alignment.Center) {
+                    Text(countdownLabel, fontSize = 180.sp, fontWeight = FontWeight.Black, color = if (countdownLabel == goLabel) BrandGreen else BrandBlue)
                 }
             }
 
-            // ── GAME ──────────────────────────────────────────────────────────
             GamePhase.GAME -> {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    when {
-                        roundTimedOut -> {
-                            Column(
-                                modifier = Modifier.fillMaxSize().padding(40.dp),
-                                verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.binary_times_up),
-                                    fontSize = 32.sp,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    color = ErrorRed,
-                                    textAlign = TextAlign.Center
-                                )
-                                Spacer(Modifier.height(32.dp))
-                                Button(
-                                    onClick = { roundTimedOut = false; attemptKey++ },
-                                    modifier = Modifier.fillMaxWidth().height(64.dp),
-                                    shape = RoundedCornerShape(16.dp),
-                                    colors = ButtonDefaults.buttonColors(
-                                        containerColor = MatrixGreen,
-                                        contentColor = Color.Black
-                                    )
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.binary_continue_anyway),
-                                        fontSize = 16.sp,
-                                        fontWeight = FontWeight.ExtraBold
-                                    )
-                                }
+                Box(Modifier.fillMaxSize()) {
+                    if (roundTimedOut) {
+                        Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
+                            Text(stringResource(R.string.binary_times_up), fontSize = 40.sp, color = ErrorRed, fontWeight = FontWeight.ExtraBold)
+                            Spacer(Modifier.height(32.dp))
+                            Button({ roundTimedOut = false; attemptKey++ }, Modifier.height(72.dp).fillMaxWidth(0.6f)) {
+                                Text(stringResource(R.string.binary_continue_anyway))
                             }
                         }
-
-                        gameWon -> {
-                            Column(
-                                modifier = Modifier.fillMaxSize().padding(40.dp),
-                                verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.ai_game_won_title),
-                                    style = MaterialTheme.typography.displaySmall,
-                                    color = MaterialTheme.colorScheme.primary,
-                                    textAlign = TextAlign.Center
-                                )
-                                Spacer(Modifier.height(16.dp))
-                                Text(
-                                    text = stringResource(R.string.ai_game_won_body),
-                                    style = MaterialTheme.typography.headlineSmall,
-                                    textAlign = TextAlign.Center
-                                )
-                                Spacer(Modifier.height(32.dp))
-                                Button(
-                                    onClick = onGameCompleted,
-                                    modifier = Modifier.fillMaxWidth().height(72.dp),
-                                    shape = RoundedCornerShape(16.dp),
-                                    colors = ButtonDefaults.buttonColors(
-                                        containerColor = BrandGreen,
-                                        contentColor = Color.Black
-                                    )
-                                ) {
-                                    Text(
-                                        stringResource(R.string.btn_continue),
-                                        style = MaterialTheme.typography.titleLarge,
-                                        fontWeight = FontWeight.Bold
-                                    )
-                                }
+                    } else if (gameWon) {
+                        Column(Modifier.fillMaxSize().padding(40.dp), Arrangement.Center, Alignment.CenterHorizontally) {
+                            Text(stringResource(R.string.ai_game_won_title), style = MaterialTheme.typography.displaySmall, color = MatrixGreen)
+                            Spacer(Modifier.height(32.dp))
+                            Button(onGameCompleted, Modifier.fillMaxWidth().height(80.dp), shape = RoundedCornerShape(20.dp)) {
+                                Text(stringResource(R.string.btn_continue), style = MaterialTheme.typography.titleLarge)
                             }
                         }
+                    } else {
+                        Column(
+                            modifier = Modifier.fillMaxSize().padding(32.dp).graphicsLayer { translationX = shakeOffset.value },
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text("$correctCount / $totalRounds", style = MaterialTheme.typography.displaySmall, color = MatrixGreen)
+                            Spacer(Modifier.height(16.dp))
+                            LinearProgressIndicator(timeProgress, Modifier.fillMaxWidth().height(12.dp).clip(CircleShape), color = if (timeProgress > 0.3f) MatrixGreen else ErrorRed)
+                            Spacer(Modifier.height(32.dp))
+                            Text(stringResource(R.string.ai_game_find_intruder), style = MaterialTheme.typography.headlineSmall, color = Color.White)
+                            Spacer(Modifier.height(32.dp))
 
-                        else -> {
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(40.dp)
-                                    .graphicsLayer { translationX = shakeOffset.value },
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.Center
-                            ) {
-                                Text(
-                                    text = "$correctCount / $totalRounds",
-                                    style = MaterialTheme.typography.displaySmall,
-                                    color = MaterialTheme.colorScheme.primary
-                                )
-                                Spacer(Modifier.height(8.dp))
-                                LinearProgressIndicator(
-                                    progress = { timeProgress },
-                                    modifier = Modifier.fillMaxWidth().height(12.dp).clip(RoundedCornerShape(6.dp)),
-                                    color = if (timeProgress > 0.4f) MatrixGreen else ErrorRed
-                                )
-                                Spacer(Modifier.height(16.dp))
-                                Text(
-                                    text = stringResource(R.string.ai_game_instruction_1),
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color.White,
-                                    textAlign = TextAlign.Center
-                                )
-                                Text(
-                                    text = stringResource(R.string.ai_game_instruction_2),
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MatrixGreen,
-                                    textAlign = TextAlign.Center
-                                )
-                                Text(
-                                    text = stringResource(R.string.ai_game_instruction_3),
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.Normal,
-                                    color = Color.White.copy(alpha = 0.6f),
-                                    textAlign = TextAlign.Center
-                                )
-                                Spacer(Modifier.height(20.dp))
-
-                                round.symbols.chunked(3).forEach { rowSymbols ->
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        horizontalArrangement = Arrangement.SpaceEvenly
-                                    ) {
-                                        rowSymbols.forEach { icon ->
-                                            val isIntruder = icon == round.symbols[round.intruderIndex]
-                                            Button(
-                                                onClick = {
-                                                    if (isIntruder) {
-                                                        correctCount++
-                                                        if (correctCount >= totalRounds) gameWon = true
-                                                        else attemptKey++
-                                                    } else {
-                                                        shakeKey++
-                                                    }
-                                                },
-                                                modifier = Modifier.size(120.dp),
-                                                shape = RoundedCornerShape(16.dp),
-                                                colors = ButtonDefaults.buttonColors(containerColor = Color.Black.copy(alpha = 0.5f)),
-                                                border = BorderStroke(1.dp, MatrixGreen.copy(alpha = 0.4f))
-                                            ) {
-                                                Icon(icon, null, Modifier.size(64.dp), tint = MatrixGreen)
+                            round.items.chunked(3).forEach { rowItems ->
+                                Row(Modifier.fillMaxWidth(), Arrangement.SpaceEvenly) {
+                                    rowItems.forEach { item ->
+                                        EmojiCard(
+                                            emoji = item,
+                                            onClick = {
+                                                if (item == round.items[round.intruderIndex]) {
+                                                    correctCount++
+                                                    if (correctCount >= totalRounds) gameWon = true else attemptKey++
+                                                    playSuccessSfx(context)
+                                                } else {
+                                                    shakeKey++
+                                                    playFailSfx(context)
+                                                }
                                             }
-                                        }
+                                        )
                                     }
-                                    Spacer(Modifier.height(12.dp))
                                 }
+                                Spacer(Modifier.height(16.dp))
                             }
                         }
                     }
-
-                    HomeButton(
-                        onHome = onHome,
-                        modifier = Modifier.align(Alignment.TopEnd).padding(16.dp)
-                    )
+                    HomeButton(onHome, Modifier.align(Alignment.TopEnd).padding(16.dp))
                 }
             }
         }

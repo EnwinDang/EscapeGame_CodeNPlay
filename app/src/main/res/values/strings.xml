@@ -36,6 +36,7 @@
 
     <!-- Binary Game -->
     <string name="binary_hint_message">Decode the binary sequence to reveal the hidden word. Each 8-bit group represents one letter!</string>
+    <string name="binary_legend">■ 1 = on  ·  □ 0 = off</string>
     <string name="binary_mission_label">MISSION 1 — BINARY DECODE</string>
     <string name="binary_input_placeholder">Type the decoded word...</string>
     <string name="binary_correct_feedback">✓ Correct! Well done, Agent.</string>
@@ -99,27 +100,27 @@
     <string name="ai_intro_btn_next">Next</string>
     <string name="ai_intro_btn_start">Start Mission</string>
 
-    <string name="ai_intro_alarm_title">ALARM!</string>
-    <string name="ai_intro_alarm_body">\"The Glitch\" has breached the World Cloud\'s main server — where every photo, video, and game on earth is stored. The first security wall is down. We need you now.</string>
+    <string name="ai_intro_alarm_title">!! BREACH DETECTED!</string>
+    <string name="ai_intro_alarm_body">ALERT, Agent! \"The Glitch\" has cracked the World Cloud — every photo, video and game on earth. The first firewall is DOWN. This is not a drill!</string>
 
-    <string name="ai_intro_threat_title">The Hacker\'s Plan</string>
-    <string name="ai_intro_threat_body">The Glitch disguises malicious viruses as innocent data packets — hiding them in plain sight.\n\nHis goals:\n- Overheat the servers\n- Change every password to \"I-Love-Cookies\"\n- Make the internet impossibly slow worldwide</string>
+    <string name="ai_intro_threat_title">ENEMY INTEL</string>
+    <string name="ai_intro_threat_body">The Glitch hides his viruses as normal data — right under your nose.\n\nHis targets:\n→ Overheat the servers\n→ Lock every password to \"I-Love-Cookies\"\n→ Crash the internet worldwide</string>
 
-    <string name="ai_intro_mission_title">Your Mission</string>
-    <string name="ai_intro_mission_body">You are our AI Cyber Agent. Guard the data stream — the hacker hides corrupt packets among thousands of good ones.\n\nSpot the one icon that does not belong and tap it fast. The hacker will speed up and get smarter. Do not let a single corrupt packet through!</string>
+    <string name="ai_intro_mission_title">YOUR ORDERS</string>
+    <string name="ai_intro_mission_body">You are the last line of defence, Agent. Scan the data stream — spot the corrupt icon and eliminate it fast. The Glitch speeds up every round. One slip and the World Cloud falls!</string>
 
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Mission 3 · AI</string>
     <string name="ai_game_find_intruder">Find the intruder!</string>
-    <string name="ai_junior_intro_line1">The virus \'The Glitch\' is attacking the server!</string>
-    <string name="ai_junior_intro_line2">Find the intruder on the screen.</string>
-    <string name="ai_junior_intro_line3">Click to eliminate it!</string>
-    <string name="ai_junior_intro_line4">Help us save the World Cloud!</string>
-    <string name="ai_game_instruction_1">Find the intruder on the screen.</string>
-    <string name="ai_game_instruction_2">Click to eliminate it!</string>
-    <string name="ai_game_instruction_3">Help us save the server!</string>
-    <string name="ai_game_won_title">Intrusion blocked!</string>
-    <string name="ai_game_won_body">You detected all intruders!</string>
+    <string name="ai_junior_intro_line1">Corrupted data detected in the server!</string>
+    <string name="ai_junior_intro_line2">Use your micro:bit — tilt or slide it to find the corrupted data.</string>
+    <string name="ai_junior_intro_line3">TAP IT to eliminate it!</string>
+    <string name="ai_junior_intro_line4">Save the World Cloud, Agent!</string>
+    <string name="ai_game_instruction_1">Scan the icons!</string>
+    <string name="ai_game_instruction_2">TAP the virus to destroy it!</string>
+    <string name="ai_game_instruction_3">Don\'t let it through!</string>
+    <string name="ai_game_won_title">THREAT NEUTRALISED!</string>
+    <string name="ai_game_won_body">All viruses eliminated. Server secure!</string>
 
     <!-- AI Game -->
     <string name="ai_instructions">Access the assigned device and complete the AI Protocol.\nEnter your access code when finished:</string>
@@ -134,31 +135,31 @@
 
     <!-- Binary Quiz — Kids -->
     <string name="binary_quiz_question_kids">What is binary code?</string>
-    <string name="binary_quiz_option_a_kids">A way computers store information using only 0s and 1s</string>
-    <string name="binary_quiz_option_b_kids">A type of computer virus</string>
-    <string name="binary_quiz_option_c_kids">A programming language for robots</string>
-    <string name="binary_quiz_explanation_kids">Binary is a number system using only 0 and 1. Every letter, picture, and sound on a computer is stored as a pattern of 0s and 1s.</string>
+    <string name="binary_quiz_option_a_kids">Computer language with only 0s and 1s</string>
+    <string name="binary_quiz_option_b_kids">A computer virus</string>
+    <string name="binary_quiz_option_c_kids">A robot language</string>
+    <string name="binary_quiz_explanation_kids">Binary uses only 0 and 1. Every letter and picture on a computer is made of 0s and 1s!</string>
 
     <!-- Scratch Quiz — Kids -->
-    <string name="scratch_quiz_question_kids">What is Scratch used for?</string>
-    <string name="scratch_quiz_option_a_kids">Making programs by connecting colorful blocks</string>
-    <string name="scratch_quiz_option_b_kids">Hacking into computers</string>
-    <string name="scratch_quiz_option_c_kids">Drawing pictures</string>
-    <string name="scratch_quiz_explanation_kids">Scratch lets you make programs, games, and animations by dragging and snapping colorful blocks together — no typing needed!</string>
+    <string name="scratch_quiz_question_kids">What is Scratch?</string>
+    <string name="scratch_quiz_option_a_kids">Make games with colourful blocks</string>
+    <string name="scratch_quiz_option_b_kids">Hack computers</string>
+    <string name="scratch_quiz_option_c_kids">Draw pictures</string>
+    <string name="scratch_quiz_explanation_kids">Scratch lets you make games and animations by clicking blocks together. No typing needed!</string>
 
     <!-- AI Quiz — Kids -->
-    <string name="ai_quiz_question_kids">What does AI stand for?</string>
+    <string name="ai_quiz_question_kids">What does AI mean?</string>
     <string name="ai_quiz_option_a_kids">Artificial Intelligence</string>
     <string name="ai_quiz_option_b_kids">Automatic Internet</string>
     <string name="ai_quiz_option_c_kids">Android Interface</string>
-    <string name="ai_quiz_explanation_kids">AI stands for Artificial Intelligence — computers that can learn and solve problems, a bit like how humans think.</string>
+    <string name="ai_quiz_explanation_kids">AI means Artificial Intelligence. It\'s a computer that can learn and think, just like you!</string>
 
     <!-- Robot Quiz — Kids -->
-    <string name="robot_quiz_question_kids">How does a robot know what to do?</string>
-    <string name="robot_quiz_option_a_kids">It follows programmed instructions</string>
-    <string name="robot_quiz_option_b_kids">It thinks for itself like a human</string>
-    <string name="robot_quiz_option_c_kids">It guesses randomly</string>
-    <string name="robot_quiz_explanation_kids">Robots follow code — instructions written by a programmer that tell the robot exactly what to do and when.</string>
+    <string name="robot_quiz_question_kids">How does a robot work?</string>
+    <string name="robot_quiz_option_a_kids">It follows instructions</string>
+    <string name="robot_quiz_option_b_kids">It thinks like a human</string>
+    <string name="robot_quiz_option_c_kids">It guesses</string>
+    <string name="robot_quiz_explanation_kids">A robot follows code. A programmer writes instructions that tell the robot exactly what to do!</string>
 
     <!-- ============================================================ -->
     <!--  SENIOR AGENT (Teens) quiz strings — edit here for teens     -->
@@ -193,15 +194,16 @@
     <string name="robot_quiz_explanation_teens">Sensors are input devices that gather information (e.g. distance, light, color). Actuators are output devices that make the robot do something (e.g. motors, speakers, LEDs).</string>
 
     <!-- AI Validation Game — Teens -->
-    <string name="ai_teens_intro_task">The AI system needs to be checked. Run the test and make sure everything is safe. We\'re counting on you, agent!</string>
+    <string name="ai_teens_intro_task">CRITICAL: The datacenter AI has been compromised. Run the validation sequence NOW — press A+B on your micro:bit to start. The clock is ticking. We\'re counting on you, Agent!</string>
     <string name="ai_teens_btn_start">START VALIDATION</string>
+    <string name="ai_teens_wait_audio">⏳ Wait for the AI to finish speaking…</string>
     <string name="ai_teens_step1_title">VALIDATION TEST</string>
     <string name="ai_teens_step1_body">Test the retrained model on the micro:bit.\nNote the generated validation code.\n\n→ Run the test sequence\n→ Note the code\n→ Enter it below</string>
     <string name="ai_teens_btn_enter_code">ENTER CODE</string>
     <string name="ai_teens_code_hint">Validation code from micro:bit</string>
     <string name="ai_teens_input_error">You did not execute the sequence correctly. Try again.</string>
     <string name="ai_teens_code_title_1">ENTER VALIDATION CODE</string>
-    <string name="ai_teens_mismatch_body">The cyberattack has corrupted the AI training data. The system cannot be trusted until it is recalibrated with clean data.\n\nYou must retrain the model to restore the datacenter.</string>
+    <string name="ai_teens_mismatch_body">ALERT! The cyberattack injected corrupt data into the AI model. The system is COMPROMISED — it cannot be trusted.\n\nInject clean training data immediately. The datacenter is at risk!</string>
     <string name="ai_teens_btn_diagnose">START RECALIBRATION</string>
     <string name="ai_teens_training_body">The model is training on your new data.\nWait for training to complete, then validate.</string>
     <string name="ai_teens_btn_calibrated">VALIDATE MODEL</string>
@@ -209,12 +211,12 @@
     <string name="ai_teens_step2_body">The AI model has been recalibrated.\nRun the test sequence again on the micro:bit.\n\nEnter the new validation code below.</string>
     <string name="ai_teens_code_title_2">ENTER REVALIDATION CODE</string>
     <string name="ai_teens_revalidation_hint">Revalidation code from micro:bit</string>
-    <string name="ai_teens_success_body">The corrupted model has been wiped and retrained. The datacenter\'s AI is back online. Outstanding work, agent. The mission continues!</string>
+    <string name="ai_teens_success_body">Model wiped. Clean data injected. Datacenter AI back online. Outstanding work, Agent — the mission continues!</string>
 
     <!-- AI Validation — hardcoded UI strings (status bar, panels, labels) -->
     <string name="ai_teens_intro_title">AI VALIDATION</string>
     <string name="ai_teens_status_phase1">PHASE 1  ·  AWAITING VALIDATION</string>
-    <string name="ai_teens_status_mismatch">⚠  PREDICTION MISMATCH</string>
+    <string name="ai_teens_status_mismatch">⚠  DATA CORRUPTED</string>
     <string name="ai_teens_status_recalibrating">RECALIBRATING…</string>
     <string name="ai_teens_status_phase2">PHASE 2  ·  REVALIDATION</string>
     <string name="ai_teens_status_restored">✓  SYSTEM RESTORED</string>
@@ -238,7 +240,7 @@
     <string name="ai_teens_training_progress_label">Training progress:</string>
     <string name="ai_teens_training_in_progress">Calibrating…</string>
     <string name="ai_teens_training_awaiting_microbit">74% — awaiting micro:bit calibration</string>
-    <string name="ai_teens_retrain_success">MODEL TRAINED</string>
+    <string name="ai_teens_retrain_success">✓ MODEL RESTORED</string>
     <string name="ai_teens_training_complete">Training complete — ready to validate</string>
     <string name="ai_teens_status_collecting">DATA COLLECTION IN PROGRESS</string>
     <string name="ai_teens_add_data_title">DATA COLLECTION</string>
@@ -249,20 +251,21 @@
     <string name="ai_teens_reliability_optimal">OPTIMAL</string>
     <string name="ai_teens_class_a">CLASS A</string>
     <string name="ai_teens_class_c">CLASS C</string>
+    <string name="ai_teens_press_ab">Press A+B on your micro:bit to start!</string>
     <string name="ai_teens_first_run_title">TEST SEQUENCE</string>
-    <string name="ai_teens_first_run_body">→ Press A+B to start the test\n→ Memorize the sequence — arrows appear one by one\n→ When GO appears: act out each move in order — tilt left = L · tilt right = R · shake = U\n→ The micro:bit shows a code, enter it below</string>
+    <string name="ai_teens_first_run_body">→ Press A+B on your micro:bit to start the test\n→ Memorize the sequence — arrows appear one by one\n→ When GO appears: act out each move in order — tilt left = L · tilt right = R · shake = U\n→ The micro:bit shows a code, enter it below</string>
     <string name="ai_teens_recalibrate_title">TRAINING MODE — INJECT NEW DATA</string>
     <string name="ai_teens_recalibrate_body">→ Press B — the AI enters training mode\n→ 9 movement prompts appear one by one — react to each arrow\n→ Tilt left = ← · tilt right = → · shake = ↑\n→ ✔ valid input · ✘ bad data — a few mistakes are allowed\n→ Too many errors corrupt the model and produce false output — stay sharp</string>
     <string name="ai_teens_recalibrate_done_btn">DATA INJECTED — RERUN SEQUENCE</string>
-    <string name="ai_teens_too_many_errors">Too many training errors — the model is still corrupted. Retrain the AI.</string>
+    <string name="ai_teens_too_many_errors">CRITICAL FAILURE — too many bad samples. Model still corrupted. Retrain immediately!</string>
     <string name="ai_teens_btn_retrain">RETRAIN THE AI</string>
     <string name="ai_teens_second_run_title">REVALIDATION SEQUENCE</string>
     <string name="ai_teens_label_training_data">Training data:</string>
     <string name="ai_teens_data_quality_bad">INCORRECT</string>
     <string name="ai_teens_data_quality_good">CORRECTED ✓</string>
-    <string name="ai_teens_uploading_title">UPLOADING CALIBRATION DATA</string>
+    <string name="ai_teens_uploading_title">UPLOADING — DO NOT INTERRUPT</string>
     <string name="ai_teens_upload_status_1">Validating calibration samples…</string>
     <string name="ai_teens_upload_status_2">Updating model weights…</string>
     <string name="ai_teens_upload_status_3">Synchronizing parameters…</string>
-    <string name="ai_teens_upload_status_4">Upload complete</string>
+    <string name="ai_teens_upload_status_4">Upload complete — system secured</string>
 </resources>
