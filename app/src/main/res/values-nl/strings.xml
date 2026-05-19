@@ -95,7 +95,7 @@
     <string name="ai_intro_btn_next">Volgende</string>
     <string name="ai_intro_btn_start">Start Missie</string>
 
-    <string name="ai_intro_alarm_title">🚨 INBRAAK GEDETECTEERD!</string>
+    <string name="ai_intro_alarm_title">!! INBRAAK GEDETECTEERD!</string>
     <string name="ai_intro_alarm_body">ALERT, Agent! \"The Glitch\" heeft de World Cloud gekraakt — alle foto\'s, video\'s en games ter wereld. De eerste firewall is GEVALLEN. Dit is geen oefening!</string>
 
     <string name="ai_intro_threat_title">VIJANDSINFORMATIE</string>
@@ -107,9 +107,9 @@
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Missie 3 · IA</string>
     <string name="ai_game_find_intruder">Vind de indringer!</string>
-    <string name="ai_junior_intro_line1">⚠ The Glitch zit in de server!</string>
-    <string name="ai_junior_intro_line2">Scan de iconen — één is een virus.</string>
-    <string name="ai_junior_intro_line3">TIK HET aan om het te vernietigen!</string>
+    <string name="ai_junior_intro_line1">Foute data gedetecteerd in de server!</string>
+    <string name="ai_junior_intro_line2">Gebruik je micro:bit — beweeg of schuif het om de foute data te vinden.</string>
+    <string name="ai_junior_intro_line3">TIK HET aan om het te verwijderen!</string>
     <string name="ai_junior_intro_line4">Red de World Cloud, Agent!</string>
     <string name="ai_game_instruction_1">Scan de iconen!</string>
     <string name="ai_game_instruction_2">TIK het virus om het te vernietigen!</string>
@@ -189,7 +189,7 @@
     <string name="robot_quiz_explanation_teens">Sensoren zijn invoerapparaten die informatie verzamelen (bijv. afstand, licht, kleur). Actuatoren zijn uitvoerapparaten die de robot iets laten doen (bijv. motoren, luidsprekers, LED-lampjes).</string>
 
     <!-- AI Validatie Game — Teens -->
-    <string name="ai_teens_intro_task">KRITIEK: Het datacenter-AI is gecompromitteerd. Voer de validatiesequentie NU uit — de tijd tikt. We rekenen op jou, Agent!</string>
+    <string name="ai_teens_intro_task">KRITIEK: Het datacenter-AI is gecompromitteerd. Voer de validatiesequentie NU uit — druk op A+B op je micro:bit om te starten. De tijd tikt. We rekenen op jou, Agent!</string>
     <string name="ai_teens_btn_start">START VALIDATIE</string>
     <string name="ai_teens_wait_audio">⏳ Wacht tot de AI klaar is met praten…</string>
     <string name="ai_teens_step1_title">VALIDATIETEST</string>
@@ -246,8 +246,9 @@
     <string name="ai_teens_reliability_optimal">OPTIMAAL</string>
     <string name="ai_teens_class_a">KLASSE A</string>
     <string name="ai_teens_class_c">KLASSE C</string>
+    <string name="ai_teens_press_ab">Druk op A+B op je micro:bit om te starten!</string>
     <string name="ai_teens_first_run_title">TESTSEQUENTIE</string>
-    <string name="ai_teens_first_run_body">→ Druk op A+B om de test te starten\n→ Onthoud de reeks — pijlen verschijnen één voor één\n→ Als GO verschijnt: voer elke beweging in volgorde uit — links = ← · rechts = → · schud = ↑\n→ De micro:bit toont een code — voer hem hieronder in</string>
+    <string name="ai_teens_first_run_body">→ Druk op A+B op je micro:bit om de test te starten\n→ Onthoud de reeks — pijlen verschijnen één voor één\n→ Als GO verschijnt: voer elke beweging in volgorde uit — links = ← · rechts = → · schud = ↑\n→ De micro:bit toont een code — voer hem hieronder in</string>
     <string name="ai_teens_recalibrate_title">TRAININGSMODUS — NIEUWE DATA INJECTEREN</string>
     <string name="ai_teens_recalibrate_body">→ Druk op B — de AI gaat in trainingsmodus\n→ 9 acties verschijnen één voor één — reageer op elke pijl\n→ Kantel links = ← · rechts = → · schud = ↑\n→ ✔ geldige invoer · ✘ slechte data — een paar fouten zijn toegestaan\n→ Te veel fouten corrumperen het model en produceren een valse uitvoer — blijf scherp</string>
     <string name="ai_teens_recalibrate_done_btn">DATA GEÏNJECTEERD — SEQUENTIE HERSTARTEN</string>

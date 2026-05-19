@@ -1,6 +1,8 @@
 package com.example.escapegame.screens
 
 import android.media.MediaPlayer
+import com.example.escapegame.logic.playSuccessSfx
+import com.example.escapegame.logic.playFailSfx
 import androidx.activity.compose.BackHandler
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.core.Animatable
@@ -29,7 +31,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -141,9 +142,11 @@ fun BinaryGameScreen(
         if (puzzle.checkAnswer(userAnswer)) {
             feedback = true
             solved = true
+            playSuccessSfx(context)
         } else {
             feedback = false
             shakeKey++
+            playFailSfx(context)
         }
     }
 

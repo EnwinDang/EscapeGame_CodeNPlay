@@ -1,6 +1,5 @@
 package com.example.escapegame.screens
 
-import android.util.Log
 import android.view.TextureView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.background
@@ -96,11 +95,7 @@ fun VideoScreen(
             playWhenReady = true
             addListener(object : Player.Listener {
                 override fun onPlaybackStateChanged(state: Int) {
-                    Log.d("VideoScreen", "Playback state: $state")
                     if (state == Player.STATE_ENDED) onContinue()
-                }
-                override fun onPlayerError(error: androidx.media3.common.PlaybackException) {
-                    Log.e("VideoScreen", "Player error: ${error.message}", error)
                 }
             })
         }

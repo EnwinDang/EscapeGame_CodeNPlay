@@ -100,7 +100,7 @@
     <string name="ai_intro_btn_next">Next</string>
     <string name="ai_intro_btn_start">Start Mission</string>
 
-    <string name="ai_intro_alarm_title">🚨 BREACH DETECTED!</string>
+    <string name="ai_intro_alarm_title">!! BREACH DETECTED!</string>
     <string name="ai_intro_alarm_body">ALERT, Agent! \"The Glitch\" has cracked the World Cloud — every photo, video and game on earth. The first firewall is DOWN. This is not a drill!</string>
 
     <string name="ai_intro_threat_title">ENEMY INTEL</string>
@@ -112,9 +112,9 @@
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Mission 3 · AI</string>
     <string name="ai_game_find_intruder">Find the intruder!</string>
-    <string name="ai_junior_intro_line1">⚠ The Glitch is inside the server!</string>
-    <string name="ai_junior_intro_line2">Scan the icons — one is a virus.</string>
-    <string name="ai_junior_intro_line3">TAP IT to destroy it!</string>
+    <string name="ai_junior_intro_line1">Corrupted data detected in the server!</string>
+    <string name="ai_junior_intro_line2">Use your micro:bit — tilt or slide it to find the corrupted data.</string>
+    <string name="ai_junior_intro_line3">TAP IT to eliminate it!</string>
     <string name="ai_junior_intro_line4">Save the World Cloud, Agent!</string>
     <string name="ai_game_instruction_1">Scan the icons!</string>
     <string name="ai_game_instruction_2">TAP the virus to destroy it!</string>
@@ -194,7 +194,7 @@
     <string name="robot_quiz_explanation_teens">Sensors are input devices that gather information (e.g. distance, light, color). Actuators are output devices that make the robot do something (e.g. motors, speakers, LEDs).</string>
 
     <!-- AI Validation Game — Teens -->
-    <string name="ai_teens_intro_task">CRITICAL: The datacenter AI has been compromised. Run the validation sequence NOW — the clock is ticking. We\'re counting on you, Agent!</string>
+    <string name="ai_teens_intro_task">CRITICAL: The datacenter AI has been compromised. Run the validation sequence NOW — press A+B on your micro:bit to start. The clock is ticking. We\'re counting on you, Agent!</string>
     <string name="ai_teens_btn_start">START VALIDATION</string>
     <string name="ai_teens_wait_audio">⏳ Wait for the AI to finish speaking…</string>
     <string name="ai_teens_step1_title">VALIDATION TEST</string>
@@ -251,8 +251,9 @@
     <string name="ai_teens_reliability_optimal">OPTIMAL</string>
     <string name="ai_teens_class_a">CLASS A</string>
     <string name="ai_teens_class_c">CLASS C</string>
+    <string name="ai_teens_press_ab">Press A+B on your micro:bit to start!</string>
     <string name="ai_teens_first_run_title">TEST SEQUENCE</string>
-    <string name="ai_teens_first_run_body">→ Press A+B to start the test\n→ Memorize the sequence — arrows appear one by one\n→ When GO appears: act out each move in order — tilt left = L · tilt right = R · shake = U\n→ The micro:bit shows a code, enter it below</string>
+    <string name="ai_teens_first_run_body">→ Press A+B on your micro:bit to start the test\n→ Memorize the sequence — arrows appear one by one\n→ When GO appears: act out each move in order — tilt left = L · tilt right = R · shake = U\n→ The micro:bit shows a code, enter it below</string>
     <string name="ai_teens_recalibrate_title">TRAINING MODE — INJECT NEW DATA</string>
     <string name="ai_teens_recalibrate_body">→ Press B — the AI enters training mode\n→ 9 movement prompts appear one by one — react to each arrow\n→ Tilt left = ← · tilt right = → · shake = ↑\n→ ✔ valid input · ✘ bad data — a few mistakes are allowed\n→ Too many errors corrupt the model and produce false output — stay sharp</string>
     <string name="ai_teens_recalibrate_done_btn">DATA INJECTED — RERUN SEQUENCE</string>

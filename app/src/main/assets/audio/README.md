@@ -16,6 +16,7 @@ Languages: `en`, `nl`, `fr`
 | `scratch_en.mp3` / `scratch_nl.mp3` / `scratch_fr.mp3` | Scratch mission screen | ✅ All present |
 | `ai_junior_en.mp3` / `ai_junior_nl.mp3` / `ai_junior_fr.mp3` | AI mission screen (Junior Agent) | ✅ All present |
 | `ai_senior_en.mp3` / `ai_senior_nl.mp3` / `ai_senior_fr.mp3` | AI mission screen (Senior Agent) | ✅ All present |
+| `AI_ENG.mpeg` / `AI_NL.mpeg` / `AI_FR.mpeg` | AI Senior — BAD_PREDICTION phase | ✅ All present |
 | `robot_en.mp3` / `robot_nl.mp3` / `robot_fr.mp3` | Robot mission screen | ✅ All present |
 
 ## Fallback

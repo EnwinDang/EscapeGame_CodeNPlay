@@ -17,68 +17,109 @@ Technician: Okay, we're rolling, you can go.
 
 5
 00:00:35,000 --> 00:00:39,000
-Swann: Welcome to the Data Palace! Swann and Ismail here.
+Swann: Welcome to the Data Palace!
+Swann and Ismail here.
 
 6
-00:00:39,000 --> 00:00:45,000
-We are in charge of this data center, which was designed to store resource data important to scientists worldwide.
+00:00:39,000 --> 00:00:42,000
+We are in charge of this data center,
 
 7
-00:00:45,000 --> 00:00:49,000
-Ismail: So, if you're seeing this message, it's because we actually need your help.
+00:00:42,000 --> 00:00:45,000
+designed to store resource data
+important to scientists worldwide.
 
 8
-00:00:49,000 --> 00:00:53,000
-Uh, there was a major cyberattack a few hours ago, and it has disrupted many of the data center's systems.
+00:00:45,000 --> 00:00:47,000
+Ismail: If you're seeing this message,
 
 9
-00:00:53,000 --> 00:00:59,000
-Swann: We are going to leave to fix the center's network manager systems,
+00:00:47,000 --> 00:00:49,000
+it's because we need your help.
 
 10
-00:00:59,000 --> 00:01:05,000
-but we need all the skills and intelligence of IT specialists like you to fix all the other systems.
+00:00:49,000 --> 00:00:51,000
+There was a major cyberattack a few hours ago,
 
 11
-00:01:05,000 --> 00:01:07,000
-Swann: By the way Hal, can you give us the list of problems?
+00:00:51,000 --> 00:00:53,000
+and it has disrupted many of the
+data center's systems.
 
 12
-00:01:07,000 --> 00:01:11,000
-HAL: According to the diagnostic system, several servers are close to overheating.
+00:00:53,000 --> 00:00:56,000
+Swann: We are going to leave
 
 13
+00:00:56,000 --> 00:00:59,000
+to fix the center's network manager systems,
+
+14
+00:00:59,000 --> 00:01:02,000
+but we need all the skills and intelligence
+
+15
+00:01:02,000 --> 00:01:05,000
+of IT specialists like you
+to fix all the other systems.
+
+16
+00:01:05,000 --> 00:01:07,000
+Swann: By the way Hal,
+can you give us the list of problems?
+
+17
+00:01:07,000 --> 00:01:09,000
+HAL: According to the diagnostic system,
+
+18
+00:01:09,000 --> 00:01:11,000
+several servers are close to overheating.
+
+19
 00:01:11,000 --> 00:01:14,000
 They must be cooled down urgently.
 
-14
+20
 00:01:14,000 --> 00:01:18,000
-HAL: A blockage has been detected in ventilation duct 25B.
+HAL: A blockage has been detected
+in ventilation duct 25B.
 
-15
-00:01:18,000 --> 00:01:21,000
-It must be removed as quickly as possible to reactivate the cooling systems.
+21
+00:01:18,000 --> 00:01:19,500
+It must be removed as quickly as possible
 
-16
+22
+00:01:19,500 --> 00:01:21,000
+to reactivate the cooling systems.
+
+23
 00:01:21,000 --> 00:01:24,000
 Ismail: As you can see, there is a lot to do.
 
-17
+24
 00:01:24,000 --> 00:01:28,000
-But don't hesitate to refer to the envelope you were given.
+Don't hesitate to refer to
+the envelope you were given.
 
-18
-00:01:28,000 --> 00:01:31,000
-And if you need help, ask one of the technicians accompanying you.
+25
+00:01:28,000 --> 00:01:29,500
+And if you need help,
 
-19
+26
+00:01:29,500 --> 00:01:31,000
+ask one of the technicians accompanying you.
+
+27
 00:01:31,000 --> 00:01:33,000
-Swann: You will need to work together to overcome the challenges that await you.
+Swann: Work together
+to overcome the challenges ahead!
 
-20
+28
 00:01:33,000 --> 00:01:36,000
-So don't hesitate to stick together.
+Don't hesitate to stick together.
 
-21
+29
 00:01:36,000 --> 00:01:45,000
-Ismail: Thank you for your help and good luck to everyone!
+Ismail: Thank you for your help
+and good luck to everyone!

@@ -95,7 +95,7 @@ r    <string name="binary_verify_protocol">VÉRIFIER PROTOCOLE</string>
     <string name="ai_intro_btn_next">Suivant</string>
     <string name="ai_intro_btn_start">Lancer la Mission</string>
 
-    <string name="ai_intro_alarm_title">🚨 INTRUSION DÉTECTÉE !</string>
+    <string name="ai_intro_alarm_title">!! INTRUSION DÉTECTÉE !</string>
     <string name="ai_intro_alarm_body">ALERTE, Agent ! \"The Glitch\" a piraté le World Cloud — toutes les photos, vidéos et jeux du monde. Le premier pare-feu est TOMBÉ. Ce n\'est pas un exercice !</string>
 
     <string name="ai_intro_threat_title">RENSEIGNEMENTS ENNEMIS</string>
@@ -107,9 +107,9 @@ r    <string name="binary_verify_protocol">VÉRIFIER PROTOCOLE</string>
     <!-- AI Game (Junior mini-game) -->
     <string name="ai_game_step_label">Mission 3 · IA</string>
     <string name="ai_game_find_intruder">Trouve l\'intrus !</string>
-    <string name="ai_junior_intro_line1">⚠ The Glitch est dans le serveur !</string>
-    <string name="ai_junior_intro_line2">Scanne les icônes — une est un virus.</string>
-    <string name="ai_junior_intro_line3">APPUIE DESSUS pour le détruire !</string>
+    <string name="ai_junior_intro_line1">Données corrompues détectées dans le serveur !</string>
+    <string name="ai_junior_intro_line2">Utilise ton micro:bit — incline-le ou glisse pour trouver la donnée corrompue.</string>
+    <string name="ai_junior_intro_line3">APPUIE DESSUS pour l\'éliminer !</string>
     <string name="ai_junior_intro_line4">Sauve le World Cloud, Agent !</string>
     <string name="ai_game_instruction_1">Scanne les icônes !</string>
     <string name="ai_game_instruction_2">APPUIE sur le virus pour le détruire !</string>
@@ -189,7 +189,7 @@ r    <string name="binary_verify_protocol">VÉRIFIER PROTOCOLE</string>
     <string name="robot_quiz_explanation_teens">Les capteurs sont des dispositifs d\'entrée qui recueillent des informations (par ex. distance, lumière, couleur). Les actionneurs sont des dispositifs de sortie qui font agir le robot (par ex. moteurs, haut-parleurs, LEDs).</string>
 
     <!-- Jeu de Validation IA — Ados -->
-    <string name="ai_teens_intro_task">CRITIQUE : Le datacenter IA a été compromis. Lance la séquence de validation MAINTENANT — le temps est compté. On compte sur toi, Agent !</string>
+    <string name="ai_teens_intro_task">CRITIQUE : Le datacenter IA a été compromis. Lance la séquence de validation MAINTENANT — appuie sur A+B sur ton micro:bit pour démarrer. Le temps est compté. On compte sur toi, Agent !</string>
     <string name="ai_teens_btn_start">DÉMARRER LA VALIDATION</string>
     <string name="ai_teens_wait_audio">⏳ Attends que l\'IA finisse de parler…</string>
     <string name="ai_teens_step1_title">TEST DE VALIDATION</string>
@@ -246,8 +246,9 @@ r    <string name="binary_verify_protocol">VÉRIFIER PROTOCOLE</string>
     <string name="ai_teens_reliability_optimal">OPTIMAL</string>
     <string name="ai_teens_class_a">CLASSE A</string>
     <string name="ai_teens_class_c">CLASSE C</string>
+    <string name="ai_teens_press_ab">Appuie sur A+B sur ton micro:bit pour démarrer !</string>
     <string name="ai_teens_first_run_title">SÉQUENCE DE TEST</string>
-    <string name="ai_teens_first_run_body">→ Appuie sur A+B pour démarrer le test\n→ Mémorise la séquence — les flèches apparaissent une par une\n→ Quand GO apparaît : reproduis chaque mouvement dans l\'ordre — gauche = ← · droite = → · secoue = ↑\n→ Le micro:bit affiche un code — mémorise-le et entre-le ci-dessous</string>
+    <string name="ai_teens_first_run_body">→ Appuie sur A+B sur ton micro:bit pour démarrer le test\n→ Mémorise la séquence — les flèches apparaissent une par une\n→ Quand GO apparaît : reproduis chaque mouvement dans l\'ordre — gauche = ← · droite = → · secoue = ↑\n→ Le micro:bit affiche un code — mémorise-le et entre-le ci-dessous</string>
     <string name="ai_teens_recalibrate_title">MODE ENTRAÎNEMENT — INJECTER LES DONNÉES</string>
     <string name="ai_teens_recalibrate_body">→ Appuie sur B — l\'IA entre en mode entraînement\n→ 9 actions apparaissent une par une — réagis à chaque flèche\n→ Incline à gauche = ← · à droite = → · secoue = ↑\n→ ✔ donnée valide · ✘ mauvaise donnée — quelques erreurs sont tolérées\n→ Trop d\'erreurs corrompent le modèle et génèrent une fausse sortie — reste concentré</string>
     <string name="ai_teens_recalibrate_done_btn">DONNÉES INJECTÉES — RELANCER LA SÉQUENCE</string>
