@@ -66,13 +66,24 @@ fun VideoScreen(
     onContinue: () -> Unit,
 ) {
     val context = videoAssetManager.context
-    val uri = remember { videoAssetManager.getUri(VideoAsset.INTRO) }
-
     val currentLanguage = remember {
         val appLocales = AppCompatDelegate.getApplicationLocales()
-        if (!appLocales.isEmpty) appLocales[0]?.language ?: Locale.getDefault().language
+        if (!appLocales.isEmpty()) appLocales[0]?.language ?: Locale.getDefault().language
         else Locale.getDefault().language
     }
+
+    val introAsset = remember(currentLanguage) {
+        when (currentLanguage) {
+            "nl" -> VideoAsset.INTRO_NL
+            "en" -> VideoAsset.INTRO_EN
+            else -> VideoAsset.INTRO_FR
+        }
+    }
+
+    val uri = remember(introAsset) {
+        videoAssetManager.getUri(asset = introAsset)
+    }
+
 
     val subtitleEntries = remember(currentLanguage) {
         val lang = when (currentLanguage) {

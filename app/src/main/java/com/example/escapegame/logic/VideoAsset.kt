@@ -7,7 +7,9 @@ package com.example.escapegame.logic
  * (asset resolution, remote updates) picks it up automatically.
  */
 enum class VideoAsset(val fileName: String) {
-    INTRO("intro_fr.mp4"),
+    INTRO_FR(fileName = "intro_fr.mp4"),
+    INTRO_NL(fileName = "intro_nl.mp4"),
+    INTRO_EN(fileName = "intro_en.mp4"),
     OUTRO("outro.mp4"),
     AI_SPEECH_BUBBLE("ai_speech_bubble.mp4");
 
