@@ -84,21 +84,27 @@ fun VideoScreen(
         videoAssetManager.getUri(asset = introAsset)
     }
 
+    val subtitleEntries = remember(key1 = currentLanguage) {
+        if (currentLanguage == "nl") {
+            emptyList<IntroSubtitleEntry>()
+        } else {
+            val lang = when (currentLanguage) {
+                "en" -> "en"
+                else -> "fr"
+            }
 
-    val subtitleEntries = remember(currentLanguage) {
-        val lang = when (currentLanguage) {
-            "nl" -> "nl"
-            "en" -> "en"
-            else -> "fr"
-        }
-        try {
-            val content = context.assets.open("subtitles/intro_$lang.srt").bufferedReader().readText()
-            parseIntroSrt(content)
-        } catch (_: Exception) {
-            emptyList()
+            try {
+                val content = context.assets
+                    .open("subtitles/intro_$lang.srt")
+                    .bufferedReader()
+                    .readText()
+
+                parseIntroSrt(content)
+            } catch (_: Exception) {
+                emptyList<IntroSubtitleEntry>()
+            }
         }
     }
-
     val player = remember {
         ExoPlayer.Builder(context).build().apply {
             setMediaItem(MediaItem.fromUri(uri))
